@@ -1,0 +1,687 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Conception d’un système de Réduction de Bruit Active</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="199bdf16-c65b-8024-9a73-e2bcf39ba6a4" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1508614823792-1f56af914148?ixlib=rb-4.0.3&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" style="object-position:center 77.45%"/><h1 class="page-title"><strong>Conception d’un système de Réduction de Bruit Active</strong></h1><p class="page-description"></p></header><div class="page-body"><p id="19dbdf16-c65b-80c0-a1e8-c57325cfa880" class=""><em>Projet mené en duo</em></p><blockquote id="199bdf16-c65b-8032-8459-fcc670fa9bb1" class="">Ce projet consiste à étudier et concevoir un système de réduction de bruit active en combinant des approches théoriques, expérimentales et électroniques. L’objectif est d’atténuer un signal sonore indésirable par opposition de phase en explorant différentes solutions : une première expérimentation sur haut-parleurs, une modélisation électrique, et une implémentation numérique avec un Raspberry Pi. Chaque étape a permis d’améliorer l’efficacité du système et d’identifier les contraintes technologiques liées à cette application.</blockquote><p id="19ebdf16-c65b-80d3-b419-d30403bb6738" class="">
+</p><h3 id="19ebdf16-c65b-806f-a23d-e6016ab2eca6" class="">Sommaire</h3><nav id="19dbdf16-c65b-807d-99b4-fb2cc1c5dda5" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#19ebdf16-c65b-806f-a23d-e6016ab2eca6">Sommaire</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#199bdf16-c65b-80e7-bf52-d09d1563b443">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#199bdf16-c65b-80ff-8495-e200887f699d">1. Premières expériences</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#199bdf16-c65b-8083-bdf9-e0ce88773a57">a) Interférences destructives avec des Haut-Parleurs</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#199bdf16-c65b-80f8-8952-c83224b9c6f6">b) Première modélisation électrique</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#199bdf16-c65b-8034-8600-e502aec04103">2. Système Électrique</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#199bdf16-c65b-80c5-98aa-f7f0ecd8c923">3. Système Électronique</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#199bdf16-c65b-8045-a766-fe9fc903ffb3">a) Utilisation d’un plaque Sysam</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#199bdf16-c65b-80cf-b031-fb758ffe6c23">b) Implémentation numérique avec un Raspberry Pi</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#199bdf16-c65b-8023-80d6-c58e9e55f98e">Conclusion</a></div></nav><p id="19ebdf16-c65b-8052-a1f3-fd1dbcbce964" class="">
+</p><h2 id="199bdf16-c65b-80e7-bf52-d09d1563b443" class="">Introduction</h2><p id="199bdf16-c65b-808f-aad9-e001a147a327" class="">Le bruit est une vibration mécanique d’un fluide qui peut être mesurée en décibels (dB). Une exposition prolongée à un bruit excessif peut entraîner du stress, une perte de concentration et, à terme, des troubles auditifs. Il existe deux méthodes principales pour réduire le bruit :</p><ul id="199bdf16-c65b-809b-b5b8-e737f7df6b13" class="bulleted-list"><li style="list-style-type:disc"><strong>La réduction passive</strong>, qui repose sur l’absorption ou l’isolation acoustique via des matériaux spécifiques</li></ul><ul id="199bdf16-c65b-8045-921a-d6a9d6e450bc" class="bulleted-list"><li style="list-style-type:disc"><strong>La réduction active</strong>, qui repose sur la génération d’un signal sonore en opposition de phase afin d’annuler une onde sonore indésirable</li></ul><div id="199bdf16-c65b-80af-95a6-ee307c9ecf3b" class="column-list"><div id="199bdf16-c65b-8065-8c10-f66b9ef9ce24" style="width:57.14285714285715%" class="column"><p id="199bdf16-c65b-809e-aa2e-e961a867bc66" class="">La réduction active est particulièrement utile pour atténuer certaines fréquences précises et compléter les limites de la réduction passive. Cependant, elle nécessite un système électronique performant capable d’analyser et de traiter les signaux sonores en temps réel.</p><p id="199bdf16-c65b-804c-9ee2-f1f722dc5add" class="">
+</p></div><div id="199bdf16-c65b-8069-9415-d8da69ce9fb1" style="width:42.85714285714286%" class="column"><figure id="199bdf16-c65b-8045-8802-ca94278a59f1" class="image"><a href="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/simulation_opposition_bis_page-0001.jpg"><img style="width:192px" src="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/simulation_opposition_bis_page-0001.jpg"/></a><figcaption>Figure 1 - Simulation d’opposition de phase</figcaption></figure></div></div><h2 id="199bdf16-c65b-80ff-8495-e200887f699d" class="">1. Premières expériences</h2><h3 id="199bdf16-c65b-8083-bdf9-e0ce88773a57" class="">a) Interférences destructives avec des Haut-Parleurs</h3><p id="199bdf16-c65b-8005-95df-c113de9ff602" class="">La première expérimentation a consisté à générer une opposition de phase entre deux haut-parleurs pour créer une interférence destructive et réduire le bruit perçu.</p><ul id="199bdf16-c65b-80b0-8c40-d4a54b2a94c3" class="bulleted-list"><li style="list-style-type:disc">Deux haut-parleurs ont été disposés en face l’un de l’autre et alimentés par un <strong>générateur de signal</strong> avec un déphasage de 180°</li></ul><ul id="199bdf16-c65b-800b-aa09-d9dc3336766e" class="bulleted-list"><li style="list-style-type:disc">La réduction du bruit a été mesurée à différentes distances, et l’efficacité a atteint <strong>jusqu’à 93 %</strong> pour une fréquence de <strong>440 Hz</strong></li></ul><div id="199bdf16-c65b-80ec-9174-e38ee6aedbde" class="column-list"><div id="199bdf16-c65b-8033-963a-fca6476ac7ee" style="width:37.5%" class="column"><figure id="199bdf16-c65b-80b3-91eb-dbaac8a91450" class="image"><a href="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/Montage_HP_Colles_page-0001.jpg"><img style="width:192px" src="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/Montage_HP_Colles_page-0001.jpg"/></a><figcaption>Figure 2 - Schéma du premier montage</figcaption></figure></div><div id="199bdf16-c65b-8058-adbf-d3716c429618" style="width:62.5%" class="column"><figure id="199bdf16-c65b-80e8-bd5a-d6a8a2c6852c" class="image"><a href="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/hp_colles_courbe.png"><img style="width:709.9857788085938px" src="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/hp_colles_courbe.png"/></a><figcaption>Figure 3 -  Résultats associés : 93% d’efficacité</figcaption></figure></div></div><div id="199bdf16-c65b-804f-b133-f12a86ae0dfb" class="column-list"><div id="199bdf16-c65b-805c-a1da-f70319769738" style="width:37.5%" class="column"><figure id="199bdf16-c65b-8022-8ed4-ea98f1da239e" class="image"><a href="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/Montage_HP_2_page-0001.jpg"><img style="width:192px" src="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/Montage_HP_2_page-0001.jpg"/></a><figcaption>Figure 4 - Schéma du deuxième montage</figcaption></figure></div><div id="199bdf16-c65b-8013-8c22-f95644b0657c" style="width:62.5%" class="column"><figure id="199bdf16-c65b-80ce-b0f5-e4a006516def" class="image"><a href="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/hp_distants_l.png"><img style="width:709.9786376953125px" src="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/hp_distants_l.png"/></a><figcaption>Figure 5 - Résultats associés : 86% d‘efficacité</figcaption></figure></div></div><p id="199bdf16-c65b-800f-a66b-d14b0043cbfb" class="">L’expérience a donc révélé que le positionnement des haut-parleurs et les réflexions des ondes sonores influencent fortement l’efficacité de l’annulation.</p><p id="199bdf16-c65b-80b2-912e-ca2c1c7d0650" class="">L’expérimentation a mis en évidence plusieurs limitations :</p><ul id="199bdf16-c65b-808d-ae99-d37755e3cbd7" class="bulleted-list"><li style="list-style-type:disc">L’efficacité diminue fortement en présence de réflexions sonores sur les parois environnantes</li></ul><ul id="199bdf16-c65b-8017-9fe1-f13a333d6ac6" class="bulleted-list"><li style="list-style-type:disc">Une opposition de phase parfaite est difficile à maintenir sur l’ensemble du spectre sonore</li></ul><ul id="199bdf16-c65b-8034-80c3-e9788b04771c" class="bulleted-list"><li style="list-style-type:disc">L’environnement de mesure doit être contrôlé pour limiter les interférences extérieures</li></ul><p id="199bdf16-c65b-8008-8a5d-dc1cbb9ae3c4" class="">Ces observations ont motivé la mise en place d’un <strong>système électrique plus précis</strong> permettant un meilleur contrôle du signal généré.</p><h3 id="199bdf16-c65b-80f8-8952-c83224b9c6f6" class="">b) Première modélisation électrique</h3><p id="199bdf16-c65b-8001-b907-e99916ab69af" class="">L’objectif était de concevoir un circuit capable de générer un signal déphasé en opposition de phase avec le bruit ambiant.</p><ul id="199bdf16-c65b-8016-a318-c23679154eb4" class="bulleted-list"><li style="list-style-type:disc">Une tension sinusoïdale de <strong>1 kHz</strong> est envoyée en entrée d’un circuit composé de résistances et de condensateurs pour produire un <strong>décalage de phase</strong> via la fonction <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>a</mi><mi>r</mi><mi>c</mi><mi>t</mi><mi>a</mi><mi>n</mi><mo stretchy="false">(</mo><msub><mi>R</mi><mn>1</mn></msub><mi>C</mi><mi>ω</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">2arctan(R_1C\omega)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mord mathnormal">a</span><span class="mord mathnormal">rc</span><span class="mord mathnormal">t</span><span class="mord mathnormal">an</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span></li></ul><ul id="199bdf16-c65b-80a7-9be8-c00871926519" class="bulleted-list"><li style="list-style-type:disc">Le signal obtenu a ensuite été additionné avec le bruit ambiant via un <strong>amplificateur sommateur</strong>, simulant ainsi une annulation du bruit par superposition d’ondes opposée</li></ul><figure id="199bdf16-c65b-8011-a673-cc9a65efd634" class="image"><a href="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/MontageDephaseurSommateur_page-0001.jpg"><img style="width:709.9715576171875px" src="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/MontageDephaseurSommateur_page-0001.jpg"/></a><figcaption>Figure 6 - Montage électrique du circuit déphaseur sommateur</figcaption></figure><p id="199bdf16-c65b-8028-a3f4-f198c63fcd28" class="">Un premier circuit a été monté et testé :</p><div id="199bdf16-c65b-80d8-80cc-f9d66ba87ec3" class="column-list"><div id="199bdf16-c65b-8041-874b-e327b1c77fdb" style="width:50%" class="column"><figure id="199bdf16-c65b-80ad-b805-fa6b868cab05" class="image"><a href="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/photo_circuit_simple.jpg"><img style="width:336px" src="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/photo_circuit_simple.jpg"/></a><figcaption>Figure 7 - Système électrique</figcaption></figure></div><div id="199bdf16-c65b-80b0-94e9-fda847463004" style="width:50%" class="column"><figure id="199bdf16-c65b-80d6-b98f-c69d87b1c4a3" class="image"><a href="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/photo_resultat_elec.jpg"><img style="width:288px" src="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/photo_resultat_elec.jpg"/></a><figcaption>Figure 8 - Résultats associés mesurés</figcaption></figure></div></div><p id="199bdf16-c65b-8050-b7f4-fcd0ca9b77a3" class="">On peut mesurer que la réduction sonore mesurée a atteint <strong>95 %</strong>, ce qui valide la faisabilité du modèle. Cependant, les valeurs des composants électroniques ont montré des <strong>incertitudes</strong> d’environ <strong>±10 %</strong>, ce qui peut limiter la précision du déphasage obtenu et aussi expliquer l’écart de valeurs.</p><h2 id="199bdf16-c65b-8034-8600-e502aec04103" class="">2. Système Électrique</h2><p id="199bdf16-c65b-800a-8ee8-d6d9ac2e7be3" class="">Ce circuit a pour but de simuler une utilisation plus classique du principe de réduction de bruit active comme on peut le voir dans le commerce : l’annulation du bruit environnant pour ne garder que le son que l’on a choisi. Pour cela, nous traitons un signal d’entrée que nous sommons ensuite avec une musique.</p><p id="199bdf16-c65b-80c2-ae32-de09499e69e1" class="">Le bruit est donc la musique diffusée que nous essayons d’enlever au signal envoyé par le GBF.</p><figure id="199bdf16-c65b-80dd-8e9f-d1893e1e33d9" class="image"><a href="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/Chain_page-0001.jpg"><img style="width:336px" src="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/Chain_page-0001.jpg"/></a><figcaption>Figure 9 - Principe général du système</figcaption></figure><p id="199bdf16-c65b-802c-865f-e9be437a5550" class="">Nous avons alors monté et testé notre système :</p><div id="199bdf16-c65b-8066-81de-f165a3482873" class="column-list"><div id="199bdf16-c65b-803f-9031-f42a843bb778" style="width:50%" class="column"><figure id="199bdf16-c65b-8017-a579-db1b9563b844" class="image"><a href="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/photo_intermediaire.jpg"><img style="width:2049px" src="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/photo_intermediaire.jpg"/></a><figcaption>Figure 10 - Système électrique</figcaption></figure></div><div id="199bdf16-c65b-8052-92b2-cc03aa194778" style="width:50%" class="column"><figure id="199bdf16-c65b-801e-a478-ed841c9affd0" class="image"><a href="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/photo_resultats_intermediaire(1).jpg"><img style="width:709.9786376953125px" src="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/photo_resultats_intermediaire(1).jpg"/></a><figcaption>Figure 11 - Résultats associés mesurés</figcaption></figure></div></div><p id="199bdf16-c65b-800e-a54e-c1c82240bade" class="">Avec en vert la courbe du signal sans réduction et en jaune celle du signal avec réduction de bruit, nous pouvons voir que l’efficacité est discutable et encore assez peu satisfaisante pour un système réel. Cela nous amène alors à changer la manière dont on traite le signal et donc amener un <strong>traitement électronique</strong> pour notre système final.</p><h2 id="199bdf16-c65b-80c5-98aa-f7f0ecd8c923" class="">3. Système Électronique</h2><h3 id="199bdf16-c65b-8045-a766-fe9fc903ffb3" class="">a) Utilisation d’un plaque Sysam</h3><p id="199bdf16-c65b-8058-bc18-efb56e741bd7" class="">Pour explorer cette nouvelle possibilité, nous avons développé un programme de traitement du signal en python afin d’enregistrer un son, de le traiter avec notre programme grâce à la plaque Sysam puis le renvoyer dans un autre haut-parleur. Expérimentalement, nous avons commencé par un signal sinusoïdal que nous avons déphasé afin de pouvoir évaluer clairement l’efficacité de notre solution.</p><figure id="199bdf16-c65b-807a-b50e-d490a3c777bf" class="image"><a href="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/photo_sysam.jpg"><img style="width:3853px" src="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/photo_sysam.jpg"/></a><figcaption>Figure 12 - Premier système électronique avec Plaque Sysam</figcaption></figure><p id="199bdf16-c65b-800d-a29c-f51e42cb5100" class="">Cependant, l’expérience nous a montré que, pour un travail aussi précis que la réduction de bruit active, la plaque Sysam était loin d’être assez rapide pour traiter le signal. Les résultats assez mauvais que nous avons obtenus nous ont donc mené à considérer une option plus aboutie comprenant un <strong>Raspberry Pi</strong> pour le traitement du signal.</p><h3 id="199bdf16-c65b-80cf-b031-fb758ffe6c23" class="">b) Implémentation numérique avec un Raspberry Pi</h3><p id="199bdf16-c65b-807f-9465-efbc1498eceb" class="">Pour automatiser l’analyse et la correction du signal sonore, un système numérique a été développé à l’aide d’un <strong>Raspberry Pi</strong> et de <strong>convertisseurs analogique-numérique (CAN) et numérique-analogique (CNA)</strong>. Cela ajoute alors des contraintes supplémentaires sur le signal d’entrée et de sortie, car il doit correspondre aux amplitudes et plages de tension requises par les composants de traitement. </p><p id="199bdf16-c65b-80e2-b529-faf3cf85fa45" class="">Le protocole mis en place comprend alors plusieurs étapes :</p><figure id="199bdf16-c65b-80df-b1c7-ff0db6fbf5e5" class="image"><a href="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/chaine.png"><img style="width:709.9715576171875px" src="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/chaine.png"/></a><figcaption>Figure 13 - Protocole de traitement du signal</figcaption></figure><div id="199bdf16-c65b-80d1-b535-e6d3cf9b1d1a" class="column-list"><div id="199bdf16-c65b-8074-91af-c096f5c71cac" style="width:50%" class="column"><p id="199bdf16-c65b-807f-8019-fdd054616937" class="">Pour le conditionnement du signal d’entrée, il a été décidé d’utiliser un amplificateur sommateur afin de décaler la plage de tension au-dessus de <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mi>V</mi></mrow><annotation encoding="application/x-tex">0V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">0</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></span><span>﻿</span></span> avec une amplitude de <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>V</mi></mrow><annotation encoding="application/x-tex">2V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></span><span>﻿</span></span>.</p><figure id="199bdf16-c65b-80c8-9a16-dd83ec052ce7" class="image"><a href="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/Montage_ALI_1_page-0001.jpg"><img style="width:240px" src="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/Montage_ALI_1_page-0001.jpg"/></a><figcaption>Figure 14 - Amplificateur sommateur pour le conditionnement d’entrée</figcaption></figure></div><div id="199bdf16-c65b-802c-a39e-d3c6c0951cea" style="width:50%" class="column"><p id="199bdf16-c65b-8063-89b9-d145b0f173a0" class="">Pour le signal de sortie, nous avons pu observer que le faible taux d’échantillonage du Raspberry Pi était à l’origine d’arêtes vives en sortie. Nous avons donc choisi d’utiliser un filtre passe-bas pour y remédier.</p><figure id="199bdf16-c65b-805b-b5f2-cddbc9522532" class="image"><a href="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/Montage_ALI_2_page-0001.jpg"><img style="width:336px" src="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/Montage_ALI_2_page-0001.jpg"/></a><figcaption>Figure 15 - Passe-bas pour le conditionnement de sortie</figcaption></figure></div></div><p id="199bdf16-c65b-805c-885d-c693b7f58c02" class="">Un système d’interface utilisateur a aussi été conçu afin de pouvoir ajuster dynamiquement les paramètres du système :</p><ul id="199bdf16-c65b-80bf-9ca5-ff24fed74f24" class="bulleted-list"><li style="list-style-type:disc"><strong>Un encodeur rotatif</strong> permet de modifier l’intensité de la réduction du bruit</li></ul><ul id="199bdf16-c65b-80bf-a3af-cc1c7ab903ad" class="bulleted-list"><li style="list-style-type:disc"><strong>Des LED</strong> indiquent l’état de fonctionnement du système</li></ul><ul id="199bdf16-c65b-80f4-8d7b-f76ed8e04d94" class="bulleted-list"><li style="list-style-type:disc">Un <strong>script en Python</strong> gère l’ensemble du traitement des périphériques et l’optimisation du signal sonore</li></ul><p id="199bdf16-c65b-809e-89df-e3d640e82177" class="">Finalement, nous avons pu modéliser le circuit final et le réaliser :</p><div id="199bdf16-c65b-8029-943d-f96c7f74f5cc" class="column-list"><div id="199bdf16-c65b-802f-83be-c0845e30145b" style="width:50%" class="column"><figure id="199bdf16-c65b-8018-8aec-f2a9590fda32" class="image"><a href="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/Circuit_Complet.jpg"><img style="width:288px" src="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/Circuit_Complet.jpg"/></a><figcaption>Figure 16 - Modélisation du projet final</figcaption></figure></div><div id="199bdf16-c65b-808d-8a71-c8a6709cfc37" style="width:50%" class="column"><figure id="199bdf16-c65b-80fb-904d-fbe515412b70" class="image"><a href="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/photo_Astyan_avance.jpg"><img style="width:288px" src="Conception%20d%E2%80%99un%20syste%CC%80me%20de%20Re%CC%81duction%20de%20Bruit%20Ac%20199bdf16c65b80249a73e2bcf39ba6a4/photo_Astyan_avance.jpg"/></a><figcaption>Figure 17 - Système en état de marche</figcaption></figure></div></div><p id="199bdf16-c65b-804a-a6cf-e6297c56da4c" class="">Cependant, l’implémentation sur le <strong>Raspberry Pi</strong> nous a posé plusieurs défis :</p><ul id="199bdf16-c65b-80e2-a227-d975b2fc158c" class="bulleted-list"><li style="list-style-type:disc">La <strong>vitesse de traitement</strong> était insuffisante, introduisant un décalage temporel rendant l’annulation inefficace</li></ul><ul id="199bdf16-c65b-8042-ad0d-e0c0e5ca30c3" class="bulleted-list"><li style="list-style-type:disc">Un problème de <strong>distorsion sonore</strong> a été observé en sortie sans raison évidente</li></ul><ul id="199bdf16-c65b-80ae-93df-e5947f3fb392" class="bulleted-list"><li style="list-style-type:disc">Certaines broches de sortie du <strong>Raspberry Pi</strong> ont été endommagées lors des tests, rendant impossible la mise en pratique finale</li></ul><p id="199bdf16-c65b-80d5-9308-d2391201e156" class="">La mise en pratique n’a donc pas pu être effectuée malgré l’élaboration de toute la partie théorique en amont. Toutefois, je suis convaincu qu’au vu des résultats prometteurs des autres expériences, ce<br/>système aurait sûrement pu aboutir.<br/>Les deux derniers systèmes étant très complexes et chronophages, nous aurions aussi pu explorer d’autres pistes :<br/></p><ul id="199bdf16-c65b-80d2-b376-e54c5e628cb8" class="bulleted-list"><li style="list-style-type:disc"><strong>Miniaturisation portable</strong> du système intermédiaire</li></ul><ul id="199bdf16-c65b-804a-b10a-c3751ac9af4d" class="bulleted-list"><li style="list-style-type:disc">Trouver un équivalent de la plaque <strong>Sysam </strong>moins complexe que le Raspberry Pi</li></ul><hr id="199bdf16-c65b-80a6-ad5b-e0114f34f9ab"/><h2 id="199bdf16-c65b-8023-80d6-c58e9e55f98e" class="">Conclusion</h2><p id="199bdf16-c65b-80f5-93c9-e1dc7595347c" class="">Ce projet nous a permis d’explorer en profondeur la réduction de bruit active, depuis les premières expériences sur les interférences destructives jusqu’à la modélisation et l’implémentation d’un système numérique avancé. Chaque étape a mis en évidence les défis liés à la mise en œuvre d’un tel système, notamment la précision du traitement du signal et les contraintes matérielles.</p><p id="199bdf16-c65b-80ff-b221-d69e22aa4fe9" class="">Malgré des difficultés techniques avec le Raspberry Pi, les résultats obtenus sur les premiers prototypes sont prometteurs et suggèrent que l’utilisation d’un matériel plus performant pourrait aboutir à une solution pleinement fonctionnelle. Ce travail constitue une base solide pour approfondir l’optimisation du traitement du signal et l’intégration de systèmes embarqués dédiés à la réduction du bruit.</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
