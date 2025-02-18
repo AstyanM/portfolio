@@ -487,6 +487,24 @@ h1.page-title {
     margin: 0 auto 30px auto; /* Centre l'image et ajoute un espace de 30px en dessous */
 }
 
+.link-to-page {
+    margin-top: 5px; /* Réduit l'espace au-dessus du lien */
+}
+
+.link-to-page::before {
+    content: "  - "; /* Ajoute un tiret avant chaque lien */
+    font-weight: bold; /* Donne un style un peu plus accentué au tiret */
+}
+
+mark {
+    border-radius: 8px; /* Applique des bords arrondis */
+    padding: 2px 6px; /* Donne un peu d'espace autour du texte */
+}
+
+.highlight-default_background::before {
+    content: "      "; /* Ajoute un espace avant chaque lien */
+}
+
 
 
 .bookmark-image {
