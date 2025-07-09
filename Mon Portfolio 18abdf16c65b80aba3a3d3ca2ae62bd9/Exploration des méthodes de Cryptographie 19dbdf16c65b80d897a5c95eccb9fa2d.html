@@ -1,6 +1,4 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<link href="./prism/prism.css" rel="stylesheet" />
-	<title>Exploration des méthodes de Cryptographie</title><style>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link href="./prism/prism.css" rel="stylesheet" /><title>Exploration des méthodes de Cryptographie</title><style>
 /* cspell:disable-file */
 /* webkit printing magic: print all background colors */
 html {
@@ -511,11 +509,11 @@ blockquote {
 .pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
 .pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
 .highlight-default {
-	color: rgba(55, 53, 47, 1);
+	color: rgba(50, 48, 44, 1);
 }
 .highlight-gray {
-	color: rgba(120, 119, 116, 1);
-	fill: rgba(120, 119, 116, 1);
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
 }
 .highlight-brown {
 	color: rgba(159, 107, 83, 1);
@@ -546,11 +544,11 @@ blockquote {
 	fill: rgba(193, 76, 138, 1);
 }
 .highlight-red {
-	color: rgba(212, 76, 71, 1);
-	fill: rgba(212, 76, 71, 1);
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
 }
 .highlight-default_background {
-	color: rgba(55, 53, 47, 1);
+	color: rgba(50, 48, 44, 1);
 }
 .highlight-gray_background {
 	background: rgba(248, 248, 247, 1);
@@ -584,8 +582,8 @@ blockquote {
 	fill: inherit;
 }
 .block-color-gray {
-	color: rgba(120, 119, 116, 1);
-	fill: rgba(120, 119, 116, 1);
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
 }
 .block-color-brown {
 	color: rgba(159, 107, 83, 1);
@@ -616,8 +614,8 @@ blockquote {
 	fill: rgba(193, 76, 138, 1);
 }
 .block-color-red {
-	color: rgba(212, 76, 71, 1);
-	fill: rgba(212, 76, 71, 1);
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
 }
 .block-color-default_background {
 	color: inherit;
@@ -650,20 +648,16 @@ blockquote {
 .block-color-red_background {
 	background: rgba(253, 235, 236, 1);
 }
-.select-value-color-uiBlue { background-color: undefined; }
-.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
-.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
-.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-default { background-color: rgba(84, 72, 49, 0.08); }
 .select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
-.select-value-color-transparentGray { background-color: undefined; }
-.select-value-color-translucentGray { background-color: undefined; }
-.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
 .select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
-.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
 .select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
 .select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
-.select-value-color-pageGlass { background-color: undefined; }
-.select-value-color-washGlass { background-color: undefined; }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
 
 .checkbox {
 	display: inline-flex;
@@ -737,6 +731,4 @@ while True:
             my_number += 4
         else:
             my_number += 2</code></pre><h3 id="19dbdf16-c65b-8151-b4a3-e42686006641" class="">b) Chiffrement</h3><p id="19dbdf16-c65b-8166-b691-d4ddad50a606" class="">Une fois les nombres premiers générés, on peut créer des clés et chiffrer des messages.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="19dbdf16-c65b-811e-9005-e09224d93d75" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">encrypted_mess = [pow(mess_part, e_int, n_int) for mess_part in mess]</code></pre><p id="19dbdf16-c65b-81aa-9785-c79217772614" class="">Cependant, RSA peut être vulnérable aux attaques de factorisation si les nombres ne sont pas assez grands. C’est pourquoi il faut se référer aux normes actuelles pour avoir un chiffrement sécurisé.</p><h2 id="19dbdf16-c65b-81dc-96db-c9acb890d002" class="">8. Concaténation et programme final</h2><p id="19dbdf16-c65b-8132-8a78-f49e6840893c" class="">On peut alors synthétiser toutes ces méthodes de chiffrement dans un programme global qui permet, à partir d’un menu à choix pour l’utilisateur, de choisir la méthode que l’on veut utiliser et ainsi de pouvoir chiffrer et déchiffrer comme on veut :</p><figure id="19dbdf16-c65b-81af-901b-ff09feef8d5e" class="image"><a href="Exploration%20des%20me%CC%81thodes%20de%20Cryptographie%2019dbdf16c65b80d897a5c95eccb9fa2d/crypto.png"><img style="width:2338px" src="Exploration%20des%20me%CC%81thodes%20de%20Cryptographie%2019dbdf16c65b80d897a5c95eccb9fa2d/crypto.png"/></a><figcaption>Figure 1 - Cas d’utilisation du programme final</figcaption></figure><hr id="19dbdf16-c65b-81e9-a6e2-f12fc3410f01"/><h2 id="19dbdf16-c65b-8154-b16b-e8dd9343c6b8" class="">Conclusion</h2><p id="19dbdf16-c65b-8163-b8e2-d76a4fea7a54" class="">Ce projet m’a permis d&#x27;explorer les fondements de la cryptographie à travers différents algorithmes, de leur implémentation en Python jusqu&#x27;à leur cassage lorsque cela était possible. Des méthodes simples comme le chiffre de César aux systèmes asymétriques comme RSA, chaque technique présente des défis fascinants en termes de sécurité et de faisabilité. Cette expérience constitue une base solide pour comprendre les enjeux de la sécurisation des données et l’évolution des techniques cryptographiques modernes.</p><p id="19dbdf16-c65b-810d-8864-e8f2f4d965c2" class="">
-</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span>
-<script src="./prism/prism.js"></script>
-</body></html>
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span><script src="./prism/prism.js"></script></body></html>
