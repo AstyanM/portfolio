@@ -1,0 +1,987 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Création d’un Bot Morpion</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="18ebdf16-c65b-8006-a71f-d72930427e92" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/gradients_2.png" style="object-position:center 41.379999999999995%"/><h1 class="page-title">Création d’un Bot Morpion</h1><p class="page-description"></p></header><div class="page-body"><p id="19dbdf16-c65b-809d-97c1-ead153224c7b" class=""><em>Projet mené au sein d’un groupe de 4 personnes</em></p><p id="19ebdf16-c65b-80f0-ac3f-feb764a21638" class="">
+</p><p id="19ebdf16-c65b-80c5-b537-c101c1480db6" class="">Voici un lien github vers l’ensemble du code rédigé au cours de ce projet :</p><figure id="19dbdf16-c65b-8054-bea2-f80bcb855fb0"><a href="https://github.com/AstyanM/tictactoe.git" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">GitHub - AstyanM/tictactoe: Creation of a Tic Tac Toe Bot</div><div class="bookmark-description">Creation of a Tic Tac Toe Bot. Contribute to AstyanM/tictactoe development by creating an account on GitHub.</div></div><div class="bookmark-href"><img src="https://github.com/fluidicon.png" class="icon bookmark-icon"/>https://github.com/AstyanM/tictactoe.git</div></div><img src="https://opengraph.githubassets.com/25214ef5e365d147f9b8334be6d7f615aee11a9555217db4cfec5e2f54b23279/AstyanM/tictactoe" class="bookmark-image"/></a></figure><p id="19ebdf16-c65b-8018-87a7-d09cefe01fca" class="">
+</p><blockquote id="18ebdf16-c65b-81be-bae7-fbadbf627998" class="">Ce compte-rendu se concentre sur l&#x27;organisation du projet, la distribution des responsabilités au sein des équipes, les difficultés techniques surmontées, et les perspectives futures.<br/>Le premier programme, <code><strong>tttree</strong></code>, explore l&#x27;implémentation du <strong>minimax </strong>pour générer la représentation graphique d&#x27;un arbre de décision du jeu du tic-tac-toe.<p id="18ebdf16-c65b-802f-8adf-f3a08054cfea" class="">Le deuxième programme, <code><strong>sm-refresh</strong></code>, introduit la notation algébrique (FEN) pour les coups et nécessite une interaction minimax avec l&#x27;ordinateur. Il faut également réaliser l&#x27;affichage graphique des positions, à la fois <strong>pseudo-graphique</strong> sur la sortie standard et <strong>graphique</strong> dans un fichier.</p><p id="18ebdf16-c65b-8080-97b8-c85609553d67" class="">Enfin, le troisième programme, <code><strong>sm-bot</strong></code>, demande la mise en œuvre de l&#x27;algorithme <strong>négamax </strong>et de l&#x27;élagage <strong>alpha-bêta</strong> pour calculer le meilleur coup dans le super-morpion.</p></blockquote><p id="19ebdf16-c65b-8029-afd0-c836dc0d2c29" class="">
+</p><h3 id="19ebdf16-c65b-80fc-899d-ff7036cf2e91" class="">Sommaire</h3><nav id="18ebdf16-c65b-8166-ab4f-c8e412819e2e" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#19ebdf16-c65b-80fc-899d-ff7036cf2e91">Sommaire</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#18ebdf16-c65b-81fb-a042-c3594fa927be">Organisation</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#18ebdf16-c65b-811a-b604-ecf3da09bdb5">1. Premier programme : <code><strong>tttree</strong></code></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#196bdf16-c65b-80f3-baaa-da579e35fa68">a) Instructions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#198bdf16-c65b-80ae-8eab-f3f86183ec80">b) Principe</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#18ebdf16-c65b-81fc-a322-da68f86bf3a0">c) Vérifications et approfondissements</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#18ebdf16-c65b-81ee-af9f-ce5c7db8ed8a">2. Deuxième programme : <code><strong>sm-refresh</strong></code></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#196bdf16-c65b-80a5-a994-ed1f8fcbd34c">a) Instructions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#198bdf16-c65b-8062-98d8-f633ce403bb0">b) Principe</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#18ebdf16-c65b-8157-9fa7-fbd488f175ea">c) Fonction <code><strong>mscore</strong></code></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#18ebdf16-c65b-8135-b087-f8432414130a">d) Vérifications</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#18ebdf16-c65b-81ef-ac2e-d3954cf386a9">3. Troisième programme : <code><strong>sm-bot</strong></code></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#198bdf16-c65b-80ed-be0e-c56391ccf651">a) Instructions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#198bdf16-c65b-803e-838a-c9f478cdcec4">b) Principe</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#18ebdf16-c65b-8175-9295-d71605846f71">c) Gestion du temps</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#18ebdf16-c65b-81e8-89b6-c2a3d84edc91">d) Approfondissements</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#18ebdf16-c65b-81f2-93b7-c4c239a33145">4. Perspectives</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#18ebdf16-c65b-8108-b226-f7c1df8ddfc6">Conclusion</a></div></nav><p id="19ebdf16-c65b-8040-8a5e-f560bd116243" class="">
+</p><h3 id="18ebdf16-c65b-81fb-a042-c3594fa927be" class="">Organisation</h3><p id="18ebdf16-c65b-8174-bdac-c58f2d7e2e0b" class="">Pour l’organisation finale du programme, nous avons choisi de la faire de la sorte (sans les fichiers header) :</p><ul id="18ebdf16-c65b-818a-aaf2-c280d120da49" class="bulleted-list"><li style="list-style-type:disc"><code><strong>morpion.c</strong></code> : implémentation du jeu de morpion et des fonctions pour déterminer l&#x27;état de la partie et générer des représentations graphiques</li></ul><ul id="18ebdf16-c65b-8146-8c44-de60dee6594c" class="bulleted-list"><li style="list-style-type:disc"><code><strong>utils.c</strong></code> : implémentation d’un algorithme de recherche dans un arbre de jeu</li></ul><ul id="18ebdf16-c65b-8114-ba44-f809c577ebe7" class="bulleted-list"><li style="list-style-type:disc"><code><strong>main.c</strong></code> : utilisation de la ligne de commande et création des structures de jeu nécessaires</li></ul><ul id="18ebdf16-c65b-8126-a349-f8ffd280ae2e" class="bulleted-list"><li style="list-style-type:disc"><code><strong>g.dot</strong></code> : fichier dot pour la création d’une figure png qui représente l’état du jeu</li></ul><ul id="18ebdf16-c65b-81db-92c8-c0f2281e2d4d" class="bulleted-list"><li style="list-style-type:disc"><code><strong>g.png</strong></code> : figure png qui représente l’état du jeu</li></ul><ul id="18ebdf16-c65b-8162-8bea-df689866e442" class="bulleted-list"><li style="list-style-type:disc"><code><strong>refresh.html</strong></code> : page html pour représenter l’état du jeu à partir de la figure précédente, en rafraichissant automatiquement la page</li></ul><ul id="18ebdf16-c65b-8196-82c4-c6088de4cf9e" class="bulleted-list"><li style="list-style-type:disc"><code><strong>makefile</strong></code> : fichier permettant les manipulations simples en ligne de commande</li></ul><ul id="18ebdf16-c65b-817c-8710-db8b1187004f" class="bulleted-list"><li style="list-style-type:disc"><code><strong>makefile_sources</strong></code> : liste des fichiers c à compiler lors de l’utilisation de la commande <strong>make</strong></li></ul><h2 id="18ebdf16-c65b-811a-b604-ecf3da09bdb5" class="">1. Premier programme : <code><strong>tttree</strong></code></h2><p id="196bdf16-c65b-80f0-85bc-dde5e92d24da" class="">Le programme <code><strong>tttree</strong></code> doit générer une représentation graphique d’un arbre de décision pour le jeu de tic-tac-toe en utilisant l’algorithme Minimax.</p><h3 id="196bdf16-c65b-80f3-baaa-da579e35fa68" class="">a) Instructions</h3><ul id="196bdf16-c65b-808e-af10-cebe699835d2" class="bulleted-list"><li style="list-style-type:disc">L’état initial du jeu sera fourni en argument via la ligne de commande, au format <strong>FEN</strong></li></ul><ul id="196bdf16-c65b-8080-9597-fe9605c76343" class="bulleted-list"><li style="list-style-type:disc">Le programme produira un fichier <strong>DOT</strong> décrivant l’arbre de décision, qui sera écrit sur la <strong>sortie standard</strong></li></ul><ul id="196bdf16-c65b-80fd-b1a9-f3be5b7b2b41" class="bulleted-list"><li style="list-style-type:disc">Les éventuels messages de <strong>débogage ou d’erreur</strong> seront dirigés vers la <strong>sortie d’erreur</strong></li></ul><ul id="196bdf16-c65b-80d7-b65c-f6d298883f35" class="bulleted-list"><li style="list-style-type:disc">Chaque nœud de l’arbre affichera la valeur évaluée par l’algorithme <strong>Minimax</strong></li></ul><ul id="196bdf16-c65b-801e-8c8a-d294828dc165" class="bulleted-list"><li style="list-style-type:disc">Un script de test devra être utilisé pour <strong>vérifier</strong> le bon fonctionnement du programme</li></ul><h3 id="198bdf16-c65b-80ae-8eab-f3f86183ec80" class="">b) Principe</h3><p id="18ebdf16-c65b-8139-b2f0-e72a9d6ffdf3" class="">Pour commencer, nous définissons les structures de bases (<code><strong>morpion</strong></code> et <code><strong>supermorpion</strong></code>), les variables et fonctions qui vont nous servir par la suite :</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ebdf16-c65b-81c9-bc31-f8fda1eeadd8" class="code code-wrap"><code class="language-C" style="white-space:pre-wrap;word-break:break-all">#pragma once
+#define SIZE 9
+#define black &#x27;x&#x27;
+#define white &#x27;o&#x27;
+#define infini &#x27;.&#x27;
+
+typedef struct{
+    char tableau[SIZE];
+    char win;
+    char trait;
+}morpion;
+
+typedef struct{
+    morpion morp[SIZE];
+    char win;
+}supermopion;
+
+char swin(supermopion);
+char win(morpion*);
+char* chaine(supermopion sm);
+void print_sm(const supermopion);
+void print_mp(const morpion);
+void initialize(supermopion*);
+void init_mp(morpion*);
+void make_dot(const char* const);</code></pre><p id="18ebdf16-c65b-816c-a8fb-dc9b078842c4" class="">Ensuite, nous allons définir neuf fonctions permettant de gérer une partie de morpion, notamment en manipulant le supermorpion et ses sous-morpions. La fonction <code>fine</code> vérifie si un entier est dans la plage valide, tandis que <code>win</code> et <code>swin</code> déterminent respectivement le gagnant d’un morpion individuel et du supermorpion en analysant les combinaisons gagnantes. Pour la représentation, <code>chaine</code> génère une chaîne décrivant l’état du jeu, <code>print_mp</code> et <code>print_sm</code> affichent respectivement un morpion et le supermorpion sous forme de grille dans le terminal. L&#x27;initialisation du jeu est assurée par <code>initialize</code>, qui met en place chaque sous-morpion via <code>init_mp</code>, laquelle remplit leurs tableaux avec une valeur initiale. Enfin, <code>make_dot</code> produit un fichier DOT permettant une visualisation graphique du supermorpion.</p><p id="18ebdf16-c65b-81dc-9a65-c3765eff6348" class="">Finalement, nous avons créé des fonctions permettant de représenter graphiquement l’arbre des mouvements possibles dans un morpion tout en évaluant la qualité de chaque état en fonction de la victoire ou de la défaite. Elles assurent la conversion d’une chaîne de caractères en un objet morpion, génèrent un fichier DOT illustrant les différentes étapes du jeu et attribuent des étiquettes aux nœuds de l’arbre en fonction des scores obtenus. L&#x27;affichage des nœuds est conçu pour différencier visuellement les joueurs et chaque état du jeu est identifié de manière unique. Enfin, un système d’évaluation permet de calculer le score d’un état donné en fonction du gagnant et de vérifier si la partie est terminée.</p><p id="18ebdf16-c65b-813a-83fc-d6442bdbe16d" class="">On peut alors tout synthétiser et les tester dans le fichier principal :</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ebdf16-c65b-81f3-92aa-df37e362cccf" class="code code-wrap"><code class="language-C" style="white-space:pre-wrap;word-break:break-all">#include &lt;stdio.h&gt;
+#include &quot;utils.h&quot;
+#include &quot;morpion.h&quot;
+
+int main(int argc, char* argv[]) {
+    if (argc != 2) {
+        printf(&quot;Utilisation : %s &lt;chaine_d_entree&gt;\n&quot;
+, argv[0]);
+        return 1;
+    }
+
+    const char* input = argv[1];
+    morpion mp; // Initialise la structure Morpion
+    init_mp(&amp;mp);
+
+    str_to_morpion(input, &amp;mp);
+    print_tree(mp, &quot;g1.dot&quot;, 9);
+
+    // Affiche la structure Morpion résultante
+    printf(&quot;tableau : %s\n&quot;, mp.tableau);
+    printf(&quot;trait : %c\n&quot;, mp.trait);
+
+    return 0;
+}</code></pre><h3 id="18ebdf16-c65b-81fc-a322-da68f86bf3a0" class="">c) Vérifications et approfondissements</h3><p id="18ebdf16-c65b-8153-a6a9-f1615ff627fb" class="">Après avoir affiché seulement le premier nœud de chaque figure demandée avec la commande :</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ebdf16-c65b-810f-a694-db3567c8dde9" class="code code-wrap"><code class="language-Bash" style="white-space:pre-wrap;word-break:break-all">#! /bin/bash 
+
+echo &quot;Test de ttree pour le morpion 1o11o1oxx x&quot;
+./tttree &quot;1o11o1oxx x&quot; &gt; g1.dot
+dot g1.dot -T png -o g1.png
+
+echo &quot;Test de ttree pour le morpion  x21o11xo o&quot;
+./tttree &quot;x21o11xo o&quot; &gt; g2.dot
+dot g2.dot -T png -o g2.png</code></pre><p id="18ebdf16-c65b-8110-a9be-e11867f4ef8c" class="">On obtient les 2 figures suivantes, qui correspondent bien à ce que l’on cherche au vu de la commande :</p><div id="18ebdf16-c65b-8198-be05-e822829f44de" class="column-list"><div id="18ebdf16-c65b-814f-97c2-dd393cb5f125" style="width:37.5%" class="column"><figure id="18ebdf16-c65b-81d0-b346-e445e159e61c" class="image"><a href="Cr%C3%A9ation%20d%E2%80%99un%20Bot%20Morpion/g1.png"><img style="width:214.99288940429688px" src="Cr%C3%A9ation%20d%E2%80%99un%20Bot%20Morpion/g1.png"/></a><figcaption>Figure 1 - Premier morpion</figcaption></figure></div><div id="18ebdf16-c65b-8149-9ff5-c72ebb96f0cf" style="width:62.5%" class="column"><figure id="18ebdf16-c65b-81a7-944a-f30244156130" class="image"><a href="Cr%C3%A9ation%20d%E2%80%99un%20Bot%20Morpion/g2.png"><img style="width:214.99288940429688px" src="Cr%C3%A9ation%20d%E2%80%99un%20Bot%20Morpion/g2.png"/></a><figcaption>Figure 2 - Deuxième morpion</figcaption></figure></div></div><p id="18ebdf16-c65b-8112-84b6-ea521ab35dda" class="">De plus, nous avons implémenté la fonction <code><strong>minimax</strong></code> :</p><ol type="1" id="18ebdf16-c65b-8180-81da-c3806dcea069" class="numbered-list" start="1"><li><code><strong>minimax</strong></code><strong> :</strong><ul id="18ebdf16-c65b-8194-bc8a-ed7cdceae9ca" class="bulleted-list"><li style="list-style-type:disc"><strong>But :</strong> Implémente l&#x27;algorithme <strong>Minimax</strong> pour évaluer les mouvements possibles dans le morpion.</li></ul><ul id="18ebdf16-c65b-81b7-b1a6-fdee9688fefe" class="bulleted-list"><li style="list-style-type:disc"><strong>Méthode :</strong> La fonction <code>minimax</code> effectue une recherche récursive en utilisant l&#x27;algorithme Minimax, qui explore l&#x27;arbre des mouvements possibles et évalue chaque état du morpion. Elle génère des nœuds dans le fichier DOT représentant chaque état et les connexions entre eux.</li></ul></li></ol><p id="18ebdf16-c65b-81c3-a0a7-c81e513bbd22" class="">Après exécution, on obtient alors ces figures :</p><figure id="18ebdf16-c65b-81db-93b3-c291580f5ce7" class="image"><a href="Cr%C3%A9ation%20d%E2%80%99un%20Bot%20Morpion/g1%201.png"><img style="width:3864px" src="Cr%C3%A9ation%20d%E2%80%99un%20Bot%20Morpion/g1%201.png"/></a><figcaption>Figure 3 - Arbre des possibilités minimax</figcaption></figure><figure id="18ebdf16-c65b-813b-9afb-f33682e1b811" class="image"><a href="Cr%C3%A9ation%20d%E2%80%99un%20Bot%20Morpion/g2%201.png"><img style="width:18068px" src="Cr%C3%A9ation%20d%E2%80%99un%20Bot%20Morpion/g2%201.png"/></a><figcaption>Figure 4 - Arbre des possibilités minimax global</figcaption></figure><p id="18ebdf16-c65b-8100-adcc-cb4b2ea1c2ba" class="">Pour approfondir, on peut améliorer ce programme en intégrant un <code><strong>negamax</strong></code><strong> </strong>avec élagage Alpha-Bêta, qui donnera par exemple ces résultats pour les mêmes entrées :</p><figure id="18ebdf16-c65b-815e-9825-f35fbf4cc77c" class="image"><a href="Cr%C3%A9ation%20d%E2%80%99un%20Bot%20Morpion/unnamed1.png"><img style="width:576px" src="Cr%C3%A9ation%20d%E2%80%99un%20Bot%20Morpion/unnamed1.png"/></a><figcaption>Figure 5 - Arbre des possibilités negamax</figcaption></figure><figure id="18ebdf16-c65b-81b7-b014-cd2c99f3b3d4" class="image"><a href="Cr%C3%A9ation%20d%E2%80%99un%20Bot%20Morpion/unnamed2.png"><img style="width:709.9857788085938px" src="Cr%C3%A9ation%20d%E2%80%99un%20Bot%20Morpion/unnamed2.png"/></a><figcaption>Figure 6 - Arbre des possibilités negamax global</figcaption></figure><p id="18ebdf16-c65b-8113-9e6d-eaacf39604a0" class="">On voit clairement l’amélioration que peut apporter un <code><strong>negamax</strong></code><strong> </strong>avec élagage Alpha Béta.</p><h2 id="18ebdf16-c65b-81ee-af9f-ce5c7db8ed8a" class="">2. Deuxième programme : <code><strong>sm-refresh</strong></code></h2><p id="196bdf16-c65b-80f4-bd46-dae8b5c49d56" class="">Ce programme doit nous permettre de jouer au super-morpion contre un ordinateur en entrant les coups via l&#x27;entrée standard.</p><h3 id="196bdf16-c65b-80a5-a994-ed1f8fcbd34c" class="">a) Instructions</h3><ul id="196bdf16-c65b-8023-983c-d999df07652b" class="bulleted-list"><li style="list-style-type:disc"><strong>Saisie des coups</strong> via l’entrée standard en notation algébrique</li></ul><ul id="196bdf16-c65b-8085-94c0-e1ec667828d2" class="bulleted-list"><li style="list-style-type:disc"><strong>Algorithme Minimax</strong> dont la profondeur de recherche est ajustable grâce à un paramètre en ligne de commande</li></ul><ul id="196bdf16-c65b-807e-b658-efd8d68a9333" class="bulleted-list"><li style="list-style-type:disc"><strong>Affichage du jeu</strong> sous forme pseudo-graphique dans le terminal</li></ul><ul id="196bdf16-c65b-8089-82a5-fc63cbb549aa" class="bulleted-list"><li style="list-style-type:disc"><strong>Représentation graphique</strong> des positions générée sous forme d’image</li></ul><ul id="196bdf16-c65b-80d9-ba26-f7e9bfd9ba39" class="bulleted-list"><li style="list-style-type:disc"><strong>Suivi en temps réel</strong> de l’évolution des parties via la page HTML <code><strong>refresh.html</strong></code></li></ul><h3 id="198bdf16-c65b-8062-98d8-f633ce403bb0" class="">b) Principe</h3><p id="196bdf16-c65b-80c9-af2a-fd2c23d5ade7" class="">Nous allons ajouter deux fonctions qui interagiront pour exécuter des coups dans le morpion et mettre à jour l&#x27;état de victoire en conséquence. La première fonction permet d’effectuer un coup en plaçant le symbole du joueur à la position indiquée alors que la seconde fonction applique ce même principe à un sous-morpion du supermorpion, en s’assurant que le morpion sélectionné n’a pas déjà été remporté.</p><p id="18ebdf16-c65b-817c-88b8-dbafd1cf1f74" class="">Après avoir créé les nouvelles fonctions afin de gérer la saisie des coups par l’utilisateur via l’entrée standard, nous pouvons finaliser l’implémentation pour pouvoir jouer au supermorpion contre l’ordinateur :</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ebdf16-c65b-814c-96ef-e5ee0f7b15d5" class="code code-wrap"><code class="language-C" style="white-space:pre-wrap;word-break:break-all">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &quot;morpion.h&quot;
+#include &lt;stdlib.h&gt;
+#include &quot;utils.h&quot;
+
+void play();
+int main(){
+    play();
+    return 0;
+}
+
+void play(){
+    supermopion sm;
+    initialize(&amp;sm);
+    int prochain[2];
+    int temps = 6;
+    int last[2];
+    int code=0;
+    
+    char str[100] = &quot;999999999 00 x&quot;;
+
+    str_to_sm(str, &amp;sm, last);
+    make_dot(chaine(sm));
+    while(1){
+        make_dot(str);
+        system(&quot;clear&quot;);
+        printf(&quot;The condition in large is as follow:\n&quot;);
+        print_mp(get_large(sm));
+        printf(&quot;The detail is as follow:\n&quot;);
+        print_sm(sm);
+
+switch(code){
+case -1:
+    printf(&quot;The game has been won by %c !\n&quot;, 
+		sm.win);
+    return;
+case -2:
+    printf(&quot;Morpion %d is not in the range of 1 - 9 !\n&quot;, 
+		prochain[0]);
+    break;
+case -3:
+    printf(&quot;The morpion %d has been won by %c !\n&quot;, 
+		prochain[0], sm.morp[pos(prochain[0])].win);
+    break;
+case -4:
+    printf(&quot;Position %d is not in the range of 1 - 9 !\n&quot;, 
+		prochain[1]);
+    break;
+case -5:
+    printf(&quot;Position %d has been occupied by %c !\n&quot;, 
+		prochain[1], sm.morp[pos(prochain[0])].tableau[pos(prochain[1])]);
+    break;
+case -6:
+    printf(&quot;The position of last %d is not in the range of 1 - 9 !\n&quot;, 
+		last[1]);
+    break;
+}
+    /*==============================================*/
+    if(sm.trait == &#x27;x&#x27;){
+				code = meilleur_coup(sm, last, temps, prochain);
+		}
+    else code = get_coup(sm, last, temps, prochain);
+    if(code &lt; 0){
+        continue;
+    }
+    scoup(&amp;sm, prochain[0], prochain[1]);
+    last[0] = prochain[0];
+    last[1] = prochain[1];
+    strcpy(str, chaine(sm));
+    }
+}</code></pre><h3 id="18ebdf16-c65b-8157-9fa7-fbd488f175ea" class="">c) Fonction <code><strong>mscore</strong></code></h3><p id="18ebdf16-c65b-816f-a958-e33b16329f39" class="">C’est une fonction qui modifie le score attribué à chaque morpion classique, en donnant plus de points pour les morpions ayant des situations avantageuses (plusieurs pions déjà bien placés, cases importante prise, comme le milieu, etc…) :</p><p id="18ebdf16-c65b-81b6-b045-c4c981eb5e4b" class="">→ Liste des triplés gagnants :</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ebdf16-c65b-815b-a80e-fe0cb2952a86" class="code code-wrap"><code class="language-C" style="white-space:pre-wrap;word-break:break-all">int t[][3] = {
+        {0, 1, 2}, {3, 4, 5}, {6, 7, 8},
+        {0, 3, 6}, {1, 4, 7}, {2, 5, 8},
+        {0, 4, 8}, {2, 4, 6}
+    };</code></pre><p id="18ebdf16-c65b-8179-9087-f23f2d18896b" class="">
+</p><p id="18ebdf16-c65b-81ac-84c2-fff8f685dcad" class=""><strong>→</strong> Système qui implémente <code>a[3]</code>, un tableau qui contient les symboles ‘<code><strong>x</strong></code>’, ‘<code><strong>o</strong></code>’ ou ‘<code><strong>.</strong></code>’ codés par les nombres 2,3 et 5 (2 pour le joueur, 3 pour l’adversaire, 5 pour une case vide) et qui utilise leur produit (unique car ce sont des nombre premiers) afin de définir différents coups :</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ebdf16-c65b-81df-be0b-e55e7feb9ea4" class="code code-wrap"><code class="language-C" style="white-space:pre-wrap;word-break:break-all">int a[3];
+    for(int i=0;i&lt;8;i++){
+        for(int j = 0; j&lt;3;j++){
+            if(mp.tableau[t[i][j]] == trait){
+                a[j] = 2;
+            }
+						else if(mp.tableau[t[i][j]] == N(trait)){
+                a[j] = 3;
+            }
+						else if(mp.tableau[t[i][j] == infini]){
+                a[j] = 5;
+            }
+
+        }</code></pre><p id="18ebdf16-c65b-81ea-b0b6-d99275eb83d2" class="">
+</p><p id="18ebdf16-c65b-81d6-b0f4-cdf55f0d2e02" class="">→ Teste si le morpion est gagné par le joueur ou l’ennemi et modifie le score en conséquence avec un +/- <code><strong>MAX</strong></code> :</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ebdf16-c65b-81e9-b868-ea3a34b2f400" class="code code-wrap"><code class="language-C" style="white-space:pre-wrap;word-break:break-all">if(win(&amp;try) == trait) return maxs;
+else if(win(&amp;try) == N(trait)) return -maxs;</code></pre><p id="18ebdf16-c65b-812c-add4-ee6b1016c46f" class="">
+</p><p id="18ebdf16-c65b-81c9-8219-d52accd38ee4" class="">→ Teste si deux symboles alliés/ennemis sont sur le même triplé en question et ajoute/enlève du score en conséquence (+/- 10) :</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ebdf16-c65b-81f5-8e6f-f89cc8c019e0" class="code code-wrap"><code class="language-C" style="white-space:pre-wrap;word-break:break-all">else if(a[0] * a[1] * a[2] == 20) s += 20;
+else if(a[0] * a[1] * a[2] == 45) s -= 20;</code></pre><p id="18ebdf16-c65b-8183-a842-c793648b545e" class="">
+</p><p id="18ebdf16-c65b-8185-91b7-d8938df14d57" class="">→ Teste si un symbole allié/ennemi est sur le triplé en question et ajoute/enlève du score en conséquence (+/- 5) :</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ebdf16-c65b-81a3-bba5-fe7cc4687b79" class="code code-wrap"><code class="language-C" style="white-space:pre-wrap;word-break:break-all">else if(a[0] * a[1] * a[2] == 50) s += 8;
+else if(a[0] * a[1] * a[2] == 75) s -= 8;</code></pre><p id="18ebdf16-c65b-81bd-b6c6-fa9c6161371b" class="">
+</p><p id="18ebdf16-c65b-8116-8886-d0b737494280" class="">→ Discrimine les côtés (cases 2,4,6,8), qui sont des cases moins fortes au morpion car ne pouvant former que deux triplés de victoire, et augmente la valeur de la case centrale, souvent la meilleure case au morpion :</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ebdf16-c65b-8178-b263-dc5ce44abcbe" class="code code-wrap"><code class="language-C" style="white-space:pre-wrap;word-break:break-all">if(a[1] == 2) s += 3;
+else if(a[1] == 3) s -= 3;
+
+if (t[i][1] == 5 &amp;&amp; a[1] == 2) s += 7;
+else if (t[i][1] == 5  &amp;&amp; a[1] == 3) s -= 3;</code></pre><p id="18ebdf16-c65b-81fb-ba40-c9a13bca01ee" class="">Tout cela est complété par la fonction <code>score</code> qui donne le score d’un supermorpion en fonction de paramètres similaires.</p><h3 id="18ebdf16-c65b-8135-b087-f8432414130a" class="">d) Vérifications</h3><p id="18ebdf16-c65b-8125-a3cf-e814b07e0678" class="">Ainsi, lorsque l’on exécute le ficher <code><strong>exe</strong></code>, on retrouve exactement ce que l’on voulait :</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ebdf16-c65b-81d0-b002-d2c7ebb5a1ce" class="code code-wrap"><code class="language-Bash" style="white-space:pre-wrap;word-break:break-all">The condition in large is as follow:
+----------
+ 3 . . .
+ 2 . . .
+ 1 . . .
+   a b c
+----------
+The detail is as follow:
+-----------------
+ 1    2    3
+  ...  ...  ...
+  ...  ...  ...
+  ...  ...  ...
+ 4    5    6
+  ...  ...  ...
+  .x.  ox.  ...
+  ..x  ...  ...
+ 7    8    9
+  ...  ...  ...
+  o..  ...  .o.
+  ...  ...  x..
+
+-----------------
+The last coup is in 4 5 !
+You are o in morpion 5 !
+----------
+ 3 . . .
+ 2 o x .
+ 1 . . .
+   a b c
+----------
+Please choose a new position (a-c)(1-3)</code></pre><p id="18ebdf16-c65b-815b-933c-dca43f47914a" class="">En effet, on peut voir les 9 grilles du supermorpion, celle du morpion principal et affiche les informations sur le dernier coup et le joueur actuel.</p><p id="18ebdf16-c65b-81b8-9049-dfaa97dd713b" class="">Ensuite, on peut aussi créer le fichier <code><strong>png</strong></code>, ce qui actualise la page <code><strong>refresh.html</strong></code> :</p><div id="18ebdf16-c65b-816d-88cc-c0fa8d6efd76" class="column-list"><div id="199bdf16-c65b-8097-9b20-c689b54444c1" style="width:50%" class="column"><figure id="18ebdf16-c65b-81dd-8036-e7266fec3e3f" class="image"><a href="Cr%C3%A9ation%20d%E2%80%99un%20Bot%20Morpion/g.png"><img style="width:288px" src="Cr%C3%A9ation%20d%E2%80%99un%20Bot%20Morpion/g.png"/></a><figcaption>Figure 7 - Fichier png</figcaption></figure></div><div id="18ebdf16-c65b-8110-a3da-f0e5fc6899da" style="width:50.000000000000014%" class="column"><figure id="18ebdf16-c65b-819d-845d-ce4ad6b7e813" class="image"><a href="Cr%C3%A9ation%20d%E2%80%99un%20Bot%20Morpion/Untitled.png"><img style="width:336px" src="Cr%C3%A9ation%20d%E2%80%99un%20Bot%20Morpion/Untitled.png"/></a><figcaption>Figure 8 - Page refresh.html</figcaption></figure><p id="18ebdf16-c65b-8121-8416-e4d50fc54734" class="">
+</p></div></div><h2 id="18ebdf16-c65b-81ef-ac2e-d3954cf386a9" class="">3. Troisième programme : <code><strong>sm-bot</strong></code></h2><p id="198bdf16-c65b-80e5-9978-e4da49eedb3d" class="">Ce programme permet de calculer le meilleur coup possible dans une partie de super-morpion en utilisant l’algorithme <strong>Negamax</strong> avec élagage alpha-bêta. L’état initial du jeu est saisi en ligne de commande au format <strong>FEN</strong>, accompagné d’un paramètre indiquant le temps restant pour terminer la partie. Le programme analyse la position et retourne le coup optimal à jouer sous forme de coordonnées standard.</p><h3 id="198bdf16-c65b-80ed-be0e-c56391ccf651" class="">a) Instructions</h3><ul id="198bdf16-c65b-80d6-ba2b-c22b3d0de0ea" class="bulleted-list"><li style="list-style-type:disc"><strong>Utilisation de Negamax</strong> avec élagage alpha-bêta pour l’analyse des coups</li></ul><ul id="198bdf16-c65b-80ff-8641-cce654d6f9cc" class="bulleted-list"><li style="list-style-type:disc"><strong>Stratégie de gestion du temps</strong> permettant de garantir une réponse rapide</li></ul><ul id="198bdf16-c65b-800d-a21b-ed4a34abe3d6" class="bulleted-list"><li style="list-style-type:disc"><strong>Saisie de la position initiale</strong> en ligne de commande au format <strong>FEN</strong>, incluant l’état des grilles, le dernier coup joué et le joueur au trait</li></ul><ul id="198bdf16-c65b-80fe-a364-c0715375dc6e" class="bulleted-list"><li style="list-style-type:disc"><strong>Paramètre de temps</strong> spécifié en ligne de commande pour adapter la profondeur de recherche</li></ul><ul id="198bdf16-c65b-8027-b8a6-ca5dd5055109" class="bulleted-list"><li style="list-style-type:disc"><strong>Retour du meilleur coup</strong> au format <code>&lt;#grille&gt;(1..9) &lt;#case&gt;(1..9)</code></li></ul><h3 id="198bdf16-c65b-803e-838a-c9f478cdcec4" class="">b) Principe</h3><p id="18ebdf16-c65b-814d-9716-c26a76f3eaf5" class="">Le programme principal déclare une chaîne de caractères représentant l&#x27;état initial d&#x27;un jeu de supermorpion. Il initialise ensuite une structure de données <code><strong>supermopion</strong></code>, extrait les informations sur le dernier coup joué, affiche l&#x27;état actuel du supermorpion ainsi que du morpion principal agrandi, et informe sur le dernier coup et le joueur actuel. Enfin, il utilise une fonction pour calculer le meilleur coup possible pour le joueur actuel en fonction du temps restant, puis affiche ces informations. En résumé, le <code><strong>main</strong></code> gère l&#x27;état du supermorpion, les coups joués et suggère le meilleur coup suivant en fonction des informations fournies :</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ebdf16-c65b-81c4-8be2-f809d7fb454e" class="code code-wrap"><code class="language-C" style="white-space:pre-wrap;word-break:break-all">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdlib.h&gt;
+#include &quot;utils.h&quot;
+#include &lt;time.h&gt;
+
+void test(char* chaine, int temps);
+void time_calculate();
+
+int main(int argc, char* argv[]){
+    const char* coup = argv[1]; 
+    const int temps = atoi(argv[2]);
+    test(coup, temps);
+    return 0;
+}
+
+void test(char* chaine, int temps){
+    supermopion sm;
+    initialize(&amp;sm);
+    int last[2];
+    int prochain[2];
+    str_to_sm(chaine, &amp;sm, last);
+    print_sm(sm);
+    print_mp(get_large(sm));
+    fprintf(stderr, &quot;Last: %d %d\n&quot;, last[0], last[1]);
+    fprintf(stderr,&quot;Jouer: %c\n&quot;, sm.trait);
+    meilleur_coup(sm, last, temps, prochain);
+    printf(&quot;%d&quot;, prochain[0]*10+prochain[1]);
+    return prochain[0]*10+prochain[1];
+}
+
+void time_calculate() {
+    clock_t debut, fin;
+    double temps_execution;
+    supermopion sm;
+    initialize(&amp;sm);
+    debut = clock();
+    int k;
+    for (k = 0; k&lt;1000; k++) {
+	    scoup(&amp;sm, 4, 5);
+	    score(sm);
+	    sm.morp[3].tableau[4]= infini;
+
+    }
+    fin = clock();
+    temps_execution = ((double) (fin - debut)) / CLOCKS_PER_SEC;
+    printf(&quot;Le temps d&#x27;execution est : %f secondes\n&quot;, temps_execution);
+
+}</code></pre><h3 id="18ebdf16-c65b-8175-9295-d71605846f71" class="">c) Gestion du temps</h3><p id="18ebdf16-c65b-81b7-81e8-c3f85ef6827b" class="">La gestion du temps dans notre programme se fait grâce à la fonction <code><strong>temps_to_depth</strong></code> ainsi que d’un fichier texte extérieur à <code><strong>sm_bot.exe</strong></code>, appelé <code><strong>depth.txt</strong></code></p><p id="18ebdf16-c65b-8180-a71e-ff5eee6dfbae" class="">Nous nous sommes basés sur un temps de 15 minutes par joueur, auxquelles ont rajoute 30 secondes par coup du joueur. De plus, en l’absence d’indication contraire, le temps pour effectuer un coup n’est limité que par le temps total de la partie.  </p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ebdf16-c65b-81af-96b9-fc264a75e1ae" class="code code-wrap"><code class="language-C" style="white-space:pre-wrap;word-break:break-all">void temps_to_depth(const double temps){ 
+    
+    char* filename = &quot;./depth.txt&quot;;
+    FILE *file = fopen(filename, &quot;r&quot;);
+    int depth;
+
+    if (file == NULL) {
+        fprintf(stderr, &quot;Error opening file.\n&quot;);
+        return;
+    }
+
+    fscanf(file, &quot;%d&quot;, &amp;depth);
+    fclose(file);
+
+    double temps_execution;
+    temps_execution = ((double) (fin - debut)) / CLOCKS_PER_SEC;
+
+    if (temps_execution &gt; 30 &amp;&amp; temps &lt;= 300) {
+				depth -= 1;} 
+    else if (temps_execution &lt; 3 &amp;&amp; temps &lt;= 300) {
+				depth += 1;} 
+    else if (temps_execution &gt; 90 &amp;&amp; temps &gt; 300 &amp;&amp; temps &lt;= 600) {
+				depth -= 1;}
+    else if (temps_execution &lt; 5 &amp;&amp; temps &gt; 300 &amp;&amp; temps &lt;= 600) {
+				depth += 1;}
+    else if (temps_execution &gt; 120 &amp;&amp; temps &gt; 600) {
+				depth -= 1;}
+    else if (temps_execution &lt; 8 &amp;&amp; temps &gt; 600) {
+				depth += 1;}
+    else { 
+        depth += 0;
+    }
+
+    FILE *file2 = fopen(filename, &quot;w&quot;); 
+    if (file2 == NULL) {
+        fprintf(stderr, &quot;Error opening file.\n&quot;);
+        return;
+    }
+    fprintf(file2, &quot;%d&quot;, depth);
+    fclose(file2);
+
+    fprintf(stderr, &quot;depth ultime : %d\n&quot;, depth);
+}</code></pre><p id="18ebdf16-c65b-81ae-9db5-cac55957817c" class="">Ce mécanisme ajuste dynamiquement la <code><strong>depth</strong></code> en fonction du <strong>temps restant</strong> et du <strong>temps d’exécution du tour précédent</strong>. Si le coup précédent a pris trop de temps, la <code><strong>depth</strong></code> est diminuée de 1, tandis que si le coup a été rapide, elle est augmentée de 1. Par exemple, si le temps restant est inférieur à <strong>300 secondes</strong>, un temps d’exécution supérieur à <strong>30 secondes</strong> entraîne une réduction de la <code><strong>depth</strong></code>, tandis que si plus de <strong>600 secondes</strong> restent, un temps inférieur à <strong>8 secondes</strong> l’augmente. Entre ces paliers, la <code><strong>depth</strong></code> reste stable, garantissant une gestion efficace du temps, notamment en accélérant le jeu lorsque le temps disponible devient critique.</p><h3 id="18ebdf16-c65b-81e8-89b6-c2a3d84edc91" class="">d) Approfondissements</h3><p id="18ebdf16-c65b-8175-8dfb-d4de2aa990ff" class="">Des ajustements supplémentaires pourraient améliorer la précision du système, comme l’ajout de paliers plus fréquents (tous les 100 ou 150 secondes) ou la prise en compte du nombre de cases vides restantes. Dans l’ensemble, la fonction de gestion du temps s’adapte automatiquement à chaque tour pour optimiser l’équilibre entre le temps de calcul et le temps restant.</p><h1 id="18ebdf16-c65b-81f2-93b7-c4c239a33145" class="">4. Perspectives</h1><p id="18ebdf16-c65b-8126-8427-ddd44de0a786" class="">Bien que nous ayons réussi à mener ce projet jusqu’à son terme, des perspectives d&#x27;amélioration restent à explorer: </p><ul id="18ebdf16-c65b-810a-9267-f7e0c76e0e77" class="bulleted-list"><li style="list-style-type:disc">En premier lieu, une optimisation plus poussée des algorithmes de recherche, tels que l&#x27;ajout de tables de transposition ou d&#x27;heuristiques avancées, pourrait améliorer significativement les performances des programmes <code><strong>tttree</strong></code> et <code><strong>sm-bot</strong></code></li></ul><ul id="18ebdf16-c65b-819c-b209-f355e38cfe71" class="bulleted-list"><li style="list-style-type:disc">De plus, une interface utilisateur plus conviviale pour le Programme 2, <code><strong>sm-refresh</strong></code>, avec des fonctionnalités interactives avancées, serait une piste d&#x27;amélioration</li></ul><ul id="18ebdf16-c65b-8186-afc2-eb6bd0bb0b9c" class="bulleted-list"><li style="list-style-type:disc">On peut améliorer la fonction de <code><strong>Temps_to_depth</strong></code>, en prenant en compte le nombre de cases vides restantes, voire leurs positions</li></ul><ul id="18ebdf16-c65b-81fd-88dd-ed5bc34ed2b7" class="bulleted-list"><li style="list-style-type:disc">On peut songer à donner un score (positif ou négatif) à des situations particulière de blocage par l’adversaire de certains triplés, comme <code><strong>“XXO”</strong></code> ou <code><strong>“XOO”</strong></code>.</li></ul><hr id="198bdf16-c65b-805d-a3b7-df24318238ac"/><h2 id="18ebdf16-c65b-8108-b226-f7c1df8ddfc6" class="">Conclusion</h2><p id="18ebdf16-c65b-810e-90f7-c9b544ed95d0" class="">Ce projet nous a permis d’explorer les différentes étapes de la conception d’un bot jouant au super-morpion, depuis l’implémentation des règles du jeu jusqu’à l’optimisation de l’algorithme Minimax avec élagage alpha-bêta. Chaque aspect a été ajusté pour garantir des décisions stratégiques efficaces tout en respectant les contraintes de temps. Cette expérience constitue une base solide pour approfondir les techniques d’intelligence artificielle appliquées aux jeux et l’optimisation des algorithmes de recherche.</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

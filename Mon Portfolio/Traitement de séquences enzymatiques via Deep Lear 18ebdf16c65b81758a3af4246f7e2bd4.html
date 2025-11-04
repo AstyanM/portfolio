@@ -1,0 +1,830 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link href="./prism/prism.css" rel="stylesheet" /><title>Traitement de séquences enzymatiques via Deep Learning</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="18ebdf16-c65b-8175-8a3a-f4246f7e2bd4" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1617957743097-0d20aa2ea762?ixlib=rb-4.0.3&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" style="object-position:center 80.75%"/><h1 class="page-title">Traitement de séquences enzymatiques via Deep Learning</h1><p class="page-description"></p></header><div class="page-body"><p id="19dbdf16-c65b-803a-a4fd-d5f28b68d424" class=""><em>Projet mené en duo - 2024</em></p><p id="19ebdf16-c65b-8036-90db-c63bcc002f34" class="">
+</p><p id="19ebdf16-c65b-8091-9d0d-dece15834192" class="">Voici un lien github vers l’ensemble du code rédigé au cours de ce projet :</p><figure id="19dbdf16-c65b-807a-94a4-f4eaec59287e"><a href="https://github.com/AstyanM/enzymes.git" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">GitHub - AstyanM/enzymes: Traitement de séquences enzymatiques via Deep Learning</div><div class="bookmark-description">Traitement de séquences enzymatiques via Deep Learning - AstyanM/enzymes</div></div><div class="bookmark-href"><img src="https://github.com/fluidicon.png" class="icon bookmark-icon"/>https://github.com/AstyanM/enzymes.git</div></div><img src="https://opengraph.githubassets.com/bc9e3db865509d74a0b8fb91ab9d761adad4cc3d2bcd56d09414dc803f6611ae/AstyanM/enzymes" class="bookmark-image"/></a></figure><p id="19ebdf16-c65b-8079-81cc-cab92352dcdd" class="">
+</p><blockquote id="18ebdf16-c65b-8121-b7f9-caa37fbfd4e1" class="">Dans ce travail, nous allons explorer l’enzymologie à l’aide du deep learning. Plus précisément, nous chercherons à utiliser des données obtenues expérimentalement pour concevoir et entraîner un réseau de neurones capable de prédire l’activité de chaque enzyme sur les différents substrats disponibles.</blockquote><p id="19ebdf16-c65b-80c0-b09b-c6cd9415a0b6" class="">
+</p><h3 id="19ebdf16-c65b-80e9-a97a-dd8fefb07127" class="">Sommaire</h3><nav id="19dbdf16-c65b-8052-a508-f3550082957e" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#19ebdf16-c65b-80e9-a97a-dd8fefb07127">Sommaire</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#18ebdf16-c65b-801f-adf7-dd03044bf578">1. Traitement des données</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#18ebdf16-c65b-814d-87c3-d90a6183c7cd">a) Epuration du dataset</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#18ebdf16-c65b-81d9-bd4e-ff25f02c53d3">b) Traitement des séquences</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#18ebdf16-c65b-8104-a20d-ec6ab577681a">c) Alignement des séquences</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#18ebdf16-c65b-80e9-9951-cfd3ad641294">2. Modèles d’IA</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#18ebdf16-c65b-8132-aade-ed8369ebb028">a) Premier modèle : réseau dense classique</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#18ebdf16-c65b-8141-b7b7-cfbfff7dc0ac">b) Deuxième modèle : réseau dense un peu plus évolué</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#18ebdf16-c65b-8170-8de0-f3eb7ad4902b">c) Troisième modèle : réseau à convolution 1D</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#18ebdf16-c65b-817d-8cc4-d78f95804625">d) Quatrième modèle : réseau à convolution 1D + LSTM</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#18ebdf16-c65b-8019-a8e1-d875987d73e8">Conclusion</a></div></nav><p id="19ebdf16-c65b-8048-afe0-c8f034a4cdf9" class="">
+</p><h2 id="18ebdf16-c65b-801f-adf7-dd03044bf578" class="">1. Traitement des données</h2><h3 id="18ebdf16-c65b-814d-87c3-d90a6183c7cd" class="">a) Epuration du dataset</h3><p id="18ebdf16-c65b-8146-ab46-dbb1f67fb6e5" class="">Après avoir importé les données sous forme de fichier CSV dans notre notebook, nous avons procédé à plusieurs traitements :</p><ul id="18ebdf16-c65b-805d-994b-f19d981414e9" class="bulleted-list"><li style="list-style-type:disc">Suppression des colonnes inutiles.</li></ul><ul id="18ebdf16-c65b-8032-9918-f37e73f7a7d7" class="bulleted-list"><li style="list-style-type:disc">Élimination des valeurs manquantes (<em>NaN</em>), générées lors de l’importation depuis Excel.</li></ul><ul id="18ebdf16-c65b-804e-b810-d03f6a223719" class="bulleted-list"><li style="list-style-type:disc">Renommage des colonnes pour une meilleure lisibilité.</li></ul><p id="18ebdf16-c65b-8081-ba84-dc4ecfee42bc" class="">Nous avons également filtré les données en supprimant certaines lignes marquées comme peu fiables, notamment celles comportant les symboles &quot;-&quot; dans les colonnes <em>Induction (Gel)</em> et <em>Expression (Gel)</em>.</p><figure id="18ebdf16-c65b-8167-906f-dc20853112d0" class="image"><a href="Traitement%20de%20s%C3%A9quences%20enzymatiques%20via%20Deep%20Lear/Tableau.png"><img style="width:709.9786376953125px" src="Traitement%20de%20s%C3%A9quences%20enzymatiques%20via%20Deep%20Lear/Tableau.png"/></a><figcaption>Figure 1 - Table des données</figcaption></figure><p id="18ebdf16-c65b-81a5-a976-efa78cfd90a2" class="">De plus, nous stockons certaines données comme le Bradford et les puretés dans des dictionnaires pour les utiliser plus tard dans le modèle :</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ebdf16-c65b-81d7-8f90-fcdb100a1ece" class="code code-wrap"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">bradford = {}
+for line in range(8, len(df.index)):
+    bradford[df.index[line]] = float(df[&#x27;Bradford (mg/mL)&#x27;][line].replace(&#x27;,&#x27;, &#x27;.&#x27;))
+
+purities = {}
+for row in range(len(df.columns)):
+    if df[df.columns[row]][&#x27;Pureté&#x27;] !=  &#x27;---&#x27;:
+        purities[df.columns[row]] = int(df[df.columns[row]][&#x27;Pureté&#x27;][:-1])
+    else:
+        purities[df.columns[row]] = 100</code></pre><h3 id="18ebdf16-c65b-81d9-bd4e-ff25f02c53d3" class="">b) Traitement des séquences</h3><p id="18ebdf16-c65b-810e-9c93-f5e8a14db0a1" class="">En important le fichier <em><strong>fasta</strong></em>, on ajoute les séquences dans un dictionnaire avec comme clé le nom courant et comme objet la séquence complète. Le module <em><strong>re </strong></em>permet de rechercher le nom courant dans la ligne header puis on commence par normaliser les données avec le Bradford qu’on avait précédemment enregistré :</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ebdf16-c65b-813e-b16d-f5f9b53c1a99" class="code code-wrap"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">for line in range(len(df.index)):
+    for row in range(len(df.columns)):
+        n_line = df.index[line]
+        n_row = df.columns[row]
+        cell = df[n_row][n_line]
+        df[n_row][n_line] = float(cell.replace(&#x27;,&#x27;, &#x27;.&#x27;)) / bradford[n_line]</code></pre><h3 id="18ebdf16-c65b-8104-a20d-ec6ab577681a" class="">c) Alignement des séquences</h3><p id="18ebdf16-c65b-81f3-a388-cafab10ee000" class="">Pour cela, nous avons utilisé <em><strong>Clustal2</strong></em>, un exécutable qui effectue l’alignement des données en prenant en entrée un fichier <em><strong>Fasta</strong></em>. Pour cela, on utilise un module appelé <em><strong>ClustalwCommandline</strong></em>.</p><figure id="18ebdf16-c65b-810e-90f3-e89171e8bae6" class="image"><a href="Traitement%20de%20s%C3%A9quences%20enzymatiques%20via%20Deep%20Lear/clustal2.png"><img style="width:2280px" src="Traitement%20de%20s%C3%A9quences%20enzymatiques%20via%20Deep%20Lear/clustal2.png"/></a><figcaption>Figure 2 - Exécutable Clustal2</figcaption></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ebdf16-c65b-8112-a0b7-dc5cbca962ba" class="code code-wrap"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">clustalw_exe = &quot;clustalw2.exe&quot; # L&#x27;emplacement que l&#x27;executable qui va les traiter
+output_file = &quot;output.aln&quot;
+input_file = &quot;FASTAs_Final.fasta&quot;
+
+sequences = list(SeqIO.parse(input_file, &quot;fasta&quot;))
+seq_records = [SeqRecord(seq.seq, id=seq.id) for seq in sequences] 
+# Créer un objet SeqRecord pour chaque séquence
+
+temp_file = &quot;temp.fasta&quot; # Créer un fichier temporaire pour stocker les séquences
+SeqIO.write(seq_records, temp_file, &quot;fasta&quot;)
+
+clustalw_cline = ClustalwCommandline( 
+# Initialiser l&#x27;objet ClustalwCommandline pour traiter correctement les données
+     cmd=clustalw_exe,
+     infile=input_file,
+     outfile=output_file,
+     output=&quot;clustal&quot;,  # Format de sortie
+     align=True,  # Effectuer un alignement complet
+)
+
+clustalw_cline() 
+# Exécution de la commande ClustalW2
+
+aligned_sequences = list(SeqIO.parse(output_file, &quot;clustal&quot;)) 
+# Maintenant on peut lire les séquences alignées</code></pre><p id="18ebdf16-c65b-81a2-a555-ebf16d16dae1" class="">Après un temps de traitement d’environ 5 minutes, on se retrouve avec des séquences alignées sous cette forme :</p><figure id="18ebdf16-c65b-8155-818f-c366377a404e" class="image"><a href="Traitement%20de%20s%C3%A9quences%20enzymatiques%20via%20Deep%20Lear/seq.png"><img style="width:709.9715576171875px" src="Traitement%20de%20s%C3%A9quences%20enzymatiques%20via%20Deep%20Lear/seq.png"/></a><figcaption>Figure 3 - Résultat de l’alignement des séquences</figcaption></figure><h2 id="18ebdf16-c65b-80e9-9951-cfd3ad641294" class="">2. Modèles d’IA</h2><p id="18ebdf16-c65b-81b3-a0d7-fde11b3c678e" class="">Afin de pouvoir utiliser les séquences des différentes enzymes dont nous disposons, nous avons dû les “encoder” de manière à pouvoir fournir à notre réseau de neurones des valeurs numériques.</p><p id="18ebdf16-c65b-810e-852d-d8437cf85580" class="">Le choix qui nous a semblé le plus pertinent était de faire correspondre chaque (A,B,C…) à des nombres (1,2,3…) pour obtenir un tableau <em><strong>numpy </strong></em>d’entiers de longueur 546 pour chaque séquence.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ebdf16-c65b-819c-a031-f1a081f35e70" class="code code-wrap"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">sequence = &quot;-AB--TGA(..)ALA---&quot;
+sequence encodée = [0,1,2,0,0,(..)1,12,1,0,0,0]</code></pre><p id="18ebdf16-c65b-8170-b364-c78f38e07658" class="">Pour ce qui est des ‘ - ’ induits par l’alignement des séquences, nous avons décidé de lui attribuer le chiffre 0.</p><h3 id="18ebdf16-c65b-8132-aade-ed8369ebb028" class="">a) Premier modèle : réseau dense classique</h3><p id="18ebdf16-c65b-81fa-8269-d556b5d55f0d" class="">Pour commencer nous avons tout d’abord effectué des premiers tests avec un modèle très basique, en utilisant seulement quelques couches de neurones interconnectés :</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ebdf16-c65b-813b-89fa-f59d1433caa6" class="code code-wrap"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">model = Sequential()
+model.add(Dense(100, activation=&quot;relu&quot;, input_shape=(546,)))
+model.add(Dense(150, activation=&quot;relu&quot;))
+model.add(Dense(50, activation=&quot;relu&quot;))
+model.add(Dense(18))</code></pre><p id="18ebdf16-c65b-816c-888c-fccc6f38da67" class="">Ainsi, à partir des inputs que nous lui fournissons (les séquences encodées sous forme de tableaux), le modèle prédit 18 valeurs en sortie, correspondant aux 18 activités cherchées pour les différents substrats.</p><p id="18ebdf16-c65b-81c4-9c2d-e83d6b782480" class="">Nous avons ensuite entraîné ce modèle sur l’ensemble des séquences que l’on a préalablement séparées en données de <strong>train</strong><em><strong> </strong></em>et de <strong>test</strong><em><strong> :</strong></em></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ebdf16-c65b-8171-ab80-d6deb5390ae0" class="code code-wrap"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=78)</code></pre><p id="18ebdf16-c65b-818e-89af-f431340a909e" class="">Nous obtenons ici le<mark class="highlight-blue"> loss de train (bleu)</mark> et le <mark class="highlight-yellow">loss de test (en jaune).</mark></p><figure id="18ebdf16-c65b-8132-b445-ce1a655b12e4" class="image"><a href="Traitement%20de%20s%C3%A9quences%20enzymatiques%20via%20Deep%20Lear/Untitled.png"><img style="width:288px" src="Traitement%20de%20s%C3%A9quences%20enzymatiques%20via%20Deep%20Lear/Untitled.png"/></a><figcaption>Figure 4 - Train &amp; Test loss</figcaption></figure><p id="18ebdf16-c65b-81f7-9f30-d572c8b25ea8" class=""><mark class="highlight-default">Nous sommes clairement confrontés à un problème </mark><mark class="highlight-default"><strong>d’overfitting</strong></mark><mark class="highlight-red"><strong> </strong></mark><mark class="highlight-default">: le modèle apprend par coeur les données d’entrées tandis qu’il ne parvient pas à généraliser sur des données qu’il n’a pas vues durant son entraînement. Le modèle n’est donc pas adapté : tentons d’en créer un peu évolué.</mark></p><h3 id="18ebdf16-c65b-8141-b7b7-cfbfff7dc0ac" class="">b) Deuxième modèle : réseau dense un peu plus évolué</h3><p id="18ebdf16-c65b-818f-9b49-fef6b42b348d" class="">Voici une architecture plus performante :</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ebdf16-c65b-810d-bc6e-c32bbd8c7172" class="code code-wrap"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">model = Sequential()
+model.add(Dense(500, activation=&quot;relu&quot;, input_shape=(546,)))
+model.add(BatchNormalization())
+model.add(Dropout(0.3))
+model.add(Dense(300, activation=&quot;relu&quot;))
+model.add(BatchNormalization())
+model.add(Dropout(0.2))
+model.add(Dense(200, activation=&quot;relu&quot;))
+model.add(BatchNormalization())
+model.add(Dropout(0.3))
+model.add(Dense(100, activation=&quot;relu&quot;))
+model.add(BatchNormalization())
+model.add(Dense(50, activation=&quot;relu&quot;))
+model.add(Dropout(0.2))
+model.add(Dense(18))</code></pre><p id="18ebdf16-c65b-810d-803d-d702f25e119d" class="">Nous avons introduit du <mark class="highlight-default">Dropout, permettant de désactiver aléatoirement un certain pourcentage de neurones dans chaque couche lors de l’entraînement, dans l’objectif d’empêcher un apprentissage par coeur des données et favoriser la généralisation.</mark><br/>De plus afin d’améliorer la stabilité de l&#x27;entraînement et accélérer la convergence nous avons ajouté des layers de <mark class="highlight-default">BatchNormalization</mark>.</p><figure id="18ebdf16-c65b-81ca-8dc9-e7aa94350a59" class="image"><a href="Traitement%20de%20s%C3%A9quences%20enzymatiques%20via%20Deep%20Lear/Untitled%201.png"><img style="width:384px" src="Traitement%20de%20s%C3%A9quences%20enzymatiques%20via%20Deep%20Lear/Untitled%201.png"/></a><figcaption>Figure 5 - Train &amp; Test loss</figcaption></figure><p id="18ebdf16-c65b-812b-b593-d87723e1768b" class="">Comme on peut le voir sur le graphique les résultats sont nettement meilleurs en terme de capacité à généraliser (peu d’écart entre les deux courbes). On obtient un loss de test d’environ 0.028. Pourtant lorsqu’on regarde les prédictions on remarque que cela n’est pas très concluant. Voici les prédictions et les valeurs attendues pour l’enzyme C7RAM1, pour les différents substrats :</p><figure id="18ebdf16-c65b-8153-8e9a-fb80725dd954" class="image"><a href="Traitement%20de%20s%C3%A9quences%20enzymatiques%20via%20Deep%20Lear/Untitled%202.png"><img style="width:709.9857788085938px" src="Traitement%20de%20s%C3%A9quences%20enzymatiques%20via%20Deep%20Lear/Untitled%202.png"/></a><figcaption>Figure 6 - Résultats pour le second modèle</figcaption></figure><p id="18ebdf16-c65b-81af-9e28-d260eb3220ae" class="">Bien qu’une partie des prédictions possèdent le bon ordre de grandeur, on trouve un écart non négligeable.</p><h3 id="18ebdf16-c65b-8170-8de0-f3eb7ad4902b" class="">c) Troisième modèle : réseau à convolution 1D</h3><p id="18ebdf16-c65b-8150-bf17-e452deed8d01" class="">Nous avons donc essayé d’implémenter un réseau à convolution 1D. Ce type de réseau est très intéressant car il permet de mieux traiter les données spatialement parlant, grâce à des filtres 1D qui vont parcourir les séquences de nos enzymes.</p><figure id="18ebdf16-c65b-81d0-92e7-ea83f931611e" class="image"><a href="Traitement%20de%20s%C3%A9quences%20enzymatiques%20via%20Deep%20Lear/Untitled%203.png"><img style="width:2937px" src="Traitement%20de%20s%C3%A9quences%20enzymatiques%20via%20Deep%20Lear/Untitled%203.png"/></a><figcaption>Figure 7 - Visualisation d’un réseau de neurones à convolution 1D</figcaption></figure><p id="18ebdf16-c65b-8135-8d1f-ebf80b1e3cbd" class="">Pour utiliser ce type de réseau il nous a semblé préférable d’avoir des données sous la forme <mark class="highlight-default">one hot encoded</mark><mark class="highlight-red"> </mark><mark class="highlight-default">(tableaux de 0 avec seulement un seul 1 à la position de la lettre correspondante).<br/>Ainsi nous avons implémenté la fonction suivante :</mark></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ebdf16-c65b-81b0-b439-dfdbfcb39d19" class="code code-wrap"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">def one_hot_encoding(dic):
+    tab = []
+    erreur = False
+    sequences = [sequ for sequ in dic.values()]
+    for i in range(len(sequences)):
+        tab_lettres = []
+        for lettre in sequences[i]:
+            one_hot_tab = [0 for i in range(27)]
+            if lettre == &quot;-&quot;:
+                one_hot_tab[0] = 1
+                tab_lettres.append(one_hot_tab)
+            elif (ord(lettre) &lt;= 90) &amp;  (ord(lettre) &gt;= 65):
+                one_hot_tab[ord(lettre)-64] = 1
+                tab_lettres.append(one_hot_tab)
+            else:
+                print(&quot;Séquence&quot;,i,&quot;possède une valeur non standard&quot;)
+                erreur = True
+        if not erreur:
+            tab.append(tab_lettres)
+            erreur = False
+    return np.array(tab)</code></pre><p id="18ebdf16-c65b-81cb-acf5-c7525894b708" class="">Et voici notre architecture :</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ebdf16-c65b-81ae-b078-c921521ca5b1" class="code code-wrap"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">model = Sequential()
+
+model.add(Conv1D(filters=32, kernel_size=5, activation=&#x27;relu&#x27;, input_shape=(546,27)))
+model.add(MaxPooling1D(pool_size=2))
+model.add(Conv1D(filters=64, kernel_size=5, activation=&#x27;relu&#x27;))
+model.add(MaxPooling1D(pool_size=2))
+model.add(Conv1D(filters=128, kernel_size=3, activation=&#x27;relu&#x27;))
+model.add(MaxPooling1D(pool_size=2))
+model.add(Conv1D(filters=256, kernel_size=2, activation=&#x27;relu&#x27;))
+model.add(MaxPooling1D(pool_size=2))
+
+model.add(Flatten())
+model.add(Dense(128,activation=&#x27;relu&#x27;))
+model.add(Dropout(0.2))
+model.add(Dense(80,activation=&#x27;relu&#x27;))
+model.add(Dense(64,activation=&#x27;relu&#x27;))
+model.add(Dropout(0.2))
+model.add(Dense(32,activation=&#x27;relu&#x27;))
+model.add(Dense(18))</code></pre><p id="18ebdf16-c65b-8148-b976-d7ed5560d7f8" class="">Afin de vérifier et valider le bon fonctionnement du modèle, nous avons commencé par intentionnellement l’entraîner sur 20 séquences seulement (les mêmes en train et en test) <mark class="highlight-default">:</mark></p><div id="18ebdf16-c65b-8051-8968-f8b1e46c94a0" class="column-list"><div id="18ebdf16-c65b-80f0-a400-c0eee7ccfb15" style="width:50%" class="column"><figure id="18ebdf16-c65b-8127-8790-e939779a8eec" class="image"><a href="Traitement%20de%20s%C3%A9quences%20enzymatiques%20via%20Deep%20Lear/Untitled%204.png"><img style="width:240px" src="Traitement%20de%20s%C3%A9quences%20enzymatiques%20via%20Deep%20Lear/Untitled%204.png"/></a><figcaption>Figure 8 - Train &amp; Test loss données d’entraînement</figcaption></figure></div><div id="18ebdf16-c65b-80e6-baf7-caee7d97615e" style="width:50%" class="column"><figure id="18ebdf16-c65b-816e-a76c-e4d2e05c9837" class="image"><a href="Traitement%20de%20s%C3%A9quences%20enzymatiques%20via%20Deep%20Lear/Untitled%205.png"><img style="width:336px" src="Traitement%20de%20s%C3%A9quences%20enzymatiques%20via%20Deep%20Lear/Untitled%205.png"/></a><figcaption>Figure 9 - Résultats pour le troisième modèle</figcaption></figure></div></div><div id="18ebdf16-c65b-801e-9fbe-ca7f5b62ca5b" class="column-list"><div id="18ebdf16-c65b-8070-b742-c9898dfc5c0d" style="width:43.75%" class="column"><p id="19ebdf16-c65b-806f-981a-d4e9328f68d1" class="">
+</p><p id="19ebdf16-c65b-80e5-a5a9-e5401114d1bf" class="">
+</p><p id="18ebdf16-c65b-8173-927d-c4c4984d9587" class="">Mais ce qui nous intéresse vraiment ici c’est la performance sur le dataset entier et notamment sur un jeu de données de test. Malheureusement les résultats à ce niveau là ne sont pas très convaincants :</p><p id="19ebdf16-c65b-8039-91b8-d0b2c2e21fee" class="">
+</p></div><div id="18ebdf16-c65b-80e1-8d97-d10264ed1fea" style="width:56.25%" class="column"><figure id="18ebdf16-c65b-818f-8601-ea9adfe79282" class="image"><a href="Traitement%20de%20s%C3%A9quences%20enzymatiques%20via%20Deep%20Lear/Untitled%206.png"><img style="width:336px" src="Traitement%20de%20s%C3%A9quences%20enzymatiques%20via%20Deep%20Lear/Untitled%206.png"/></a><figcaption>Figure 10 - Train &amp; Test loss dataset</figcaption></figure></div></div><h3 id="18ebdf16-c65b-817d-8cc4-d78f95804625" class="">d) Quatrième modèle : réseau à convolution 1D + LSTM</h3><p id="18ebdf16-c65b-81e7-9b2c-e11d6e307f36" class="">Les LSTM (Long Short Term Memory) forment une architecture de réseau de neurones récurrents (RNN), qui est capable d’acquérir une mémoire à long terme et court terme. Cela est intéressant dans notre cas d’étude car étant donné le fonctionnement des sites actifs des enzymes, il est souhaitable d’être en mesure de garder en mémoire les informations codées au début de la séquence afin d’étudier les potentiels liens avec des acides-aminés à l’autre bout par exemple.</p><p id="18ebdf16-c65b-81f9-b058-c57ade5fc3fe" class="">Voici l’architecture utilisée :</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18ebdf16-c65b-813f-b088-d58c4273ed44" class="code code-wrap"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">model = Sequential()
+model.add(Conv1D(filters=32, kernel_size=10, activation=&#x27;relu&#x27;, input_shape=(546,27)))
+model.add(Conv1D(filters=64, kernel_size=7, activation=&#x27;relu&#x27;))
+model.add(MaxPooling1D(pool_size=2))
+model.add(LSTM(64, return_sequences=True, activation=&#x27;relu&#x27;))
+model.add(LSTM(64, return_sequences=True, activation=&#x27;relu&#x27;))
+
+model.add(Conv1D(filters=84, kernel_size=5, activation=&#x27;relu&#x27;))
+model.add(Conv1D(filters=128, kernel_size=5, activation=&#x27;relu&#x27;))
+model.add(MaxPooling1D(pool_size=2))
+model.add(Conv1D(filters=256, kernel_size=3, activation=&#x27;relu&#x27;))
+model.add(MaxPooling1D(pool_size=2))
+model.add(LSTM(64, return_sequences=True, activation=&#x27;relu&#x27;))
+model.add(LSTM(64, return_sequences=True, activation=&#x27;relu&#x27;))
+
+model.add(Flatten())
+model.add(Dense(200,activation=&#x27;relu&#x27;))
+model.add(Dropout(0.15))
+model.add(Dense(100,activation=&#x27;relu&#x27;))
+model.add(Dropout(0.15))
+model.add(Dense(50,activation=&#x27;relu&#x27;))
+model.add(Dense(18))</code></pre><p id="18ebdf16-c65b-81b2-b9a7-d81cb85aa51b" class="">On obtient des résultats relativement similaires au réseau précédent</p><figure id="18ebdf16-c65b-8107-ab3c-d210335334be" class="image"><a href="Traitement%20de%20s%C3%A9quences%20enzymatiques%20via%20Deep%20Lear/Untitled%207.png"><img style="width:625.9871826171875px" src="Traitement%20de%20s%C3%A9quences%20enzymatiques%20via%20Deep%20Lear/Untitled%207.png"/></a></figure><p id="18ebdf16-c65b-8144-95bb-f5ef149d6af2" class="">Malheureusement nous n’avons pas eu trop le temps de creuser ce qui touche aux LSTM. Ainsi notre utilisation des LSTM dans cette architecture n’est probablement pas très optimale.</p><hr id="18ebdf16-c65b-8085-92d3-cf60f00b9dbe"/><h3 id="18ebdf16-c65b-8019-a8e1-d875987d73e8" class="">Conclusion</h3><p id="18ebdf16-c65b-80f3-ac6f-d521a2fa3eb9" class="">Ce travail nous a permis d’explorer l’enzymologie en la combinant aux méthodes de machine learning. Avant d’évaluer la performance de notre réseau de neurones, nous avons dû surmonter plusieurs défis, notamment l’extraction et le traitement des données, le choix de leur format et l’alignement des séquences.</p><p id="18ebdf16-c65b-803f-bf74-f95336b78cd8" class="">Une fois ces étapes maîtrisées, nous avons testé différentes architectures et variantes de réseaux de neurones, mais les résultats sont restés mitigés. Plusieurs facteurs peuvent expliquer ces limites :</p><ul id="18ebdf16-c65b-8099-8106-ce5eff0923bf" class="bulleted-list"><li style="list-style-type:disc">Un besoin d’ajustement plus fin des hyperparamètres et des architectures</li></ul><ul id="18ebdf16-c65b-80dc-be30-ca75230668b7" class="bulleted-list"><li style="list-style-type:disc">Une capacité de calcul insuffisante pour entraîner des modèles plus complexes sur un grand nombre d’époques</li></ul><ul id="18ebdf16-c65b-805d-bf37-f0a8f4163269" class="bulleted-list"><li style="list-style-type:disc">L’absence d’informations sur les substrats, alors qu’ils influencent l’activité enzymatique</li></ul><ul id="18ebdf16-c65b-8006-8e06-fc27ad0fc372" class="bulleted-list"><li style="list-style-type:disc">La difficulté inhérente à prédire cette activité uniquement à partir de la séquence en 2D</li></ul><p id="18ebdf16-c65b-80d3-a0ab-dcc370ccf70b" class="">Pour améliorer ces résultats, il serait pertinent d’exploiter la structure 3D des enzymes, par exemple avec AlphaFold, afin d’identifier les sites actifs. L’intégration d’un réseau convolutionnel 3D et la prise en compte des substrats pourraient également affiner les prédictions.</p><p id="18ebdf16-c65b-81b4-89ba-d36ca764afd9" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span><script src="./prism/prism.js"></script></body></html>

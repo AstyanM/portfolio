@@ -1,0 +1,720 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link href="./prism/prism.css" rel="stylesheet" /><title>Adaptation Few-Shot de Modèles Vision-Langage</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="22bbdf16-c65b-80ee-8ee1-fc25727354be" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1508615070457-7baeba4003ab?ixlib=rb-4.1.0&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" style="object-position:center 69.22%"/><h1 class="page-title">Adaptation Few-Shot de Modèles Vision-Langage</h1><p class="page-description"></p></header><div class="page-body"><p id="22bbdf16-c65b-80a0-afa8-fd2730b9acf1" class=""><em>Projet réalisé en binôme - 2025</em></p><p id="22bbdf16-c65b-803c-8bd6-c7dab956758f" class="">
+</p><p id="22bbdf16-c65b-8093-8618-d05ce0f79a8e" class="">Voici un lien github vers l’ensemble du code rédigé au cours de ce projet :</p><figure id="22bbdf16-c65b-8081-9a2f-edd4fe50d207"><a href="https://github.com/AstyanM/nn_few_shot.git" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">AstyanM/nn_few_shot</div><div class="bookmark-description">Contribute to AstyanM/nn_few_shot development by creating an account on GitHub.</div></div><div class="bookmark-href"><img src="https://github.com/fluidicon.png" class="icon bookmark-icon"/>https://github.com/AstyanM/nn_few_shot.git</div></div><img src="https://opengraph.githubassets.com/52b93439fc7e6064514df80734842fc1352017324a87bdaed4758d899dfde8bd/AstyanM/nn_few_shot" class="bookmark-image"/></a></figure><p id="22bbdf16-c65b-8040-a71d-da8f4e214ecf" class="">
+</p><blockquote id="22bbdf16-c65b-8099-9d9a-fcdda12212f0" class="">Ce projet a pour objectif de développer une méthode d&#x27;adaptation few-shot de modèles vision-langage comme CLIP afin d&#x27;améliorer les performances sur des catégories connues avec peu d&#x27;exemples d&#x27;entraînement tout en préservant les capacités de classification zero-shot sur des catégories nouvelles. Nous avons utilisé le dataset Oxford Flowers-102 et comparé plusieurs approches récentes telles que CoOp et CoCoOp, avec implémentation, tests, visualisations et propositions d&#x27;améliorations.</blockquote><p id="22bbdf16-c65b-8009-9c85-f7514321e8aa" class="">
+</p><h3 id="22bbdf16-c65b-804c-a4c4-f60e125f7f43" class="">Sommaire</h3><nav id="22bbdf16-c65b-8095-a64f-df54000dabe4" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#22bbdf16-c65b-804c-a4c4-f60e125f7f43">Sommaire</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#22bbdf16-c65b-807d-8fa6-e88eb02ac5ba">1. Préparation du Dataset</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#22bbdf16-c65b-80a7-9be2-f54fa5fcf0e6">2. Évaluation Zero-Shot avec CLIP</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#22bbdf16-c65b-8085-ada5-f5a407004fc2">3. Méthode CoOp : Context Optimization</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#22bbdf16-c65b-8090-9162-daec0c0416c3">4. Amélioration de CoOp : Bruit Gaussien</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#22bbdf16-c65b-800c-be53-ea022081bbac">5. Méthode CoCoOp : Context Conditionnel</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#22bbdf16-c65b-8045-ae7f-c0596a33f5c8">6. Améliorations de CoCoOp</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#22bbdf16-c65b-80ef-baa6-c0627217af9d">7. Amélioration de Meta-Net</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#22bbdf16-c65b-80ec-80bf-c506d1e9f9b0">Conclusion</a></div></nav><h3 id="22bbdf16-c65b-807d-8fa6-e88eb02ac5ba" class="">1. Préparation du Dataset</h3><p id="22bbdf16-c65b-80bd-a6eb-c48d3cf0636a" class="">Nous avons utilisé le dataset <strong>Oxford Flowers-102</strong>, composé de 102 catégories de fleurs.</p><ul id="22bbdf16-c65b-80c4-9361-f49a631260c5" class="bulleted-list"><li style="list-style-type:disc"><strong>Base classes :</strong> 51 premières classes (avec 10 images par classe pour l&#x27;entraînement few-shot)</li></ul><ul id="22bbdf16-c65b-8079-bf3e-daf37f97b9f6" class="bulleted-list"><li style="list-style-type:disc"><strong>Novel classes :</strong> 51 dernières classes (jamais vues en entraînement)</li></ul><p id="22bbdf16-c65b-8036-b04b-d106a04aabaf" class="">Nous avons appliqué une séparation stricte entre classes vues et non vues, assurant une bonne généralisation et une évaluation équitable.</p><figure id="22bbdf16-c65b-8064-9d25-d54e53efeb1c" class="image"><a href="Adaptation%20Few-Shot%20de%20Mod%C3%A8les%20Vision-Langage/image.png"><img style="width:480px" src="Adaptation%20Few-Shot%20de%20Mod%C3%A8les%20Vision-Langage/image.png"/></a><figcaption>Figure 1 - Exemples d’images issues du dataset</figcaption></figure><h3 id="22bbdf16-c65b-80a7-9be2-f54fa5fcf0e6" class="">2. Évaluation Zero-Shot avec CLIP</h3><p id="22bbdf16-c65b-800d-959b-e2f88b65668f" class="">Avant toute adaptation, nous avons évalué les performances de <strong>CLIP</strong> en zero-shot en utilisant le prompt suivant :</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="22bbdf16-c65b-80eb-add3-d5883a9c0488" class="code code-wrap"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">prompts = [f&quot;a photo of a {class_name}, a type of flower.&quot; for class_name in class_names]</code></pre><p id="22bbdf16-c65b-805a-9afa-dc685b46b36b" class="">Cette évaluation établit une ligne de base pour mesurer l’impact des méthodes d’adaptation sur les classes vues et non vues.</p><table id="22bbdf16-c65b-807d-b7d2-c21046f4c18d" class="simple-table"><thead class="simple-table-header"><tr id="22bbdf16-c65b-80c0-a573-c59fcc472210"><th id="WfYW" class="simple-table-header-color simple-table-header">Ensemble</th><th id="Dk;A" class="simple-table-header-color simple-table-header">Précision (%)</th></tr></thead><tbody><tr id="22bbdf16-c65b-8031-9b8b-dbc345db45b8"><td id="WfYW" class="">Base</td><td id="Dk;A" class="">71.33</td></tr><tr id="22bbdf16-c65b-8090-82dd-dbd2228b9166"><td id="WfYW" class="">Novel</td><td id="Dk;A" class="">78.26</td></tr></tbody></table><h3 id="22bbdf16-c65b-8085-ada5-f5a407004fc2" class="">3. Méthode CoOp : Context Optimization</h3><figure id="22bbdf16-c65b-8083-8399-ef967b3eabfc" class="image"><a href="Adaptation%20Few-Shot%20de%20Mod%C3%A8les%20Vision-Langage/image%201.png"><img style="width:624px" src="Adaptation%20Few-Shot%20de%20Mod%C3%A8les%20Vision-Langage/image%201.png"/></a><figcaption>Figure 2 - CoOp Overview</figcaption></figure><p id="22bbdf16-c65b-8088-a3d0-ff5ca7651d94" class="">L’approche <strong>CoOp</strong> remplace les prompts textuels statiques par des vecteurs de contexte apprenables, entraînés uniquement à partir des images d’entraînement few-shot. Le backbone CLIP reste gelé, ce qui réduit fortement le nombre de paramètres entraînés. En effet, nous avons pu constater que le fine-tuning mène majoritairement à de l’overfitting.</p><ul id="22bbdf16-c65b-80a8-8df0-e231f7f7895e" class="bulleted-list"><li style="list-style-type:disc"><strong>Vecteurs de contexte :</strong> 16 tokens apprenables</li></ul><ul id="22bbdf16-c65b-80d4-a6f2-edb802d8ede4" class="bulleted-list"><li style="list-style-type:disc"><strong>Structure du prompt :</strong> <code>[CTX_1] [CTX_2] ... [CTX_16] [CLASS]</code></li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="22bbdf16-c65b-8005-a13f-c40525be2d86" class="code code-wrap"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">class PromptLearner(nn.Module):
+    def __init__(...):
+        self.ctx = nn.Parameter(torch.empty(n_ctx, ctx_dim))
+        nn.init.normal_(self.ctx, std=0.02)</code></pre><p id="22bbdf16-c65b-80f8-aa07-f457762eac4d" class="">Les résultats montrent une nette amélioration sur les classes de base mais une dégradation sur les classes novel due à l’overfitting :</p><figure id="22bbdf16-c65b-809f-b5be-d639beef52da" class="image"><a href="Adaptation%20Few-Shot%20de%20Mod%C3%A8les%20Vision-Langage/image%202.png"><img style="width:432px" src="Adaptation%20Few-Shot%20de%20Mod%C3%A8les%20Vision-Langage/image%202.png"/></a><figcaption>Figure 3 - Résultats CoOp</figcaption></figure><h3 id="22bbdf16-c65b-8090-9162-daec0c0416c3" class="">4. Amélioration de CoOp : Bruit Gaussien</h3><div id="22bbdf16-c65b-803d-812b-c826f6233d4f" class="column-list"><div id="22bbdf16-c65b-801b-9fca-cafb3e1078c9" style="width:50%" class="column"><p id="22bbdf16-c65b-805e-875f-ed741b8c00d1" class="">Pour pallier la sur-spécialisation, nous avons introduit du <strong>bruit gaussien</strong> contrôlé pendant l’apprentissage des vecteurs de contexte. Cette régularisation permet d’améliorer la robustesse et la généralisation :</p><figure id="22bbdf16-c65b-8081-b538-f6f0899ee87b" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mover accent="true"><mi>c</mi><mo>~</mo></mover><mo>=</mo><mi>c</mi><mo>+</mo><mi>ϵ</mi><mo separator="true">,</mo><mspace width="1em"/><mi>ϵ</mi><mo>∼</mo><mi mathvariant="script">N</mi><mo stretchy="false">(</mo><mn>0</mn><mo separator="true">,</mo><msup><mi>σ</mi><mn>2</mn></msup><mo stretchy="false">)</mo><mo separator="true">,</mo><mspace width="1em"/><mi>σ</mi><mo>=</mo><mtext>noise_scale</mtext><mo>×</mo><mi>max</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi mathvariant="normal">∣</mi><mi>c</mi><mi mathvariant="normal">∣</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\tilde{c} = c + \epsilon, \quad \epsilon \sim \mathcal{N}(0, \sigma^2), \quad \sigma = \text{noise\_scale} \times \max(|c|)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6679em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6679em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">c</span></span><span style="top:-3.35em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">~</span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">ϵ</span><span class="mpunct">,</span><span class="mspace" style="margin-right:1em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">ϵ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1141em;vertical-align:-0.25em;"></span><span class="mord mathcal" style="margin-right:0.14736em;">N</span><span class="mopen">(</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:1em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0044em;vertical-align:-0.31em;"></span><span class="mord text"><span class="mord">noise_scale</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">max</span><span class="mopen">(</span><span class="mord">∣</span><span class="mord mathnormal">c</span><span class="mord">∣</span><span class="mclose">)</span></span></span></span></span></div></figure></div><div id="22bbdf16-c65b-80d5-b71f-e17405af20c3" style="width:49.99999999999999%" class="column"><figure id="22bbdf16-c65b-80ad-9fb8-ff9910fe8ebc" class="image"><a href="Adaptation%20Few-Shot%20de%20Mod%C3%A8les%20Vision-Langage/image%203.png"><img style="width:480px" src="Adaptation%20Few-Shot%20de%20Mod%C3%A8les%20Vision-Langage/image%203.png"/></a><figcaption>Figure 4 - Résultats CoOp avec bruit gaussien</figcaption></figure></div></div><table id="22bbdf16-c65b-807c-a7f3-d4aeadb7f4a5" class="simple-table"><thead class="simple-table-header"><tr id="22bbdf16-c65b-80f3-a966-edb5d36bbe35"><th id="mxjf" class="simple-table-header-color simple-table-header">Modèle</th><th id="vPGG" class="simple-table-header-color simple-table-header">Base (%)</th><th id="Js\_" class="simple-table-header-color simple-table-header">Novel (%)</th><th id="TNL[" class="simple-table-header-color simple-table-header">Moyenne harmonique</th></tr></thead><tbody><tr id="22bbdf16-c65b-80f9-accb-f6e88f41d547"><td id="mxjf" class="">CoOp brut</td><td id="vPGG" class="">92.16</td><td id="Js\_" class="">70.20</td><td id="TNL[" class=""><strong>79.69</strong></td></tr><tr id="22bbdf16-c65b-805c-b671-f15cd4d3353b"><td id="mxjf" class="">CoOp + bruit</td><td id="vPGG" class="">76.67</td><td id="Js\_" class="">78.63</td><td id="TNL[" class=""><strong>77.63</strong></td></tr></tbody></table><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="22bbdf16-c65b-8050-ad70-fbe02640eb1f" class="code code-wrap"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">if self.training and self.noise_scale:
+    noise = torch.randn_like(ctx) * (self.noise_scale * max_val)
+    ctx = ctx + noise</code></pre><h3 id="22bbdf16-c65b-800c-be53-ea022081bbac" class="">5. Méthode CoCoOp : Context Conditionnel</h3><figure id="22bbdf16-c65b-80f6-93aa-c9d1b7fc2a29" class="image"><a href="Adaptation%20Few-Shot%20de%20Mod%C3%A8les%20Vision-Langage/image%204.png"><img style="width:672px" src="Adaptation%20Few-Shot%20de%20Mod%C3%A8les%20Vision-Langage/image%204.png"/></a><figcaption>Figure 5 - CoCoOp Overview</figcaption></figure><p id="22bbdf16-c65b-805e-b0ff-cb338e72b24c" class="">Nous avons ensuite implémenté <strong>CoCoOp</strong>, qui améliore CoOp en rendant les vecteurs de contexte dépendants de l’image via un <strong>Meta-Net</strong>, un réseau léger conditionnant les prompts sur les caractéristiques visuelles.</p><ul id="22bbdf16-c65b-8071-97da-e1f069368fcd" class="bulleted-list"><li style="list-style-type:disc"><strong>Base contextuel :</strong> Vecteurs fixes comme dans CoOp</li></ul><ul id="22bbdf16-c65b-80c8-90ea-d68ff223d6ed" class="bulleted-list"><li style="list-style-type:disc"><strong>Meta-Net :</strong> Réseau qui génère un biais conditionnel sur chaque image avec une couche cachée qui réduit la taille d’input d’un facteur 16 :</li></ul><figure id="22bbdf16-c65b-8000-9d68-c393b5bbd43b" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>P</mi><mi>m</mi></msub><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false">)</mo><mo>=</mo><msub><mi>P</mi><mi>m</mi></msub><mo>+</mo><msub><mi>h</mi><mi>ϕ</mi></msub><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P_m(x_i) = P_m + h_\phi(x_i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">ϕ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></div></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="22bbdf16-c65b-809e-9d0e-c766008e6c11" class="code code-wrap"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">ctx_shifted = ctx + self.meta_net(image_features)</code></pre><div id="22bbdf16-c65b-80b5-86b3-de24c7ffb8d5" class="column-list"><div id="22bbdf16-c65b-80f5-b755-f59ec77af409" style="width:43.75%" class="column"><p id="22bbdf16-c65b-806d-b784-d2a1d4b0ed3b" class="">Cette méthode permet d’obtenir une meilleure généralisation aux classes novel tout en conservant des performances élevées sur les classes base :</p></div><div id="22bbdf16-c65b-8086-8e7c-c03de97e483b" style="width:56.25%" class="column"><figure id="22bbdf16-c65b-8045-bf66-d43ed78c5607" class="image"><a href="Adaptation%20Few-Shot%20de%20Mod%C3%A8les%20Vision-Langage/image%205.png"><img style="width:528px" src="Adaptation%20Few-Shot%20de%20Mod%C3%A8les%20Vision-Langage/image%205.png"/></a><figcaption>Figure 6 - Résultats CoCoOp</figcaption></figure></div></div><h3 id="22bbdf16-c65b-8045-ae7f-c0596a33f5c8" class="">6. Améliorations de CoCoOp</h3><p id="22bbdf16-c65b-8048-95c9-cea273e7f891" class="">Nous avons renforcé la capacité de généralisation de CoCoOp en modifiant l’architecture du Meta-Net et en gardant l’idée d’ajouter un bruit gaussien durant l’entraînement :</p><ul id="22bbdf16-c65b-80ec-8378-d177b83ed57e" class="bulleted-list"><li style="list-style-type:disc">Ajout de <strong>BatchNorm</strong> et <strong>Dropout</strong></li></ul><ul id="22bbdf16-c65b-8081-9536-e1cb0dc9d5f8" class="bulleted-list"><li style="list-style-type:disc">Remplacement de certaines activations</li></ul><ul id="22bbdf16-c65b-806c-9e94-c614ea1e2a75" class="bulleted-list"><li style="list-style-type:disc">Test de différentes tailles de couches</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="22bbdf16-c65b-8024-94af-fdc90b8115b6" class="code code-wrap"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">self.meta_net = nn.Sequential(
+    nn.Linear(input_dim, hidden),
+    nn.BatchNorm1d(hidden),
+    nn.ReLU(),
+    nn.Dropout(0.3),
+    nn.Linear(hidden, ctx_dim)
+)</code></pre><p id="22bbdf16-c65b-80a7-9dc1-d7a55aebe354" class="">Ces ajustements ont permis de gagner en robustesse sans trop augmenter le coût d’entraînement :</p><figure id="22bbdf16-c65b-8023-8f30-c7b5ff5c9214" class="image"><a href="Adaptation%20Few-Shot%20de%20Mod%C3%A8les%20Vision-Langage/image%206.png"><img style="width:432px" src="Adaptation%20Few-Shot%20de%20Mod%C3%A8les%20Vision-Langage/image%206.png"/></a></figure><h3 id="22bbdf16-c65b-80ef-baa6-c0627217af9d" class="">7. Amélioration de Meta-Net</h3><p id="22bbdf16-c65b-8042-b4ce-c0710f2876db" class="">Après avoir entraîné le modèle avec la méthode CoCoOp, nous avons exploré l’idée d’améliorer les images via un prétraitement afin d’aider le réseau à générer des tokens conditionnels plus discriminants. L’hypothèse de départ est qu’une amélioration des caractéristiques visuelles (comme une saturation plus marquée) pourrait renforcer le regroupement intra-classe (fleurs similaires proches) et la séparation inter-classe (fleurs différentes éloignées), améliorant ainsi les performances globales.</p><p id="22bbdf16-c65b-808a-8ed5-cc27d29bed9d" class="">Pour cela, nous avons appliqué une <strong>amplification adaptative de contraste</strong>, motivée par des critères biologiques : les fleurs se distinguent souvent par leurs motifs et couleurs. Nous avons ensuite extrait les tokens conditionnels générés par le Meta-Net sur les versions brutes et modifiées des images, et comparé plusieurs métriques de clustering : </p><ul id="22bbdf16-c65b-8052-bb3b-f603d406ee4b" class="bulleted-list"><li style="list-style-type:disc"><strong>Intra-class compactness</strong></li></ul><ul id="22bbdf16-c65b-8045-ae74-e8b9637ad301" class="bulleted-list"><li style="list-style-type:disc"><strong>Inter-class separation</strong></li></ul><ul id="22bbdf16-c65b-80ac-b595-ce7754baaab3" class="bulleted-list"><li style="list-style-type:disc"><strong>Discriminability ratio</strong></li></ul><ul id="22bbdf16-c65b-8095-8668-f3d8fc92d7b5" class="bulleted-list"><li style="list-style-type:disc"><strong>Adjusted Rand Index (ARI)</strong></li></ul><ul id="22bbdf16-c65b-80be-9d30-cf68585b68bd" class="bulleted-list"><li style="list-style-type:disc"><strong>Silhouette score</strong></li></ul><ul id="22bbdf16-c65b-802d-a386-d6757c7310ab" class="bulleted-list"><li style="list-style-type:disc"><strong>Cluster purity</strong></li></ul><p id="22bbdf16-c65b-8038-a57c-e81b8f5bec7a" class="">Nous avons également utilisé la méthode UMAP pour visualiser la distribution des tokens.</p><div id="22bbdf16-c65b-8048-aafe-d7ebfdccd49b" class="column-list"><div id="22bbdf16-c65b-8053-af78-cab4cb9027ef" style="width:50%" class="column"><figure id="22bbdf16-c65b-80bf-8727-dc3704292989" class="image"><a href="Adaptation%20Few-Shot%20de%20Mod%C3%A8les%20Vision-Langage/tokens_train_umap_no_enhancement.png"><img style="width:2990px" src="Adaptation%20Few-Shot%20de%20Mod%C3%A8les%20Vision-Langage/tokens_train_umap_no_enhancement.png"/></a><figcaption>Figure 8 - Distribution des tokens sans amélioration</figcaption></figure></div><div id="22bbdf16-c65b-806a-9138-f2ed76a42f92" style="width:50%" class="column"><figure id="22bbdf16-c65b-8083-8035-fede215ddca4" class="image"><a href="Adaptation%20Few-Shot%20de%20Mod%C3%A8les%20Vision-Langage/tokens_train_umap_enhancement.png"><img style="width:2990px" src="Adaptation%20Few-Shot%20de%20Mod%C3%A8les%20Vision-Langage/tokens_train_umap_enhancement.png"/></a><figcaption>Figure 8 - Distribution des tokens avec amélioration</figcaption></figure></div></div><table id="22bbdf16-c65b-800a-a14e-dad11929055c" class="simple-table"><thead class="simple-table-header"><tr id="22bbdf16-c65b-80f3-b9a2-ed0eb33f5caf"><th id="=@PF" class="simple-table-header-color simple-table-header"><strong>Métrique</strong></th><th id="JFma" class="simple-table-header-color simple-table-header"><strong>Sans amélioration</strong></th><th id="[;BD" class="simple-table-header-color simple-table-header"><strong>Avec amélioration</strong></th><th id=";|&lt;g" class="simple-table-header-color simple-table-header"><strong>Interprétation</strong></th></tr></thead><tbody><tr id="22bbdf16-c65b-8000-8880-c745efb8d822"><td id="=@PF" class="">Intra-class compactness</td><td id="JFma" class="">0.143</td><td id="[;BD" class="">0.192</td><td id=";|&lt;g" class="">Les classes sont plus dispersées après amélioration</td></tr><tr id="22bbdf16-c65b-80b2-a671-e85871a07c1a"><td id="=@PF" class="">Inter-class separation</td><td id="JFma" class="">0.891</td><td id="[;BD" class="">0.765</td><td id=";|&lt;g" class="">Moins de séparation entre les classes</td></tr><tr id="22bbdf16-c65b-8015-a05a-d7c2be1218b4"><td id="=@PF" class="">Discriminability ratio</td><td id="JFma" class="">6.23</td><td id="[;BD" class="">3.98</td><td id=";|&lt;g" class="">Diminution de la qualité discriminative globale</td></tr><tr id="22bbdf16-c65b-80f0-97a8-c9da2fd08524"><td id="=@PF" class="">Adjusted Rand Index (ARI)</td><td id="JFma" class="">0.412</td><td id="[;BD" class="">0.291</td><td id=";|&lt;g" class="">Moindre correspondance entre clusters et vraies étiquettes</td></tr><tr id="22bbdf16-c65b-8010-8a62-c44895b7cb42"><td id="=@PF" class="">Silhouette Score</td><td id="JFma" class="">0.218</td><td id="[;BD" class="">0.137</td><td id=";|&lt;g" class="">Les clusters sont moins cohérents</td></tr><tr id="22bbdf16-c65b-8008-8126-f5c71b547043"><td id="=@PF" class="">Cluster Purity</td><td id="JFma" class="">0.641</td><td id="[;BD" class="">0.510</td><td id=";|&lt;g" class="">Plus d’erreurs de regroupement entre classes</td></tr></tbody></table><p id="22bbdf16-c65b-80b7-93b2-d3e70330d223" class="">Contrairement à nos attentes, les résultats ont montré une <strong>baisse généralisée des performances</strong> après amélioration des images. Les classes devenaient moins compactes, les frontières inter-classes plus floues, et les clusters moins distincts. Cela s’explique probablement par trois facteurs : </p><ol type="1" id="22bbdf16-c65b-80e9-b45d-e11a78c45b91" class="numbered-list" start="1"><li><strong>CLIP est déjà robuste aux variations visuelles</strong> et peut être perturbé par des artefacts introduits artificiellement</li></ol><ol type="1" id="22bbdf16-c65b-80d7-9e3b-da679ee22411" class="numbered-list" start="2"><li>Le <strong>décalage de domaine</strong> créé par l’amélioration rompt avec les données naturelles sur lesquelles le modèle a été entraîné</li></ol><ol type="1" id="22bbdf16-c65b-80bc-b31c-ff289b7e5e6b" class="numbered-list" start="3"><li><strong>Meta-Net a été optimisé pour des images non modifiées</strong>, et ne généralise pas bien lorsque les entrées changent au test</li></ol><p id="22bbdf16-c65b-80e5-849e-d9551a32475a" class="">Ainsi, cette expérience souligne que les modèles préentraînés comme CLIP sont conçus pour fonctionner sans ajustement lourd du signal visuel, et que les améliorations naïves en post-traitement peuvent au contraire nuire aux performances. Les techniques d’adaptation doivent être intégrées en amont, lors de la phase d&#x27;entraînement initial du modèle, ou faire appel à des stratégies de transfert plus complexes.</p><hr id="22bbdf16-c65b-8038-aa5b-d229fddf5747"/><h3 id="22bbdf16-c65b-80ec-80bf-c506d1e9f9b0" class="">Conclusion</h3><p id="22bbdf16-c65b-8052-baa4-dde0e224c4ea" class="">Ce projet nous a permis d’explorer en profondeur les défis liés à l’adaptation few-shot des modèles vision-langage. De l’évaluation zero-shot aux améliorations de <strong>CoOp</strong> et <strong>CoCoOp</strong>, nous avons implémenté des solutions avancées comprenant vision, texte, apprentissage profond et visualisation. Les résultats démontrent qu’il est possible de concilier précision sur les classes vues et généralisation sur les classes nouvelles, avec peu de données.</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span><script src="./prism/prism.js"></script></body></html>

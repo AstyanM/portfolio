@@ -1,0 +1,735 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link href="./prism/prism.css" rel="stylesheet" /><title>Rédaction de projets motivés</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2a1bdf16-c65b-8093-ae6b-c56958d051e1" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1617957718645-7680362d6312?ixlib=rb-4.1.0&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" style="object-position:center 100%"/><h1 class="page-title">Rédaction de projets motivés</h1><p class="page-description"></p></header><div class="page-body"><p id="2a1bdf16-c65b-80c4-9d70-e73ee37624af" class=""><em>Projet mené en autonomie pour la plupart - 2025</em></p><p id="2a1bdf16-c65b-8071-99aa-de126e8eb4a6" class="">
+</p><p id="2a1bdf16-c65b-8053-92d7-cb7659683449" class="">Voici le lien vers la version en ligne du projet :</p><figure id="2a1bdf16-c65b-80ca-99f8-cc726644e470"><a href="http://lettre-motivation.prepa-prevision.fr" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Assistant — Projet Motivé</div></div><div class="bookmark-href">http://lettre-motivation.prepa-prevision.fr</div></div></a></figure><p id="2a1bdf16-c65b-80e2-a962-fbff22f03d2e" class="">
+</p><blockquote id="2a1bdf16-c65b-8186-bd36-e1e3c82cfcc0" class="">Le projet a pour objectif d’<strong>aider les étudiants dans la rédaction de leurs projets motivés Parcoursup</strong> en s’appuyant sur un <strong>modèle de langage CamemBERT</strong> fine-tuné pour <strong>identifier et structurer les différentes parties d’une lettre de motivation</strong>. Il intègre également un <strong>serveur de correction orthographique basé sur LanguageTool</strong>, chargé de <strong>détecter les fautes et de proposer des corrections</strong>. L’outil fonctionne sans chatbot : il <strong>fournit aux étudiants des pistes d’amélioration agrégées</strong>, accompagnées de <strong>métriques explicites et accessibles</strong>, afin de les <strong>guider de manière claire et autonome</strong> dans la rédaction de leur projet motivé.</blockquote><p id="2a1bdf16-c65b-80c9-9eba-ddfbd3954a6a" class="">
+</p><h3 id="2a1bdf16-c65b-80f7-b52e-c79678751dbc" class="">Sommaire</h3><nav id="2a1bdf16-c65b-814a-8fd8-ef5263073b90" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2a1bdf16-c65b-80f7-b52e-c79678751dbc">Sommaire</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2a1bdf16-c65b-8115-9faa-d7584871e241">1. Collecte des données</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2a1bdf16-c65b-8101-a3c5-ea652c0b5fd5">2. Traitement des données</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2a1bdf16-c65b-81e3-ba66-f815291047da">3. Classification de phrases</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2a1bdf16-c65b-81e9-ad20-fc877af5eb76">4. Autres métriques</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2a1bdf16-c65b-814f-8270-d0e1d984b4a0">a) Lisibilité (Score Flesch)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2a1bdf16-c65b-81fe-8186-d521b7372a3c">b) Richesse lexicale (TTR lissée)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2a1bdf16-c65b-81da-8795-cee4b00da446">c) Connecteurs logiques</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2a1bdf16-c65b-8198-be7a-cb67e96e2df9">d) Redondance lexicale</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2a1bdf16-c65b-8194-a67d-cd2e1dc99ea6">e) Statistiques de référence (benchmarks)</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2a1bdf16-c65b-8187-a224-c10b9ee5d866">5. Architecture</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2a1bdf16-c65b-81c5-bc8d-f8372ea650eb">a) Backend</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2a1bdf16-c65b-8129-9b5b-d7e4b05f9915">b) Points d’attention</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2a1bdf16-c65b-81aa-87cd-c6bbbe68baad">c) Frontend</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2a1bdf16-c65b-8150-806b-f6c31f525883">d) Mise en ligne</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2a1bdf16-c65b-8035-970b-ceb2f1febeee">Conclusion</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2a1bdf16-c65b-8124-94b7-eb0d60d2c57e">Annexes</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2a1bdf16-c65b-8161-aaa6-d16d9bd42813">a) Structure</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2a1bdf16-c65b-810c-809f-f7ec9d8f1922">b) Sources </a></div></nav><h2 id="2a1bdf16-c65b-8115-9faa-d7584871e241" class="">1. Collecte des données</h2><p id="2a1bdf16-c65b-8182-a80c-e5efe9699b03" class="">La qualité de la classification repose sur la pertinence des données, plusieurs sources ont donc été mobilisées :</p><ul id="2a1bdf16-c65b-8190-99b5-da12a22affcb" class="bulleted-list"><li style="list-style-type:disc"><strong>Lettres publiques</strong> : des exemples de projets motivés publiés sur des blogs, forums et sites associatifs ont été collectés après accord.</li></ul><ul id="2a1bdf16-c65b-8158-ad76-c2768c6a051a" class="bulleted-list"><li style="list-style-type:disc"><strong>Corpus existants</strong> : des jeux de données open‑source ont été vérifiés pour s’assurer qu’ils correspondaient au format Parcoursup.</li></ul><p id="2a1bdf16-c65b-814e-9146-f19091c59621" class="">Au total, <strong>320 lettres</strong> ont été conservées. Chaque document a été enregistré sous forme de texte brut puis stocké dans un tableau avec un identifiant unique.</p><h2 id="2a1bdf16-c65b-8101-a3c5-ea652c0b5fd5" class="">2. Traitement des données</h2><p id="2a1bdf16-c65b-8103-9e20-f4c9ca095e41" class="">Le nettoyage et la préparation du corpus comportent plusieurs étapes :</p><div id="2a1bdf16-c65b-810f-9aa7-c0d4855f0dea" class="column-list"><div id="2a1bdf16-c65b-814f-968f-cdddb24ee088" style="width:56.25%" class="column"><ol type="1" id="2a1bdf16-c65b-81d5-b340-f0e64c778388" class="numbered-list" start="1"><li><strong>Normalisation</strong> : suppression des accents ou homogénéisation (par exemple, « Étudiant » → « étudiant »), élimination des caractères spéciaux et espaces multiples.</li></ol><ol type="1" id="2a1bdf16-c65b-819e-91e5-e2d6a6b1a2f7" class="numbered-list" start="2"><li><strong>Annotation manuelle</strong> : chaque phrase est assignée à l’une des sections (Introduction, Projet futur, Activités extra‑scolaires &amp; Conclusion).</li></ol><ol type="1" id="2a1bdf16-c65b-81f7-b5f5-da3867880812" class="numbered-list" start="3"><li><strong>Création du dataset</strong> : un fichier CSV est généré avec deux colonnes (<code>text</code>, <code>label</code>). Le label est un entier de 0 à 3 correspondant à la section.</li></ol><ol type="1" id="2a1bdf16-c65b-8128-900b-f89cef17d1ae" class="numbered-list" start="4"><li><strong>Division en ensembles</strong> : les données sont divisées en jeux d’entraînement (80 %) et de validation (20 %). Un échantillon est conservé pour tester le modèle final.</li></ol></div><div id="2a1bdf16-c65b-815b-84cf-e864fe641278" style="width:43.75000000000001%" class="column"><figure id="2a1bdf16-c65b-8164-8bf8-f975c5de9946" class="image"><a href="R%C3%A9daction%20de%20projets%20motiv%C3%A9s/image.png"><img style="width:288px" src="R%C3%A9daction%20de%20projets%20motiv%C3%A9s/image.png"/></a><figcaption>Figure 1 : Distribution du nombre de phrases par classes</figcaption></figure></div></div><p id="2a1bdf16-c65b-81d5-9c53-c8720d65ed21" class="">Cette préparation garantit un corpus équilibré et représentatif des structures attendues dans un projet motivé Parcoursup, si l’on part du principe que l’échantillon est représentatif de lettres qualitatives.</p><h2 id="2a1bdf16-c65b-81e3-ba66-f815291047da" class="">3. Classification de phrases</h2><p id="2a1bdf16-c65b-8104-95e2-d44a492d78c9" class="">Le cœur du système est un modèle <strong>CamemBERT</strong> (version de BERT adaptée au français) entraîné pour classer les phrases en quatre catégories. Les principales étapes de modélisation sont :</p><ol type="1" id="2a1bdf16-c65b-81b8-a23b-df9923e27565" class="numbered-list" start="1"><li><strong>Fine‑tuning</strong> : à partir du modèle pré‑entraîné <code>camembert-base</code>, l’architecture est ajustée avec une couche de sortie de taille 4. Le jeu d’entraînement est utilisé sur plusieurs epochs avec un optimiseur AdamW.</li></ol><ol type="1" id="2a1bdf16-c65b-8126-baa9-d57ab0377174" class="numbered-list" start="2"><li><strong>Évaluation</strong> : la performance est mesurée sur le jeu de validation via l’accuracy, le F1-score et la matrice de confusion. Le modèle final atteint une accuracy d’environ 93 %, montrant donc que la différence entre les sections est bien capturée.</li></ol><figure id="2a1bdf16-c65b-81fe-b667-f21b1342f982" class="image"><a href="R%C3%A9daction%20de%20projets%20motiv%C3%A9s/image%201.png"><img style="width:576px" src="R%C3%A9daction%20de%20projets%20motiv%C3%A9s/image%201.png"/></a><figcaption>Figure 2 : Courbes d’entraînement Loss/Accuracy du jeu de données</figcaption></figure><ol type="1" id="2a1bdf16-c65b-8109-b24f-c5fe379cdf19" class="numbered-list" start="3"><li><strong>Persistance du modèle</strong> : le modèle et le tokenizer sont sauvegardés (fichiers <code>.pt</code> et vocabulaire). Le chemin est spécifié via <code>MODEL_DIR</code>/<code>MODEL_PATH</code>.</li></ol><p id="2a1bdf16-c65b-8193-bd65-efb24632f1d5" class="">En production, le modèle est chargé une seule fois et mis en cache afin de minimiser la latence des requêtes.</p><h2 id="2a1bdf16-c65b-81e9-ad20-fc877af5eb76" class="">4. Autres métriques</h2><h3 id="2a1bdf16-c65b-814f-8270-d0e1d984b4a0" class="">a) Lisibilité (Score Flesch)</h3><p id="2a1bdf16-c65b-818d-8c7d-f7fa5ead4a4c" class="">On calcule le nombre de phrases <code>n_sentences</code>, de mots <code>n_words</code> et de syllabes <code>n_syll</code> (après normalisation et segmentation) puis le score de lisibilité :</p><figure id="2a1bdf16-c65b-81b1-aa06-dc718eea4621" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>F</mi><mi>l</mi><mi>e</mi><mi>s</mi><mi>c</mi><msub><mi>h</mi><mrow><mi>f</mi><mi>r</mi></mrow></msub><mo>=</mo><mn>206.835</mn><mo>−</mo><mn>1.015</mn><mo>×</mo><mfrac><msub><mi>n</mi><mrow><mi>w</mi><mi>o</mi><mi>r</mi><mi>d</mi><mi>s</mi></mrow></msub><msub><mi>n</mi><mrow><mi>s</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi>e</mi><mi>n</mi><mi>c</mi><mi>e</mi><mi>s</mi></mrow></msub></mfrac><mo>−</mo><mn>84.6</mn><mo>×</mo><mfrac><msub><mi>n</mi><mrow><mi>s</mi><mi>y</mi><mi>l</mi><mi>l</mi></mrow></msub><msub><mi>n</mi><mrow><mi>w</mi><mi>o</mi><mi>r</mi><mi>d</mi><mi>s</mi></mrow></msub></mfrac></mrow><annotation encoding="application/x-tex">Flesch_{fr} = 206.835−1.015 \times \frac{n_{words}}{n_{sentences}}−84.6 \times \frac{n_{syll}}{n_{words}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9805em;vertical-align:-0.2861em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">Fl</span><span class="mord mathnormal">esc</span><span class="mord"><span class="mord mathnormal">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">206.835</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1.015</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.9436em;vertical-align:-0.836em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1076em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">se</span><span class="mord mathnormal mtight">n</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">n</span><span class="mord mathnormal mtight">ces</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">or</span><span class="mord mathnormal mtight">d</span><span class="mord mathnormal mtight">s</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">84.6</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.9436em;vertical-align:-0.836em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1076em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">or</span><span class="mord mathnormal mtight">d</span><span class="mord mathnormal mtight">s</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">sy</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">ll</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></div></figure><h3 id="2a1bdf16-c65b-81fe-8186-d521b7372a3c" class="">b) Richesse lexicale (TTR lissée)</h3><p id="2a1bdf16-c65b-8122-9b27-ccb504ee4735" class="">On calcule le <strong>Type-Token Ratio</strong> avec un lissage pour éviter de sur-évaluer les textes très courts :</p><ul id="2a1bdf16-c65b-8163-a265-c5a32b519f44" class="bulleted-list"><li style="list-style-type:disc">facteur de lissage : <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>=</mo><mi>log</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>min</mi><mo>⁡</mo><mo stretchy="false">(</mo><mn>1</mn><mo separator="true">,</mo><mfrac><mrow><mi>l</mi><mi>e</mi><mi>n</mi><mi mathvariant="normal">_</mi><mi>t</mi><mi>e</mi><mi>x</mi><mi>t</mi></mrow><mn>1400</mn></mfrac><mo stretchy="false">)</mo><mo>×</mo><mo stretchy="false">(</mo><mi>e</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\alpha = \log(\min(1, \frac{len\_text}{1400}) \times (e-1) + 1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.3581em;vertical-align:-0.345em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mopen">(</span><span class="mop">min</span><span class="mopen">(</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0131em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1400</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.527em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">n</span><span class="mord mtight" style="margin-right:0.02778em;">_</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">x</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span></li></ul><ul id="2a1bdf16-c65b-8104-a025-ce16ff8022e7" class="bulleted-list"><li style="list-style-type:disc"><strong>TTR lissée</strong> : <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>TTR</mtext><mo>=</mo><mfrac><mrow><mi>n</mi><mi mathvariant="normal">_</mi><mi>u</mi><mi>n</mi><mi>i</mi><mi>q</mi><mi>u</mi><mi>e</mi></mrow><mrow><mi>n</mi><mi mathvariant="normal">_</mi><mi>w</mi><mi>o</mi><mi>r</mi><mi>d</mi><mi>s</mi></mrow></mfrac><mo>×</mo><mi>α</mi></mrow><annotation encoding="application/x-tex">\text{TTR} = \frac{n\_unique}{n\_words} \times \alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">TTR</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.5507em;vertical-align:-0.562em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9887em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mord mtight" style="margin-right:0.02778em;">_</span><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">or</span><span class="mord mathnormal mtight">d</span><span class="mord mathnormal mtight">s</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.527em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mord mtight" style="margin-right:0.02778em;">_</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">ni</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">q</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">e</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.562em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span></span><span>﻿</span></span></li></ul><h3 id="2a1bdf16-c65b-81da-8795-cee4b00da446" class="">c) Connecteurs logiques</h3><p id="2a1bdf16-c65b-815a-8edf-c4abc345352c" class="">Deux indicateurs sont extraits à partir d’une liste de marqueurs regroupés par type :</p><ul id="2a1bdf16-c65b-81ba-9cfd-d6d9e7336d38" class="bulleted-list"><li style="list-style-type:disc"><strong>Couverture des connecteurs</strong> : nombre de types détectés <code>n_types</code>, liste des types manquants, et détail des marqueurs présents par type (détection via regex avec bornes de mots, insensible à la casse).</li></ul><ul id="2a1bdf16-c65b-8123-9dbd-d30eaacbe3e0" class="bulleted-list"><li style="list-style-type:disc"><strong>Compte total</strong> : somme des occurrences de tous les marqueurs détectés.</li></ul><h3 id="2a1bdf16-c65b-8198-be7a-cb67e96e2df9" class="">d) Redondance lexicale</h3><p id="2a1bdf16-c65b-81f8-9ef1-d80e6e838169" class="">On mesure la répétition :</p><ul id="2a1bdf16-c65b-8103-810a-db4611d7f1f9" class="bulleted-list"><li style="list-style-type:disc"><strong>Top mots</strong> : fréquences sur les mots en minuscules <strong>hors stopwords</strong> ;</li></ul><ul id="2a1bdf16-c65b-8137-b948-eed5a0b65adc" class="bulleted-list"><li style="list-style-type:disc"><strong>Top bigrammes</strong> : bigrammes consécutifs, en excluant ceux dont les deux mots sont des stopwords.</li></ul><p id="2a1bdf16-c65b-8150-80c2-d87b036635f1" class="">Les deux listes sont renvoyées avec leurs fréquences (paramètre <code>top</code> par défaut à 3).</p><h3 id="2a1bdf16-c65b-8194-a67d-cd2e1dc99ea6" class="">e) Statistiques de référence (benchmarks)</h3><p id="2a1bdf16-c65b-812f-b41a-c36eee538391" class="">Des moyennes et écarts-types empiriques servent à situer un texte relativement à un corpus interne :</p><ul id="2a1bdf16-c65b-8161-824e-daaa98dbbcbf" class="bulleted-list"><li style="list-style-type:disc"><code>asl_mean</code>, <code>asl_std</code> (longueur moyenne de phrase) ;</li></ul><ul id="2a1bdf16-c65b-81db-bd7f-c61f1aabc646" class="bulleted-list"><li style="list-style-type:disc"><code>ttr_mean</code>, <code>ttr_std</code> (richesse lexicale) ;</li></ul><ul id="2a1bdf16-c65b-81db-b1c7-fccca78c0812" class="bulleted-list"><li style="list-style-type:disc"><code>flesch_mean</code>, <code>flesch_std</code> (lisibilité).<p id="2a1bdf16-c65b-81bb-8ae9-e13a80ddab9d" class="">Ces valeurs alimentent le calcul de <strong>percentiles</strong> en aval du pipeline (pour un positionnement relatif des textes).</p></li></ul><p id="2a1bdf16-c65b-81f2-898d-ef3cb031128b" class=""><strong>Remarques d’implémentation</strong> : les fonctions s’appuient sur des utilitaires communs (<code>normalize_text</code>, <code>split_sentences</code>, <code>tokenize_words</code>, <code>count_syllables_fr</code>, <code>load_connectors</code>, <code>char_counts</code>) et un dictionnaire de stopwords français.</p><h2 id="2a1bdf16-c65b-8187-a224-c10b9ee5d866" class="">5. Architecture</h2><h3 id="2a1bdf16-c65b-81c5-bc8d-f8372ea650eb" class="">a) Backend</h3><p id="2a1bdf16-c65b-81e8-b850-dba912da8f4f" class="">L’API FastAPI est conçue autour de trois routers :</p><ol type="1" id="2a1bdf16-c65b-81ad-8adc-d8bc380650ab" class="numbered-list" start="1"><li><code><strong>/health</strong></code> : route de supervision qui retourne un objet <code>{&quot;status&quot;: &quot;ok&quot;}</code>. Elle permet aux services d’orchestration de vérifier que<p id="2a1bdf16-c65b-81bf-9669-c5866df47de3" class="">l’instance est opérationnelle.</p></li></ol><ol type="1" id="2a1bdf16-c65b-81d7-876b-c0ce23460323" class="numbered-list" start="2"><li><code><strong>/analyze</strong></code> : route principale prenant un JSON <code>{ &quot;text&quot;: &quot;...&quot; }</code>. Elle appelle successivement :<ul id="2a1bdf16-c65b-814f-94c0-ddfed91a8d60" class="bulleted-list"><li style="list-style-type:disc">la fonction de correction grammaticale (LanguageTool) ;</li></ul><ul id="2a1bdf16-c65b-8119-aca7-c2e89863345d" class="bulleted-list"><li style="list-style-type:disc">les calculs de métriques (score de Flesch, ratio type/token, connecteurs logiques, redondance) ;</li></ul><ul id="2a1bdf16-c65b-8140-a53a-fa303e7778a1" class="bulleted-list"><li style="list-style-type:disc">la fonction de notation qui combine ces métriques et pénalités pour produire une note sur 20 ;</li></ul><ul id="2a1bdf16-c65b-8160-b5e6-dce26a5c59aa" class="bulleted-list"><li style="list-style-type:disc">la classification des sections, si demandée. Le JSON retourné contient le texte corrigé, les positions des erreurs, les scores, les suggestions et la structure estimée.</li></ul></li></ol><ol type="1" id="2a1bdf16-c65b-81a9-8185-c6b6d465ae6e" class="numbered-list" start="3"><li><code><strong>/structure</strong></code> : prend un texte et retourne les phrases et leur étiquette de section ainsi que la liste des sections manquantes. Cette route est plus légère et peut être utilisée séparément pour guider l’utilisateur dans la construction de sa lettre.</li></ol><p id="2a1bdf16-c65b-811c-bca7-f639f72321bb" class="">Les services sont importés depuis <code>backend/services/</code> ; ils utilisent <code>transformers</code> pour charger CamemBERT, <code>language_tool_python</code> pour les corrections et des fonctions maison pour les métriques. La configuration (<code>core/config.py</code>) centralise les paramètres (chemins, CORS, etc.).</p><figure id="2a1bdf16-c65b-81a9-9fbb-f66579083188" class="image"><a href="R%C3%A9daction%20de%20projets%20motiv%C3%A9s/image%202.png"><img style="width:624px" src="R%C3%A9daction%20de%20projets%20motiv%C3%A9s/image%202.png"/></a><figcaption>Figure 3 : Documentation des endpoints de l’API</figcaption></figure><h3 id="2a1bdf16-c65b-8129-9b5b-d7e4b05f9915" class="">b) Points d’attention</h3><p id="2a1bdf16-c65b-817e-a50e-ebaa23a6b243" class="">Quelques éléments nécessitent une vigilance particulière :</p><ul id="2a1bdf16-c65b-8175-892c-d730278146b3" class="bulleted-list"><li style="list-style-type:disc"><strong>Serveur LanguageTool</strong> : il doit être disponible pour que la route <code>/analyze</code> fonctionne. Prévoir un mécanisme de bascule ou un cache si le service est indisponible.</li></ul><ul id="2a1bdf16-c65b-81b6-ae70-cf6768f3d9e8" class="bulleted-list"><li style="list-style-type:disc"><strong>Qualité des données</strong> : le biais dans les annotations peut influencer la classification. Continuer à enrichir le corpus et à valider les étiquetages est recommandé.</li></ul><h3 id="2a1bdf16-c65b-81aa-87cd-c6bbbe68baad" class="">c) Frontend</h3><p id="2a1bdf16-c65b-8179-a9c7-d98d9aa894ad" class="">L’interface web est développée avec <strong>React</strong> et orchestrée via <strong>Vite</strong>.</p><p id="2a1bdf16-c65b-819a-a1ce-d00c5cdbce0a" class="">Elle propose :</p><ul id="2a1bdf16-c65b-81b4-a47b-d3b475eda0b4" class="bulleted-list"><li style="list-style-type:disc">Un champ de saisie permettant de coller ou d’écrire sa lettre.</li></ul><ul id="2a1bdf16-c65b-819c-baf2-e1558dd80737" class="bulleted-list"><li style="list-style-type:disc">Un bouton d’envoi qui appelle <code>/analyze</code> et affiche les résultats.</li></ul><ul id="2a1bdf16-c65b-812e-a408-ce7536f19523" class="bulleted-list"><li style="list-style-type:disc">Des composants graphiques pour visualiser les sections (avec codes couleur), les erreurs grammaticales soulignées et les scores de lisibilité sous forme de barres ou de jauges.</li></ul><p id="2a1bdf16-c65b-8154-a6ec-df9a86bb60aa" class="">L’architecture suit le modèle composant/context de React : des hooks gèrent l’état de la lettre et des résultats, tandis que des composants spécialisés s’occupent de l’affichage. Les appels à l’API sont centralisés dans <code>frontend/api/</code> pour faciliter leur modification.</p><figure id="2a1bdf16-c65b-818b-8e84-e7bbf72cba94" class="image"><a href="R%C3%A9daction%20de%20projets%20motiv%C3%A9s/image%203.png"><img style="width:672px" src="R%C3%A9daction%20de%20projets%20motiv%C3%A9s/image%203.png"/></a><figcaption>Figure 4 : Interface graphique de la page d’évaluation</figcaption></figure><h3 id="2a1bdf16-c65b-8150-806b-f6c31f525883" class="">d) Mise en ligne</h3><div id="2a1bdf16-c65b-8108-934b-e65fdfed57e7" class="column-list"><div id="2a1bdf16-c65b-81bf-a376-ebdb9d4e8e3e" style="width:37.5%" class="column"><p id="2a1bdf16-c65b-81aa-9919-cbf5c0e52029" class="">
+</p><p id="2a1bdf16-c65b-814d-b561-ea4201ddbccd" class="">Hébergement complet du backend et frontend sur <strong>Railway.</strong></p><p id="2a1bdf16-c65b-811a-a235-c514e9d2484b" class="">
+</p></div><div id="2a1bdf16-c65b-8170-8445-d78e4685b127" style="width:62.5%" class="column"><figure id="2a1bdf16-c65b-81f9-a9be-c46691f46b9c" class="image"><a href="R%C3%A9daction%20de%20projets%20motiv%C3%A9s/image%204.png"><img style="width:432px" src="R%C3%A9daction%20de%20projets%20motiv%C3%A9s/image%204.png"/></a><figcaption> Figure 3 : Infrastructure Railway</figcaption></figure></div></div><p id="2a1bdf16-c65b-810a-b9f6-fa5fc26b6797" class="">Les étapes importantes sont :</p><ol type="1" id="2a1bdf16-c65b-81e0-8af6-ea3cdb74b93e" class="numbered-list" start="1"><li>Construire et pousser une image Docker du backend contenant le modèle CamemBERT. Exposer le port <code>8000</code> et veiller à charger <code>languagetool-server.jar</code> ou à pointer vers un service externe.</li></ol><ol type="1" id="2a1bdf16-c65b-8166-8cf0-cded94d32b95" class="numbered-list" start="2"><li>Charger le modèle et le mettre en cache pour la rapidité des futurs appels.</li></ol><p id="2a1bdf16-c65b-806f-bcea-f1f264bebe62" class="">
+</p><hr id="2a1bdf16-c65b-80bf-a822-d499b17ecf1b"/><h2 id="2a1bdf16-c65b-8035-970b-ceb2f1febeee" class="">Conclusion</h2><p id="2a1bdf16-c65b-809d-a493-f0e5a3e3a23f" class="">En conclusion, ce projet démontre qu’il est possible de <strong>combiner traitement automatique du langage et analyse linguistique</strong> pour offrir aux étudiants un <strong>accompagnement objectif et transparent</strong> dans la rédaction de leurs projets motivés Parcoursup. Grâce à l’intégration de <strong>CamemBERT</strong> pour la structuration des textes et de <strong>LanguageTool</strong> pour la correction, l’outil propose une évaluation fine, des <strong>indicateurs clairs</strong> et des <strong>suggestions pertinentes</strong> sans recours à un chatbot. Ce travail illustre une approche <strong>autonome, explicable et pratique</strong> du soutien à l’expression écrite dans un contexte académique.</p><p id="2a1bdf16-c65b-8082-9bc7-db49ea162745" class="">
+</p><hr id="2a1bdf16-c65b-8052-b52e-fad56a1541d3"/><h2 id="2a1bdf16-c65b-8124-94b7-eb0d60d2c57e" class="">Annexes</h2><h3 id="2a1bdf16-c65b-8161-aaa6-d16d9bd42813" class="">a) Structure</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2a1bdf16-c65b-812b-be87-ee798090c996" class="code code-wrap"><code class="language-Bash" style="white-space:pre-wrap;word-break:break-all">backend/
+│   Dockerfile
+│   main.py
+│   railway.toml
+│   requirements.txt
+│   start.sh
+├───core
+├───models
+│   │   .gitignore
+│   │   best_camembert_motivation.pt
+│   └───camembert-base
+├───routers
+├───schemas
+└───services
+
+frontend/src/
+│   index.css
+│   main.tsx
+├───assets
+├───components
+├───const
+├───pages
+└───utils</code></pre><h3 id="2a1bdf16-c65b-810c-809f-f7ec9d8f1922" class="">b) Sources </h3><p id="2a1bdf16-c65b-812f-bc1c-eb3a4393a3d2" class="">LanguageTool. (2024). <em>LanguageTool Developer Documentation.</em> LanguageTool. <a href="https://languagetool.org/dev">https://languagetool.org/dev</a></p><p id="2a1bdf16-c65b-8189-9647-fc7e85b4def9" class=""><br/>Martin, L., Muller, B., Ortiz Suárez, P. J., Dupont, Y., Romary, L., de la Clergerie, É. V., Seddah, D., &amp; Sagot, B. (2020). <em>CamemBERT: A Tasty French Language Model.</em> Hugging Face. <a href="https://huggingface.co/camembert-base">https://huggingface.co/camembert-base</a></p><p id="2a1bdf16-c65b-81d2-a7aa-d9861b40b3eb" class=""><br/>Tiangolo, S. (2024). <em>FastAPI Documentation.</em> FastAPI. <a href="https://fastapi.tiangolo.com/">https://fastapi.tiangolo.com/</a></p><p id="2a1bdf16-c65b-8122-afb9-ce6d6bfe2a5b" class=""><br/>Wikipédia. (2024, 10 septembre). <em>Tests de lisibilité Flesch-Kincaid.</em> Wikipédia. <a href="https://fr.wikipedia.org/wiki/Tests_de_lisibilit%C3%A9_Flesch-Kincaid">https://fr.wikipedia.org/wiki/Tests_de_lisibilit%C3%A9_Flesch-Kincaid</a></p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span><script src="./prism/prism.js"></script></body></html>
