@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { Globe } from 'lucide-react';
 import type { Lang } from '@/i18n/ui';
 import { getAlternateLang } from '@/i18n/utils';
@@ -36,15 +35,16 @@ export default function LanguageSwitcher({ lang, currentPath }: LanguageSwitcher
     return `${base}/${alternateLang}${newPath || '/'}`;
   };
 
+  const alternateUrl = getAlternateUrl();
+
   return (
-    <motion.a
-      href={getAlternateUrl()}
-      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-background-secondary border border-border hover:border-accent transition-colors text-sm font-medium text-foreground-secondary hover:text-foreground"
-      whileTap={{ scale: 0.95 }}
+    <a
+      href={alternateUrl}
+      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-background-secondary border border-border hover:border-accent transition-colors text-sm font-medium text-foreground-secondary hover:text-foreground active:scale-95"
       title={`Switch to ${alternateLang === 'fr' ? 'Français' : 'English'}`}
     >
       <Globe className="w-4 h-4" />
       <span className="uppercase">{alternateLang}</span>
-    </motion.a>
+    </a>
   );
 }

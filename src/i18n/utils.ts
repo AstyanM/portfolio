@@ -1,7 +1,15 @@
 import { ui, defaultLang, type Lang } from './ui';
 
 export function getLangFromUrl(url: URL): Lang {
-  const [, lang] = url.pathname.split('/');
+  // Remove base path first
+  const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+  let pathname = url.pathname;
+  if (pathname.startsWith(base)) {
+    pathname = pathname.slice(base.length);
+  }
+  
+  // Now extract language from path without base
+  const [, lang] = pathname.split('/');
   if (lang in ui) return lang as Lang;
   return defaultLang;
 }
