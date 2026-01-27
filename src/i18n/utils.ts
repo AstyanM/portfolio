@@ -1,11 +1,7 @@
 import { ui, defaultLang, type Lang } from './ui';
 
-
 export function getLangFromUrl(url: URL): Lang {
-  // Handle base path for GitHub Pages
-  const basePath = import.meta.env.BASE_URL;
-  const pathname = url.pathname.replace(basePath, '/').replace(/\/+/g, '/');
-  const [, lang] = pathname.split('/');
+  const [, lang] = url.pathname.split('/');
   if (lang in ui) return lang as Lang;
   return defaultLang;
 }
@@ -19,17 +15,15 @@ export function useTranslations(lang: Lang) {
 export function getLocalizedPath(path: string, lang: Lang): string {
   // Remove any existing locale prefix
   const cleanPath = path.replace(/^\/(fr|en)/, '');
-  return `${import.meta.env.BASE_URL}${lang}${cleanPath || '/'}`.replace(/\/+/g, '/');
+  return `/${lang}${cleanPath || '/'}`;
 }
 
 export function getProjectsPath(lang: Lang): string {
-  const path = lang === 'fr' ? `/${lang}/projets` : `/${lang}/projects`;
-  return `${import.meta.env.BASE_URL}${path}`.replace(/\/+/g, '/');
+  return lang === 'fr' ? `/${lang}/projets` : `/${lang}/projects`;
 }
 
 export function getProjectPath(slug: string, lang: Lang): string {
-  const path = lang === 'fr' ? `/${lang}/projets/${slug}` : `/${lang}/projects/${slug}`;
-  return `${import.meta.env.BASE_URL}${path}`.replace(/\/+/g, '/');
+  return lang === 'fr' ? `/${lang}/projets/${slug}` : `/${lang}/projects/${slug}`;
 }
 
 // Get alternate language
