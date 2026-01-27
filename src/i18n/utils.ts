@@ -19,17 +19,17 @@ export function useTranslations(lang: Lang) {
 export function getLocalizedPath(path: string, lang: Lang): string {
   // Remove any existing locale prefix
   const cleanPath = path.replace(/^\/(fr|en)/, '');
-  return `${import.meta.env.BASE_URL}${lang}${cleanPath || '/'}`.replace(/\/+/g, '/');
+  return `${import.meta.env.BASE_URL}/${lang}${cleanPath || '/'}`.replace(/\/+/g, '/');
 }
 
 export function getProjectsPath(lang: Lang): string {
   const path = lang === 'fr' ? `/${lang}/projets` : `/${lang}/projects`;
-  return `${import.meta.env.BASE_URL}${path}`.replace(/\/+/g, '/');
+  return `${import.meta.env.BASE_URL}/${path}`.replace(/\/+/g, '/');
 }
 
 export function getProjectPath(slug: string, lang: Lang): string {
   const path = lang === 'fr' ? `/${lang}/projets/${slug}` : `/${lang}/projects/${slug}`;
-  return `${import.meta.env.BASE_URL}${path}`.replace(/\/+/g, '/');
+  return `${import.meta.env.BASE_URL}/${path}`.replace(/\/+/g, '/');
 }
 
 // Get alternate language
