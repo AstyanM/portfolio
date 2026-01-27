@@ -30,7 +30,7 @@ export default function LanguageSwitcher({ lang, currentPath }: LanguageSwitcher
       newPath = pathWithoutLocale.replace('/projects', '/projets');
     }
 
-    return `${basePath}/${alternateLang}${newPath || '/'}`.replace(/\/+/g, '/');
+    return `${basePath}${alternateLang}${newPath || '/'}`.replace(/\/+/g, '/');
   };
 
   return (
