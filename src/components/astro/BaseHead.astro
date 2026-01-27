@@ -10,7 +10,7 @@ const {
   title,
   description = "Portfolio d'Astyan Martin - Projets en ing\u00e9nierie, IA et \u00e9lectronique",
   image = '/og-image.png',
-  lang = 'fr',
+  lang = 'en',
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -62,9 +62,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     const theme = (() => {
       if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
         return localStorage.getItem('theme');
-      }
-      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        return 'dark';
       }
       return 'light';
     })();

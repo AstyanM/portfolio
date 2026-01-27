@@ -1,18 +1,15 @@
 ---
 title: "Rehabilitation Project"
-description: "This project is part of an urban rehabilitation initiative for an abandoned part of Villeneuve-d’Ascq. The main objective is to design a sustainable urban environment."
-
+description: "This project is part of an urban rehabilitation initiative for an abandoned part of Villeneuve-d'Ascq. The main objective is to design a sustainable urban environment, integrating modular and eco-responsible housing, while respecting architectural and societal constraints. The approach includes studying existing structures, designing new living spaces, and producing plans and models."
+tags: ["Architecture"]
 cover: "/images/projects/projet-de-rehabilitation/122bb7e5-0094-43a2-9db5-0a17ae1c1869.png"
 lang: en
-draft: false
+draft: true
+teamSize: 4
+year: 2024
+conclusion: |
+  This project allowed us to explore the different stages of architectural design in a sustainable development context. By combining site analysis, modular design, and ecological urbanism, we were able to propose a viable solution for the rehabilitation of an abandoned urban zone. This work could constitute a solid foundation for setting up a real reconstruction and urban planning project.
 ---
-
-*Project carried out in a group of 4 people*
-
-> This project is part of an urban rehabilitation initiative for an abandoned part of Villeneuve-d’Ascq. The main objective is to design a sustainable urban environment, integrating modular and eco-responsible housing, while respecting architectural and societal constraints. The approach includes studying existing structures, designing new living spaces, and producing plans and models.
->
-
-### Table of Contents
 
 [Figure 1 - Rehabilitation Project Location](https://www.google.com/maps/place/50%C2%B03625.5%22N+3%C2%B00840.6%22E/@50.6071521,3.143939,18.46z/data=!4m13!1m8!3m7!1s0x47c2d64c4f0557df:0xabf4e5a42abb2b5f!2sAv.+Paul+Langevin,+59650+Villeneuve-dAscq,+France!3b1!8m2!3d50.6107405!4d3.1379094!16s%2Fg%2F1tkkt04f!3m3!8m2!3d50.607085!4d3.144615?entry=ttu&g_ep=EgoyMDI1MDIxOS4xIKXMDSoASAFQAw%3D%3D)
 
@@ -133,8 +130,3 @@ Figure 15 - First Model
 
 Figure 16 - Final Model
 
----
-
-### Conclusion
-
-This project allowed us to explore the different stages of architectural design in a sustainable development context. By combining site analysis, modular design, and ecological urbanism, we were able to propose a viable solution for the rehabilitation of an abandoned urban zone. This work could constitute a solid foundation for setting up a real reconstruction and urban planning project.

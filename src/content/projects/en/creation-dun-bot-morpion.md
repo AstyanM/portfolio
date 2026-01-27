@@ -1,27 +1,23 @@
 ---
 title: "Creation of a Tic-Tac-Toe Bot"
 description: "This report focuses on the project organization, the distribution of responsibilities within the teams, the technical difficulties overcome, and future perspectives."
+tags: ["Simulation"]
 cover: "/images/projects/creation-dun-bot-morpion/g.png"
 lang: en
 draft: false
+teamSize: 4
+year: 2024
+repoUrl: "https://github.com/AstyanM/tictactoe"
+conclusion: |
+  This project allowed us to explore the different stages of designing a bot playing Ultimate Tic-Tac-Toe, from implementing game rules to optimizing the Minimax algorithm with alpha-beta pruning. Each aspect was adjusted to ensure efficient strategic decisions while respecting time constraints. This experience constitutes a solid foundation for deepening artificial intelligence techniques applied to games and search algorithm optimization.
 ---
 
-*Project carried out in a group of 4 people*
-
-Here is a GitHub link to all the code written during this project:
-
-[GitHub - AstyanM/tictactoe: Creation of a Tic Tac Toe Bot](https://github.com/AstyanM/tictactoe.git)
-
-> This report focuses on the project organization, the distribution of responsibilities within the teams, the technical difficulties overcome, and future perspectives.
 > The first program, **`tttree`**, explores the implementation of **minimax** to generate the graphical representation of a Tic-Tac-Toe decision tree.
->
 >
 > The second program, **`sm-refresh`**, introduces algebraic notation (FEN) for moves and requires a minimax interaction with the computer. It also involves realizing the graphical display of positions, both **pseudo-graphical** on standard output and **graphical** in a file.
 >
 > Finally, the third program, **`sm-bot`**, requires the implementation of the **negamax** algorithm and **alpha-beta** pruning to calculate the best move in Ultimate Tic-Tac-Toe (Super Morpion).
 >
-
-### Table of Contents
 
 ### Organization
 
@@ -512,8 +508,3 @@ Although we managed to carry this project to completion, perspectives for improv
 -   We can improve the **`Temps_to_depth`** function, by taking into account the number of remaining empty squares, or even their positions
 -   We can consider giving a score (positive or negative) to specific blocking situations by the opponent of certain triplets, like **`“XXO”`** or **`“XOO”`**.
 
----
-
-## Conclusion
-
-This project allowed us to explore the different stages of designing a bot playing Ultimate Tic-Tac-Toe, from implementing game rules to optimizing the Minimax algorithm with alpha-beta pruning. Each aspect was adjusted to ensure efficient strategic decisions while respecting time constraints. This experience constitutes a solid foundation for deepening artificial intelligence techniques applied to games and search algorithm optimization.

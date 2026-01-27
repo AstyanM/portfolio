@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Github } from 'lucide-react';
 import type { Tag } from '@/consts';
+import { ui } from '@/i18n/ui';
 
 interface ProjectCardProps {
   title: string;
@@ -9,7 +10,10 @@ interface ProjectCardProps {
   slug: string;
   href: string;
   coverUrl?: string;
+  repoUrl?: string;
+  year?: number;
   index?: number;
+  lang: 'fr' | 'en';
 }
 
 export default function ProjectCard({
@@ -18,8 +22,17 @@ export default function ProjectCard({
   tags,
   href,
   coverUrl,
+  repoUrl,
+  year,
   index = 0,
+  lang,
 }: ProjectCardProps) {
+  const t = ui[lang];
+
+  const translateTag = (tag: Tag): string => {
+    const key = `tag.${tag}` as keyof typeof t;
+    return t[key] || tag;
+  };
   return (
     <motion.a
       href={href}
@@ -32,19 +45,53 @@ export default function ProjectCard({
       <article className="h-full rounded-xl border border-border bg-background-secondary overflow-hidden transition-all duration-300 hover:border-accent hover:shadow-lg hover:shadow-accent/5">
         {/* Cover Image */}
         {coverUrl ? (
-          <div className="aspect-video w-full overflow-hidden bg-background">
+          <div className="aspect-video w-full overflow-hidden bg-background relative">
             <img
               src={coverUrl}
               alt={title}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               loading="lazy"
             />
+            {year && (
+              <span className="absolute bottom-2 left-2 px-2 py-0.5 rounded text-xs font-medium bg-black/50 text-white/80">
+                {year}
+              </span>
+            )}
+            {repoUrl && (
+              <a
+                href={repoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="absolute top-2 right-2 p-1.5 rounded-md bg-black/60 text-white hover:bg-accent transition-colors"
+                title={lang === 'fr' ? 'Voir le code source' : 'View source code'}
+              >
+                <Github className="w-4 h-4" />
+              </a>
+            )}
           </div>
         ) : (
-          <div className="aspect-video w-full bg-gradient-to-br from-accent/20 to-purple-500/20 flex items-center justify-center">
+          <div className="aspect-video w-full bg-gradient-to-br from-accent/20 to-purple-500/20 flex items-center justify-center relative">
             <span className="text-4xl font-bold text-accent/40">
               {title.charAt(0)}
             </span>
+            {year && (
+              <span className="absolute bottom-2 left-2 px-2 py-0.5 rounded text-xs font-medium bg-black/50 text-white/80">
+                {year}
+              </span>
+            )}
+            {repoUrl && (
+              <a
+                href={repoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="absolute top-2 right-2 p-1.5 rounded-md bg-black/60 text-white hover:bg-accent transition-colors"
+                title={lang === 'fr' ? 'Voir le code source' : 'View source code'}
+              >
+                <Github className="w-4 h-4" />
+              </a>
+            )}
           </div>
         )}
 
@@ -67,7 +114,7 @@ export default function ProjectCard({
             <div className="flex flex-wrap gap-2">
               {tags.slice(0, 3).map((tag) => (
                 <span key={tag} className="tag text-xs">
-                  {tag}
+                  {translateTag(tag)}
                 </span>
               ))}
               {tags.length > 3 && (

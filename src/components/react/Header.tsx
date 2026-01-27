@@ -22,6 +22,7 @@ export default function Header({ lang, currentPath }: HeaderProps) {
   const navItems = [
     { label: t['nav.home'], href: `/${lang}` },
     { label: t['nav.projects'], href: projectsPath },
+    { label: t['nav.contact'], href: `/${lang}#contact` },
   ];
 
   useEffect(() => {
@@ -42,8 +43,8 @@ export default function Header({ lang, currentPath }: HeaderProps) {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'glass border-b border-border' : 'bg-background'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? 'glass border-b border-border' : 'bg-transparent'
       }`}
     >
       <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -51,7 +52,7 @@ export default function Header({ lang, currentPath }: HeaderProps) {
           {/* Logo */}
           <motion.a
             href={`/${lang}`}
-            className="text-xl font-bold text-foreground hover:text-accent transition-colors"
+            className="text-xl font-bold text-accent bg-accent/10 px-3 py-1 rounded-full hover:bg-accent/20 transition-colors"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >

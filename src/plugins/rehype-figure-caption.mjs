@@ -18,7 +18,7 @@ export function rehypeFigureCaption() {
                 const text = getNodeText(node).trim();
                 // Check if the paragraph starts with "Figure"
                 // Matches: "Figure 1", "Figure 1:", "Figure 1 -", etc.
-                if (/^Figure\s+\d+/i.test(text) || text.startsWith('Figure')) {
+                if (/^(Figure|Vidéo|Video)\s+\d+/i.test(text) || text.startsWith('Figure') || text.startsWith('Vidéo') || text.startsWith('Video')) {
                     // console.log('Found caption:', text);
                     node.properties = node.properties || {};
                     node.properties.className = node.properties.className || [];

@@ -1,20 +1,16 @@
 ---
 title: "Exploration des méthodes de Cryptographie"
-description: "Ce projet consiste à explorer différentes méthodes de cryptographie en les implémentant sous forme de code. L'objectif est d'étudier la sécurité et la faisabilité du chiffrement, tout en proposant des"
+description: "Ce projet consiste à explorer différentes méthodes de cryptographie en les implémentant sous forme de code. L'objectif est d'étudier la sécurité et la faisabilité du chiffrement, tout en proposant des outils permettant de déchiffrer les messages lorsque cela est possible. Nous avons classé les méthodes selon leur complexité, en commençant par les plus simples avant d'aborder des algorithmes plus avancés."
+tags: ["Sécurité"]
 cover: "/images/projects/exploration-des-methodes-de-cryptographie/crypto.png"
 lang: fr
-draft: false
+draft: true
+teamSize: 1
+year: 2023
+repoUrl: "https://github.com/AstyanM/cryptographie"
+conclusion: |
+  Ce projet m'a permis d'explorer les fondements de la cryptographie à travers différents algorithmes, de leur implémentation en Python jusqu'à leur cassage lorsque cela était possible. Des méthodes simples comme le chiffre de César aux systèmes asymétriques comme RSA, chaque technique présente des défis fascinants en termes de sécurité et de faisabilité. Cette expérience constitue une base solide pour comprendre les enjeux de la sécurisation des données et l'évolution des techniques cryptographiques modernes.
 ---
-*Projet mené en autonomie*
-
-Voici un lien github vers l’ensemble du code rédigé au cours de ce projet :
-
-[GitHub - AstyanM/cryptographie: Exploration des méthodes de Cryptographie](https://github.com/AstyanM/cryptographie.git)
-
-> Ce projet consiste à explorer différentes méthodes de cryptographie en les implémentant sous forme de code. L'objectif est d'étudier la sécurité et la faisabilité du chiffrement, tout en proposant des outils permettant de déchiffrer les messages lorsque cela est possible. Nous avons classé les méthodes selon leur complexité, en commençant par les plus simples avant d'aborder des algorithmes plus avancés.
->
-
-### Sommaire
 
 ## 1. Chiffre de César : Une sécurité illusoire
 
@@ -102,9 +98,9 @@ for password in possibilities:
 		        print("\nPassword found :", word)
 ```
 
-## 4. One-Time Pad : L’inviolabilité théorique
+## 4. One-Time Pad : L'inviolabilité théorique
 
-Le chiffrement One-Time Pad repose sur une clé aléatoire aussi longue que le message, garantissant une sécurité parfaite si elle n’est utilisée qu’une seule fois.
+Le chiffrement One-Time Pad repose sur une clé aléatoire aussi longue que le message, garantissant une sécurité parfaite si elle n'est utilisée qu'une seule fois.
 
 ```python
 for bit in text:
@@ -140,7 +136,7 @@ La partie de **déchiffrement** fonctionne ainsi :
     - Remplace les caractères non alphabétiques par des espaces
     - Divise le texte en mots et supprime les espaces inutiles
     - Identifie les mots uniques et leurs positions dans le texte
-2. **Construction d’un dictionnaire de mots**
+2. **Construction d'un dictionnaire de mots**
     - Charge un dictionnaire de mots triés par longueur
     - Organise les mots dans un dictionnaire indexé par leur longueur pour accélérer la recherche
 3. **Déchiffrement par correspondance de motifs**
@@ -168,7 +164,7 @@ print("Encrypted text :", encrypted_text)
 
 ### b) Déchiffrement
 
-Cette méthode peut être attaquée en réarrangeant les lettres jusqu’à retrouver un texte lisible. La partie de **déchiffrement** se présente ainsi :
+Cette méthode peut être attaquée en réarrangeant les lettres jusqu'à retrouver un texte lisible. La partie de **déchiffrement** se présente ainsi :
 
 1. **Génération des permutations possibles**
     - Teste toutes les clés possibles de transposition (de 1 à la longueur du texte)
@@ -183,11 +179,11 @@ Cette méthode peut être attaquée en réarrangeant les lettres jusqu’à retr
 
 ## 7. RSA
 
-Le chiffrement RSA est **asymétrique** : il utilise une paire de clés (des nombres entiers) composée d'une **clé publique** pour chiffrer et d'une **clé privée** pour déchiffrer des données confidentielles. Les deux clés sont créées par une personne, souvent nommée par convention *Alice*, qui souhaite que lui soient envoyées des données confidentielles. Alice rend la clé publique accessible. Cette clé est utilisée par ses correspondants pour chiffrer les données qui lui sont envoyées. La clé privée est quant à elle réservée à Alice, et lui permet de déchiffrer ces données. La clé privée peut aussi être utilisée par Alice pour signer une donnée qu'elle envoie, la clé publique permettant à n'importe lequel de ses correspondants de **vérifier la signature**.
+Le chiffrement RSA est **asymétrique** : il utilise une paire de clés (des nombres entiers) composée d'une **clé publique** pour chiffrer et d'une **clé privée** pour déchiffrer des données confidentielles. Les deux clés sont créées par une personne, souvent nommée par convention *Alice*, qui souhaite que lui soient envoyées des données confidentielles. Alice rend la clé publique accessible. Cette clé est utilisée par ses correspondants pour chiffrer les données qui lui sont envoyées. La clé privée est quant à elle réservée à Alice, et lui permet de déchiffrer ces données. La clé privée peut aussi être utilisée par Alice pour signer une donnée qu'elle envoie, la clé publique permettant à n'importe lequel de ses correspondants de **vérifier la signature**.
 
 ### a) Génération de nombres pseudo-premiers
 
-J’utilise ici des tests probabilistes comme celui de **Miller-Rabin** permet de générer des nombres pseudo-premiers rapidement :
+J'utilise ici des tests probabilistes comme celui de **Miller-Rabin** permet de générer des nombres pseudo-premiers rapidement :
 
 ```python
 k = 28
@@ -210,18 +206,13 @@ Une fois les nombres premiers générés, on peut créer des clés et chiffrer d
 encrypted_mess = [pow(mess_part, e_int, n_int) for mess_part in mess]
 ```
 
-Cependant, RSA peut être vulnérable aux attaques de factorisation si les nombres ne sont pas assez grands. C’est pourquoi il faut se référer aux normes actuelles pour avoir un chiffrement sécurisé.
+Cependant, RSA peut être vulnérable aux attaques de factorisation si les nombres ne sont pas assez grands. C'est pourquoi il faut se référer aux normes actuelles pour avoir un chiffrement sécurisé.
 
 ## 8. Concaténation et programme final
 
-On peut alors synthétiser toutes ces méthodes de chiffrement dans un programme global qui permet, à partir d’un menu à choix pour l’utilisateur, de choisir la méthode que l’on veut utiliser et ainsi de pouvoir chiffrer et déchiffrer comme on veut :
+On peut alors synthétiser toutes ces méthodes de chiffrement dans un programme global qui permet, à partir d'un menu à choix pour l'utilisateur, de choisir la méthode que l'on veut utiliser et ainsi de pouvoir chiffrer et déchiffrer comme on veut :
 
-![Figure 1 - Cas d’utilisation du programme final](/images/projects/exploration-des-methodes-de-cryptographie/crypto.png)
+![Figure 1 - Cas d'utilisation du programme final](/images/projects/exploration-des-methodes-de-cryptographie/crypto.png)
 
-Figure 1 - Cas d’utilisation du programme final
+Figure 1 - Cas d'utilisation du programme final
 
----
-
-## Conclusion
-
-Ce projet m’a permis d'explorer les fondements de la cryptographie à travers différents algorithmes, de leur implémentation en Python jusqu'à leur cassage lorsque cela était possible. Des méthodes simples comme le chiffre de César aux systèmes asymétriques comme RSA, chaque technique présente des défis fascinants en termes de sécurité et de faisabilité. Cette expérience constitue une base solide pour comprendre les enjeux de la sécurisation des données et l’évolution des techniques cryptographiques modernes.

@@ -1,21 +1,16 @@
 ---
 title: "Exploration of Cryptography Methods"
-description: "This project consists of exploring different cryptography methods by implementing them in code. The objective is to study encryption security and feasibility, while proposing tools."
+description: "This project consists of exploring different cryptography methods by implementing them in code. The objective is to study encryption security and feasibility, while proposing tools allowing to decrypt messages when possible. We classified methods according to their complexity, starting with the simplest before approaching more advanced algorithms."
+tags: ["Sécurité"]
 cover: "/images/projects/exploration-des-methodes-de-cryptographie/crypto.png"
 lang: en
-draft: false
+draft: true
+teamSize: 1
+year: 2023
+repoUrl: "https://github.com/AstyanM/cryptographie"
+conclusion: |
+  This project allowed me to explore the foundations of cryptography through different algorithms, from their implementation in Python to their breaking when possible. From simple methods like Caesar cipher to asymmetric systems like RSA, each technique presents fascinating challenges in terms of security and feasibility. This experience constitutes a solid foundation for understanding data security issues and the evolution of modern cryptographic techniques.
 ---
-
-*Project carried out independently*
-
-Here is a GitHub link to all the code written during this project:
-
-[GitHub - AstyanM/cryptographie: Exploration des méthodes de Cryptographie](https://github.com/AstyanM/cryptographie.git)
-
-> This project consists of exploring different cryptography methods by implementing them in code. The objective is to study encryption security and feasibility, while proposing tools allowing to decrypt messages when possible. We classified methods according to their complexity, starting with the simplest before approaching more advanced algorithms.
->
-
-### Table of Contents
 
 ## 1. Caesar Cipher: An Illusory Security
 
@@ -221,8 +216,3 @@ We can then synthesize all these encryption methods in a global program which al
 
 Figure 1 - Final Program Use Case
 
----
-
-## Conclusion
-
-This project allowed me to explore the foundations of cryptography through different algorithms, from their implementation in Python to their breaking when possible. From simple methods like Caesar cipher to asymmetric systems like RSA, each technique presents fascinating challenges in terms of security and feasibility. This experience constitutes a solid foundation for understanding data security issues and the evolution of modern cryptographic techniques.

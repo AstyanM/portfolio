@@ -6,7 +6,22 @@
       "Bash(npm init:*)",
       "Bash(npm install:*)",
       "Bash(npm --version)",
-      "Bash(node --version:*)"
+      "Bash(node --version:*)",
+      "mcp__serena__list_dir",
+      "Bash(trash:*)",
+      "Bash(powershell -Command \"Remove-Item -Recurse -Force ''c:/Users/Astyan/Documents/Prevision/portf/_raw_exports''\")",
+      "Bash(npm run build:*)",
+      "mcp__serena__get_symbols_overview",
+      "mcp__serena__list_memories",
+      "mcp__serena__check_onboarding_performed",
+      "mcp__serena__initial_instructions",
+      "mcp__serena__search_for_pattern",
+      "mcp__serena__think_about_collected_information",
+      "Bash(timeout 10 npm run dev:*)",
+      "mcp__serena__find_file",
+      "mcp__serena__find_symbol",
+      "mcp__serena__think_about_whether_you_are_done",
+      "Bash(npm run dev:*)"
     ]
   }
 }

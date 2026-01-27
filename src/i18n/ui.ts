@@ -1,11 +1,11 @@
 export const languages = {
-  fr: 'Français',
   en: 'English',
+  fr: 'Français',
 } as const;
 
 export type Lang = keyof typeof languages;
 
-export const defaultLang: Lang = 'fr';
+export const defaultLang: Lang = 'en';
 
 export const ui = {
   fr: {
@@ -17,7 +17,7 @@ export const ui = {
 
     // Hero
     'hero.greeting': 'Bienvenue !',
-    'hero.title': 'Je suis Astyan Martin',
+    'hero.title': 'Astyan Martin',
     'hero.subtitle':
       "Étudiant en ingénierie, passionné par l'IA, les algorithmes et la conception matérielle.",
     'hero.cta': 'Découvrir mes projets',
@@ -30,10 +30,30 @@ export const ui = {
     'projects.readMore': 'Lire plus',
     'projects.filter.all': 'Tous',
 
+    // Tags
+    'tag.Deep Learning': 'Deep Learning',
+    'tag.Traitement du Signal': 'Traitement du Signal',
+    'tag.Vision par Ordinateur': 'Vision par Ordinateur',
+    'tag.Simulation': 'Simulation',
+    'tag.Santé': 'Santé',
+    'tag.Web': 'Web',
+    'tag.Sécurité': 'Sécurité',
+    'tag.Architecture': 'Architecture',
+    'tag.Hardware': 'Hardware',
+    'tag.Recherche': 'Recherche',
+    'tag.Embarqué': 'Embarqué',
+
     // Project detail
     'project.backToProjects': 'Retour aux projets',
     'project.liveDemo': 'Voir le projet',
     'project.sourceCode': 'Code source',
+    'project.privateRepo': 'Dépôt privé',
+
+    // Contact
+    'contact.title': 'Me Contacter',
+    'contact.subtitle': 'Intéressé par mon profil ou envie de discuter d\'un projet ?',
+    'contact.cta': 'Envoyer un email',
+    'contact.or': 'ou retrouvez-moi sur',
 
     // Footer
     'footer.rights': 'Tous droits réservés.',
@@ -52,7 +72,7 @@ export const ui = {
 
     // Hero
     'hero.greeting': 'Welcome!',
-    'hero.title': "I'm Astyan Martin",
+    'hero.title': 'Astyan Martin',
     'hero.subtitle':
       'Engineering student, passionate about AI, algorithms and hardware design.',
     'hero.cta': 'Discover my projects',
@@ -65,10 +85,30 @@ export const ui = {
     'projects.readMore': 'Read more',
     'projects.filter.all': 'All',
 
+    // Tags
+    'tag.Deep Learning': 'Deep Learning',
+    'tag.Traitement du Signal': 'Signal Processing',
+    'tag.Vision par Ordinateur': 'Computer Vision',
+    'tag.Simulation': 'Simulation',
+    'tag.Santé': 'Health',
+    'tag.Web': 'Web',
+    'tag.Sécurité': 'Security',
+    'tag.Architecture': 'Architecture',
+    'tag.Hardware': 'Hardware',
+    'tag.Recherche': 'Research',
+    'tag.Embarqué': 'Embedded',
+
     // Project detail
     'project.backToProjects': 'Back to projects',
     'project.liveDemo': 'Live demo',
     'project.sourceCode': 'Source code',
+    'project.privateRepo': 'Private repository',
+
+    // Contact
+    'contact.title': 'Get in Touch',
+    'contact.subtitle': 'Interested in my profile or want to discuss a project?',
+    'contact.cta': 'Send an email',
+    'contact.or': 'or find me on',
 
     // Footer
     'footer.rights': 'All rights reserved.',

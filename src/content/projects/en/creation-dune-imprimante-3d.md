@@ -1,18 +1,15 @@
 ---
 title: "Creation of a 3D Printer"
-description: "This project consists of designing and manufacturing a functional Delta 3D printer. The objective is to master the entire rapid prototyping process, going through several essential steps."
-
+description: "This project consists of designing and manufacturing a functional Delta 3D printer. The objective is to master the entire rapid prototyping process, going through several essential steps: CAD modeling, parts printing, mechanical assembly, and printer calibration. We also studied the specifics of its architecture and control system to ensure precise and reliable operation."
+tags: ["Hardware"]
 cover: "/images/projects/creation-dune-imprimante-3d/05264723-4451-49d6-9aae-f9f1348ce313.png"
 lang: en
 draft: false
+teamSize: 8
+year: 2024
+conclusion: |
+  This project allowed us to explore in depth the entire rapid prototyping process, from CAD design and modeling to parts printing and final assembly of the Delta 3D printer. Each step required thorough reflection on design choices, mechanical constraints, and specifics of the Delta architecture, notably its control and movement system. The multiple tests and adjustments made allowed us to optimize components to ensure fluid and precise operation. This experience not only familiarized us with additive manufacturing technologies but also with technical challenges related to implementing a complex system, thus constituting a solid foundation for future engineering and prototyping projects.
 ---
-
-*Project carried out in a group of 8 people*
-
-> This project consists of designing and manufacturing a functional Delta 3D printer. The objective is to master the entire rapid prototyping process, going through several essential steps: CAD modeling, parts printing, mechanical assembly, and printer calibration. We also studied the specifics of its architecture and control system to ensure precise and reliable operation.
->
-
-### Table of Contents
 
 ![Figure 1 - Commercial Delta Printer](/images/projects/creation-dune-imprimante-3d/1.jpg)
 
@@ -109,8 +106,3 @@ For such an operation, counting unsuccessful attempts and all tests performed, w
 
 Figure 9 - Final Assembly
 
----
-
-## Conclusion
-
-This project allowed us to explore in depth the entire rapid prototyping process, from CAD design and modeling to parts printing and final assembly of the Delta 3D printer. Each step required thorough reflection on design choices, mechanical constraints, and specifics of the Delta architecture, notably its control and movement system. The multiple tests and adjustments made allowed us to optimize components to ensure fluid and precise operation. This experience not only familiarized us with additive manufacturing technologies but also with technical challenges related to implementing a complex system, thus constituting a solid foundation for future engineering and prototyping projects.

@@ -1,22 +1,23 @@
 ---
 title: "Processing Enzymatic Sequences via Deep Learning"
 description: "In this work, we explore enzymology using deep learning. Specifically, we seek to use experimentally obtained data to design and train a neural network capable of predicting each enzyme's activity on different available substrates."
-
+tags: ["Deep Learning", "Santé", "Recherche"]
 cover: "/images/projects/traitement-de-sequences-enzymatiques-via-deep-lear/clustal2.png"
 lang: en
 draft: false
+teamSize: 2
+year: 2024
+repoUrl: "https://github.com/AstyanM/enzymes"
+conclusion: |
+  This work allowed us to explore enzymology by combining it with machine learning methods. Before evaluating our neural network's performance, we had to overcome several challenges, notably data extraction and processing, format choice, and sequence alignment.
+
+  Once these steps were mastered, we tested different neural network architectures and variants, but results remained mixed. Several factors can explain these limitations: a need for finer hyperparameter and architecture tuning, insufficient computational capacity to train more complex models over many epochs, lack of substrate information even though they influence enzymatic activity, and the inherent difficulty of predicting this activity solely from the 2D sequence.
+
+  To improve these results, it would be relevant to exploit enzymes' 3D structure, for example with AlphaFold, to identify active sites. Integration of a 3D convolutional network and consideration of substrates could also refine predictions.
 ---
-
-*Project carried out in pairs - 2024*
-
-Here is a GitHub link to all the code written during this project:
-
-[GitHub - AstyanM/enzymes: Processing Enzymatic Sequences via Deep Learning](https://github.com/AstyanM/enzymes.git)
 
 > In this work, we explore enzymology using deep learning. Specifically, we seek to use experimentally obtained data to design and train a neural network capable of predicting each enzyme's activity on different available substrates.
 >
-
-### Table of Contents
 
 ## 1. Data Processing
 
@@ -294,17 +295,3 @@ We obtain results relatively similar to the previous network
 
 Unfortunately, we didn't have much time to dig into LSTMs. Thus our use of LSTMs in this architecture is probably not very optimal.
 
----
-
-### Conclusion
-
-This work allowed us to explore enzymology by combining it with machine learning methods. Before evaluating our neural network's performance, we had to overcome several challenges, notably data extraction and processing, format choice, and sequence alignment.
-
-Once these steps were mastered, we tested different neural network architectures and variants, but results remained mixed. Several factors can explain these limitations:
-
-- A need for finer hyperparameter and architecture tuning
-- Insufficient computational capacity to train more complex models over many epochs
-- Lack of substrate information, even though they influence enzymatic activity
-- The inherent difficulty of predicting this activity solely from the 2D sequence
-
-To improve these results, it would be relevant to exploit enzymes' 3D structure, for example with AlphaFold, to identify active sites. Integration of a 3D convolutional network and consideration of substrates could also refine predictions.

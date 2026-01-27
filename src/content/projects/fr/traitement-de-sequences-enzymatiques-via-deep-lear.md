@@ -1,21 +1,20 @@
 ---
 title: "Traitement de séquences enzymatiques via Deep Learning"
-description: "Dans ce travail, nous allons explorer l’enzymologie à l’aide du deep learning. Plus précisément, nous chercherons à utiliser des données obtenues expérimentalement pour concevoir et entraîner un résea"
-
+description: "Dans ce travail, nous allons explorer l'enzymologie à l'aide du deep learning. Plus précisément, nous chercherons à utiliser des données obtenues expérimentalement pour concevoir et entraîner un réseau de neurones capable de prédire l'activité de chaque enzyme sur les différents substrats disponibles."
+tags: ["Deep Learning", "Santé", "Recherche"]
 cover: "/images/projects/traitement-de-sequences-enzymatiques-via-deep-lear/clustal2.png"
 lang: fr
 draft: false
+teamSize: 2
+year: 2024
+repoUrl: "https://github.com/AstyanM/enzymes"
+conclusion: |
+  Ce travail nous a permis d'explorer l'enzymologie en la combinant aux méthodes de machine learning. Avant d'évaluer la performance de notre réseau de neurones, nous avons dû surmonter plusieurs défis, notamment l'extraction et le traitement des données, le choix de leur format et l'alignement des séquences.
+
+  Une fois ces étapes maîtrisées, nous avons testé différentes architectures et variantes de réseaux de neurones, mais les résultats sont restés mitigés. Plusieurs facteurs peuvent expliquer ces limites : un besoin d'ajustement plus fin des hyperparamètres et des architectures, une capacité de calcul insuffisante pour entraîner des modèles plus complexes sur un grand nombre d'époques, l'absence d'informations sur les substrats alors qu'ils influencent l'activité enzymatique, et la difficulté inhérente à prédire cette activité uniquement à partir de la séquence en 2D.
+
+  Pour améliorer ces résultats, il serait pertinent d'exploiter la structure 3D des enzymes, par exemple avec AlphaFold, afin d'identifier les sites actifs. L'intégration d'un réseau convolutionnel 3D et la prise en compte des substrats pourraient également affiner les prédictions.
 ---
-*Projet mené en duo - 2024*
-
-Voici un lien github vers l’ensemble du code rédigé au cours de ce projet :
-
-[GitHub - AstyanM/enzymes: Traitement de séquences enzymatiques via Deep Learning](https://github.com/AstyanM/enzymes.git)
-
-> Dans ce travail, nous allons explorer l’enzymologie à l’aide du deep learning. Plus précisément, nous chercherons à utiliser des données obtenues expérimentalement pour concevoir et entraîner un réseau de neurones capable de prédire l’activité de chaque enzyme sur les différents substrats disponibles.
->
-
-### Sommaire
 
 ## 1. Traitement des données
 
@@ -293,17 +292,3 @@ On obtient des résultats relativement similaires au réseau précédent
 
 Malheureusement nous n’avons pas eu trop le temps de creuser ce qui touche aux LSTM. Ainsi notre utilisation des LSTM dans cette architecture n’est probablement pas très optimale.
 
----
-
-### Conclusion
-
-Ce travail nous a permis d’explorer l’enzymologie en la combinant aux méthodes de machine learning. Avant d’évaluer la performance de notre réseau de neurones, nous avons dû surmonter plusieurs défis, notamment l’extraction et le traitement des données, le choix de leur format et l’alignement des séquences.
-
-Une fois ces étapes maîtrisées, nous avons testé différentes architectures et variantes de réseaux de neurones, mais les résultats sont restés mitigés. Plusieurs facteurs peuvent expliquer ces limites :
-
-- Un besoin d’ajustement plus fin des hyperparamètres et des architectures
-- Une capacité de calcul insuffisante pour entraîner des modèles plus complexes sur un grand nombre d’époques
-- L’absence d’informations sur les substrats, alors qu’ils influencent l’activité enzymatique
-- La difficulté inhérente à prédire cette activité uniquement à partir de la séquence en 2D
-
-Pour améliorer ces résultats, il serait pertinent d’exploiter la structure 3D des enzymes, par exemple avec AlphaFold, afin d’identifier les sites actifs. L’intégration d’un réseau convolutionnel 3D et la prise en compte des substrats pourraient également affiner les prédictions.

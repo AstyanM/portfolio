@@ -1,17 +1,17 @@
 ---
-title: "Conception d’un système de Réduction de Bruit Active"
-description: "Ce projet consiste à étudier et concevoir un système de réduction de bruit active en combinant des approches théoriques, expérimentales et électroniques. L’objectif est d’atténuer un signal sonore ind"
-
+title: "Conception d'un système de Réduction de Bruit Active"
+description: "Ce projet consiste à étudier et concevoir un système de réduction de bruit active en combinant des approches théoriques, expérimentales et électroniques. L'objectif est d'atténuer un signal sonore indésirable par opposition de phase en explorant différentes solutions : une première expérimentation sur haut-parleurs, une modélisation électrique, et une implémentation numérique avec un Raspberry Pi. Chaque étape a permis d'améliorer l'efficacité du système et d'identifier les contraintes technologiques liées à cette application."
+tags: ["Traitement du Signal", "Hardware", "Embarqué"]
 cover: "/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/chaine.png"
 lang: fr
 draft: false
+teamSize: 2
+year: 2023
+conclusion: |
+  Ce projet nous a permis d'explorer en profondeur la réduction de bruit active, depuis les premières expériences sur les interférences destructives jusqu'à la modélisation et l'implémentation d'un système numérique avancé. Chaque étape a mis en évidence les défis liés à la mise en œuvre d'un tel système, notamment la précision du traitement du signal et les contraintes matérielles.
+
+  Malgré des difficultés techniques avec le Raspberry Pi, les résultats obtenus sur les premiers prototypes sont prometteurs et suggèrent que l'utilisation d'un matériel plus performant pourrait aboutir à une solution pleinement fonctionnelle. Ce travail constitue une base solide pour approfondir l'optimisation du traitement du signal et l'intégration de systèmes embarqués dédiés à la réduction du bruit.
 ---
-*Projet mené en duo - 2023*
-
-> Ce projet consiste à étudier et concevoir un système de réduction de bruit active en combinant des approches théoriques, expérimentales et électroniques. L’objectif est d’atténuer un signal sonore indésirable par opposition de phase en explorant différentes solutions : une première expérimentation sur haut-parleurs, une modélisation électrique, et une implémentation numérique avec un Raspberry Pi. Chaque étape a permis d’améliorer l’efficacité du système et d’identifier les contraintes technologiques liées à cette application.
->
-
-### Sommaire
 
 ## Introduction
 
@@ -169,10 +169,3 @@ Les deux derniers systèmes étant très complexes et chronophages, nous aurions
 - **Miniaturisation portable** du système intermédiaire
 - Trouver un équivalent de la plaque **Sysam** moins complexe que le Raspberry Pi
 
----
-
-## Conclusion
-
-Ce projet nous a permis d’explorer en profondeur la réduction de bruit active, depuis les premières expériences sur les interférences destructives jusqu’à la modélisation et l’implémentation d’un système numérique avancé. Chaque étape a mis en évidence les défis liés à la mise en œuvre d’un tel système, notamment la précision du traitement du signal et les contraintes matérielles.
-
-Malgré des difficultés techniques avec le Raspberry Pi, les résultats obtenus sur les premiers prototypes sont prometteurs et suggèrent que l’utilisation d’un matériel plus performant pourrait aboutir à une solution pleinement fonctionnelle. Ce travail constitue une base solide pour approfondir l’optimisation du traitement du signal et l’intégration de systèmes embarqués dédiés à la réduction du bruit.

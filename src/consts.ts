@@ -1,12 +1,19 @@
 // Tags disponibles - définis centralement pour cohérence
 export const availableTags = [
-  'Fullstack',
-  'React',
-  'Python',
-  'Gestion de Projet',
-  'IA',
-  'Electronique',
-  'Physique',
+  // Techniques
+  'Deep Learning',
+  'Traitement du Signal',
+  'Vision par Ordinateur',
+  'Simulation',
+  // Domaines
+  'Santé',
+  'Web',
+  'Sécurité',
+  'Architecture',
+  // Type de réalisation
+  'Hardware',
+  'Recherche',
+  'Embarqué',
 ] as const;
 
 export type Tag = (typeof availableTags)[number];

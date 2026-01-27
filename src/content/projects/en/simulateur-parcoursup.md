@@ -1,23 +1,69 @@
 ---
 title: "Parcoursup Simulator"
-description: "The project offers an admission probability simulation for Parcoursup based on open data (admission statistics, training cartography, specialties), enriched with controlled additional information such as high school metrics or competition detection."
-
-tags: ["Fullstack", "React", "Python"]
+description: "A tool to estimate admission chances on Parcoursup, based on open data and explainable modeling."
+tags: ["Web", "Simulation"]
 cover: "/images/projects/simulateur-parcoursup/database_relationships.png"
 lang: en
 draft: false
+teamSize: 1
+year: 2025
+repoPrivate: true
+liveUrl: "https://simulateur-parcoursup.prepa-prevision.fr/"
+conclusion: |
+  The solution combines open data, controlled enrichments, and explainable modeling. The modular architecture (FastAPI/React) facilitates maintenance, extension, and local recalibration. Limitations relate to the granularity of aggregated data and distributional assumptions; they are compensated by explicit bounds, a main factor, and documented thresholds.
+appendix:
+  documents:
+    - title: "Scientific Article"
+      description: "LaTeX article describing the modeling approach"
+      url: "/images/projects/simulateur-parcoursup/article_scientifique.pdf"
+      type: pdf
+  structure:
+    description: "Approximately 40k lines of code maintained and organized"
+    tree: |
+      backend
+      ├───core
+      ├───data
+      │   ├───processed_data
+      │   ├───processing_data
+      │   └───raw_data
+      ├───db
+      ├───models
+      ├───routers
+      ├───services
+      └───templates
+      frontend/src
+      │   App.jsx
+      │   main.js
+      ├───api
+      ├───assets
+      ├───components
+      │   ├───compare
+      │   ├───details
+      │   ├───motivation
+      │   ├───registration
+      │   └───search
+      ├───constants
+      ├───context
+      ├───pages
+      ├───styles
+      └───utils
+  sources:
+    - authors: "Ministry of Higher Education and Research"
+      year: 2024
+      title: "Parcoursup 2024 — Study Continuation and Reorientation Wishes & Institution Responses"
+      publisher: "data.enseignementsup-recherche.gouv.fr"
+      url: "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-parcoursup/"
+    - authors: "Parcoursup"
+      year: 2024
+      title: "What Training Programs are Accessible on Parcoursup?"
+      publisher: "Parcoursup"
+      url: "https://www.parcoursup.gouv.fr/trouver-une-formation/quelles-formations-sont-accessibles-sur-parcoursup-1318"
+    - authors: "L'Étudiant"
+      year: 2024
+      title: "Information Site on Guidance, Studies and Careers"
+      publisher: "L'Étudiant"
+      url: "https://www.letudiant.fr/"
 ---
-
-*Project carried out mostly independently - 2025*
-
-Here is the link to the online version of the project:
-
-[Parcoursup Simulator](https://simulateur-parcoursup.prepa-prevision.fr/)
-
-> The project offers an **admission probability simulation for Parcoursup** based on **open data** (admission statistics, training cartography, specialties), enriched with **controlled additional information** such as high school metrics or competition detection. It relies on an **explainable model** that transforms observable candidate characteristics (grades, baccalaureate type, specialties, school, etc.) into **multipliers centered on 1 and bounded**, before aggregating them to produce a **global score converted to a percentile**.
->
-
-### Table of Contents
 
 ## 1. Data Collection
 
@@ -287,62 +333,3 @@ Figure 6: Railway Infrastructure
 ![Figure 7: n8n Automation Workflow](/images/projects/simulateur-parcoursup/image-2.png)
 
 Figure 7: n8n Automation Workflow
-
----
-
-## Conclusion
-
-The solution combines **open data**, **controlled enrichments**, and **explainable modeling**. The modular architecture (FastAPI/React) facilitates maintenance, extension, and **local recalibration**. Limitations relate to the granularity of aggregated data and distributional assumptions; they are compensated by explicit **bounds**, a **main factor**, and documented **thresholds**.
-
----
-
-## Appendices
-
-### a) Scientific Article
-
-To describe the implemented modeling as accurately as possible and for reproducibility purposes, a **scientific article** in LaTeX format was also written.
-
-[scientific_article.pdf](/images/projects/simulateur-parcoursup/article_scientifique.pdf)
-
-### b) Structure
-
-Approximately 40k lines of code maintained and organized as follows:
-
-```bash
-backend
-├───core
-├───data
-│   ├───processed_data
-│   ├───processing_data
-│   └───raw_data
-├───db
-├───models
-├───routers
-├───services
-└───templates
-
-frontend/src
-│   App.jsx
-│   main.js
-├───api
-├───assets
-├───components
-│   ├───compare
-│   ├───details
-│   ├───motivation
-│   ├───registration
-│   └───search
-├───constants
-├───context
-├───pages
-├───styles
-└───utils
-```
-
-### c) Sources
-
-Ministry of Higher Education and Research. (2024). *Parcoursup 2024 — Study Continuation and Reorientation Wishes & Institution Responses* [dataset]. [https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-parcoursup/](https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-parcoursup/)
-
-Parcoursup. (2024). *What Training Programs are Accessible on Parcoursup?* Parcoursup. [https://www.parcoursup.gouv.fr/trouver-une-formation/quelles-formations-sont-accessibles-sur-parcoursup-1318](https://www.parcoursup.gouv.fr/trouver-une-formation/quelles-formations-sont-accessibles-sur-parcoursup-1318?utm_source=chatgpt.com)
-
-L'Étudiant. (2024). *Information Site on Guidance, Studies and Careers.* L'Étudiant. [https://www.letudiant.fr/](https://www.letudiant.fr/)

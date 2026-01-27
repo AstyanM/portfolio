@@ -1,23 +1,63 @@
 ---
 title: "Motivation Letter Writing Assistant"
 description: "The project aims to help students write their Parcoursup motivation letters by using a fine-tuned CamemBERT language model to identify and structure different parts of a motivation letter."
-
-tags: ["IA", "Fullstack", "Python", "React"]
+tags: ["Web"]
 cover: "/images/projects/redaction-de-projets-motives/image-1.png"
 lang: en
 draft: false
+teamSize: 1
+year: 2025
+repoPrivate: true
+liveUrl: "http://lettre-motivation.prepa-prevision.fr"
+conclusion: |
+  This project demonstrates that it is possible to combine automatic language processing and linguistic analysis to offer students objective and transparent support in writing their Parcoursup motivation letters. Thanks to the integration of CamemBERT for text structuring and LanguageTool for correction, the tool offers fine evaluation, clear indicators, and relevant suggestions without resorting to a chatbot. This work illustrates an autonomous, explainable, and practical approach to supporting written expression in an academic context.
+appendix:
+  structure:
+    tree: |
+      backend/
+      │   Dockerfile
+      │   main.py
+      │   railway.toml
+      │   requirements.txt
+      │   start.sh
+      ├───core
+      ├───models
+      │   │   .gitignore
+      │   │   best_camembert_motivation.pt
+      │   └───camembert-base
+      ├───routers
+      ├───schemas
+      └───services
+      frontend/src/
+      │   index.css
+      │   main.tsx
+      ├───assets
+      ├───components
+      ├───const
+      ├───pages
+      └───utils
+  sources:
+    - authors: "LanguageTool"
+      year: 2024
+      title: "LanguageTool Developer Documentation"
+      publisher: "LanguageTool"
+      url: "https://languagetool.org/dev"
+    - authors: "Martin, L., Muller, B., Ortiz Suárez, P. J., et al."
+      year: 2020
+      title: "CamemBERT: A Tasty French Language Model"
+      publisher: "Hugging Face"
+      url: "https://huggingface.co/camembert-base"
+    - authors: "Tiangolo, S."
+      year: 2024
+      title: "FastAPI Documentation"
+      publisher: "FastAPI"
+      url: "https://fastapi.tiangolo.com/"
+    - authors: "Wikipedia"
+      year: "2024, September 10"
+      title: "Flesch-Kincaid Readability Tests"
+      publisher: "Wikipedia"
+      url: "https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests"
 ---
-
-*Project carried out mostly independently - 2025*
-
-Here is the link to the online version of the project:
-
-[Assistant — Motivated Project](http://lettre-motivation.prepa-prevision.fr)
-
-> The project aims to **help students write their Parcoursup motivation letters** by using a **fine-tuned CamemBERT language model** to **identify and structure different parts of a motivation letter**. It also integrates a **LanguageTool-based spelling correction server**, responsible for **detecting errors and suggesting corrections**. The tool works without a chatbot: it **provides students with aggregated improvement suggestions**, accompanied by **explicit and accessible metrics**, to **guide them clearly and autonomously** in writing their motivated project.
->
-
-### Table of Contents
 
 ## 1. Data Collection
 
@@ -162,51 +202,3 @@ The important steps are:
 
 1. Build and push a Docker image of the backend containing the CamemBERT model. Expose port `8000` and ensure `languagetool-server.jar` is loaded or point to an external service.
 2. Load the model and cache it for speed of future calls.
-
----
-
-## Conclusion
-
-In conclusion, this project demonstrates that it is possible to **combine automatic language processing and linguistic analysis** to offer students **objective and transparent support** in writing their Parcoursup motivation letters. Thanks to the integration of **CamemBERT** for text structuring and **LanguageTool** for correction, the tool offers fine evaluation, **clear indicators**, and **relevant suggestions** without resorting to a chatbot. This work illustrates an **autonomous, explainable, and practical** approach to supporting written expression in an academic context.
-
----
-
-## Appendices
-
-### a) Structure
-
-```bash
-backend/
-│   Dockerfile
-│   main.py
-│   railway.toml
-│   requirements.txt
-│   start.sh
-├───core
-├───models
-│   │   .gitignore
-│   │   best_camembert_motivation.pt
-│   └───camembert-base
-├───routers
-├───schemas
-└───services
-
-frontend/src/
-│   index.css
-│   main.tsx
-├───assets
-├───components
-├───const
-├───pages
-└───utils
-```
-
-### b) Sources
-
-LanguageTool. (2024). *LanguageTool Developer Documentation.* LanguageTool. [https://languagetool.org/dev](https://languagetool.org/dev)
-
-Martin, L., Muller, B., Ortiz Suárez, P. J., Dupont, Y., Romary, L., de la Clergerie, É. V., Seddah, D., & Sagot, B. (2020). *CamemBERT: A Tasty French Language Model.* Hugging Face. [https://huggingface.co/camembert-base](https://huggingface.co/camembert-base)
-
-Tiangolo, S. (2024). *FastAPI Documentation.* FastAPI. [https://fastapi.tiangolo.com/](https://fastapi.tiangolo.com/)
-
-Wikipedia. (2024, September 10). *Flesch-Kincaid Readability Tests.* Wikipedia. [https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests](https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests)

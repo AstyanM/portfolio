@@ -5,9 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
-    "ingest": "node scripts/ingest-notion.js",
-    "ingest:dry": "node scripts/ingest-notion.js --dry-run --verbose"
+    "preview": "astro preview"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.0.0",

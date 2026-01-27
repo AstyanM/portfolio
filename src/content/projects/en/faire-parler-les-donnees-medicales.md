@@ -1,24 +1,22 @@
 ---
 title: "Making Medical Data Speak"
-description: "This project is in collaboration with the Public Interest Group SIB. The objective is to design an application that exploits unstructured data from Computerized Patient Records (CPR), particularly from medical reports, prescriptions, or orders."
+description: "This project is in collaboration with the Public Interest Group SIB. The objective is to design an application that exploits unstructured data from Computerized Patient Records (CPR), particularly from medical reports, prescriptions, or orders. This project aims to facilitate the integration of this data into hospital systems to improve healthcare decision-making."
 
-tags: ["Python", "Gestion de Projet", "IA"]
+tags: ["Santé", "Recherche"]
 cover: "/images/projects/faire-parler-les-donnees-medicales/4544eafe-6418-44fb-8eaa-1bc83c83c536.png"
 lang: en
 draft: false
+teamSize: 12
+year: 2024
+repoPrivate: true
+conclusion: |
+  The project enabled the development of a performant tool for exploiting medical data, facilitating patient triage and hospital management. The integration of an LLM model and Machine Learning allowed for optimal results, paving the way for future improvements such as model optimization or integration of French databases.
 ---
 
-*Project carried out within a group of 12 people - 2024*
-
-> This project is in collaboration with the Public Interest Group SIB. The objective is to design an application that exploits unstructured data from Computerized Patient Records (CPR), particularly from medical reports, prescriptions, or orders. This project aims to facilitate the integration of this data into hospital systems to improve healthcare decision-making.
->
->
 > We rely on advanced technologies such as OCR and Natural Language Processing (NLP), combining free and paid tools, to create an optimized solution accessible to end users in the medical sector. The project also includes a state-of-the-art review to identify existing solutions and a technical demonstrator.
 >
 > I am surrounded by experts in the fields of AI, Big Data, and health data exploitation, and we collaborate with the Cristal laboratory and SIB. This innovative project is a major opportunity to transform medical data into clinical decision support tools.
 >
-
-### Table of Contents
 
 ## 1. System Architecture
 
@@ -202,13 +200,8 @@ Figure 11: Different Steps of API Operation
 
 ## 4. Technical Deliverables
 
-- **Documented source code and API**: Available on GitHub but private
+- **Documented source code and API**: Available on GitHub
 - **User and technical documentation**: Detailed explanation of modules and usage guide
 - **Video demonstrations**: Presentation of different implemented features
 - **Scientific article**: In progress
 
----
-
-## Conclusion
-
-The project enabled the development of a performant tool for exploiting medical data, facilitating patient triage and hospital management. The integration of an LLM model and Machine Learning allowed for optimal results, paving the way for future improvements such as model optimization or integration of French databases.

@@ -1,25 +1,58 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import { getLangFromUrl, useTranslations, getProjectsPath } from '@/i18n/utils';
+import { ui } from '@/i18n/ui';
 import type { CollectionEntry } from 'astro:content';
-import { ExternalLink, Github, ArrowLeft } from 'lucide-react';
+import { ExternalLink, Github, ArrowLeft, Users, Calendar, Lock } from 'lucide-react';
 import ReadingProgress from '@/components/react/ReadingProgress';
 import Lightbox from '@/components/react/Lightbox';
+import TableOfContents from '@/components/react/TableOfContents';
+import Conclusion from '@/components/astro/Conclusion.astro';
+import Appendix from '@/components/astro/Appendix.astro';
 
 interface Props {
   project: CollectionEntry<'projects'>;
 }
 
 const { project } = Astro.props;
-const { title, description, date, tags, cover, liveUrl, repoUrl } = project.data;
+const { title, description, date, tags, cover, liveUrl, repoUrl, repoPrivate, teamSize, year, conclusion, appendix } = project.data;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const projectsPath = getProjectsPath(lang);
+
+// Labels for team size
+const teamLabels = {
+  fr: {
+    solo: 'Projet solo',
+    pair: 'Binôme',
+    team: (n: number) => `Équipe de ${n} personnes`,
+  },
+  en: {
+    solo: 'Solo project',
+    pair: 'Pair project',
+    team: (n: number) => `Team of ${n} people`,
+  },
+};
+
+const getTeamLabel = (size: number | undefined) => {
+  if (!size) return null;
+  if (size === 1) return teamLabels[lang].solo;
+  if (size === 2) return teamLabels[lang].pair;
+  return teamLabels[lang].team(size);
+};
+
+const teamLabel = getTeamLabel(teamSize);
+
+// Tag translation helper
+const translateTag = (tag: string): string => {
+  const key = `tag.${tag}` as keyof (typeof ui)[typeof lang];
+  return ui[lang][key] || tag;
+};
 ---
 
 <BaseLayout title={`${title} | Astyan Martin`} description={description}>
   <!-- Hero Section -->
-  <div class="relative w-full bg-gradient-to-br from-accent/5 via-background to-purple-500/5 border-b border-border">
+  <div class="relative w-full bg-gradient-to-br from-accent/5 via-background to-purple-500/5 border-b border-border pt-16">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <!-- Back link -->
       <a
@@ -33,28 +66,47 @@ const projectsPath = getProjectsPath(lang);
       <header>
         <h1 class="text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">{title}</h1>
 
-        <div class="flex flex-wrap items-center gap-6 text-foreground-secondary">
-          {date && (
-            <time datetime={date} class="text-sm font-medium px-3 py-1 rounded-full bg-background-secondary border border-border">
-              {date}
-            </time>
+        <!-- Metadata badges -->
+        <div class="flex flex-wrap items-center gap-3 text-foreground-secondary mb-6">
+          {year && (
+            <span class="inline-flex items-center gap-1.5 text-sm font-medium px-3 py-1.5 rounded-full bg-background-secondary border border-border">
+              <Calendar className="w-3.5 h-3.5" />
+              {year}
+            </span>
           )}
 
-          {
-            tags.length > 0 && (
-              <div class="flex flex-wrap gap-2">
-                {tags.map((tag) => (
-                  <span class="tag">{tag}</span>
-                ))}
-              </div>
-            )
-          }
+          {teamLabel && (
+            <span class="inline-flex items-center gap-1.5 text-sm font-medium px-3 py-1.5 rounded-full bg-background-secondary border border-border">
+              <Users className="w-3.5 h-3.5" />
+              {teamLabel}
+            </span>
+          )}
         </div>
+
+        <!-- Tags -->
+        {
+          tags.length > 0 && (
+            <div class="flex flex-wrap gap-2 mb-6">
+              {tags.map((tag) => (
+                <span class="tag">{translateTag(tag)}</span>
+              ))}
+            </div>
+          )
+        }
+
+        <!-- Description card -->
+        {description && (
+          <div class="bg-background-secondary/50 border border-border rounded-xl p-4 mb-6">
+            <p class="text-foreground-secondary leading-relaxed text-sm md:text-base">
+              {description}
+            </p>
+          </div>
+        )}
 
         <!-- Action buttons -->
         {
-          (liveUrl || repoUrl) && (
-            <div class="flex flex-wrap gap-3 mt-8">
+          (liveUrl || repoUrl || repoPrivate) && (
+            <div class="flex flex-wrap gap-3">
               {liveUrl && (
                 <a
                   href={liveUrl}
@@ -66,7 +118,7 @@ const projectsPath = getProjectsPath(lang);
                   {t('project.liveDemo')}
                 </a>
               )}
-              {repoUrl && (
+              {repoUrl && !repoPrivate && (
                 <a
                   href={repoUrl}
                   target="_blank"
@@ -77,6 +129,12 @@ const projectsPath = getProjectsPath(lang);
                   {t('project.sourceCode')}
                 </a>
               )}
+              {repoPrivate && (
+                <span class="inline-flex items-center gap-2 px-5 py-2.5 bg-background-secondary/50 border border-border rounded-lg text-foreground-secondary font-medium cursor-default">
+                  <Lock className="w-4 h-4" />
+                  {t('project.privateRepo')}
+                </span>
+              )}
             </div>
           )
         }
@@ -85,25 +143,23 @@ const projectsPath = getProjectsPath(lang);
   </div>
 
   <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <!-- Cover image (Commented out as per user feedback) -->
-    <!-- {
-      cover && (
-        <div class="mb-12 rounded-2xl overflow-hidden shadow-2xl border border-border/50 max-w-3xl mx-auto">
-          <img
-            src={cover}
-            alt={title}
-            class="w-full h-auto object-cover"
-            loading="eager"
-          />
-        </div>
-      )
-    } -->
+    <!-- Table of Contents -->
+    <TableOfContents client:load lang={lang} />
 
     <!-- Content -->
     <div class="prose prose-lg mx-auto">
       <slot />
     </div>
-  </article>
+
+    <!-- Conclusion -->
+    {conclusion && (
+      <Conclusion content={conclusion} lang={lang} />
+    )}
+
+    <!-- Appendix -->
+    {appendix && (
+      <Appendix appendix={appendix} lang={lang} />
+    )}
   </article>
 
   <style is:global>
@@ -111,11 +167,61 @@ const projectsPath = getProjectsPath(lang);
     .prose .figure-caption, .figure-caption {
       text-align: center !important;
       font-style: italic !important;
-      font-size: 0.875rem !important; /* text-sm */
+      font-size: 0.875rem !important;
       color: rgb(var(--color-foreground-secondary)) !important;
       margin-top: 0.5rem !important;
       margin-bottom: 2rem !important;
       display: block !important;
+    }
+
+    /* Code block copy button */
+    .code-block-wrapper {
+      position: relative;
+    }
+
+    .copy-button {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      padding: 0.5rem;
+      background: rgb(var(--color-background-secondary));
+      border: 1px solid rgb(var(--color-border));
+      border-radius: 0.5rem;
+      color: rgb(var(--color-foreground-secondary));
+      cursor: pointer;
+      opacity: 0;
+      transition: all 0.2s ease;
+      z-index: 10;
+    }
+
+    .code-block-wrapper:hover .copy-button {
+      opacity: 1;
+    }
+
+    .copy-button:hover {
+      color: rgb(var(--color-accent));
+      border-color: rgb(var(--color-accent));
+    }
+
+    .copy-button .copy-icon {
+      display: block;
+    }
+
+    .copy-button .check-icon {
+      display: none;
+    }
+
+    .copy-button.copied .copy-icon {
+      display: none;
+    }
+
+    .copy-button.copied .check-icon {
+      display: block;
+      color: #22c55e;
+    }
+
+    .copy-button.copied {
+      border-color: #22c55e;
     }
   </style>
   <ReadingProgress client:load />
@@ -128,9 +234,9 @@ const projectsPath = getProjectsPath(lang);
         img.classList.add('cursor-zoom-in', 'transition-transform', 'hover:scale-[1.01]');
         img.addEventListener('click', () => {
           const event = new CustomEvent('open-lightbox', {
-            detail: { 
-              src: img.getAttribute('src'), 
-              alt: img.getAttribute('alt') 
+            detail: {
+              src: img.getAttribute('src'),
+              alt: img.getAttribute('alt')
             }
           });
           window.dispatchEvent(event);
@@ -138,10 +244,60 @@ const projectsPath = getProjectsPath(lang);
       });
     }
 
+    function setupCodeCopy() {
+      const codeBlocks = document.querySelectorAll('.prose pre');
+
+      codeBlocks.forEach(pre => {
+        // Skip if already has a copy button
+        if (pre.querySelector('.copy-button')) return;
+
+        // Create wrapper for positioning
+        const wrapper = document.createElement('div');
+        wrapper.className = 'code-block-wrapper';
+        pre.parentNode?.insertBefore(wrapper, pre);
+        wrapper.appendChild(pre);
+
+        // Create copy button
+        const button = document.createElement('button');
+        button.className = 'copy-button';
+        button.setAttribute('aria-label', 'Copy code');
+        button.innerHTML = `
+          <svg class="copy-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+            <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+          </svg>
+          <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        `;
+
+        wrapper.appendChild(button);
+
+        button.addEventListener('click', async () => {
+          const code = pre.querySelector('code');
+          const text = code?.textContent || '';
+
+          try {
+            await navigator.clipboard.writeText(text);
+            button.classList.add('copied');
+            setTimeout(() => {
+              button.classList.remove('copied');
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy:', err);
+          }
+        });
+      });
+    }
+
     // Run on initial load
     setupLightbox();
+    setupCodeCopy();
 
     // Run on View Transition navigation
-    document.addEventListener('astro:page-load', setupLightbox);
+    document.addEventListener('astro:page-load', () => {
+      setupLightbox();
+      setupCodeCopy();
+    });
   </script>
 </BaseLayout>

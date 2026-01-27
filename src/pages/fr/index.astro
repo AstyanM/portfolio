@@ -10,6 +10,7 @@ import Timeline from '@/components/astro/Timeline.astro';
 import ProjectSpotlight from '@/components/astro/ProjectSpotlight.astro';
 import HeroBackground from '@/components/astro/HeroBackground.astro';
 import Typewriter from '@/components/react/Typewriter';
+import Contact from '@/components/astro/Contact.astro';
 
 const allProjects = await getCollection('projects', ({ data }) => {
   return data.lang === 'fr' && !data.draft;
@@ -19,10 +20,11 @@ const allProjects = await getCollection('projects', ({ data }) => {
 const spotlightSlug = 'simulateur-parcoursup';
 const filteredProjectsList = allProjects.filter(p => !p.slug.includes(spotlightSlug));
 
-// Sort by date (most recent first)
+// Sort by year (most recent first)
 const projects = filteredProjectsList.sort((a, b) => {
-  if (!a.data.date || !b.data.date) return 0;
-  return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
+  const yearA = a.data.year ?? 0;
+  const yearB = b.data.year ?? 0;
+  return yearB - yearA;
 });
 
 // Transform for ProjectGrid
@@ -38,7 +40,7 @@ const projectsData = projects.slice(0, 6).map((p) => ({
 
 <BaseLayout title="Astyan Martin | Portfolio">
   <!-- Hero Section -->
-  <section class="relative py-20 md:py-32 overflow-hidden">
+  <section class="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
     <!-- Animated Background -->
     <HeroBackground />
     
@@ -55,7 +57,7 @@ const projectsData = projects.slice(0, 6).map((p) => ({
         <h1
           class="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 animate-slide-up"
         >
-          Je suis <span class="gradient-text">Astyan Martin</span>
+          <span class="gradient-text">Astyan Martin</span>
         </h1>
 
         <div class="min-h-[100px] mb-8">
@@ -63,7 +65,7 @@ const projectsData = projects.slice(0, 6).map((p) => ({
             client:visible
             text="Étudiant en ingénierie, curieux et passionné par de nombreux domaines techniques. Ce portfolio regroupe mes projets les plus significatifs, mêlant exploration de l'IA, algorithmes et conception matérielle."
             speed={25}
-            delay={500}
+            delay={2000}
             className="text-lg md:text-xl text-foreground-secondary leading-relaxed"
           />
         </div>
@@ -88,7 +90,7 @@ const projectsData = projects.slice(0, 6).map((p) => ({
   <Timeline lang="fr" />
 
   <!-- Featured Projects Section -->
-  <section class="py-16 md:py-24">
+  <section class="py-12 md:py-16 animate-on-scroll">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="mb-16">
@@ -98,9 +100,7 @@ const projectsData = projects.slice(0, 6).map((p) => ({
       <div class="flex items-end justify-between mb-12">
         <div>
           <h2 class="text-3xl font-bold text-foreground mb-2">Autres Projets</h2>
-          <p class="text-foreground-secondary">
-            Une sélection de projets techniques mêlant exploration et innovation.
-          </p>
+          <p class="text-foreground-secondary">Une sélection de projets techniques mêlant exploration et innovation.</p>
         </div>
         <a
           href="/fr/projets"
@@ -111,7 +111,7 @@ const projectsData = projects.slice(0, 6).map((p) => ({
         </a>
       </div>
 
-      <ProjectGrid client:visible projects={projectsData} lang="fr" showFilter={false} />
+      <ProjectGrid client:visible projects={projectsData} lang="fr" showFilter={false} mobileLimit={3} />
 
       <div class="mt-8 text-center sm:hidden">
         <a
@@ -124,4 +124,6 @@ const projectsData = projects.slice(0, 6).map((p) => ({
       </div>
     </div>
   </section>
+
+  <Contact lang="fr" />
 </BaseLayout>

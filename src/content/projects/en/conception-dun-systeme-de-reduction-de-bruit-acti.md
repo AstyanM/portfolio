@@ -1,18 +1,17 @@
 ---
 title: "Design of an Active Noise Reduction System"
-description: "This project consists of studying and designing an active noise reduction system by combining theoretical, experimental, and electronic approaches. The objective is to attenuate an unwanted sound signal through phase opposition."
-
+description: "This project consists of studying and designing an active noise reduction system by combining theoretical, experimental, and electronic approaches. The objective is to attenuate an unwanted sound signal through phase opposition by exploring different solutions: a first experiment with speakers, an electrical model, and a digital implementation with a Raspberry Pi. Each step improved system efficiency and identified technological constraints related to this application."
+tags: ["Traitement du Signal", "Hardware", "Embarqué"]
 cover: "/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/chaine.png"
 lang: en
 draft: false
+teamSize: 2
+year: 2023
+conclusion: |
+  This project allowed us to explore active noise reduction in depth, from the first experiments on destructive interference to modeling and implementing an advanced digital system. Each step highlighted the challenges related to implementing such a system, particularly signal processing precision and hardware constraints.
+
+  Despite technical difficulties with the Raspberry Pi, results obtained on first prototypes are promising and suggest that using more powerful hardware could lead to a fully functional solution. This work constitutes a solid foundation for deepening signal processing optimization and integration of embedded systems dedicated to noise reduction.
 ---
-
-*Project carried out in pairs - 2023*
-
-> This project consists of studying and designing an active noise reduction system by combining theoretical, experimental, and electronic approaches. The objective is to attenuate an unwanted sound signal through phase opposition by exploring different solutions: a first experiment with speakers, an electrical model, and a digital implementation with a Raspberry Pi. Each step improved system efficiency and identified technological constraints related to this application.
->
-
-### Table of Contents
 
 ## Introduction
 
@@ -169,10 +168,3 @@ The last two systems being very complex and time-consuming, we could also have e
 - **Portable miniaturization** of the intermediate system
 - Finding an equivalent to the **Sysam** board less complex than the Raspberry Pi
 
----
-
-## Conclusion
-
-This project allowed us to explore active noise reduction in depth, from the first experiments on destructive interference to modeling and implementing an advanced digital system. Each step highlighted the challenges related to implementing such a system, particularly signal processing precision and hardware constraints.
-
-Despite technical difficulties with the Raspberry Pi, results obtained on first prototypes are promising and suggest that using more powerful hardware could lead to a fully functional solution. This work constitutes a solid foundation for deepening signal processing optimization and integration of embedded systems dedicated to noise reduction.

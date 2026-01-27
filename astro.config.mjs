@@ -5,11 +5,11 @@ import mdx from '@astrojs/mdx';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import { rehypeFigureCaption } from './src/plugins/rehype-figure-caption.mjs';
+import { rehypeVideo } from './src/plugins/rehype-video.mjs';
 
 // Configuration Astro
 export default defineConfig({
-  site: 'https://astyanm.github.io/',
-  base: 'portfolio/',
+  site: 'https://astyanmartin.com',
   integrations: [
     react(),
     tailwind({
@@ -23,11 +23,11 @@ export default defineConfig({
       wrap: true,
     },
     remarkPlugins: [remarkMath],
-    rehypePlugins: [rehypeKatex, rehypeFigureCaption],
+    rehypePlugins: [rehypeKatex, rehypeFigureCaption, rehypeVideo],
   },
   i18n: {
-    defaultLocale: 'fr',
-    locales: ['fr', 'en'],
+    defaultLocale: 'en',
+    locales: ['en', 'fr'],
     routing: {
       prefixDefaultLocale: true,
     },

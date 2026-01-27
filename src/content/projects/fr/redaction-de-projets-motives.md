@@ -1,22 +1,63 @@
 ---
 title: "Rédaction de projets motivés"
-description: "Le projet a pour objectif d’aider les étudiants dans la rédaction de leurs projets motivés Parcoursup en s’appuyant sur un modèle de langage CamemBERT fine-tuné pour identifier et structurer les diffé"
-
-tags: ["IA", "Fullstack", "Python", "React"]
+description: "Le projet a pour objectif d'aider les étudiants dans la rédaction de leurs projets motivés Parcoursup en s'appuyant sur un modèle de langage CamemBERT fine-tuné pour identifier et structurer les différentes parties d'une lettre de motivation. Il intègre également un serveur de correction orthographique basé sur LanguageTool, chargé de détecter les fautes et de proposer des corrections."
+tags: ["Web"]
 cover: "/images/projects/redaction-de-projets-motives/image-1.png"
 lang: fr
 draft: false
+teamSize: 1
+year: 2025
+repoPrivate: true
+liveUrl: "http://lettre-motivation.prepa-prevision.fr"
+conclusion: |
+  Ce projet démontre qu'il est possible de combiner traitement automatique du langage et analyse linguistique pour offrir aux étudiants un accompagnement objectif et transparent dans la rédaction de leurs projets motivés Parcoursup. Grâce à l'intégration de CamemBERT pour la structuration des textes et de LanguageTool pour la correction, l'outil propose une évaluation fine, des indicateurs clairs et des suggestions pertinentes sans recours à un chatbot. Ce travail illustre une approche autonome, explicable et pratique du soutien à l'expression écrite dans un contexte académique.
+appendix:
+  structure:
+    tree: |
+      backend/
+      │   Dockerfile
+      │   main.py
+      │   railway.toml
+      │   requirements.txt
+      │   start.sh
+      ├───core
+      ├───models
+      │   │   .gitignore
+      │   │   best_camembert_motivation.pt
+      │   └───camembert-base
+      ├───routers
+      ├───schemas
+      └───services
+      frontend/src/
+      │   index.css
+      │   main.tsx
+      ├───assets
+      ├───components
+      ├───const
+      ├───pages
+      └───utils
+  sources:
+    - authors: "LanguageTool"
+      year: 2024
+      title: "LanguageTool Developer Documentation"
+      publisher: "LanguageTool"
+      url: "https://languagetool.org/dev"
+    - authors: "Martin, L., Muller, B., Ortiz Suárez, P. J., et al."
+      year: 2020
+      title: "CamemBERT: A Tasty French Language Model"
+      publisher: "Hugging Face"
+      url: "https://huggingface.co/camembert-base"
+    - authors: "Tiangolo, S."
+      year: 2024
+      title: "FastAPI Documentation"
+      publisher: "FastAPI"
+      url: "https://fastapi.tiangolo.com/"
+    - authors: "Wikipédia"
+      year: "2024, 10 septembre"
+      title: "Tests de lisibilité Flesch-Kincaid"
+      publisher: "Wikipédia"
+      url: "https://fr.wikipedia.org/wiki/Tests_de_lisibilit%C3%A9_Flesch-Kincaid"
 ---
-*Projet mené en autonomie pour la plupart - 2025*
-
-Voici le lien vers la version en ligne du projet :
-
-[Assistant — Projet Motivé](http://lettre-motivation.prepa-prevision.fr)
-
-> Le projet a pour objectif d’**aider les étudiants dans la rédaction de leurs projets motivés Parcoursup** en s’appuyant sur un **modèle de langage CamemBERT** fine-tuné pour **identifier et structurer les différentes parties d’une lettre de motivation**. Il intègre également un **serveur de correction orthographique basé sur LanguageTool**, chargé de **détecter les fautes et de proposer des corrections**. L’outil fonctionne sans chatbot : il **fournit aux étudiants des pistes d’amélioration agrégées**, accompagnées de **métriques explicites et accessibles**, afin de les **guider de manière claire et autonome** dans la rédaction de leur projet motivé.
->
-
-### Sommaire
 
 ## 1. Collecte des données
 
@@ -161,51 +202,3 @@ Les étapes importantes sont :
 
 1. Construire et pousser une image Docker du backend contenant le modèle CamemBERT. Exposer le port `8000` et veiller à charger `languagetool-server.jar` ou à pointer vers un service externe.
 2. Charger le modèle et le mettre en cache pour la rapidité des futurs appels.
-
----
-
-## Conclusion
-
-En conclusion, ce projet démontre qu’il est possible de **combiner traitement automatique du langage et analyse linguistique** pour offrir aux étudiants un **accompagnement objectif et transparent** dans la rédaction de leurs projets motivés Parcoursup. Grâce à l’intégration de **CamemBERT** pour la structuration des textes et de **LanguageTool** pour la correction, l’outil propose une évaluation fine, des **indicateurs clairs** et des **suggestions pertinentes** sans recours à un chatbot. Ce travail illustre une approche **autonome, explicable et pratique** du soutien à l’expression écrite dans un contexte académique.
-
----
-
-## Annexes
-
-### a) Structure
-
-```bash
-backend/
-│   Dockerfile
-│   main.py
-│   railway.toml
-│   requirements.txt
-│   start.sh
-├───core
-├───models
-│   │   .gitignore
-│   │   best_camembert_motivation.pt
-│   └───camembert-base
-├───routers
-├───schemas
-└───services
-
-frontend/src/
-│   index.css
-│   main.tsx
-├───assets
-├───components
-├───const
-├───pages
-└───utils
-```
-
-### b) Sources
-
-LanguageTool. (2024). *LanguageTool Developer Documentation.* LanguageTool. [https://languagetool.org/dev](https://languagetool.org/dev)
-
-Martin, L., Muller, B., Ortiz Suárez, P. J., Dupont, Y., Romary, L., de la Clergerie, É. V., Seddah, D., & Sagot, B. (2020). *CamemBERT: A Tasty French Language Model.* Hugging Face. [https://huggingface.co/camembert-base](https://huggingface.co/camembert-base)
-
-Tiangolo, S. (2024). *FastAPI Documentation.* FastAPI. [https://fastapi.tiangolo.com/](https://fastapi.tiangolo.com/)
-
-Wikipédia. (2024, 10 septembre). *Tests de lisibilité Flesch-Kincaid.* Wikipédia. [https://fr.wikipedia.org/wiki/Tests_de_lisibilit%C3%A9_Flesch-Kincaid](https://fr.wikipedia.org/wiki/Tests_de_lisibilit%C3%A9_Flesch-Kincaid)

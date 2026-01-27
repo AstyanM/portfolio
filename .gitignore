@@ -24,8 +24,5 @@ Thumbs.db
 *.log
 npm-debug.log*
 
-# Raw exports (keep local only)
-_raw_exports/
-
 # Cache
 .cache/

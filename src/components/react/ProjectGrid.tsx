@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProjectCard from './ProjectCard';
 import TagFilter from './TagFilter';
@@ -12,25 +12,52 @@ interface Project {
   tags: Tag[];
   href: string;
   coverUrl?: string;
+  repoUrl?: string;
+  year?: number;
 }
 
 interface ProjectGridProps {
   projects: Project[];
   lang: 'fr' | 'en';
   showFilter?: boolean;
+  mobileLimit?: number;
 }
 
-export default function ProjectGrid({ projects, lang, showFilter = true }: ProjectGridProps) {
+function useIsMobile(breakpoint = 768) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < breakpoint);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, [breakpoint]);
+
+  return isMobile;
+}
+
+export default function ProjectGrid({ projects, lang, showFilter = true, mobileLimit }: ProjectGridProps) {
   const [selectedTag, setSelectedTag] = useState<Tag | null>(null);
+  const isMobile = useIsMobile();
 
-  // Get tags that are actually used in projects
-  const usedTags = availableTags.filter((tag) =>
-    projects.some((p) => p.tags.includes(tag))
-  );
+  // Calculate tag counts
+  const tagCounts = availableTags.reduce((acc, tag) => {
+    acc[tag] = projects.filter((p) => p.tags.includes(tag)).length;
+    return acc;
+  }, {} as Record<Tag, number>);
 
-  const filteredProjects = selectedTag
+  // Get tags that are actually used in projects, sorted by usage count (descending)
+  const usedTags = availableTags
+    .filter((tag) => tagCounts[tag] > 0)
+    .sort((a, b) => tagCounts[b] - tagCounts[a]);
+
+  const tagFilteredProjects = selectedTag
     ? projects.filter((p) => p.tags.includes(selectedTag))
     : projects;
+
+  const filteredProjects = mobileLimit && isMobile
+    ? tagFilteredProjects.slice(0, mobileLimit)
+    : tagFilteredProjects;
 
   return (
     <div>
@@ -40,6 +67,8 @@ export default function ProjectGrid({ projects, lang, showFilter = true }: Proje
           selectedTag={selectedTag}
           onSelectTag={setSelectedTag}
           lang={lang}
+          tagCounts={tagCounts}
+          totalCount={projects.length}
         />
       )}
 
@@ -65,7 +94,10 @@ export default function ProjectGrid({ projects, lang, showFilter = true }: Proje
                 slug={project.slug}
                 href={project.href}
                 coverUrl={project.coverUrl}
+                repoUrl={project.repoUrl}
+                year={project.year}
                 index={index}
+                lang={lang}
               />
             </motion.div>
           ))}

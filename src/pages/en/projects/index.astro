@@ -7,10 +7,11 @@ const allProjects = await getCollection('projects', ({ data }) => {
   return data.lang === 'en' && !data.draft;
 });
 
-// Sort by date (most recent first)
+// Sort by year (most recent first)
 const projects = allProjects.sort((a, b) => {
-  if (!a.data.date || !b.data.date) return 0;
-  return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
+  const yearA = a.data.year ?? 0;
+  const yearB = b.data.year ?? 0;
+  return yearB - yearA;
 });
 
 // Transform for ProjectGrid
@@ -19,8 +20,10 @@ const projectsData = projects.map((p) => ({
   title: p.data.title,
   description: p.data.description,
   tags: p.data.tags,
-href: `/en/projects/${p.slug.split('/')[1]}`,
+  href: `/en/projects/${p.slug.split('/')[1]}`,
   coverUrl: p.data.cover?.src,
+  repoUrl: p.data.repoPrivate ? undefined : p.data.repoUrl,
+  year: p.data.year,
 }));
 ---
 
@@ -28,13 +31,12 @@ href: `/en/projects/${p.slug.split('/')[1]}`,
   title="Projects | Astyan Martin"
   description="Discover my projects in engineering, AI, electronics and web development."
 >
-  <section class="py-16 md:py-24">
+  <section class="pt-32 pb-16 md:pt-40 md:pb-24">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="mb-12">
         <h1 class="text-4xl font-bold text-foreground mb-4">My Projects</h1>
-        <p class="text-lg text-foreground-secondary max-w-2xl">
-          A selection of technical projects combining exploration and innovation.
-          Filter by technology to find what interests you.
+        <p class="text-lg text-foreground-secondary">
+          A selection of technical projects combining exploration and innovation. Filter by technology to find what interests you.
         </p>
       </div>
 

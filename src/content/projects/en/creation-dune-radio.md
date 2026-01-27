@@ -1,24 +1,21 @@
 ---
 title: "Creation of a Radio"
-description: "This project consists of designing and building a functional FM receiver. The objective is to ensure clear and stable reception of radio signals, going through several essential steps."
-
+description: "This project consists of designing and building a functional FM receiver. The objective is to ensure clear and stable reception of radio signals, going through several essential steps: signal filtering, audio amplification, frequency synthesis, and FM frequency demodulation. We also validated our design using LTSpice simulations."
+tags: ["Hardware", "Traitement du Signal"]
 cover: "/images/projects/creation-dune-radio/1-1.png"
 lang: en
 draft: false
+teamSize: 2
+year: 2024
+conclusion: |
+  This project allowed us to explore the different steps of designing an FM receiver, from circuit theory to practical tests and simulations. Each module was optimized to ensure stable reception and optimal sound quality. This experience constitutes a solid foundation for deepening signal processing and radio frequency communication techniques.
 ---
-
-*Project carried out in pairs*
-
-> This project consists of designing and building a functional FM receiver. The objective is to ensure clear and stable reception of radio signals, going through several essential steps: signal filtering, audio amplification, frequency synthesis, and FM frequency demodulation. We also validated our design using LTSpice simulations.
->
-
-### Table of Contents
 
 ![Figure 1 - General Principle of an FM Receiver](/images/projects/creation-dune-radio/1.png)
 
 Figure 1 - General Principle of an FM Receiver
 
-### 1. Audio Filtering
+## 1. Audio Filtering
 
 In order to obtain a good quality audio signal, we designed low-pass and high-pass filters that must respect several conditions:
 
@@ -91,7 +88,7 @@ Similarly, we can then calculate exact values for each component:
 | R2 | 7.3kΩ | 7.2kΩ |
 | C | 0.59μF | 0.56μF |
 
-### 2. Audio Amplification
+## 2. Audio Amplification
 
 Once filtered, the audio signal must be amplified for quality sound reproduction. We adjusted the audio amplifier to obtain a maximum gain of 20 dB. A Noise Gate was integrated with a threshold set at 10 mVrms to attenuate unwanted background noise. The amplifier operation was configured via registers to optimize system performance:
 
@@ -148,7 +145,7 @@ void configureSynth() {
 
 ```
 
-### 3. Frequency Synthesis and Demodulation
+## 3. Frequency Synthesis and Demodulation
 
 To tune to the right radio station, we designed a frequency synthesizer. Starting from a quartz oscillating at 10.7 MHz, we calculated the necessary dividers and multipliers to capture the target frequency of Radio Campus (94.35 MHz). These parameters were implemented in an Arduino program allowing precise adjustment of the reception frequency.
 
@@ -210,7 +207,7 @@ Still according to the specifications, we have $F_0 = 10.7MHz, f_{max} - f_{min}
 -   $C_1 = 100pF$
 -   $C_2 = 1 nF$
 
-### 4. LTSpice Simulation
+## 4. LTSpice Simulation
 
 Before physical implementation of the circuit, we performed validation by simulation under LTSpice. This simulation allowed us to verify the stability and frequency response of each receiver stage. Results confirmed good centering of the signal around 400 kHz, thus validating design choices made.
 
@@ -222,8 +219,3 @@ Figure 10 - LTSpice Simulation
 
 Video 1 - Radio in action
 
----
-
-### Conclusion
-
-This project allowed us to explore the different steps of designing an FM receiver, from circuit theory to practical tests and simulations. Each module was optimized to ensure stable reception and optimal sound quality. This experience constitutes a solid foundation for deepening signal processing and radio frequency communication techniques.

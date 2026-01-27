@@ -1,0 +1,72 @@
+---
+import { Mail, Github, Linkedin } from 'lucide-react';
+
+const { lang = 'en' } = Astro.props;
+
+const translations = {
+  fr: {
+    title: "Me Contacter",
+    subtitle: "Intéressé par mon profil ou envie de discuter d'un projet ?",
+    cta: "Envoyer un email",
+    or: "ou retrouvez-moi sur",
+  },
+  en: {
+    title: "Get in Touch",
+    subtitle: "Interested in my profile or want to discuss a project?",
+    cta: "Send an email",
+    or: "or find me on",
+  }
+};
+
+const t = translations[lang] || translations.fr;
+---
+
+<section id="contact" class="py-16 md:py-24 bg-background-secondary/30 animate-on-scroll">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">{t.title}</h2>
+    <p class="text-lg text-foreground-secondary mb-8">{t.subtitle}</p>
+
+    <div class="flex flex-col items-center gap-8">
+      <!-- Email CTA -->
+      <a
+        href="mailto:martinastyan.pro@gmail.com"
+        class="inline-flex items-center gap-3 px-8 py-4 bg-accent text-white rounded-xl hover:bg-accent-hover transition-all duration-300 font-medium text-lg shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/30 hover:scale-105"
+      >
+        <Mail className="w-5 h-5" />
+        {t.cta}
+      </a>
+
+      <!-- Divider -->
+      <div class="flex items-center gap-4 text-foreground-secondary">
+        <div class="w-16 h-px bg-border"></div>
+        <span class="text-sm">{t.or}</span>
+        <div class="w-16 h-px bg-border"></div>
+      </div>
+
+      <!-- Social Links -->
+      <div class="flex items-center gap-6">
+        <a
+          href="https://github.com/AstyanM"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-2 px-5 py-3 rounded-xl border border-border bg-background hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 group"
+          aria-label="GitHub"
+        >
+          <Github className="w-5 h-5 text-foreground-secondary group-hover:text-foreground transition-colors" />
+          <span class="text-foreground-secondary group-hover:text-foreground transition-colors font-medium">GitHub</span>
+        </a>
+
+        <a
+          href="https://linkedin.com/in/astyan-martin"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-2 px-5 py-3 rounded-xl border border-border bg-background hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 group"
+          aria-label="LinkedIn"
+        >
+          <Linkedin className="w-5 h-5 text-foreground-secondary group-hover:text-foreground transition-colors" />
+          <span class="text-foreground-secondary group-hover:text-foreground transition-colors font-medium">LinkedIn</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

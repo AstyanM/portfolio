@@ -1,23 +1,22 @@
 ---
 title: "Faire Parler les Données Médicales"
-description: "Ce projet est en collaboration avec le Groupement d'Intérêt Public SIB. L'objectif est de concevoir une application permettant d'exploiter les données non structurées des Dossiers Patients Informatisé"
+description: "Ce projet est en collaboration avec le Groupement d'Intérêt Public SIB. L'objectif est de concevoir une application permettant d'exploiter les données non structurées des Dossiers Patients Informatisés (DPI), notamment à partir de comptes rendus médicaux, d'ordonnances ou de prescriptions. Ce projet vise à faciliter l'intégration de ces données dans les systèmes hospitaliers pour améliorer la prise de décision en santé."
 
-tags: ["Python", "Gestion de Projet", "IA"]
+tags: ["Santé", "Recherche"]
 cover: "/images/projects/faire-parler-les-donnees-medicales/4544eafe-6418-44fb-8eaa-1bc83c83c536.png"
 lang: fr
 draft: false
+teamSize: 12
+year: 2024
+repoPrivate: true
+conclusion: |
+  Le projet a permis de développer un outil performant d'exploitation des données médicales, facilitant le triage des patients et la gestion hospitalière. L'intégration d'un modèle LLM et de Machine Learning a permis d'obtenir des résultats optimaux, ouvrant la voie à des améliorations futures comme l'optimisation des modèles ou l'intégration de bases de données françaises.
 ---
-*Projet mené au sein d’un groupe de 12 personnes - 2024*
 
-> Ce projet est en collaboration avec le Groupement d'Intérêt Public SIB. L'objectif est de concevoir une application permettant d'exploiter les données non structurées des Dossiers Patients Informatisés (DPI), notamment à partir de comptes rendus médicaux, d'ordonnances ou de prescriptions. Ce projet vise à faciliter l’intégration de ces données dans les systèmes hospitaliers pour améliorer la prise de décision en santé.
+> Nous nous appuyons sur des technologies avancées comme l'OCR et le traitement du langage naturel (NLP), en combinant des outils libres et payants, afin de créer une solution optimisée et accessible aux utilisateurs finaux du secteur médical. Le projet inclut également un état de l'art pour identifier les solutions existantes et un démonstrateur technique.
 >
+> Je suis entouré d'experts dans les domaines de l'IA, du Big Data, et de l'exploitation des données de santé, et nous collaborons avec le laboratoire Cristal ainsi que le SIB. Ce projet innovant est une opportunité majeure pour transformer les données médicales en outils d'aide à la décision clinique.
 >
-> Nous nous appuyons sur des technologies avancées comme l'OCR et le traitement du langage naturel (NLP), en combinant des outils libres et payants, afin de créer une solution optimisée et accessible aux utilisateurs finaux du secteur médical. Le projet inclut également un état de l’art pour identifier les solutions existantes et un démonstrateur technique.
->
-> Je suis entouré d’experts dans les domaines de l'IA, du Big Data, et de l'exploitation des données de santé, et nous collaborons avec le laboratoire Cristal ainsi que le SIB. Ce projet innovant est une opportunité majeure pour transformer les données médicales en outils d’aide à la décision clinique.
->
-
-### Sommaire
 
 ## 1. Architecture du Système
 
@@ -201,13 +200,8 @@ Figure 11 : Différentes étapes du fonctionnement de l’API
 
 ## 4. Livrables Techniques
 
-- **Code source et API documentée** : Disponible sur GitHub mais en privé
+- **Code source et API documentée** : Disponible sur GitHub
 - **Documentation utilisateur et technique** : Explication détaillée des modules et guide d’utilisation
 - **Démonstrations vidéo** : Présentation des différentes fonctionnalités implémentées
 - **Article scientifique** : En cours de rédaction
 
----
-
-## Conclusion
-
-Le projet a permis de développer un outil performant d’exploitation des données médicales, facilitant le triage des patients et la gestion hospitalière. L’intégration d’un modèle LLM et de Machine Learning a permis d’obtenir des résultats optimaux, ouvrant la voie à des améliorations futures comme l’optimisation des modèles ou l’intégration de bases de données françaises.

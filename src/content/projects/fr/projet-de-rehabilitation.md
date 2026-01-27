@@ -1,17 +1,15 @@
 ---
 title: "Projet de Réhabilitation"
-description: "Ce projet s'inscrit dans une démarche de réhabilitation urbaine d'une partie de Villeneuve-d’Ascq laissée à l'abandon. L'objectif principal est de concevoir un environnement urbain durable, intégrant "
-
+description: "Ce projet s'inscrit dans une démarche de réhabilitation urbaine d'une partie de Villeneuve-d'Ascq laissée à l'abandon. L'objectif principal est de concevoir un environnement urbain durable, intégrant des habitations modulables et éco-responsables, tout en respectant les contraintes architecturales et sociétales. La démarche inclut l'étude des structures existantes, la conception de nouveaux espaces de vie, et la réalisation de plans et maquettes."
+tags: ["Architecture"]
 cover: "/images/projects/projet-de-rehabilitation/122bb7e5-0094-43a2-9db5-0a17ae1c1869.png"
 lang: fr
-draft: false
+draft: true
+teamSize: 4
+year: 2024
+conclusion: |
+  Ce projet nous a permis d'explorer les différentes étapes de la conception architecturale dans un contexte de développement durable. En combinant analyse de site, conception modulaire et urbanisme écologique, nous avons pu proposer une solution viable pour la réhabilitation d'une zone urbaine abandonnée. Ce travail pourrait constituer une base solide pour la mise en place d'un projet réel de reconstruction et d'aménagement urbain.
 ---
-*Projet mené au sein d’un groupe de 4 personnes*
-
-> Ce projet s'inscrit dans une démarche de réhabilitation urbaine d'une partie de Villeneuve-d’Ascq laissée à l'abandon. L'objectif principal est de concevoir un environnement urbain durable, intégrant des habitations modulables et éco-responsables, tout en respectant les contraintes architecturales et sociétales. La démarche inclut l'étude des structures existantes, la conception de nouveaux espaces de vie, et la réalisation de plans et maquettes.
->
-
-### Sommaire
 
 [Figure 1 - Emplacement du projet de réhabilitation](https://www.google.com/maps/place/50%C2%B03625.5%22N+3%C2%B00840.6%22E/@50.6071521,3.143939,18.46z/data=!4m13!1m8!3m7!1s0x47c2d64c4f0557df:0xabf4e5a42abb2b5f!2sAv.+Paul+Langevin,+59650+Villeneuve-dAscq,+France!3b1!8m2!3d50.6107405!4d3.1379094!16s%2Fg%2F1tkkt04f!3m3!8m2!3d50.607085!4d3.144615?entry=ttu&g_ep=EgoyMDI1MDIxOS4xIKXMDSoASAFQAw%3D%3D)
 
@@ -132,8 +130,3 @@ Figure 15 - Première maquette
 
 Figure 16 - Maquette finale
 
----
-
-### Conclusion
-
-Ce projet nous a permis d'explorer les différentes étapes de la conception architecturale dans un contexte de développement durable. En combinant analyse de site, conception modulaire et urbanisme écologique, nous avons pu proposer une solution viable pour la réhabilitation d’une zone urbaine abandonnée. Ce travail pourrait constituer une base solide pour la mise en place d’un projet réel de reconstruction et d’aménagement urbain.

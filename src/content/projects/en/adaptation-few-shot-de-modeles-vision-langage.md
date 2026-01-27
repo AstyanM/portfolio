@@ -1,24 +1,18 @@
 ---
 title: "Few-Shot Adaptation of Vision-Language Models"
-description: "This project aims to develop a few-shot adaptation method for vision-language models like CLIP to improve performance on known categories with few training examples while preserving zero-shot classification capabilities on novel categories."
-
+description: "This project aims to develop a few-shot adaptation method for vision-language models like CLIP to improve performance on known categories with few training examples while preserving zero-shot classification capabilities on novel categories. We used the Oxford Flowers-102 dataset and compared several recent approaches such as CoOp and CoCoOp, with implementation, tests, visualizations, and improvement proposals."
+tags: ["Deep Learning", "Vision par Ordinateur", "Recherche"]
 cover: "/images/projects/adaptation-few-shot-de-modeles-vision-langage/image-1.png"
 lang: en
 draft: false
+teamSize: 2
+year: 2025
+repoUrl: "https://github.com/AstyanM/nn_few_shot"
+conclusion: |
+  This project allowed us to explore in depth the challenges related to few-shot adaptation of vision-language models. From zero-shot evaluation to improvements of CoOp and CoCoOp, we implemented advanced solutions involving vision, text, deep learning, and visualization. Results demonstrate that it is possible to reconcile precision on seen classes and generalization on novel classes, with little data.
 ---
 
-*Project carried out in pairs - 2025*
-
-Here is a GitHub link to all the code written during this project:
-
-[AstyanM/nn_few_shot](https://github.com/AstyanM/nn_few_shot.git)
-
-> This project aims to develop a few-shot adaptation method for vision-language models like CLIP to improve performance on known categories with few training examples while preserving zero-shot classification capabilities on novel categories. We used the Oxford Flowers-102 dataset and compared several recent approaches such as CoOp and CoCoOp, with implementation, tests, visualizations, and improvement proposals.
->
-
-### Table of Contents
-
-### 1. Dataset Preparation
+## 1. Dataset Preparation
 
 We used the **Oxford Flowers-102** dataset, composed of 102 flower categories.
 
@@ -31,7 +25,7 @@ We applied a strict separation between seen and unseen classes, ensuring good ge
 
 Figure 1 - Sample Images from the Dataset
 
-### 2. Zero-Shot Evaluation with CLIP
+## 2. Zero-Shot Evaluation with CLIP
 
 Before any adaptation, we evaluated **CLIP**'s performance in zero-shot using the following prompt:
 
@@ -46,7 +40,7 @@ This evaluation establishes a baseline to measure the impact of adaptation metho
 | Base | 71.33 |
 | Novel | 78.26 |
 
-### 3. CoOp Method: Context Optimization
+## 3. CoOp Method: Context Optimization
 
 ![Figure 2 - CoOp Overview](/images/projects/adaptation-few-shot-de-modeles-vision-langage/image-1.png)
 
@@ -70,7 +64,7 @@ Results show a clear improvement on base classes but degradation on novel classe
 
 Figure 3 - CoOp Results
 
-### 4. Improving CoOp: Gaussian Noise
+## 4. Improving CoOp: Gaussian Noise
 
 To address over-specialization, we introduced controlled **Gaussian noise** during context vector learning. This regularization improves robustness and generalization:
 
@@ -93,7 +87,7 @@ if self.training and self.noise_scale:
     ctx = ctx + noise
 ```
 
-### 5. CoCoOp Method: Conditional Context
+## 5. CoCoOp Method: Conditional Context
 
 ![Figure 5 - CoCoOp Overview](/images/projects/adaptation-few-shot-de-modeles-vision-langage/image-4.png)
 
@@ -118,7 +112,7 @@ This method achieves better generalization to novel classes while maintaining hi
 
 Figure 6 - CoCoOp Results
 
-### 6. CoCoOp Improvements
+## 6. CoCoOp Improvements
 
 We strengthened CoCoOp's generalization capability by modifying the Meta-Net architecture and keeping the idea of adding Gaussian noise during training:
 
@@ -140,7 +134,7 @@ These adjustments improved robustness without significantly increasing training 
 
 ![image.png](/images/projects/adaptation-few-shot-de-modeles-vision-langage/image-6.png)
 
-### 7. Meta-Net Improvement
+## 7. Meta-Net Improvement
 
 After training the model with the CoCoOp method, we explored the idea of enhancing images via preprocessing to help the network generate more discriminative conditional tokens. The initial hypothesis is that enhancing visual features (such as more pronounced saturation) could strengthen intra-class clustering (similar flowers close together) and inter-class separation (different flowers far apart), thus improving overall performance.
 
@@ -180,8 +174,3 @@ Contrary to our expectations, results showed a **generalized performance decreas
 
 Thus, this experiment highlights that pre-trained models like CLIP are designed to work without heavy visual signal adjustment, and that naive post-processing enhancements can actually hurt performance. Adaptation techniques must be integrated upstream, during the model's initial training phase, or use more complex transfer strategies.
 
----
-
-### Conclusion
-
-This project allowed us to explore in depth the challenges related to few-shot adaptation of vision-language models. From zero-shot evaluation to improvements of **CoOp** and **CoCoOp**, we implemented advanced solutions involving vision, text, deep learning, and visualization. Results demonstrate that it is possible to reconcile precision on seen classes and generalization on novel classes, with little data.

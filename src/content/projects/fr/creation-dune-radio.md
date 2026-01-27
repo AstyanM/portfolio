@@ -1,25 +1,23 @@
 ---
-title: "Création d’une radio"
-description: "Ce projet consiste à concevoir et réaliser un récepteur FM fonctionnel. L’objectif est d’assurer une réception claire et stable des signaux radio, en passant par plusieurs étapes essentielles : la fil"
-
+title: "Création d'une radio"
+description: "Ce projet consiste à concevoir et réaliser un récepteur FM fonctionnel. L'objectif est d'assurer une réception claire et stable des signaux radio, en passant par plusieurs étapes essentielles : la filtration du signal, l'amplification audio, la synthèse de fréquence et la démodulation de la fréquence FM."
+tags: ["Hardware", "Traitement du Signal"]
 cover: "/images/projects/creation-dune-radio/1-1.png"
 lang: fr
 draft: false
+teamSize: 2
+year: 2024
+conclusion: |
+  Ce projet nous a permis d'explorer les différentes étapes de la conception d'un récepteur FM, depuis la théorie des circuits jusqu'aux tests pratiques et simulations. Chaque module a été optimisé pour garantir une réception stable et une qualité sonore optimale. Cette expérience constitue une base solide pour approfondir les techniques de traitement du signal et de communication radiofréquence.
 ---
-*Projet mené en duo*
 
-> Ce projet consiste à concevoir et réaliser un récepteur FM fonctionnel. L’objectif est d’assurer une réception claire et stable des signaux radio, en passant par plusieurs étapes essentielles : la filtration du signal, l’amplification audio, la synthèse de fréquence et la démodulation de la fréquence FM. Nous avons également validé notre conception à l’aide de simulations LTSpice.
->
+![Figure 1 - Principe général d'un récepteur FM](/images/projects/creation-dune-radio/1.png)
 
-### Sommaire
+Figure 1 - Principe général d'un récepteur FM
 
-![Figure 1 - Principe général d’un récepteur FM](/images/projects/creation-dune-radio/1.png)
+## 1. Filtrage Audio
 
-Figure 1 - Principe général d’un récepteur FM
-
-### 1. Filtrage Audio
-
-Afin d’obtenir un signal audio de bonne qualité, nous avons conçu des filtres passe-bas et passe-haut qui se doivent de respecter plusieurs conditions :
+Afin d'obtenir un signal audio de bonne qualité, nous avons conçu des filtres passe-bas et passe-haut qui se doivent de respecter plusieurs conditions :
 
 On retrouve alors après normalisation : $F_0 = 1, F_1 = 2$
 
@@ -27,7 +25,7 @@ On retrouve alors après normalisation : $F_0 = 1, F_1 = 2$
 
 Figure 2 - Cahier des charges des filtres
 
-Le filtre passe-bas repose sur une conception de type Chebyshev d’ordre 4, permettant d’atténuer les fréquences indésirables tout en conservant un bon temps de réponse.
+Le filtre passe-bas repose sur une conception de type Chebyshev d'ordre 4, permettant d'atténuer les fréquences indésirables tout en conservant un bon temps de réponse.
 
 ![Figure 3 - Filtres de Chebyshev 3 dB](/images/projects/creation-dune-radio/1-2.png)
 
@@ -90,15 +88,15 @@ De même, on peut alors calculer les valeurs exactes pour chaque composant :
 | R2 | 7,3kΩ | 7,2kΩ |
 | C | 0,59μF | 0,56μF |
 
-### 2. Amplification Audio
+## 2. Amplification Audio
 
-Une fois filtré, le signal audio doit être amplifié pour une restitution sonore de qualité. Nous avons réglé l’amplificateur audio pour obtenir un gain maximal de 20 dB. Un Noise Gate a été intégré avec un seuil fixé à 10 mVrms afin d’atténuer les bruits de fond indésirables. Le fonctionnement de l’amplificateur a été paramétré via des registres afin d’optimiser les performances du système :
+Une fois filtré, le signal audio doit être amplifié pour une restitution sonore de qualité. Nous avons réglé l'amplificateur audio pour obtenir un gain maximal de 20 dB. Un Noise Gate a été intégré avec un seuil fixé à 10 mVrms afin d'atténuer les bruits de fond indésirables. Le fonctionnement de l'amplificateur a été paramétré via des registres afin d'optimiser les performances du système :
 
 ![Figure 8 - Paramètres recommandés en fonction de la source audio](/images/projects/creation-dune-radio/1-6.png)
 
 Figure 8 - Paramètres recommandés en fonction de la source audio
 
-Cela nous donne les informations suivantes à rentrer sous forme d’octets dans notre module :
+Cela nous donne les informations suivantes à rentrer sous forme d'octets dans notre module :
 
 | **Registre** | **Octet** |
 | --- | --- |
@@ -147,9 +145,9 @@ void configureSynth() {
 
 ```
 
-### 3. Synthèse et démodulation de Fréquence
+## 3. Synthèse et démodulation de Fréquence
 
-Pour syntoniser la bonne station radio, nous avons conçu un synthétiseur de fréquence. En partant d’un quartz oscillant à 10,7 MHz, nous avons calculé les diviseurs et multiplicateurs nécessaires pour capter la fréquence cible de Radio Campus (94,35 MHz). Ces paramètres ont été implémentés dans un programme Arduino permettant d’ajuster la fréquence de réception de manière précise.
+Pour syntoniser la bonne station radio, nous avons conçu un synthétiseur de fréquence. En partant d'un quartz oscillant à 10,7 MHz, nous avons calculé les diviseurs et multiplicateurs nécessaires pour capter la fréquence cible de Radio Campus (94,35 MHz). Ces paramètres ont été implémentés dans un programme Arduino permettant d'ajuster la fréquence de réception de manière précise.
 
 Les formules utilisées sont les suivantes :
 
@@ -195,13 +193,13 @@ L32 = 0x80;
 L33 = 0x0D;
 ```
 
-Nous avons ensuite utilisé une boucle à verrouillage de phase (PLL) pour démoduler le signal FM. Cette approche permet d’extraire l’information audio contenue dans la modulation de fréquence. Un filtre passe-bas a été conçu pour lisser le signal de sortie et assurer une reproduction audio fidèle. Après plusieurs tests et l’utilisation de l’abaque du modèle, nous avons ajusté les valeurs des composants pour améliorer les performances globales du démodulateur.
+Nous avons ensuite utilisé une boucle à verrouillage de phase (PLL) pour démoduler le signal FM. Cette approche permet d'extraire l'information audio contenue dans la modulation de fréquence. Un filtre passe-bas a été conçu pour lisser le signal de sortie et assurer une reproduction audio fidèle. Après plusieurs tests et l'utilisation de l'abaque du modèle, nous avons ajusté les valeurs des composants pour améliorer les performances globales du démodulateur.
 
 ![Figure 9 - Abaque](/images/projects/creation-dune-radio/1-7.png)
 
 Figure 9 - Abaque
 
-Toujours d’après le cahier des charges, on a $F_0 = 10,7MHz, f_{max} - f_{min} = 200kHz$. Cela nous donne, après avoir testé expérimentalement, les valeurs finales suivantes :
+Toujours d'après le cahier des charges, on a $F_0 = 10,7MHz, f_{max} - f_{min} = 200kHz$. Cela nous donne, après avoir testé expérimentalement, les valeurs finales suivantes :
 
 - $R_1 = +\infty$
 - $R_2 =$  Potentiomètre $10 k\Omega$
@@ -209,7 +207,7 @@ Toujours d’après le cahier des charges, on a $F_0 = 10,7MHz, f_{max} - f_{min
 - $C_1 = 100pF$
 - $C_2 = 1 nF$
 
-### 4. Simulation LTSpice
+## 4. Simulation LTSpice
 
 Avant la mise en place physique du circuit, nous avons effectué une validation par simulation sous LTSpice. Cette simulation nous a permis de vérifier la stabilité et la réponse fréquentielle de chaque étage du récepteur. Les résultats ont confirmé un bon centrage du signal autour de 400 kHz, validant ainsi les choix de conception effectués.
 
@@ -221,8 +219,3 @@ Figure 10 - Simulation par LTSpice
 
 Vidéo 1 - Radio en action
 
----
-
-### Conclusion
-
-Ce projet nous a permis d’explorer les différentes étapes de la conception d’un récepteur FM, depuis la théorie des circuits jusqu’aux tests pratiques et simulations. Chaque module a été optimisé pour garantir une réception stable et une qualité sonore optimale. Cette expérience constitue une base solide pour approfondir les techniques de traitement du signal et de communication radiofréquence.

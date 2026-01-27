@@ -1,8 +1,15 @@
 ---
 import { getEntry } from 'astro:content';
 import { ArrowRight, Star } from 'lucide-react';
+import { ui } from '@/i18n/ui';
 
-const { lang = 'fr' } = Astro.props;
+const { lang = 'en' } = Astro.props;
+
+// Tag translation helper
+const translateTag = (tag: string): string => {
+  const key = `tag.${tag}` as keyof (typeof ui)[typeof lang];
+  return ui[lang][key] || tag;
+};
 
 // Define specific project slug based on language
 const projectSlug = lang === 'fr' ? 'simulateur-parcoursup' : 'simulateur-parcoursup';
@@ -32,7 +39,7 @@ const translations = {
 const t = translations[lang] || translations.fr;
 ---
 
-<section class="py-16 md:py-24 bg-background-secondary/20">
+<section class="py-12 md:py-16 bg-background-secondary/20 animate-on-scroll">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -73,7 +80,7 @@ const t = translations[lang] || translations.fr;
         <div class="flex flex-wrap gap-2 mb-8">
           {data.tags.slice(0, 4).map(tag => (
             <span class="px-3 py-1 text-sm bg-background border border-border rounded-lg text-foreground-secondary">
-              {tag}
+              {translateTag(tag)}
             </span>
           ))}
         </div>

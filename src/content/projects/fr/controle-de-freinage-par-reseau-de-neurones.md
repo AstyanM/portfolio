@@ -1,27 +1,24 @@
 ---
 title: "Contrôle de freinage par réseau de neurones"
-description: "Ce projet visait à concevoir un système de freinage anti-blocage (ABS) intelligent en utilisant des réseaux de neurones. L’objectif était de maintenir un ratio de glissement optimal lors du freinage a"
-
+description: "Ce projet visait à concevoir un système de freinage anti-blocage (ABS) intelligent en utilisant des réseaux de neurones. L'objectif était de maintenir un ratio de glissement optimal lors du freinage afin d'assurer une adhérence maximale, tout en remplaçant les méthodes classiques (type PID) par une stratégie de linéarisation par retour utilisant le contrôleur NARMA-L2."
+tags: ["Deep Learning", "Simulation", "Recherche"]
 cover: "/images/projects/controle-de-freinage-par-reseau-de-neurones/comparison_results.png"
 lang: fr
 draft: false
+teamSize: 1
+year: 2025
+repoUrl: "https://github.com/AstyanM/abs_narmal2"
+conclusion: |
+  Ce projet a permis de concevoir, simuler et comparer un contrôleur de freinage intelligent basé sur des réseaux de neurones. En plus des travaux techniques, l'objectif était aussi de produire un article scientifique en anglais, qui a synthétisé les fondements théoriques, les choix de conception, les résultats et les limites de l'approche.
+
+  Cette expérience pose les bases de futurs travaux sur des contrôleurs hybrides mêlant précision classique et intelligence adaptative.
 ---
-*Projet mené en autonomie - 2025*
 
-Voici un lien github vers l’ensemble du code rédigé au cours de ce projet :
-
-[GitHub - AstyanM/abs_narmal2](https://github.com/AstyanM/abs_narmal2.git)
-
-> Ce projet visait à concevoir un système de freinage anti-blocage (ABS) intelligent en utilisant des réseaux de neurones. L’objectif était de maintenir un ratio de glissement optimal lors du freinage afin d’assurer une adhérence maximale, tout en remplaçant les méthodes classiques (type PID) par une stratégie de linéarisation par retour utilisant le contrôleur NARMA-L2.
->
-
-Voici aussi l’article scientifique que j’ai rédigé :
+Voici l'article scientifique que j'ai rédigé :
 
 [Article_Scientifique_ABS_NN_System.pdf](/images/projects/controle-de-freinage-par-reseau-de-neurones/article_scientifique_abs_nn_system.pdf)
 
-### Sommaire
-
-### 1. Modélisation du système
+## 1. Modélisation du système
 
 Le système ABS a été modélisé à l’aide du modèle de quart de voiture décrivant les dynamiques du véhicule, de la roue et du système de freinage. Le ratio de glissement $\lambda$, grandeurs mécaniques et aérodynamiques sont liées par :
 
@@ -63,7 +60,7 @@ $$
 
 avec un pic d’adhérence maximal autour de $\lambda_0 = 0.25$.
 
-### 2. Contrôleur NARMA-L2
+## 2. Contrôleur NARMA-L2
 
 Le contrôleur NARMA-L2 permet de linéariser un système non linéaire par l'utilisation de deux réseaux de neurones (appelés f-network et g-network), entraînés à partir des sorties passées et des entrées de commande :
 
@@ -85,7 +82,7 @@ $$
 x(k)=[y(k),y(k−1),y(k−2),u(k),u(k−1),u(k−2)]
 $$
 
-### 3. Génération des données et entraînement
+## 3. Génération des données et entraînement
 
 Pour entraîner les réseaux, un ensemble de 50 scénarios de freinage simulés a été généré à l’aide d’un contrôleur PID. Les paramètres comme la vitesse initiale, le couple de freinage ou l’état du véhicule ont été aléatoirement choisis pour varier les conditions.
 
@@ -105,7 +102,7 @@ Les réseaux ont été entraînés sur environ 20 000 points de données avec 
 
 Figure 3 - Perte d’apprentissage des deux réseaux de neurones
 
-### 4. Résultats expérimentaux
+## 4. Résultats expérimentaux
 
 Le contrôleur NARMA-L2 a été comparé au contrôleur PID classique :
 
@@ -117,7 +114,7 @@ Le contrôleur NARMA-L2 a été comparé au contrôleur PID classique :
 
 Figure 4 - Comparaison des performances : glissement et couple de freinage
 
-### 5. Discussion et perspectives
+## 5. Discussion et perspectives
 
 Même si le contrôleur NARMA-L2 n’a pas surpassé le PID en termes de précision, il présente un intérêt pour :
 
@@ -127,10 +124,3 @@ Même si le contrôleur NARMA-L2 n’a pas surpassé le PID en termes de précis
 
 Le projet a aussi mis en évidence l'importance de la qualité des données d'entraînement : l’utilisation exclusive d’un PID comme générateur de données peut biaiser l’apprentissage.
 
----
-
-### Conclusion
-
-Ce projet a permis de concevoir, simuler et comparer un contrôleur de freinage intelligent basé sur des réseaux de neurones. En plus des travaux techniques, l’objectif était aussi de produire un article scientifique en anglais, qui a synthétisé les fondements théoriques, les choix de conception, les résultats et les limites de l’approche.
-
-Cette expérience pose les bases de futurs travaux sur des contrôleurs hybrides mêlant précision classique et intelligence adaptative.

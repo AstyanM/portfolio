@@ -1,50 +1,40 @@
 ---
-title: "Création d’un Bot Morpion"
-description: "Ce compte-rendu se concentre sur l'organisation du projet, la distribution des responsabilités au sein des équipes, les difficultés techniques surmontées, et les perspectives futures."
+title: "Création d'un Bot Morpion"
+description: "Ce projet consiste à concevoir un bot capable de jouer au super-morpion en utilisant des algorithmes de recherche dans les arbres de jeu. Trois programmes ont été développés : tttree pour la génération d'arbres de décision avec l'algorithme Minimax, sm-refresh pour jouer contre l'ordinateur via une interface interactive, et sm-bot pour calculer le meilleur coup avec l'algorithme Négamax et élagage alpha-bêta."
+tags: ["Simulation"]
 cover: "/images/projects/creation-dun-bot-morpion/g.png"
 lang: fr
 draft: false
+teamSize: 4
+year: 2024
+repoUrl: "https://github.com/AstyanM/tictactoe"
+conclusion: |
+  Ce projet nous a permis d'explorer les différentes étapes de la conception d'un bot jouant au super-morpion, depuis l'implémentation des règles du jeu jusqu'à l'optimisation de l'algorithme Minimax avec élagage alpha-bêta. Chaque aspect a été ajusté pour garantir des décisions stratégiques efficaces tout en respectant les contraintes de temps. Cette expérience constitue une base solide pour approfondir les techniques d'intelligence artificielle appliquées aux jeux et l'optimisation des algorithmes de recherche.
 ---
-*Projet mené au sein d’un groupe de 4 personnes*
 
-Voici un lien github vers l’ensemble du code rédigé au cours de ce projet :
+## Organisation
 
-[GitHub - AstyanM/tictactoe: Creation of a Tic Tac Toe Bot](https://github.com/AstyanM/tictactoe.git)
-
-> Ce compte-rendu se concentre sur l'organisation du projet, la distribution des responsabilités au sein des équipes, les difficultés techniques surmontées, et les perspectives futures.
-Le premier programme, **`tttree`**, explore l'implémentation du **minimax** pour générer la représentation graphique d'un arbre de décision du jeu du tic-tac-toe.
->
->
-> Le deuxième programme, **`sm-refresh`**, introduit la notation algébrique (FEN) pour les coups et nécessite une interaction minimax avec l'ordinateur. Il faut également réaliser l'affichage graphique des positions, à la fois **pseudo-graphique** sur la sortie standard et **graphique** dans un fichier.
->
-> Enfin, le troisième programme, **`sm-bot`**, demande la mise en œuvre de l'algorithme **négamax** et de l'élagage **alpha-bêta** pour calculer le meilleur coup dans le super-morpion.
->
-
-### Sommaire
-
-### Organisation
-
-Pour l’organisation finale du programme, nous avons choisi de la faire de la sorte (sans les fichiers header) :
+Pour l'organisation finale du programme, nous avons choisi de la faire de la sorte (sans les fichiers header) :
 
 - **`morpion.c`** : implémentation du jeu de morpion et des fonctions pour déterminer l'état de la partie et générer des représentations graphiques
-- **`utils.c`** : implémentation d’un algorithme de recherche dans un arbre de jeu
+- **`utils.c`** : implémentation d'un algorithme de recherche dans un arbre de jeu
 - **`main.c`** : utilisation de la ligne de commande et création des structures de jeu nécessaires
-- **`g.dot`** : fichier dot pour la création d’une figure png qui représente l’état du jeu
-- **`g.png`** : figure png qui représente l’état du jeu
-- **`refresh.html`** : page html pour représenter l’état du jeu à partir de la figure précédente, en rafraichissant automatiquement la page
+- **`g.dot`** : fichier dot pour la création d'une figure png qui représente l'état du jeu
+- **`g.png`** : figure png qui représente l'état du jeu
+- **`refresh.html`** : page html pour représenter l'état du jeu à partir de la figure précédente, en rafraichissant automatiquement la page
 - **`makefile`** : fichier permettant les manipulations simples en ligne de commande
-- **`makefile_sources`** : liste des fichiers c à compiler lors de l’utilisation de la commande **make**
+- **`makefile_sources`** : liste des fichiers c à compiler lors de l'utilisation de la commande **make**
 
 ## 1. Premier programme : **`tttree`**
 
-Le programme **`tttree`** doit générer une représentation graphique d’un arbre de décision pour le jeu de tic-tac-toe en utilisant l’algorithme Minimax.
+Le programme **`tttree`** doit générer une représentation graphique d'un arbre de décision pour le jeu de tic-tac-toe en utilisant l'algorithme Minimax.
 
 ### a) Instructions
 
-- L’état initial du jeu sera fourni en argument via la ligne de commande, au format **FEN**
-- Le programme produira un fichier **DOT** décrivant l’arbre de décision, qui sera écrit sur la **sortie standard**
-- Les éventuels messages de **débogage ou d’erreur** seront dirigés vers la **sortie d’erreur**
-- Chaque nœud de l’arbre affichera la valeur évaluée par l’algorithme **Minimax**
+- L'état initial du jeu sera fourni en argument via la ligne de commande, au format **FEN**
+- Le programme produira un fichier **DOT** décrivant l'arbre de décision, qui sera écrit sur la **sortie standard**
+- Les éventuels messages de **débogage ou d'erreur** seront dirigés vers la **sortie d'erreur**
+- Chaque nœud de l'arbre affichera la valeur évaluée par l'algorithme **Minimax**
 - Un script de test devra être utilisé pour **vérifier** le bon fonctionnement du programme
 
 ### b) Principe
@@ -79,9 +69,9 @@ void init_mp(morpion*);
 void make_dot(const char* const);
 ```
 
-Ensuite, nous allons définir neuf fonctions permettant de gérer une partie de morpion, notamment en manipulant le supermorpion et ses sous-morpions. La fonction `fine` vérifie si un entier est dans la plage valide, tandis que `win` et `swin` déterminent respectivement le gagnant d’un morpion individuel et du supermorpion en analysant les combinaisons gagnantes. Pour la représentation, `chaine` génère une chaîne décrivant l’état du jeu, `print_mp` et `print_sm` affichent respectivement un morpion et le supermorpion sous forme de grille dans le terminal. L'initialisation du jeu est assurée par `initialize`, qui met en place chaque sous-morpion via `init_mp`, laquelle remplit leurs tableaux avec une valeur initiale. Enfin, `make_dot` produit un fichier DOT permettant une visualisation graphique du supermorpion.
+Ensuite, nous allons définir neuf fonctions permettant de gérer une partie de morpion, notamment en manipulant le supermorpion et ses sous-morpions. La fonction `fine` vérifie si un entier est dans la plage valide, tandis que `win` et `swin` déterminent respectivement le gagnant d'un morpion individuel et du supermorpion en analysant les combinaisons gagnantes. Pour la représentation, `chaine` génère une chaîne décrivant l'état du jeu, `print_mp` et `print_sm` affichent respectivement un morpion et le supermorpion sous forme de grille dans le terminal. L'initialisation du jeu est assurée par `initialize`, qui met en place chaque sous-morpion via `init_mp`, laquelle remplit leurs tableaux avec une valeur initiale. Enfin, `make_dot` produit un fichier DOT permettant une visualisation graphique du supermorpion.
 
-Finalement, nous avons créé des fonctions permettant de représenter graphiquement l’arbre des mouvements possibles dans un morpion tout en évaluant la qualité de chaque état en fonction de la victoire ou de la défaite. Elles assurent la conversion d’une chaîne de caractères en un objet morpion, génèrent un fichier DOT illustrant les différentes étapes du jeu et attribuent des étiquettes aux nœuds de l’arbre en fonction des scores obtenus. L'affichage des nœuds est conçu pour différencier visuellement les joueurs et chaque état du jeu est identifié de manière unique. Enfin, un système d’évaluation permet de calculer le score d’un état donné en fonction du gagnant et de vérifier si la partie est terminée.
+Finalement, nous avons créé des fonctions permettant de représenter graphiquement l'arbre des mouvements possibles dans un morpion tout en évaluant la qualité de chaque état en fonction de la victoire ou de la défaite. Elles assurent la conversion d'une chaîne de caractères en un objet morpion, génèrent un fichier DOT illustrant les différentes étapes du jeu et attribuent des étiquettes aux nœuds de l'arbre en fonction des scores obtenus. L'affichage des nœuds est conçu pour différencier visuellement les joueurs et chaque état du jeu est identifié de manière unique. Enfin, un système d'évaluation permet de calculer le score d'un état donné en fonction du gagnant et de vérifier si la partie est terminée.
 
 On peut alors tout synthétiser et les tester dans le fichier principal :
 
@@ -128,7 +118,7 @@ echo "Test de ttree pour le morpion  x21o11xo o"
 dot g2.dot -T png -o g2.png
 ```
 
-On obtient les 2 figures suivantes, qui correspondent bien à ce que l’on cherche au vu de la commande :
+On obtient les 2 figures suivantes, qui correspondent bien à ce que l'on cherche au vu de la commande :
 
 ![Figure 1 - Premier morpion](/images/projects/creation-dun-bot-morpion/g1.png)
 
@@ -164,7 +154,7 @@ Figure 5 - Arbre des possibilités negamax
 
 Figure 6 - Arbre des possibilités negamax global
 
-On voit clairement l’amélioration que peut apporter un **`negamax`** avec élagage Alpha Béta.
+On voit clairement l'amélioration que peut apporter un **`negamax`** avec élagage Alpha Béta.
 
 ## 2. Deuxième programme : **`sm-refresh`**
 
@@ -172,17 +162,17 @@ Ce programme doit nous permettre de jouer au super-morpion contre un ordinateur 
 
 ### a) Instructions
 
-- **Saisie des coups** via l’entrée standard en notation algébrique
+- **Saisie des coups** via l'entrée standard en notation algébrique
 - **Algorithme Minimax** dont la profondeur de recherche est ajustable grâce à un paramètre en ligne de commande
 - **Affichage du jeu** sous forme pseudo-graphique dans le terminal
-- **Représentation graphique** des positions générée sous forme d’image
-- **Suivi en temps réel** de l’évolution des parties via la page HTML **`refresh.html`**
+- **Représentation graphique** des positions générée sous forme d'image
+- **Suivi en temps réel** de l'évolution des parties via la page HTML **`refresh.html`**
 
 ### b) Principe
 
-Nous allons ajouter deux fonctions qui interagiront pour exécuter des coups dans le morpion et mettre à jour l'état de victoire en conséquence. La première fonction permet d’effectuer un coup en plaçant le symbole du joueur à la position indiquée alors que la seconde fonction applique ce même principe à un sous-morpion du supermorpion, en s’assurant que le morpion sélectionné n’a pas déjà été remporté.
+Nous allons ajouter deux fonctions qui interagiront pour exécuter des coups dans le morpion et mettre à jour l'état de victoire en conséquence. La première fonction permet d'effectuer un coup en plaçant le symbole du joueur à la position indiquée alors que la seconde fonction applique ce même principe à un sous-morpion du supermorpion, en s'assurant que le morpion sélectionné n'a pas déjà été remporté.
 
-Après avoir créé les nouvelles fonctions afin de gérer la saisie des coups par l’utilisateur via l’entrée standard, nous pouvons finaliser l’implémentation pour pouvoir jouer au supermorpion contre l’ordinateur :
+Après avoir créé les nouvelles fonctions afin de gérer la saisie des coups par l'utilisateur via l'entrée standard, nous pouvons finaliser l'implémentation pour pouvoir jouer au supermorpion contre l'ordinateur :
 
 ```c
 #include <stdio.h>
@@ -261,7 +251,7 @@ case -6:
 
 ### c) Fonction **`mscore`**
 
-C’est une fonction qui modifie le score attribué à chaque morpion classique, en donnant plus de points pour les morpions ayant des situations avantageuses (plusieurs pions déjà bien placés, cases importante prise, comme le milieu, etc…) :
+C'est une fonction qui modifie le score attribué à chaque morpion classique, en donnant plus de points pour les morpions ayant des situations avantageuses (plusieurs pions déjà bien placés, cases importante prise, comme le milieu, etc…) :
 
 → Liste des triplés gagnants :
 
@@ -273,7 +263,7 @@ int t[][3] = {
     };
 ```
 
-**→** Système qui implémente `a[3]`, un tableau qui contient les symboles ‘**`x`**’, ‘**`o`**’ ou ‘**`.`**’ codés par les nombres 2,3 et 5 (2 pour le joueur, 3 pour l’adversaire, 5 pour une case vide) et qui utilise leur produit (unique car ce sont des nombre premiers) afin de définir différents coups :
+**→** Système qui implémente `a[3]`, un tableau qui contient les symboles '**`x`**', '**`o`**' ou '**`.`**' codés par les nombres 2,3 et 5 (2 pour le joueur, 3 pour l'adversaire, 5 pour une case vide) et qui utilise leur produit (unique car ce sont des nombre premiers) afin de définir différents coups :
 
 ```c
 int a[3];
@@ -292,7 +282,7 @@ int a[3];
         }
 ```
 
-→ Teste si le morpion est gagné par le joueur ou l’ennemi et modifie le score en conséquence avec un +/- **`MAX`** :
+→ Teste si le morpion est gagné par le joueur ou l'ennemi et modifie le score en conséquence avec un +/- **`MAX`** :
 
 ```c
 if(win(&try) == trait) return maxs;
@@ -323,11 +313,11 @@ if (t[i][1] == 5 && a[1] == 2) s += 7;
 else if (t[i][1] == 5  && a[1] == 3) s -= 3;
 ```
 
-Tout cela est complété par la fonction `score` qui donne le score d’un supermorpion en fonction de paramètres similaires.
+Tout cela est complété par la fonction `score` qui donne le score d'un supermorpion en fonction de paramètres similaires.
 
 ### d) Vérifications
 
-Ainsi, lorsque l’on exécute le ficher **`exe`**, on retrouve exactement ce que l’on voulait :
+Ainsi, lorsque l'on exécute le ficher **`exe`**, on retrouve exactement ce que l'on voulait :
 
 ```bash
 The condition in large is as follow:
@@ -378,13 +368,13 @@ Figure 8 - Page refresh.html
 
 ## 3. Troisième programme : **`sm-bot`**
 
-Ce programme permet de calculer le meilleur coup possible dans une partie de super-morpion en utilisant l’algorithme **Negamax** avec élagage alpha-bêta. L’état initial du jeu est saisi en ligne de commande au format **FEN**, accompagné d’un paramètre indiquant le temps restant pour terminer la partie. Le programme analyse la position et retourne le coup optimal à jouer sous forme de coordonnées standard.
+Ce programme permet de calculer le meilleur coup possible dans une partie de super-morpion en utilisant l'algorithme **Negamax** avec élagage alpha-bêta. L'état initial du jeu est saisi en ligne de commande au format **FEN**, accompagné d'un paramètre indiquant le temps restant pour terminer la partie. Le programme analyse la position et retourne le coup optimal à jouer sous forme de coordonnées standard.
 
 ### a) Instructions
 
-- **Utilisation de Negamax** avec élagage alpha-bêta pour l’analyse des coups
+- **Utilisation de Negamax** avec élagage alpha-bêta pour l'analyse des coups
 - **Stratégie de gestion du temps** permettant de garantir une réponse rapide
-- **Saisie de la position initiale** en ligne de commande au format **FEN**, incluant l’état des grilles, le dernier coup joué et le joueur au trait
+- **Saisie de la position initiale** en ligne de commande au format **FEN**, incluant l'état des grilles, le dernier coup joué et le joueur au trait
 - **Paramètre de temps** spécifié en ligne de commande pour adapter la profondeur de recherche
 - **Retour du meilleur coup** au format `<#grille>(1..9) <#case>(1..9)`
 
@@ -446,9 +436,9 @@ void time_calculate() {
 
 ### c) Gestion du temps
 
-La gestion du temps dans notre programme se fait grâce à la fonction **`temps_to_depth`** ainsi que d’un fichier texte extérieur à **`sm_bot.exe`**, appelé **`depth.txt`**
+La gestion du temps dans notre programme se fait grâce à la fonction **`temps_to_depth`** ainsi que d'un fichier texte extérieur à **`sm_bot.exe`**, appelé **`depth.txt`**
 
-Nous nous sommes basés sur un temps de 15 minutes par joueur, auxquelles ont rajoute 30 secondes par coup du joueur. De plus, en l’absence d’indication contraire, le temps pour effectuer un coup n’est limité que par le temps total de la partie.
+Nous nous sommes basés sur un temps de 15 minutes par joueur, auxquelles ont rajoute 30 secondes par coup du joueur. De plus, en l'absence d'indication contraire, le temps pour effectuer un coup n'est limité que par le temps total de la partie.
 
 ```c
 void temps_to_depth(const double temps){
@@ -496,23 +486,18 @@ void temps_to_depth(const double temps){
 }
 ```
 
-Ce mécanisme ajuste dynamiquement la **`depth`** en fonction du **temps restant** et du **temps d’exécution du tour précédent**. Si le coup précédent a pris trop de temps, la **`depth`** est diminuée de 1, tandis que si le coup a été rapide, elle est augmentée de 1. Par exemple, si le temps restant est inférieur à **300 secondes**, un temps d’exécution supérieur à **30 secondes** entraîne une réduction de la **`depth`**, tandis que si plus de **600 secondes** restent, un temps inférieur à **8 secondes** l’augmente. Entre ces paliers, la **`depth`** reste stable, garantissant une gestion efficace du temps, notamment en accélérant le jeu lorsque le temps disponible devient critique.
+Ce mécanisme ajuste dynamiquement la **`depth`** en fonction du **temps restant** et du **temps d'exécution du tour précédent**. Si le coup précédent a pris trop de temps, la **`depth`** est diminuée de 1, tandis que si le coup a été rapide, elle est augmentée de 1. Par exemple, si le temps restant est inférieur à **300 secondes**, un temps d'exécution supérieur à **30 secondes** entraîne une réduction de la **`depth`**, tandis que si plus de **600 secondes** restent, un temps inférieur à **8 secondes** l'augmente. Entre ces paliers, la **`depth`** reste stable, garantissant une gestion efficace du temps, notamment en accélérant le jeu lorsque le temps disponible devient critique.
 
 ### d) Approfondissements
 
-Des ajustements supplémentaires pourraient améliorer la précision du système, comme l’ajout de paliers plus fréquents (tous les 100 ou 150 secondes) ou la prise en compte du nombre de cases vides restantes. Dans l’ensemble, la fonction de gestion du temps s’adapte automatiquement à chaque tour pour optimiser l’équilibre entre le temps de calcul et le temps restant.
+Des ajustements supplémentaires pourraient améliorer la précision du système, comme l'ajout de paliers plus fréquents (tous les 100 ou 150 secondes) ou la prise en compte du nombre de cases vides restantes. Dans l'ensemble, la fonction de gestion du temps s'adapte automatiquement à chaque tour pour optimiser l'équilibre entre le temps de calcul et le temps restant.
 
-# 4. Perspectives
+## 4. Perspectives
 
-Bien que nous ayons réussi à mener ce projet jusqu’à son terme, des perspectives d'amélioration restent à explorer:
+Bien que nous ayons réussi à mener ce projet jusqu'à son terme, des perspectives d'amélioration restent à explorer:
 
 - En premier lieu, une optimisation plus poussée des algorithmes de recherche, tels que l'ajout de tables de transposition ou d'heuristiques avancées, pourrait améliorer significativement les performances des programmes **`tttree`** et **`sm-bot`**
 - De plus, une interface utilisateur plus conviviale pour le Programme 2, **`sm-refresh`**, avec des fonctionnalités interactives avancées, serait une piste d'amélioration
 - On peut améliorer la fonction de **`Temps_to_depth`**, en prenant en compte le nombre de cases vides restantes, voire leurs positions
-- On peut songer à donner un score (positif ou négatif) à des situations particulière de blocage par l’adversaire de certains triplés, comme **`“XXO”`** ou **`“XOO”`**.
+- On peut songer à donner un score (positif ou négatif) à des situations particulière de blocage par l'adversaire de certains triplés, comme **`"XXO"`** ou **`"XOO"`**.
 
----
-
-## Conclusion
-
-Ce projet nous a permis d’explorer les différentes étapes de la conception d’un bot jouant au super-morpion, depuis l’implémentation des règles du jeu jusqu’à l’optimisation de l’algorithme Minimax avec élagage alpha-bêta. Chaque aspect a été ajusté pour garantir des décisions stratégiques efficaces tout en respectant les contraintes de temps. Cette expérience constitue une base solide pour approfondir les techniques d’intelligence artificielle appliquées aux jeux et l’optimisation des algorithmes de recherche.
