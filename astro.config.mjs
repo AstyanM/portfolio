@@ -9,7 +9,7 @@ import { rehypeVideo } from './src/plugins/rehype-video.mjs';
 
 // Configuration Astro
 export default defineConfig({
-  site: 'https://astyanmartin.com',
+  site: 'https://astyanm.github.io/portfolio',
   integrations: [
     react(),
     tailwind({
