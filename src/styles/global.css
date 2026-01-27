@@ -1,11 +1,11 @@
-@import 'katex/dist/katex.min.css';
+@import "katex/dist/katex.min.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    /* Colors defined as RGB values for Tailwind opacity support */
+    /* Light theme (now default) - Colors defined as RGB values for Tailwind opacity support */
     --color-background: 255, 255, 255;
     --color-background-secondary: 250, 250, 250;
     --color-foreground: 23, 23, 23;
@@ -16,6 +16,7 @@
   }
 
   .dark {
+    /* Dark theme (optional override) */
     --color-background: 10, 10, 10;
     --color-background-secondary: 23, 23, 23;
     --color-foreground: 237, 237, 237;
@@ -41,7 +42,6 @@
 }
 
 @layer components {
-
   /* Tag badge styling */
   .tag {
     @apply inline-flex items-center px-4 py-1.5 rounded-full text-sm font-medium;
@@ -158,7 +158,6 @@
 }
 
 @layer utilities {
-
   /* Gradient text effect */
   .gradient-text {
     @apply bg-clip-text text-transparent;
@@ -174,7 +173,9 @@
   .animate-on-scroll {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition:
+      opacity 0.6s ease-out,
+      transform 0.6s ease-out;
   }
 
   .animate-on-scroll.is-visible {
@@ -188,7 +189,8 @@
   }
 
   @keyframes pulse-glow {
-    0%, 100% {
+    0%,
+    100% {
       box-shadow: 0 0 0 0 rgba(var(--color-accent), 0.4);
     }
     50% {

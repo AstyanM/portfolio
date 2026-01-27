@@ -18,11 +18,12 @@ export default function Header({ lang, currentPath }: HeaderProps) {
 
   const t = ui[lang];
   const projectsPath = getProjectsPath(lang);
+  const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
   const navItems = [
-    { label: t['nav.home'], href: `/${lang}` },
+    { label: t['nav.home'], href: `${base}/${lang}` },
     { label: t['nav.projects'], href: projectsPath },
-    { label: t['nav.contact'], href: `/${lang}#contact` },
+    { label: t['nav.contact'], href: `${base}/${lang}#contact` },
   ];
 
   useEffect(() => {
@@ -35,8 +36,8 @@ export default function Header({ lang, currentPath }: HeaderProps) {
   }, []);
 
   const isActive = (href: string) => {
-    if (href === `/${lang}`) {
-      return currentPath === `/${lang}` || currentPath === `/${lang}/`;
+    if (href === `${base}/${lang}`) {
+      return currentPath === `${base}/${lang}` || currentPath === `${base}/${lang}/`;
     }
     return currentPath.startsWith(href);
   };
@@ -51,7 +52,7 @@ export default function Header({ lang, currentPath }: HeaderProps) {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <motion.a
-            href={`/${lang}`}
+            href={`${base}/${lang}`}
             className="text-xl font-bold text-accent bg-accent/10 px-3 py-1 rounded-full hover:bg-accent/20 transition-colors"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}

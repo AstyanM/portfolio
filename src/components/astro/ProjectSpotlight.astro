@@ -2,6 +2,7 @@
 import { getEntry } from 'astro:content';
 import { ArrowRight, Star } from 'lucide-react';
 import { ui } from '@/i18n/ui';
+import { getProjectPath, getAssetUrl } from '@/i18n/utils';
 
 const { lang = 'en' } = Astro.props;
 
@@ -37,6 +38,7 @@ const translations = {
 };
 
 const t = translations[lang] || translations.fr;
+const projectUrl = getProjectPath(projectSlug, lang);
 ---
 
 <section class="py-12 md:py-16 bg-background-secondary/20 animate-on-scroll">
@@ -53,7 +55,7 @@ const t = translations[lang] || translations.fr;
         
         <div class="relative rounded-xl overflow-hidden shadow-2xl border border-border/50 aspect-video">
           <img 
-            src={data.cover?.src || data.cover} 
+            src={getAssetUrl(data.cover?.src || data.cover)} 
             alt={data.title}
             class="w-full h-full object-cover"
             loading="lazy"
@@ -86,11 +88,11 @@ const t = translations[lang] || translations.fr;
         </div>
 
         <a 
-          href={`/${lang}/projets/${projectSlug}`}
+          href={projectUrl}
           class="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background rounded-lg hover:bg-foreground/90 transition-colors font-medium"
         >
           {t.btn}
-          <ArrowRight className="w-4 h-4" />
+          <ArrowRight class="w-4 h-4" />
         </a>
       </div>
     </div>

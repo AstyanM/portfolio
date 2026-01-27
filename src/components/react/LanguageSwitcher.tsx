@@ -13,18 +13,27 @@ export default function LanguageSwitcher({ lang, currentPath }: LanguageSwitcher
 
   // Build the alternate URL by swapping the locale
   const getAlternateUrl = () => {
-    // Remove current locale prefix and add new one
-    const pathWithoutLocale = currentPath.replace(/^\/(fr|en)/, '');
+    const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+    
+    // Remove base path first, then current locale prefix
+    let pathWithoutBase = currentPath;
+    if (pathWithoutBase.startsWith(base)) {
+      pathWithoutBase = pathWithoutBase.slice(base.length);
+    }
+    const pathWithoutLocale = pathWithoutBase.replace(/^\/(fr|en)/, '');
 
-    // Handle projects/projets path difference
+    // Handle projects/projets path difference based on TARGET language
     let newPath = pathWithoutLocale;
-    if (lang === 'fr' && pathWithoutLocale.startsWith('/projets')) {
-      newPath = pathWithoutLocale.replace('/projets', '/projects');
-    } else if (lang === 'en' && pathWithoutLocale.startsWith('/projects')) {
+    // If going TO French (from EN), convert projects → projets
+    if (alternateLang === 'fr' && pathWithoutLocale.startsWith('/projects')) {
       newPath = pathWithoutLocale.replace('/projects', '/projets');
+    } 
+    // If going TO English (from FR), convert projets → projects
+    else if (alternateLang === 'en' && pathWithoutLocale.startsWith('/projets')) {
+      newPath = pathWithoutLocale.replace('/projets', '/projects');
     }
 
-    return `/${alternateLang}${newPath || '/'}`;
+    return `${base}/${alternateLang}${newPath || '/'}`;
   };
 
   return (
