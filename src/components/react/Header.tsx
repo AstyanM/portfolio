@@ -20,9 +20,9 @@ export default function Header({ lang, currentPath }: HeaderProps) {
   const projectsPath = getProjectsPath(lang);
 
   const navItems = [
-    { label: t['nav.home'], href: `/${lang}` },
+    { label: t['nav.home'], href: `${import.meta.env.BASE_URL}${lang}` },
     { label: t['nav.projects'], href: projectsPath },
-    { label: t['nav.contact'], href: `/${lang}#contact` },
+    { label: t['nav.contact'], href: `${import.meta.env.BASE_URL}${lang}#contact` },
   ];
 
   useEffect(() => {
@@ -51,7 +51,7 @@ export default function Header({ lang, currentPath }: HeaderProps) {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <motion.a
-            href={`/${lang}`}
+            href={`${import.meta.env.BASE_URL}${lang}`}
             className="text-xl font-bold text-accent bg-accent/10 px-3 py-1 rounded-full hover:bg-accent/20 transition-colors"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
