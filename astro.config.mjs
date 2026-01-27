@@ -8,7 +8,8 @@ import { rehypeFigureCaption } from './src/plugins/rehype-figure-caption.mjs';
 
 // Configuration Astro
 export default defineConfig({
-  site: 'https://astyanmartin.com',
+  site: 'https://astyanm.github.io/',
+  base: 'portfolio/',
   integrations: [
     react(),
     tailwind({
