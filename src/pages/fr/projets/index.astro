@@ -20,7 +20,7 @@ const projectsData = projects.map((p) => ({
   title: p.data.title,
   description: p.data.description,
   tags: p.data.tags,
-  href: `${import.meta.env.BASE_URL}fr/projets/${p.slug.split('/')[1]}`,
+  href: `/fr/projets/${p.slug.split('/')[1]}`,
   coverUrl: p.data.cover?.src,
   repoUrl: p.data.repoPrivate ? undefined : p.data.repoUrl,
   year: p.data.year,
