@@ -2,7 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import ProjectGrid from '@/components/react/ProjectGrid';
 import { getCollection } from 'astro:content';
-import { getAssetUrl } from '@/i18n/utils';
+import { getAssetUrl, getProjectPath, getProjectsPath } from '@/i18n/utils';
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -34,7 +34,7 @@ const projectsData = projects.slice(0, 6).map((p) => ({
   title: p.data.title,
   description: p.data.description,
   tags: p.data.tags,
-  href: `/fr/projets/${p.slug.split('/')[1]}`,
+  href: getProjectPath(p.slug.split('/')[1], 'fr'),
   coverUrl: getAssetUrl(p.data.cover?.src),
 }));
 ---
@@ -76,7 +76,7 @@ const projectsData = projects.slice(0, 6).map((p) => ({
           style="animation-delay: 2.5s"
         >
           <a
-            href="/fr/projets"
+            href={getProjectsPath('fr')}
             class="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white rounded-lg hover:bg-accent-hover transition-colors font-medium"
           >
             Découvrir mes projets
@@ -104,7 +104,7 @@ const projectsData = projects.slice(0, 6).map((p) => ({
           <p class="text-foreground-secondary">Une sélection de projets techniques mêlant exploration et innovation.</p>
         </div>
         <a
-          href="/fr/projets"
+          href={getProjectsPath('fr')}
           class="hidden sm:inline-flex items-center gap-1 text-accent hover:text-accent-hover transition-colors font-medium"
         >
           Voir tous les projets
@@ -116,7 +116,7 @@ const projectsData = projects.slice(0, 6).map((p) => ({
 
       <div class="mt-8 text-center sm:hidden">
         <a
-          href="/fr/projets"
+          href={getProjectsPath('fr')}
           class="inline-flex items-center gap-1 text-accent hover:text-accent-hover transition-colors font-medium"
         >
           Voir tous les projets

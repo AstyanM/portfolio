@@ -2,7 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import ProjectGrid from '@/components/react/ProjectGrid';
 import { getCollection } from 'astro:content';
-import { getAssetUrl } from '@/i18n/utils';
+import { getAssetUrl, getProjectPath } from '@/i18n/utils';
 
 const allProjects = await getCollection('projects', ({ data }) => {
   return data.lang === 'fr' && !data.draft;
@@ -21,7 +21,7 @@ const projectsData = projects.map((p) => ({
   title: p.data.title,
   description: p.data.description,
   tags: p.data.tags,
-  href: `/fr/projets/${p.slug.split('/')[1]}`,
+  href: getProjectPath(p.slug.split('/')[1], 'fr'),
   coverUrl: getAssetUrl(p.data.cover?.src),
   repoUrl: p.data.repoPrivate ? undefined : p.data.repoUrl,
   year: p.data.year,

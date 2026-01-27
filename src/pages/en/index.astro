@@ -4,7 +4,7 @@ import ProjectGrid from '@/components/react/ProjectGrid';
 import TechStack from '@/components/astro/TechStack.astro';
 import Timeline from '@/components/astro/Timeline.astro';
 import { getCollection } from 'astro:content';
-import { getAssetUrl } from '@/i18n/utils';
+import { getAssetUrl, getProjectPath, getProjectsPath } from '@/i18n/utils';
 import ProjectSpotlight from '@/components/astro/ProjectSpotlight.astro';
 import HeroBackground from '@/components/astro/HeroBackground.astro';
 import Typewriter from '@/components/react/Typewriter';
@@ -32,7 +32,7 @@ const projectsData = projects.slice(0, 6).map((p) => ({
   title: p.data.title,
   description: p.data.description,
   tags: p.data.tags,
-  href: `/en/projects/${p.slug.split('/')[1]}`,
+  href: getProjectPath(p.slug.split('/')[1], 'en'),
   coverUrl: getAssetUrl(p.data.cover?.src),
 }));
 ---
@@ -74,7 +74,7 @@ const projectsData = projects.slice(0, 6).map((p) => ({
           style="animation-delay: 2.5s"
         >
           <a
-            href="/en/projects"
+            href={getProjectsPath('en')}
             class="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white rounded-lg hover:bg-accent-hover transition-colors font-medium"
           >
             Discover my projects
@@ -102,7 +102,7 @@ const projectsData = projects.slice(0, 6).map((p) => ({
           <p class="text-foreground-secondary">A selection of technical projects combining exploration and innovation.</p>
         </div>
         <a
-          href="/en/projects"
+          href={getProjectsPath('en')}
           class="hidden sm:inline-flex items-center gap-1 text-accent hover:text-accent-hover transition-colors font-medium"
         >
           View all projects
@@ -114,7 +114,7 @@ const projectsData = projects.slice(0, 6).map((p) => ({
 
       <div class="mt-8 text-center sm:hidden">
         <a
-          href="/en/projects"
+
           class="inline-flex items-center gap-1 text-accent hover:text-accent-hover transition-colors font-medium"
         >
           View all projects
