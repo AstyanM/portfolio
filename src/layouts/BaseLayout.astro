@@ -1,0 +1,33 @@
+---
+import BaseHead from '@/components/astro/BaseHead.astro';
+import Footer from '@/components/astro/Footer.astro';
+import Header from '@/components/react/Header';
+import '@/styles/global.css';
+import { getLangFromUrl } from '@/i18n/utils';
+import { ViewTransitions } from 'astro:transitions';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+
+const { title, description, image } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang={lang} class="scroll-smooth">
+  <head>
+    <BaseHead title={title} description={description} image={image} lang={lang} />
+    <ViewTransitions />
+  </head>
+  <body class="min-h-screen flex flex-col bg-background text-foreground">
+    <Header client:load lang={lang} currentPath={currentPath} />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

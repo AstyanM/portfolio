@@ -1,0 +1,92 @@
+---
+import { getEntry } from 'astro:content';
+import { ArrowRight, Star } from 'lucide-react';
+
+const { lang = 'fr' } = Astro.props;
+
+// Define specific project slug based on language
+const projectSlug = lang === 'fr' ? 'simulateur-parcoursup' : 'simulateur-parcoursup';
+// Note: In content collections, the slug usually includes the language folder if it's organized that way, 
+// OR simpler: we query by slug matching the file structure. 
+// Based on previous file views: `src/content/projects/en/simulateur-parcoursup.md`
+// The collection slug is usually `en/simulateur-parcoursup`.
+
+const fullSlug = `${lang}/${projectSlug}`;
+const project = await getEntry('projects', fullSlug);
+
+if (!project) return null;
+
+const { data } = project;
+
+const translations = {
+  fr: {
+    label: "Projet à la Une",
+    btn: "Voir le projet en détails",
+  },
+  en: {
+    label: "Featured Project",
+    btn: "View project details",
+  }
+};
+
+const t = translations[lang] || translations.fr;
+---
+
+<section class="py-16 md:py-24 bg-background-secondary/20">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Image Side -->
+      <div class="relative group">
+        <!-- Optimized Gradient Blur: Static opacity, hardware accelerated -->
+        <div 
+          class="absolute -inset-4 bg-gradient-to-r from-accent to-purple-600 rounded-2xl opacity-20 blur-lg transition-opacity duration-500 will-change-transform" 
+          style="transform: translateZ(0);"
+        ></div>
+        
+        <div class="relative rounded-xl overflow-hidden shadow-2xl border border-border/50 aspect-video">
+          <img 
+            src={data.cover?.src || data.cover} 
+            alt={data.title}
+            class="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
+
+      <!-- Content Side -->
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-sm font-medium mb-6 animate-fade-in border border-accent/20">
+          <Star className="w-4 h-4 fill-accent" />
+          {t.label}
+        </div>
+
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4 leading-tight">
+          {data.title}
+        </h2>
+
+        <p class="text-lg text-foreground-secondary mb-6 leading-relaxed">
+          {data.description}
+        </p>
+
+        <div class="flex flex-wrap gap-2 mb-8">
+          {data.tags.slice(0, 4).map(tag => (
+            <span class="px-3 py-1 text-sm bg-background border border-border rounded-lg text-foreground-secondary">
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        <a 
+          href={`/${lang}/projets/${projectSlug}`}
+          class="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background rounded-lg hover:bg-foreground/90 transition-colors font-medium"
+        >
+          {t.btn}
+          <ArrowRight className="w-4 h-4" />
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>

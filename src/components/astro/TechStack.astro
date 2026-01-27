@@ -1,0 +1,75 @@
+---
+import { Code2, Database, Brain, Terminal, Layout, Server, Cpu, Globe } from 'lucide-react';
+
+const { lang = 'fr' } = Astro.props;
+
+const translations = {
+  fr: {
+    title: "Stack Technique",
+    subtitle: "Une boîte à outils complète pour transformer des idées complexes en solutions fonctionnelles, du bas niveau à l'intelligence artificielle avancée."
+  },
+  en: {
+    title: "Tech Stack",
+    subtitle: "A complete toolkit to transform complex ideas into functional solutions, from low-level to advanced AI."
+  }
+};
+
+const t = translations[lang] || translations.fr;
+
+const skills = [
+  {
+    category: "Languages",
+    icon: Code2,
+    items: ["Python", "TypeScript", "JavaScript", "SQL", "C", "C++"]
+  },
+  {
+    category: "Frameworks & Web",
+    icon: Globe,
+    items: ["React", "Astro", "FastAPI", "TailwindCSS", "Node.js"]
+  },
+  {
+    category: "AI & Data",
+    icon: Brain,
+    items: ["PyTorch", "NLP", "LLMs", "Pandas", "Scikit-learn", "Computer Vision"]
+  },
+  {
+    category: "Tools & DevOps",
+    icon: Terminal,
+    items: ["Git", "Docker", "n8n", "Linux", "VS Code"]
+  }
+];
+---
+
+<section class="py-16 md:py-24 bg-background-secondary/30 relative overflow-hidden">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="mb-12">
+      <h2 class="text-3xl font-bold text-foreground mb-4">{t.title}</h2>
+      <p class="text-foreground-secondary max-w-2xl">
+        {t.subtitle}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {skills.map((skill) => {
+        const Icon = skill.icon;
+        return (
+          <div class="bg-background-secondary p-6 rounded-xl border border-border/50 hover:border-accent/50 transition-colors group">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="p-2 rounded-lg bg-accent/10 text-accent group-hover:bg-accent group-hover:text-white transition-colors">
+                <Icon className="w-6 h-6" />
+              </div>
+              <h3 class="font-semibold text-foreground">{skill.category}</h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              {skill.items.map((item) => (
+                <span class="px-2 py-1 text-sm rounded bg-background border border-border text-foreground-secondary">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>

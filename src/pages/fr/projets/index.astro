@@ -1,0 +1,44 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ProjectGrid from '@/components/react/ProjectGrid';
+import { getCollection } from 'astro:content';
+
+const allProjects = await getCollection('projects', ({ data }) => {
+  return data.lang === 'fr' && !data.draft;
+});
+
+// Sort by date (most recent first)
+const projects = allProjects.sort((a, b) => {
+  if (!a.data.date || !b.data.date) return 0;
+  return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
+});
+
+// Transform for ProjectGrid
+const projectsData = projects.map((p) => ({
+  slug: p.slug,
+  title: p.data.title,
+  description: p.data.description,
+  tags: p.data.tags,
+  href: `/fr/projets/${p.slug.split('/')[1]}`,
+  coverUrl: p.data.cover?.src,
+}));
+---
+
+<BaseLayout
+  title="Projets | Astyan Martin"
+  description="Découvrez mes projets en ingénierie, IA, électronique et développement web."
+>
+  <section class="py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-12">
+        <h1 class="text-4xl font-bold text-foreground mb-4">Mes Projets</h1>
+        <p class="text-lg text-foreground-secondary max-w-2xl">
+          Une sélection de projets techniques mêlant exploration et innovation.
+          Filtrez par technologie pour trouver ce qui vous intéresse.
+        </p>
+      </div>
+
+      <ProjectGrid client:visible projects={projectsData} lang="fr" showFilter={true} />
+    </div>
+  </section>
+</BaseLayout>

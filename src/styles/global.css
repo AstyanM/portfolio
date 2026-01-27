@@ -1,0 +1,153 @@
+@import 'katex/dist/katex.min.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Colors defined as RGB values for Tailwind opacity support */
+    --color-background: 255, 255, 255;
+    --color-background-secondary: 250, 250, 250;
+    --color-foreground: 23, 23, 23;
+    --color-foreground-secondary: 82, 82, 82;
+    --color-border: 229, 229, 229;
+    --color-accent: 0, 112, 243;
+    --color-accent-hover: 0, 81, 168;
+  }
+
+  .dark {
+    --color-background: 10, 10, 10;
+    --color-background-secondary: 23, 23, 23;
+    --color-foreground: 237, 237, 237;
+    --color-foreground-secondary: 163, 163, 163;
+    --color-border: 38, 38, 38;
+    --color-accent: 50, 145, 255;
+    --color-accent-hover: 91, 164, 255;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    @apply font-sans;
+  }
+
+  /* Custom selection color */
+  ::selection {
+    @apply bg-accent/20 text-foreground;
+  }
+}
+
+@layer components {
+
+  /* Tag badge styling */
+  .tag {
+    @apply inline-flex items-center px-4 py-1.5 rounded-full text-sm font-medium;
+    @apply bg-accent/10 border border-transparent text-accent;
+    @apply transition-all duration-200;
+  }
+
+  .tag:hover {
+    @apply bg-accent text-white shadow-lg shadow-accent/25 scale-105;
+  }
+
+  /* Prose styling for markdown content */
+  .prose {
+    @apply text-foreground max-w-none;
+  }
+
+  .prose h1 {
+    @apply text-3xl md:text-4xl font-bold mt-12 mb-6 text-foreground;
+  }
+
+  .prose h2 {
+    @apply text-2xl font-semibold mt-8 mb-3 text-foreground;
+  }
+
+  .prose h3 {
+    @apply text-xl font-semibold mt-6 mb-2 text-foreground;
+  }
+
+  .prose p {
+    @apply my-4 leading-7 text-foreground-secondary;
+  }
+
+  .prose a {
+    @apply text-accent hover:text-accent-hover underline underline-offset-2;
+  }
+
+  .prose ul,
+  .prose ol {
+    @apply my-4 pl-6 text-foreground-secondary;
+  }
+
+  .prose li {
+    @apply my-1;
+  }
+
+  .prose ul {
+    @apply list-disc;
+  }
+
+  .prose ol {
+    @apply list-decimal;
+  }
+
+  .prose blockquote {
+    @apply border-l-4 border-accent pl-4 my-4 italic text-foreground-secondary;
+  }
+
+  .prose code {
+    @apply bg-background-secondary px-1.5 py-0.5 rounded text-sm font-mono;
+  }
+
+  .prose pre {
+    @apply bg-background-secondary rounded-lg p-4 my-4 overflow-x-auto;
+  }
+
+  .prose pre code {
+    @apply bg-transparent p-0;
+  }
+
+  .prose img {
+    @apply rounded-xl my-8 shadow-xl mx-auto max-h-[600px] w-auto;
+  }
+
+  .prose table {
+    @apply w-full my-4 border-collapse;
+  }
+
+  .prose th,
+  .prose td {
+    @apply border border-border px-4 py-2 text-left;
+  }
+
+  .prose th {
+    @apply bg-background-secondary font-semibold;
+  }
+
+  .prose hr {
+    @apply my-8 border-border;
+  }
+
+  .prose .figure-caption,
+  .figure-caption {
+    @apply text-center text-sm text-foreground-secondary italic mt-2 mb-8 block;
+  }
+}
+
+@layer utilities {
+
+  /* Gradient text effect */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-accent to-purple-500;
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply backdrop-blur-md bg-background/80;
+  }
+}

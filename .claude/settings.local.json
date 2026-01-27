@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir \"C:\\\\Users\\\\Astyan\\\\Documents\\\\Prevision\\\\portf\")",
+      "Bash(npm create:*)",
+      "Bash(npm init:*)",
+      "Bash(npm install:*)",
+      "Bash(npm --version)",
+      "Bash(node --version:*)"
+    ]
+  }
+}
