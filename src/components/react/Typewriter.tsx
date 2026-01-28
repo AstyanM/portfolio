@@ -92,10 +92,14 @@ export default function Typewriter({
     return (
         <p ref={ref} className={className}>
             {displayedText}
-            {!isComplete && (
+            {/* Show cursor during typing, or after completion on desktop only */}
+            {(!isComplete || !shouldSkipAnimation) && (
                 <motion.span
                     animate={{ opacity: [1, 0] }}
-                    transition={{ repeat: Infinity, duration: 0.8 }}
+                    transition={{ 
+                        repeat: Infinity, 
+                        duration: isComplete ? 1.2 : 0.8  // Slower blink when complete
+                    }}
                     className="inline-block w-0.5 h-[1em] translate-y-[0.1em] bg-accent ml-0.5"
                 />
             )}

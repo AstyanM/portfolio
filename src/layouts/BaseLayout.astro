@@ -52,7 +52,19 @@ const currentPath = Astro.url.pathname;
           }
         );
 
-        elements.forEach((el) => observer.observe(el));
+        elements.forEach((el) => {
+          // Check if element is already in viewport on page load
+          const rect = el.getBoundingClientRect();
+          const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
+          
+          if (isInViewport) {
+            // Immediately show elements that are already visible
+            el.classList.add('is-visible');
+          } else {
+            // Observe elements below the fold
+            observer.observe(el);
+          }
+        });
       }
 
       // Run on initial load

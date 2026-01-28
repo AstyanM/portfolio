@@ -65,19 +65,16 @@ const projectsData = projects.slice(0, 6).map((p) => ({
           <Typewriter
             client:visible
             text="Étudiant en ingénierie, curieux et passionné par de nombreux domaines techniques. Ce portfolio regroupe mes projets les plus significatifs, mêlant exploration de l'IA, algorithmes et conception matérielle."
-            speed={25}
-            delay={2000}
+            speed={17}
+            delay={300}
             className="text-lg md:text-xl text-foreground-secondary leading-relaxed"
           />
         </div>
 
-        <div
-          class="flex flex-wrap gap-4 animate-slide-up"
-          style="animation-delay: 2.5s"
-        >
+        <div class="flex flex-wrap gap-4">
           <a
             href={getProjectsPath('fr')}
-            class="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white rounded-lg hover:bg-accent-hover transition-colors font-medium"
+            class="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white rounded-lg hover:bg-accent-hover hover:scale-105 transition-all duration-300 font-medium shadow-lg shadow-accent/20"
           >
             Découvrir mes projets
             <ArrowRight className="w-4 h-4" />
