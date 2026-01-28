@@ -6,8 +6,8 @@ import { ui } from '@/i18n/ui';
 
 interface TagFilterEnhancedProps {
   tags: readonly Tag[];
-  selectedTag: Tag | null;
-  onSelectTag: (tag: Tag | null) => void;
+  selectedTags: Tag[];
+  onSelectTags: (tags: Tag[]) => void;
   lang: 'fr' | 'en';
   tagCounts: Record<Tag, number>;
   totalCount: number;
@@ -22,8 +22,8 @@ const tagCategories = {
 
 export default function TagFilterEnhanced({
   tags,
-  selectedTag,
-  onSelectTag,
+  selectedTags,
+  onSelectTags,
   lang,
   tagCounts,
   totalCount,
@@ -69,43 +69,63 @@ export default function TagFilterEnhanced({
   // Top 5 tags for collapsed view
   const topTags = tags.slice(0, 5);
 
+  // Handlers
+  const handleClearAll = () => {
+    onSelectTags([]);
+  };
+
+  const handleToggleTag = (tag: Tag) => {
+    if (selectedTags.includes(tag)) {
+      // Remove tag
+      onSelectTags(selectedTags.filter(t => t !== tag));
+    } else {
+      // Add tag
+      onSelectTags([...selectedTags, tag]);
+    }
+  };
+
+  const isAllSelected = selectedTags.length === 0;
+
   return (
     <div className="mb-8 py-6 px-6 rounded-2xl bg-gradient-to-br from-accent/10 via-purple-500/8 to-accent/10 border-2 border-accent/20 shadow-xl shadow-black/5 dark:shadow-black/20 backdrop-blur-sm">
       {/* Mobile: Simple wrap */}
       <div className="md:hidden">
         <div className="flex flex-wrap gap-2 justify-center">
           <motion.button
-            onClick={() => onSelectTag(null)}
+            onClick={handleClearAll}
             className={`px-4 py-2 rounded-full text-sm font-medium transition-colors border ${
-              selectedTag === null
+              isAllSelected
                 ? 'bg-accent text-white border-accent'
                 : 'bg-background-secondary border-border text-foreground hover:border-accent hover:text-accent'
             }`}
             whileTap={{ scale: 0.95 }}
           >
             {t['projects.filter.all']}
-            <span className={`ml-1.5 text-xs ${selectedTag === null ? 'opacity-70' : 'opacity-60'}`}>
+            <span className={`ml-1.5 text-xs ${isAllSelected ? 'opacity-70' : 'opacity-60'}`}>
               ({totalCount})
             </span>
           </motion.button>
 
-          {tags.map((tag) => (
-            <motion.button
-              key={tag}
-              onClick={() => onSelectTag(tag)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors border ${
-                selectedTag === tag
-                  ? 'bg-accent text-white border-accent'
-                  : 'bg-background-secondary border-border text-foreground hover:border-accent hover:text-accent'
-              }`}
-              whileTap={{ scale: 0.95 }}
-            >
-              {translateTag(tag)}
-              <span className={`ml-1.5 text-xs ${selectedTag === tag ? 'opacity-70' : 'opacity-60'}`}>
-                ({tagCounts[tag]})
-              </span>
-            </motion.button>
-          ))}
+          {tags.map((tag) => {
+            const isSelected = selectedTags.includes(tag);
+            return (
+              <motion.button
+                key={tag}
+                onClick={() => handleToggleTag(tag)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors border ${
+                  isSelected
+                    ? 'bg-accent text-white border-accent'
+                    : 'bg-background-secondary border-border text-foreground hover:border-accent hover:text-accent'
+                }`}
+                whileTap={{ scale: 0.95 }}
+              >
+                {translateTag(tag)}
+                <span className={`ml-1.5 text-xs ${isSelected ? 'opacity-70' : 'opacity-60'}`}>
+                  ({tagCounts[tag]})
+                </span>
+              </motion.button>
+            );
+          })}
         </div>
       </div>
 
@@ -117,9 +137,9 @@ export default function TagFilterEnhanced({
             <div className="flex items-center gap-3">
               <Filter className="w-4 h-4 text-accent flex-shrink-0" />
               <motion.button
-                onClick={() => onSelectTag(null)}
+                onClick={handleClearAll}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors border ${
-                  selectedTag === null
+                  isAllSelected
                     ? 'bg-accent text-white border-accent shadow-lg shadow-accent/20'
                     : 'bg-background-secondary border-border text-foreground hover:border-accent hover:text-accent'
                 }`}
@@ -127,7 +147,7 @@ export default function TagFilterEnhanced({
                 whileHover={{ scale: 1.05 }}
               >
                 {t['projects.filter.all']}
-                <span className={`ml-1.5 text-xs ${selectedTag === null ? 'opacity-70' : 'opacity-60'}`}>
+                <span className={`ml-1.5 text-xs ${isAllSelected ? 'opacity-70' : 'opacity-60'}`}>
                   ({totalCount})
                 </span>
               </motion.button>
@@ -153,9 +173,9 @@ export default function TagFilterEnhanced({
               <div className="flex items-center gap-3">
                 <Filter className="w-4 h-4 text-accent flex-shrink-0" />
                 <motion.button
-                  onClick={() => onSelectTag(null)}
+                  onClick={handleClearAll}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-colors border ${
-                    selectedTag === null
+                    isAllSelected
                       ? 'bg-accent text-white border-accent shadow-lg shadow-accent/20'
                       : 'bg-background-secondary border-border text-foreground hover:border-accent hover:text-accent'
                   }`}
@@ -163,7 +183,7 @@ export default function TagFilterEnhanced({
                   whileHover={{ scale: 1.05 }}
                 >
                   {t['projects.filter.all']}
-                  <span className={`ml-1.5 text-xs ${selectedTag === null ? 'opacity-70' : 'opacity-60'}`}>
+                  <span className={`ml-1.5 text-xs ${isAllSelected ? 'opacity-70' : 'opacity-60'}`}>
                     ({totalCount})
                   </span>
                 </motion.button>
@@ -187,24 +207,27 @@ export default function TagFilterEnhanced({
                   {labels.techniques}
                 </h3>
                 <div className="flex flex-wrap gap-2">
-                  {categorizedTags.techniques.map((tag) => (
-                    <motion.button
-                      key={tag}
-                      onClick={() => onSelectTag(tag)}
-                      className={`px-4 py-2 rounded-full text-sm font-medium transition-colors border ${
-                        selectedTag === tag
-                          ? 'bg-accent text-white border-accent shadow-lg shadow-accent/20'
-                          : 'bg-background-secondary border-border text-foreground hover:border-accent hover:text-accent'
-                      }`}
-                      whileTap={{ scale: 0.95 }}
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      {translateTag(tag)}
-                      <span className={`ml-1.5 text-xs ${selectedTag === tag ? 'opacity-70' : 'opacity-60'}`}>
-                        ({tagCounts[tag]})
-                      </span>
-                    </motion.button>
-                  ))}
+                  {categorizedTags.techniques.map((tag) => {
+                    const isSelected = selectedTags.includes(tag);
+                    return (
+                      <motion.button
+                        key={tag}
+                        onClick={() => handleToggleTag(tag)}
+                        className={`px-4 py-2 rounded-full text-sm font-medium transition-colors border ${
+                          isSelected
+                            ? 'bg-accent text-white border-accent shadow-lg shadow-accent/20'
+                            : 'bg-background-secondary border-border text-foreground hover:border-accent hover:text-accent'
+                        }`}
+                        whileTap={{ scale: 0.95 }}
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        {translateTag(tag)}
+                        <span className={`ml-1.5 text-xs ${isSelected ? 'opacity-70' : 'opacity-60'}`}>
+                          ({tagCounts[tag]})
+                        </span>
+                      </motion.button>
+                    );
+                  })}
                 </div>
               </div>
             )}
@@ -216,24 +239,27 @@ export default function TagFilterEnhanced({
                   {labels.domains}
                 </h3>
                 <div className="flex flex-wrap gap-2">
-                  {categorizedTags.domains.map((tag) => (
-                    <motion.button
-                      key={tag}
-                      onClick={() => onSelectTag(tag)}
-                      className={`px-4 py-2 rounded-full text-sm font-medium transition-colors border ${
-                        selectedTag === tag
-                          ? 'bg-accent text-white border-accent shadow-lg shadow-accent/20'
-                          : 'bg-background-secondary border-border text-foreground hover:border-accent hover:text-accent'
-                      }`}
-                      whileTap={{ scale: 0.95 }}
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      {translateTag(tag)}
-                      <span className={`ml-1.5 text-xs ${selectedTag === tag ? 'opacity-70' : 'opacity-60'}`}>
-                        ({tagCounts[tag]})
-                      </span>
-                    </motion.button>
-                  ))}
+                  {categorizedTags.domains.map((tag) => {
+                    const isSelected = selectedTags.includes(tag);
+                    return (
+                      <motion.button
+                        key={tag}
+                        onClick={() => handleToggleTag(tag)}
+                        className={`px-4 py-2 rounded-full text-sm font-medium transition-colors border ${
+                          isSelected
+                            ? 'bg-accent text-white border-accent shadow-lg shadow-accent/20'
+                            : 'bg-background-secondary border-border text-foreground hover:border-accent hover:text-accent'
+                        }`}
+                        whileTap={{ scale: 0.95 }}
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        {translateTag(tag)}
+                        <span className={`ml-1.5 text-xs ${isSelected ? 'opacity-70' : 'opacity-60'}`}>
+                          ({tagCounts[tag]})
+                        </span>
+                      </motion.button>
+                    );
+                  })}
                 </div>
               </div>
             )}
@@ -245,24 +271,27 @@ export default function TagFilterEnhanced({
                   {labels.types}
                 </h3>
                 <div className="flex flex-wrap gap-2">
-                  {categorizedTags.types.map((tag) => (
-                    <motion.button
-                      key={tag}
-                      onClick={() => onSelectTag(tag)}
-                      className={`px-4 py-2 rounded-full text-sm font-medium transition-colors border ${
-                        selectedTag === tag
-                          ? 'bg-accent text-white border-accent shadow-lg shadow-accent/20'
-                          : 'bg-background-secondary border-border text-foreground hover:border-accent hover:text-accent'
-                      }`}
-                      whileTap={{ scale: 0.95 }}
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      {translateTag(tag)}
-                      <span className={`ml-1.5 text-xs ${selectedTag === tag ? 'opacity-70' : 'opacity-60'}`}>
-                        ({tagCounts[tag]})
-                      </span>
-                    </motion.button>
-                  ))}
+                  {categorizedTags.types.map((tag) => {
+                    const isSelected = selectedTags.includes(tag);
+                    return (
+                      <motion.button
+                        key={tag}
+                        onClick={() => handleToggleTag(tag)}
+                        className={`px-4 py-2 rounded-full text-sm font-medium transition-colors border ${
+                          isSelected
+                            ? 'bg-accent text-white border-accent shadow-lg shadow-accent/20'
+                            : 'bg-background-secondary border-border text-foreground hover:border-accent hover:text-accent'
+                        }`}
+                        whileTap={{ scale: 0.95 }}
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        {translateTag(tag)}
+                        <span className={`ml-1.5 text-xs ${isSelected ? 'opacity-70' : 'opacity-60'}`}>
+                          ({tagCounts[tag]})
+                        </span>
+                      </motion.button>
+                    );
+                  })}
                 </div>
               </div>
             )}

@@ -42,7 +42,7 @@ function useIsMobile(breakpoint = 768) {
 }
 
 export default function ProjectGrid({ projects, lang, showFilter = true, mobileLimit, ctaCard, yearFilter }: ProjectGridProps) {
-  const [selectedTag, setSelectedTag] = useState<Tag | null>(null);
+  const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
   const isMobile = useIsMobile();
 
   // Calculate tag counts
@@ -61,8 +61,16 @@ export default function ProjectGrid({ projects, lang, showFilter = true, mobileL
     ? projects.filter((p) => p.year === yearFilter)
     : projects;
 
-  const tagFilteredProjects = selectedTag
-    ? yearFilteredProjects.filter((p) => p.tags.includes(selectedTag))
+  // Apply tag filter - project must have AT LEAST ONE selected tag (OR logic)
+  // Then sort by number of matching tags (most matches first)
+  const tagFilteredProjects = selectedTags.length > 0
+    ? yearFilteredProjects
+        .filter((p) => selectedTags.some(tag => p.tags.includes(tag)))
+        .sort((a, b) => {
+          const aMatches = selectedTags.filter(tag => a.tags.includes(tag)).length;
+          const bMatches = selectedTags.filter(tag => b.tags.includes(tag)).length;
+          return bMatches - aMatches; // Sort descending by number of matches
+        })
     : yearFilteredProjects;
 
   const filteredProjects = mobileLimit && isMobile
@@ -74,8 +82,8 @@ export default function ProjectGrid({ projects, lang, showFilter = true, mobileL
       {showFilter && usedTags.length > 0 && (
         <TagFilterEnhanced
           tags={usedTags}
-          selectedTag={selectedTag}
-          onSelectTag={setSelectedTag}
+          selectedTags={selectedTags}
+          onSelectTags={setSelectedTags}
           lang={lang}
           tagCounts={tagCounts}
           totalCount={projects.length}
