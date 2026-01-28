@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import ProjectGrid from '@/components/react/ProjectGrid';
+import ProjectsPageClient from '@/components/react/ProjectsPageClient';
 import { getCollection } from 'astro:content';
 import { getAssetUrl, getProjectPath } from '@/i18n/utils';
 
@@ -14,6 +14,17 @@ const projects = allProjects.sort((a, b) => {
   const yearB = b.data.year ?? 0;
   return yearB - yearA;
 });
+
+// Calculate year counts for timeline
+const yearCounts = projects.reduce((acc, p) => {
+  const year = p.data.year ?? 0;
+  acc[year] = (acc[year] || 0) + 1;
+  return acc;
+}, {} as Record<number, number>);
+
+const years = Object.entries(yearCounts)
+  .map(([year, count]) => ({ year: parseInt(year), count }))
+  .sort((a, b) => a.year - b.year);
 
 // Transform for ProjectGrid
 const projectsData = projects.map((p) => ({
@@ -37,11 +48,11 @@ const projectsData = projects.map((p) => ({
       <div class="mb-12">
         <h1 class="text-4xl font-bold text-foreground mb-4">Mes Projets</h1>
         <p class="text-lg text-foreground-secondary">
-          Une sélection de projets techniques mêlant exploration et innovation. Filtrez par technologie pour trouver ce qui vous intéresse.
+          Une sélection de projets techniques mêlant exploration et innovation. Filtrez par année ou technologie pour trouver ce qui vous intéresse.
         </p>
       </div>
 
-      <ProjectGrid client:visible projects={projectsData} lang="fr" showFilter={true} />
+      <ProjectsPageClient client:visible years={years} projects={projectsData} lang="fr" />
     </div>
   </section>
 </BaseLayout>

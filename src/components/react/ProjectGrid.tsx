@@ -25,6 +25,7 @@ interface ProjectGridProps {
   ctaCard?: {
     href: string;
   };
+  yearFilter?: number | null;
 }
 
 function useIsMobile(breakpoint = 768) {
@@ -40,7 +41,7 @@ function useIsMobile(breakpoint = 768) {
   return isMobile;
 }
 
-export default function ProjectGrid({ projects, lang, showFilter = true, mobileLimit, ctaCard }: ProjectGridProps) {
+export default function ProjectGrid({ projects, lang, showFilter = true, mobileLimit, ctaCard, yearFilter }: ProjectGridProps) {
   const [selectedTag, setSelectedTag] = useState<Tag | null>(null);
   const isMobile = useIsMobile();
 
@@ -55,9 +56,14 @@ export default function ProjectGrid({ projects, lang, showFilter = true, mobileL
     .filter((tag) => tagCounts[tag] > 0)
     .sort((a, b) => tagCounts[b] - tagCounts[a]);
 
-  const tagFilteredProjects = selectedTag
-    ? projects.filter((p) => p.tags.includes(selectedTag))
+  // Apply year filter first
+  const yearFilteredProjects = yearFilter 
+    ? projects.filter((p) => p.year === yearFilter)
     : projects;
+
+  const tagFilteredProjects = selectedTag
+    ? yearFilteredProjects.filter((p) => p.tags.includes(selectedTag))
+    : yearFilteredProjects;
 
   const filteredProjects = mobileLimit && isMobile
     ? tagFilteredProjects.slice(0, mobileLimit)
