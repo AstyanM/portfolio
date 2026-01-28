@@ -12,11 +12,13 @@ conclusion: |
   Ce projet a permis de concevoir, simuler et comparer un contrôleur de freinage intelligent basé sur des réseaux de neurones. En plus des travaux techniques, l'objectif était aussi de produire un article scientifique en anglais, qui a synthétisé les fondements théoriques, les choix de conception, les résultats et les limites de l'approche.
 
   Cette expérience pose les bases de futurs travaux sur des contrôleurs hybrides mêlant précision classique et intelligence adaptative.
+appendix:
+  documents:
+    - title: "Article scientifique"
+      description: "Article au format PDF décrivant la modélisation et les résultats expérimentaux"
+      url: "/images/projects/controle-de-freinage-par-reseau-de-neurones/article_scientifique_abs_nn_system.pdf"
+      type: pdf
 ---
-
-Voici l'article scientifique que j'ai rédigé :
-
-[Article_Scientifique_ABS_NN_System.pdf](/images/projects/controle-de-freinage-par-reseau-de-neurones/article_scientifique_abs_nn_system.pdf)
 
 ## 1. Modélisation du système
 
@@ -34,23 +36,23 @@ Les équations différentielles suivantes décrivent le système :
 
 - **Dynamique du véhicule :**
 
-    $$
-    M\dot{v} = -\mu(\lambda)F_z - C_x v^2
-    $$
+  $$
+  M\dot{v} = -\mu(\lambda)F_z - C_x v^2
+  $$
 
 - **Dynamique de la roue :**
 
-    $$
-    I\dot{\omega} = \mu(\lambda)F_z r - B\omega - \tau_b
+  $$
+  I\dot{\omega} = \mu(\lambda)F_z r - B\omega - \tau_b
 
-    $$
+
+  $$
 
 - **Système de freinage :**
 
-    $$
-    \dot{\tau}_b = \frac{-\tau_b + K_b u}{\tau}
-    $$
-
+  $$
+  \dot{\tau}_b = \frac{-\tau_b + K_b u}{\tau}
+  $$
 
 La relation non linéaire entre le ratio de glissement et le coefficient de friction $\mu(\lambda)$ est modélisée par une loi de type :
 
@@ -86,11 +88,11 @@ $$
 
 Pour entraîner les réseaux, un ensemble de 50 scénarios de freinage simulés a été généré à l’aide d’un contrôleur PID. Les paramètres comme la vitesse initiale, le couple de freinage ou l’état du véhicule ont été aléatoirement choisis pour varier les conditions.
 
-| Paramètre | Intervalle |
-| --- | --- |
-| Vitesse initiale | 20–40 m/s |
-| Glissement initial | 0.1–0.4 |
-| Couple de freinage initial | 0–20 Nm |
+| Paramètre                  | Intervalle |
+| -------------------------- | ---------- |
+| Vitesse initiale           | 20–40 m/s  |
+| Glissement initial         | 0.1–0.4    |
+| Couple de freinage initial | 0–20 Nm    |
 
 ![Figure 2 - Analyse des données générées](/images/projects/controle-de-freinage-par-reseau-de-neurones/data_quality_analysis.png)
 
@@ -123,4 +125,3 @@ Même si le contrôleur NARMA-L2 n’a pas surpassé le PID en termes de précis
 - les applications dans les véhicules électriques et autonomes.
 
 Le projet a aussi mis en évidence l'importance de la qualité des données d'entraînement : l’utilisation exclusive d’un PID comme générateur de données peut biaiser l’apprentissage.
-

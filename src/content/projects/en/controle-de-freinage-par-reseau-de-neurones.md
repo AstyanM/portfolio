@@ -12,11 +12,13 @@ conclusion: |
   This project enabled the design, simulation, and comparison of an intelligent braking controller based on neural networks. Beyond the technical work, the objective was also to produce a scientific article in English, which synthesized the theoretical foundations, design choices, results, and limitations of the approach.
 
   This experience lays the groundwork for future work on hybrid controllers combining classical precision and adaptive intelligence.
+appendix:
+  documents:
+    - title: "Scientific Article"
+      description: "PDF article describing the modeling and experimental results"
+      url: "/images/projects/controle-de-freinage-par-reseau-de-neurones/article_scientifique_abs_nn_system.pdf"
+      type: pdf
 ---
-
-Here is the scientific article I wrote:
-
-[Scientific_Article_ABS_NN_System.pdf](/images/projects/controle-de-freinage-par-reseau-de-neurones/article_scientifique_abs_nn_system.pdf)
 
 ## 1. System Modeling
 
@@ -34,23 +36,23 @@ The following differential equations describe the system:
 
 - **Vehicle dynamics:**
 
-    $$
-    M\dot{v} = -\mu(\lambda)F_z - C_x v^2
-    $$
+  $$
+  M\dot{v} = -\mu(\lambda)F_z - C_x v^2
+  $$
 
 - **Wheel dynamics:**
 
-    $$
-    I\dot{\omega} = \mu(\lambda)F_z r - B\omega - \tau_b
+  $$
+  I\dot{\omega} = \mu(\lambda)F_z r - B\omega - \tau_b
 
-    $$
+
+  $$
 
 - **Braking system:**
 
-    $$
-    \dot{\tau}_b = \frac{-\tau_b + K_b u}{\tau}
-    $$
-
+  $$
+  \dot{\tau}_b = \frac{-\tau_b + K_b u}{\tau}
+  $$
 
 The nonlinear relationship between slip ratio and friction coefficient $\mu(\lambda)$ is modeled by a law of type:
 
@@ -86,11 +88,11 @@ $$
 
 To train the networks, a set of 50 simulated braking scenarios was generated using a PID controller. Parameters such as initial speed, braking torque, or vehicle state were randomly chosen to vary conditions.
 
-| Parameter | Range |
-| --- | --- |
-| Initial speed | 20–40 m/s |
-| Initial slip | 0.1–0.4 |
-| Initial braking torque | 0–20 Nm |
+| Parameter              | Range     |
+| ---------------------- | --------- |
+| Initial speed          | 20–40 m/s |
+| Initial slip           | 0.1–0.4   |
+| Initial braking torque | 0–20 Nm   |
 
 ![Figure 2 - Generated Data Analysis](/images/projects/controle-de-freinage-par-reseau-de-neurones/data_quality_analysis.png)
 
@@ -123,4 +125,3 @@ Even though the NARMA-L2 controller did not outperform PID in terms of accuracy,
 - applications in electric and autonomous vehicles.
 
 The project also highlighted the importance of training data quality: exclusive use of a PID as data generator can bias learning.
-
