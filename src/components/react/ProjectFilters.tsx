@@ -116,7 +116,8 @@ export default function ProjectFilters({
             <Calendar className="w-3.5 h-3.5 text-foreground-secondary" />
             <span className="text-xs font-medium text-foreground-secondary uppercase tracking-wide">{labels.yearLabel}</span>
           </div>
-          <div className="flex flex-wrap gap-2">
+          {/* First line: All years button centered */}
+          <div className="flex justify-center mb-2">
             <motion.button
               onClick={() => onSelectYear(null)}
               whileTap={{ scale: 0.95 }}
@@ -128,6 +129,9 @@ export default function ProjectFilters({
             >
               {labels.allYears}
             </motion.button>
+          </div>
+          {/* Second line: Year buttons centered */}
+          <div className="flex flex-wrap gap-2 justify-center">
             {years.map((item) => (
               <motion.button
                 key={item.year}
@@ -151,7 +155,8 @@ export default function ProjectFilters({
             <Filter className="w-3.5 h-3.5 text-foreground-secondary" />
             <span className="text-xs font-medium text-foreground-secondary uppercase tracking-wide">{labels.tagsLabel}</span>
           </div>
-          <div className="flex flex-wrap gap-2">
+          {/* First line: All tags button centered */}
+          <div className="flex justify-center mb-2">
             <motion.button
               onClick={handleClearAllTags}
               whileTap={{ scale: 0.95 }}
@@ -163,6 +168,9 @@ export default function ProjectFilters({
             >
               {t['projects.filter.all']}
             </motion.button>
+          </div>
+          {/* Second line: Tag buttons centered */}
+          <div className="flex flex-wrap gap-2 justify-center">
             {tags.map((tag) => {
               const isSelected = selectedTags.includes(tag);
               return (
