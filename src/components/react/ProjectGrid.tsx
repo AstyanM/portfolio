@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProjectCard from './ProjectCard';
+import ProjectCtaCard from './ProjectCtaCard';
 import TagFilter from './TagFilter';
 import type { Tag } from '@/consts';
 import { availableTags } from '@/consts';
@@ -21,6 +22,9 @@ interface ProjectGridProps {
   lang: 'fr' | 'en';
   showFilter?: boolean;
   mobileLimit?: number;
+  ctaCard?: {
+    href: string;
+  };
 }
 
 function useIsMobile(breakpoint = 768) {
@@ -36,7 +40,7 @@ function useIsMobile(breakpoint = 768) {
   return isMobile;
 }
 
-export default function ProjectGrid({ projects, lang, showFilter = true, mobileLimit }: ProjectGridProps) {
+export default function ProjectGrid({ projects, lang, showFilter = true, mobileLimit, ctaCard }: ProjectGridProps) {
   const [selectedTag, setSelectedTag] = useState<Tag | null>(null);
   const isMobile = useIsMobile();
 
@@ -101,6 +105,25 @@ export default function ProjectGrid({ projects, lang, showFilter = true, mobileL
               />
             </motion.div>
           ))}
+          
+          {/* CTA Card as last item */}
+          {ctaCard && (
+            <motion.div
+              key="cta-card"
+              layout
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.3 }}
+              className="h-full"
+            >
+              <ProjectCtaCard 
+                href={ctaCard.href}
+                lang={lang}
+                index={filteredProjects.length}
+              />
+            </motion.div>
+          )}
         </AnimatePresence>
       </motion.div>
 

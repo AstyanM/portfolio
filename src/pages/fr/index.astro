@@ -28,8 +28,8 @@ const projects = filteredProjectsList.sort((a, b) => {
   return yearB - yearA;
 });
 
-// Transform for ProjectGrid
-const projectsData = projects.slice(0, 6).map((p) => ({
+// Transform for ProjectGrid (showing 5 + CTA card)
+const projectsData = projects.slice(0, 5).map((p) => ({
   slug: p.slug,
   title: p.data.title,
   description: p.data.description,
@@ -95,31 +95,19 @@ const projectsData = projects.slice(0, 6).map((p) => ({
         <ProjectSpotlight lang="fr" />
       </div>
 
-      <div class="flex items-end justify-between mb-12">
-        <div>
-          <h2 class="text-3xl font-bold text-foreground mb-2">Autres Projets</h2>
-          <p class="text-foreground-secondary">Une sélection de projets techniques mêlant exploration et innovation.</p>
-        </div>
-        <a
-          href={getProjectsPath('fr')}
-          class="hidden sm:inline-flex items-center gap-1 text-accent hover:text-accent-hover transition-colors font-medium"
-        >
-          Voir tous les projets
-          <ArrowRight className="w-4 h-4" />
-        </a>
+      <div class="mb-12">
+        <h2 class="text-3xl font-bold text-foreground mb-2">Autres Projets</h2>
+        <p class="text-foreground-secondary">Une sélection de projets techniques mêlant exploration et innovation.</p>
       </div>
 
-      <ProjectGrid client:visible projects={projectsData} lang="fr" showFilter={false} mobileLimit={3} />
-
-      <div class="mt-8 text-center sm:hidden">
-        <a
-          href={getProjectsPath('fr')}
-          class="inline-flex items-center gap-1 text-accent hover:text-accent-hover transition-colors font-medium"
-        >
-          Voir tous les projets
-          <ArrowRight className="w-4 h-4" />
-        </a>
-      </div>
+      <ProjectGrid 
+        client:visible 
+        projects={projectsData} 
+        lang="fr" 
+        showFilter={false} 
+        mobileLimit={2}
+        ctaCard={{ href: getProjectsPath('fr') }}
+      />
     </div>
   </section>
 
