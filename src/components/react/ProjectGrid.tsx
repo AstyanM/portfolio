@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProjectCard from './ProjectCard';
 import ProjectCtaCard from './ProjectCtaCard';
-import TagFilter from './TagFilter';
+import TagFilterEnhanced from './TagFilterEnhanced';
 import type { Tag } from '@/consts';
 import { availableTags } from '@/consts';
 
@@ -72,7 +72,7 @@ export default function ProjectGrid({ projects, lang, showFilter = true, mobileL
   return (
     <div>
       {showFilter && usedTags.length > 0 && (
-        <TagFilter
+        <TagFilterEnhanced
           tags={usedTags}
           selectedTag={selectedTag}
           onSelectTag={setSelectedTag}
