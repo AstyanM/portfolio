@@ -26,6 +26,8 @@ interface ProjectGridProps {
     href: string;
   };
   yearFilter?: number | null;
+  selectedTags?: Tag[];
+  onSelectTags?: (tags: Tag[]) => void;
 }
 
 function useIsMobile(breakpoint = 768) {
@@ -41,9 +43,22 @@ function useIsMobile(breakpoint = 768) {
   return isMobile;
 }
 
-export default function ProjectGrid({ projects, lang, showFilter = true, mobileLimit, ctaCard, yearFilter }: ProjectGridProps) {
-  const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
+export default function ProjectGrid({ 
+  projects, 
+  lang, 
+  showFilter = true, 
+  mobileLimit, 
+  ctaCard, 
+  yearFilter,
+  selectedTags: externalSelectedTags,
+  onSelectTags: externalOnSelectTags,
+}: ProjectGridProps) {
+  const [internalSelectedTags, setInternalSelectedTags] = useState<Tag[]>([]);
   const isMobile = useIsMobile();
+
+  // Use external state if provided, otherwise use internal
+  const selectedTags = externalSelectedTags !== undefined ? externalSelectedTags : internalSelectedTags;
+  const setSelectedTags = externalOnSelectTags !== undefined ? externalOnSelectTags : setInternalSelectedTags;
 
   // Calculate tag counts
   const tagCounts = availableTags.reduce((acc, tag) => {
