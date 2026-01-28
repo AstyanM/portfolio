@@ -15,6 +15,7 @@ interface HeaderProps {
 export default function Header({ lang, currentPath }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [currentHash, setCurrentHash] = useState('');
 
   const t = ui[lang];
   const projectsPath = getProjectsPath(lang);
@@ -31,14 +32,66 @@ export default function Header({ lang, currentPath }: HeaderProps) {
       setIsScrolled(window.scrollY > 10);
     };
 
+    const handleHashChange = () => {
+      setCurrentHash(window.location.hash);
+    };
+
+    // Set initial hash
+    setCurrentHash(window.location.hash);
+
+    // Observe contact section to update hash when scrolling
+    const contactSection = document.getElementById('contact');
+    
+    if (contactSection) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // User is in contact section
+              setCurrentHash('#contact');
+            } else {
+              // User left contact section - reset to home
+              setCurrentHash('');
+            }
+          });
+        },
+        {
+          threshold: 0.3, // Section needs to be 30% visible
+          rootMargin: '-80px 0px 0px 0px', // Account for header height
+        }
+      );
+
+      observer.observe(contactSection);
+      
+      return () => {
+        observer.disconnect();
+        window.removeEventListener('scroll', handleScroll);
+        window.removeEventListener('hashchange', handleHashChange);
+      };
+    }
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('hashchange', handleHashChange);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('hashchange', handleHashChange);
+    };
   }, []);
 
   const isActive = (href: string) => {
-    if (href === `${base}/${lang}`) {
-      return currentPath === `${base}/${lang}` || currentPath === `${base}/${lang}/`;
+    // Check if it's a hash link (like #contact)
+    if (href.includes('#')) {
+      const hrefHash = href.split('#')[1];
+      return currentHash === `#${hrefHash}`;
     }
+    
+    // For home page
+    if (href === `${base}/${lang}`) {
+      // Only active if no hash present
+      return (currentPath === `${base}/${lang}` || currentPath === `${base}/${lang}/`) && !currentHash;
+    }
+    
     return currentPath.startsWith(href);
   };
 
