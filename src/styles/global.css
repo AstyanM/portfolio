@@ -228,6 +228,26 @@
       transform: translateY(0);
     }
   }
+
+  /* Mobile optimizations: faster, simpler animations */
+  @media (max-width: 768px) {
+    .animate-fade-in {
+      animation-duration: 0.3s; /* Faster on mobile */
+    }
+
+    .animate-slide-up {
+      animation-duration: 0.3s; /* Faster on mobile */
+    }
+
+    .animate-on-scroll {
+      transition-duration: 0.3s; /* Faster transitions */
+    }
+
+    /* Reduce animation delays on mobile */
+    [style*="animation-delay"] {
+      animation-delay: 0.5s !important;
+    }
+  }
 }
 
 /* Reduced motion: disable all animations for users who prefer it */

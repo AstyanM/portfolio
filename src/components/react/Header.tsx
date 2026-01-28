@@ -45,7 +45,7 @@ export default function Header({ lang, currentPath }: HeaderProps) {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'glass border-b border-border' : 'bg-transparent'
+        isScrolled || isMobileMenuOpen ? 'glass border-b border-border' : 'bg-transparent'
       }`}
     >
       <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -118,7 +118,7 @@ export default function Header({ lang, currentPath }: HeaderProps) {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden overflow-hidden"
+              className="md:hidden overflow-hidden backdrop-blur-2xl bg-background/95 -mx-4 px-4 rounded-b-2xl border-b border-border shadow-2xl"
             >
               <ul className="py-4 space-y-2">
                 {navItems.map((item) => (

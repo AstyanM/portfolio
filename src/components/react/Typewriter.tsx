@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
 
 interface TypewriterProps {
     text: string;
@@ -8,6 +7,19 @@ interface TypewriterProps {
     delay?: number;
     className?: string;
 }
+
+// Detect if user is on mobile device
+const isMobileDevice = () => {
+    if (typeof window === 'undefined') return false;
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
+        || window.matchMedia('(max-width: 768px)').matches;
+};
+
+// Check for reduced motion preference
+const prefersReducedMotion = () => {
+    if (typeof window === 'undefined') return false;
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+};
 
 export default function Typewriter({
     text,
@@ -17,42 +29,76 @@ export default function Typewriter({
 }: TypewriterProps) {
     const [displayedText, setDisplayedText] = useState('');
     const [isStarted, setIsStarted] = useState(false);
+    const [isComplete, setIsComplete] = useState(false);
     const ref = useRef(null);
+    const animationFrameRef = useRef<number | undefined>(undefined);
+    const lastUpdateRef = useRef<number>(0);
+    const currentIndexRef = useRef<number>(0);
     const isInView = useInView(ref, { once: true, amount: 0.5 });
+
+    // Determine if we should skip animation
+    const shouldSkipAnimation = isMobileDevice() || prefersReducedMotion();
 
     useEffect(() => {
         if (isInView && !isStarted) {
             const timeout = setTimeout(() => {
                 setIsStarted(true);
-            }, delay);
+            }, shouldSkipAnimation ? 0 : delay);
             return () => clearTimeout(timeout);
         }
-    }, [isInView, delay, isStarted]);
+    }, [isInView, delay, isStarted, shouldSkipAnimation]);
 
     useEffect(() => {
         if (!isStarted) return;
 
-        let currentIndex = 0;
-        const intervalId = setInterval(() => {
-            if (currentIndex < text.length) {
-                setDisplayedText(text.slice(0, currentIndex + 1));
-                currentIndex++;
-            } else {
-                clearInterval(intervalId);
-            }
-        }, speed);
+        // If on mobile or reduced motion, show text instantly
+        if (shouldSkipAnimation) {
+            setDisplayedText(text);
+            setIsComplete(true);
+            return;
+        }
 
-        return () => clearInterval(intervalId);
-    }, [isStarted, text, speed]);
+        // Use requestAnimationFrame for better performance
+        currentIndexRef.current = 0;
+        lastUpdateRef.current = performance.now();
+
+        const animate = (timestamp: number) => {
+            const elapsed = timestamp - lastUpdateRef.current;
+
+            if (elapsed >= speed) {
+                lastUpdateRef.current = timestamp;
+
+                if (currentIndexRef.current < text.length) {
+                    currentIndexRef.current++;
+                    setDisplayedText(text.slice(0, currentIndexRef.current));
+                } else {
+                    setIsComplete(true);
+                    return;
+                }
+            }
+
+            animationFrameRef.current = requestAnimationFrame(animate);
+        };
+
+        animationFrameRef.current = requestAnimationFrame(animate);
+
+        return () => {
+            if (animationFrameRef.current) {
+                cancelAnimationFrame(animationFrameRef.current);
+            }
+        };
+    }, [isStarted, text, speed, shouldSkipAnimation]);
 
     return (
         <p ref={ref} className={className}>
             {displayedText}
-            <motion.span
-                animate={{ opacity: [1, 0] }}
-                transition={{ repeat: Infinity, duration: 0.8 }}
-                className="inline-block w-0.5 h-[1em] translate-y-[0.1em] bg-accent ml-0.5"
-            />
+            {!isComplete && (
+                <motion.span
+                    animate={{ opacity: [1, 0] }}
+                    transition={{ repeat: Infinity, duration: 0.8 }}
+                    className="inline-block w-0.5 h-[1em] translate-y-[0.1em] bg-accent ml-0.5"
+                />
+            )}
         </p>
     );
 }
