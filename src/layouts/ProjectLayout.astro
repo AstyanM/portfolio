@@ -9,6 +9,7 @@ import Lightbox from '@/components/react/Lightbox';
 import TableOfContents from '@/components/react/TableOfContents';
 import Conclusion from '@/components/astro/Conclusion.astro';
 import Appendix from '@/components/astro/Appendix.astro';
+import SimilarProjects from '@/components/astro/SimilarProjects.astro';
 
 interface Props {
   project: CollectionEntry<'projects'>;
@@ -160,6 +161,9 @@ const translateTag = (tag: string): string => {
     {appendix && (
       <Appendix appendix={appendix} lang={lang} />
     )}
+
+    <!-- Similar Projects -->
+    <SimilarProjects currentProject={project} />
   </article>
 
   <style is:global>

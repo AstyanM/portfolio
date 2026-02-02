@@ -1,0 +1,87 @@
+---
+import { getCollection } from 'astro:content';
+import ProjectCard from '@/components/react/ProjectCard';
+import { getLangFromUrl, useTranslations, getProjectPath, getAssetUrl } from '@/i18n/utils';
+import type { CollectionEntry } from 'astro:content';
+import type { Tag } from '@/consts';
+
+interface Props {
+  currentProject: CollectionEntry<'projects'>;
+}
+
+const { currentProject } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const currentTags = currentProject.data.tags;
+const currentSlug = currentProject.slug;
+
+// Get all projects in same language, excluding current
+const allProjects = await getCollection('projects', ({ data, slug }) => {
+  return data.lang === lang && !data.draft && slug !== currentSlug;
+});
+
+// Calculate similarity: count common tags
+const projectsWithScore = allProjects.map((project) => {
+  const commonTags = project.data.tags.filter((tag) => currentTags.includes(tag));
+  return {
+    project,
+    score: commonTags.length,
+  };
+});
+
+// Filter: only keep projects with at least 1 tag in common
+const similarProjects = projectsWithScore
+  .filter((p) => p.score > 0)
+  .sort((a, b) => {
+    // Primary: more tags in common
+    if (b.score !== a.score) return b.score - a.score;
+    // Secondary: more recent year
+    const yearA = a.project.data.year ?? 0;
+    const yearB = b.project.data.year ?? 0;
+    return yearB - yearA;
+  })
+  .slice(0, 2) // Max 2 projects
+  .map((p) => p.project);
+
+// Prepare data for ProjectCard
+const cardsData = similarProjects.map((p, index) => ({
+  title: p.data.title,
+  description: p.data.description,
+  tags: p.data.tags as Tag[],
+  slug: p.slug,
+  href: getProjectPath(p.slug.split('/')[1], lang),
+  coverUrl: getAssetUrl(p.data.cover?.src),
+  repoUrl: p.data.repoPrivate ? undefined : p.data.repoUrl,
+  year: p.data.year,
+  index,
+  lang,
+}));
+---
+
+{similarProjects.length > 0 && (
+  <section class="mt-16 pt-10 pb-10 px-6 -mx-4 sm:-mx-6 lg:-mx-8 rounded-2xl bg-gradient-to-br from-accent/5 via-background-secondary to-purple-500/5 border border-border">
+    <h2 class="text-2xl font-bold text-foreground mb-8 text-center">
+      {similarProjects.length === 1 ? t('similar.titleSingular') : t('similar.title')}
+    </h2>
+    <div class="flex flex-wrap justify-center gap-6">
+      {cardsData.map((card) => (
+        <div class="w-full md:w-[calc(50%-0.75rem)] max-w-sm">
+          <ProjectCard 
+            client:visible
+            title={card.title}
+            description={card.description}
+            tags={card.tags}
+            slug={card.slug}
+            href={card.href}
+            coverUrl={card.coverUrl}
+            repoUrl={card.repoUrl}
+            year={card.year}
+            index={card.index}
+            lang={card.lang}
+          />
+        </div>
+      ))}
+    </div>
+  </section>
+)}

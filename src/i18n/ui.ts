@@ -62,6 +62,10 @@ export const ui = {
     '404.title': 'Page non trouvée',
     '404.description': "La page que vous cherchez n'existe pas.",
     '404.backHome': "Retour à l'accueil",
+
+    // Similar Projects
+    'similar.title': 'Ces projets pourraient vous intéresser',
+    'similar.titleSingular': 'Ce projet pourrait vous intéresser',
   },
   en: {
     // Navigation
@@ -117,5 +121,9 @@ export const ui = {
     '404.title': 'Page not found',
     '404.description': "The page you're looking for doesn't exist.",
     '404.backHome': 'Back to home',
+
+    // Similar Projects
+    'similar.title': 'These projects might interest you',
+    'similar.titleSingular': 'This project might interest you',
   },
 } as const;
