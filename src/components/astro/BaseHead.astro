@@ -8,39 +8,13 @@ interface Props {
 
 const {
   title,
-  description = "Portfolio d'Astyan Martin - Projets en ingénierie, IA et électronique",
-  image,
+  description = "Portfolio d'Astyan Martin - Projets en ing\u00e9nierie, IA et \u00e9lectronique",
+  image = '/og-image.png',
   lang = 'en',
 } = Astro.props;
 
-// Determine OG Image URL
-let ogImage = image;
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-
-if (!ogImage) {
-  // Check if we are on a project page
-  const pathname = Astro.url.pathname;
-  const isProject = pathname.includes('/projects/');
-  
-  if (isProject) {
-    // Extract lang and project slug from URL: /portfolio/fr/projects/slug -> fr, slug
-    const parts = pathname.split('/').filter(Boolean);
-    // parts might be: ['portfolio', 'fr', 'projects', 'my-project']
-    // Find the index of 'projects' and get lang (before it) and slug (after it)
-    const projectsIndex = parts.indexOf('projects');
-    const langFromPath = projectsIndex > 0 ? parts[projectsIndex - 1] : lang;
-    const projectSlug = parts[parts.length - 1];
-    ogImage = new URL(`${base}/og/${langFromPath}/${projectSlug}.png`, Astro.site).toString();
-  } else {
-    // Default dynamic OG
-    ogImage = new URL(`${base}/og/default-${lang}.png`, Astro.site).toString();
-  }
-} else if (!image.startsWith('http')) {
-    // Handle static relative images
-    ogImage = new URL(image, Astro.site).toString();
-}
-
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <!-- Global Metadata -->
@@ -72,7 +46,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={ogImage} />
+<meta property="og:image" content={new URL(image, Astro.url)} />
 <meta property="og:locale" content={lang === 'fr' ? 'fr_FR' : 'en_US'} />
 
 <!-- Twitter -->
@@ -80,7 +54,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={ogImage} />
+<meta property="twitter:image" content={new URL(image, Astro.url)} />
 
 <!-- Theme initialization script (avoid FOUC) -->
 <script is:inline>
