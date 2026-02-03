@@ -1,6 +1,7 @@
 ---
 title: "Design of an Active Noise Reduction System"
 description: "This project consists of studying and designing an active noise reduction system by combining theoretical, experimental, and electronic approaches. The objective is to attenuate an unwanted sound signal through phase opposition by exploring different solutions: a first experiment with speakers, an electrical model, and a digital implementation with a Raspberry Pi. Each step improved system efficiency and identified technological constraints related to this application."
+cardDescription: "Attenuating noise through phase opposition, from experimentation to Raspberry Pi."
 tags: ["Traitement du Signal", "Hardware", "Embarqué"]
 cover: "/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/chaine.png"
 lang: en

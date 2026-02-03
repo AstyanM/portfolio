@@ -1,6 +1,7 @@
 ---
 title: "Creation of a Tic-Tac-Toe Bot"
 description: "This report focuses on the project organization, the distribution of responsibilities within the teams, the technical difficulties overcome, and future perspectives."
+cardDescription: "Ultimate tic-tac-toe bot with Minimax, Negamax and alpha-beta pruning."
 tags: ["Simulation"]
 cover: "/images/projects/creation-dun-bot-morpion/g.png"
 lang: en

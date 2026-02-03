@@ -1,6 +1,7 @@
 ---
 title: "Création d'un Bot Morpion"
 description: "Ce projet consiste à concevoir un bot capable de jouer au super-morpion en utilisant des algorithmes de recherche dans les arbres de jeu. Trois programmes ont été développés : tttree pour la génération d'arbres de décision avec l'algorithme Minimax, sm-refresh pour jouer contre l'ordinateur via une interface interactive, et sm-bot pour calculer le meilleur coup avec l'algorithme Négamax et élagage alpha-bêta."
+cardDescription: "Bot de super-morpion avec Minimax, Négamax et élagage alpha-bêta."
 tags: ["Simulation"]
 cover: "/images/projects/creation-dun-bot-morpion/g.png"
 lang: fr

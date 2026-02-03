@@ -1,6 +1,7 @@
 ---
 title: "Parcoursup Simulator"
 description: "A tool to estimate admission chances on Parcoursup, based on open data and explainable modeling."
+cardDescription: "Estimate Parcoursup admission chances using open data."
 tags: ["Web", "Simulation"]
 lang: en
 draft: false

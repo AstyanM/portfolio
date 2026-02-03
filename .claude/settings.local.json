@@ -25,7 +25,9 @@
       "Bash(npm ls:*)",
       "Bash(findstr:*)",
       "Bash(node -e:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "mcp__serena__think_about_task_adherence",
+      "Bash(npx astro check:*)"
     ]
   }
 }

@@ -1,6 +1,7 @@
 ---
 title: "Exploration des méthodes de Cryptographie"
 description: "Ce projet consiste à explorer différentes méthodes de cryptographie en les implémentant sous forme de code. L'objectif est d'étudier la sécurité et la faisabilité du chiffrement, tout en proposant des outils permettant de déchiffrer les messages lorsque cela est possible. Nous avons classé les méthodes selon leur complexité, en commençant par les plus simples avant d'aborder des algorithmes plus avancés."
+cardDescription: "Implémentation et analyse de chiffrements classiques et modernes en Python."
 tags: ["Sécurité"]
 cover: "/images/projects/exploration-des-methodes-de-cryptographie/crypto.png"
 lang: fr

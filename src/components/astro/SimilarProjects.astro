@@ -47,7 +47,7 @@ const similarProjects = projectsWithScore
 // Prepare data for ProjectCard
 const cardsData = similarProjects.map((p, index) => ({
   title: p.data.title,
-  description: p.data.description,
+  description: p.data.cardDescription ?? p.data.description,
   tags: p.data.tags as Tag[],
   slug: p.slug,
   href: getProjectPath(p.slug.split('/')[1], lang),

@@ -1,6 +1,7 @@
 ---
 title: "Faire Parler les Données Médicales"
 description: "Ce projet est en collaboration avec le Groupement d'Intérêt Public SIB. L'objectif est de concevoir une application permettant d'exploiter les données non structurées des Dossiers Patients Informatisés (DPI), notamment à partir de comptes rendus médicaux, d'ordonnances ou de prescriptions. Ce projet vise à faciliter l'intégration de ces données dans les systèmes hospitaliers pour améliorer la prise de décision en santé."
+cardDescription: "Exploiter les dossiers patients non structurés avec OCR et NLP pour le GIP SIB."
 
 tags: ["Santé", "Recherche"]
 cover: "/images/projects/faire-parler-les-donnees-medicales/4544eafe-6418-44fb-8eaa-1bc83c83c536.png"

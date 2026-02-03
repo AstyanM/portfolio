@@ -30,7 +30,7 @@ const projects = filteredProjectsList.sort((a, b) => {
 const projectsData = projects.slice(0, 5).map((p) => ({
   slug: p.slug,
   title: p.data.title,
-  description: p.data.description,
+  description: p.data.cardDescription ?? p.data.description,
   tags: p.data.tags,
   href: getProjectPath(p.slug.split('/')[1], 'en'),
   coverUrl: getAssetUrl(p.data.cover?.src),

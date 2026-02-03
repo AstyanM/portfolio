@@ -1,6 +1,7 @@
 ---
 title: "Simulateur Parcoursup"
 description: "Un outil pour estimer ses chances d'admission sur Parcoursup, basé sur les données ouvertes et une modélisation explicable."
+cardDescription: "Estimer ses chances d'admission Parcoursup grâce aux données ouvertes."
 tags: ["Web", "Simulation"]
 lang: fr
 draft: false

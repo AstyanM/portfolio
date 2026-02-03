@@ -36,6 +36,7 @@ const projectsCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string().optional(),
+    cardDescription: z.string().optional(),
     date: z.string().optional(),
     tags: z.array(z.enum(availableTags)).default([]),
     // Cover is a URL path to public/ (e.g., "/images/projects/slug/cover.png")
