@@ -294,43 +294,31 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   </div>
 </section>
 
-<style>
-  /* Theme-aware logos: switch between light and dark versions */
-  :global(.dark) .school-logo[data-logo-name="centrale"] {
-    content: var(--base-url, '') url('/assets/schools/centrale_dark.png');
-  }
-  
-  :global(.dark) .school-logo[data-logo-name="kleber"] {
-    content: var(--base-url, '') url('/assets/schools/kleber_dark.png');
-  }
-  
-  :global(.dark) .school-logo[data-logo-name="trento"] {
-    content: var(--base-url, '') url('/assets/schools/trento_dark.png');
-  }
-</style>
 
 <script>
   // Update logo sources when theme changes dynamically
   function updateLogos() {
     const isDark = document.documentElement.classList.contains('dark');
     const logos = document.querySelectorAll('.school-logo');
-    
+
     logos.forEach((logo) => {
       const img = logo as HTMLImageElement;
       const logoName = img.dataset.logoName;
       const basePath = img.dataset.basePath || '';
-      
+
       if (logoName) {
         const theme = isDark ? 'dark' : 'light';
         img.src = `${basePath}/assets/schools/${logoName}_${theme}.png`;
       }
     });
   }
-  
-  // Update logos on initial load
-  updateLogos();
-  
-  // Listen for theme changes
+
+  // Run on every page load (including ViewTransitions navigations)
+  document.addEventListener('astro:page-load', () => {
+    updateLogos();
+  });
+
+  // Listen for real-time theme changes
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
       if (mutation.attributeName === 'class') {
@@ -338,7 +326,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       }
     });
   });
-  
+
   observer.observe(document.documentElement, {
     attributes: true,
     attributeFilter: ['class']
