@@ -11,7 +11,7 @@
     "@astrojs/mdx": "^4.0.0",
     "@astrojs/react": "^4.0.0",
     "@astrojs/tailwind": "^6.0.0",
-    "astro": "^5.0.0",
+    "astro": "^5.17.1",
     "framer-motion": "^11.0.0",
     "hast-util-to-string": "^3.0.1",
     "katex": "^0.16.27",

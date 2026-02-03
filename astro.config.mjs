@@ -28,8 +28,8 @@ export default defineConfig({
     },
     remarkPlugins: [remarkMath],
     rehypePlugins: [
-      rehypeKatex, 
-      rehypeFigureCaption, 
+      [rehypeKatex, { strict: 'ignore' }],
+      rehypeFigureCaption,
       rehypeVideo,
       [rehypeBaseUrl, { base: baseUrl }]
     ],

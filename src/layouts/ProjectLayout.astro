@@ -145,7 +145,7 @@ const translateTag = (tag: string): string => {
 
   <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <!-- Table of Contents -->
-    <TableOfContents client:load lang={lang} />
+    <TableOfContents client:only="react" lang={lang} />
 
     <!-- Content -->
     <div class="prose prose-lg mx-auto">
@@ -228,8 +228,8 @@ const translateTag = (tag: string): string => {
       border-color: #22c55e;
     }
   </style>
-  <ReadingProgress client:load />
-  <Lightbox client:idle />
+  <ReadingProgress client:only="react" />
+  <Lightbox client:only="react" />
 
   <script>
     function setupLightbox() {
