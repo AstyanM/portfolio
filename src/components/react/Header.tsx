@@ -110,8 +110,8 @@ export default function Header({ lang, currentPath }: HeaderProps) {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled || isMobileMenuOpen ? 'glass border-b border-border' : 'bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
+        isScrolled || isMobileMenuOpen ? 'glass border-border' : 'bg-transparent border-transparent'
       }`}
     >
       <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8" aria-label={activeLang === 'fr' ? 'Navigation principale' : 'Main navigation'}>
