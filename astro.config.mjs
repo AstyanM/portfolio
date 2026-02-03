@@ -41,6 +41,9 @@ export default defineConfig({
       prefixDefaultLocale: true,
     },
   },
+  prefetch: {
+    defaultStrategy: 'viewport',
+  },
   image: {
     service: {
       entrypoint: 'astro/assets/services/sharp',

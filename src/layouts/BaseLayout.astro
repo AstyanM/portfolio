@@ -24,7 +24,7 @@ const currentPath = Astro.url.pathname;
     <ViewTransitions />
   </head>
   <body class="min-h-screen flex flex-col bg-background text-foreground">
-    <Header client:only="react" key={`header-${lang}-${currentPath}`} lang={lang} currentPath={currentPath} transition:persist="false" />
+    <Header client:load lang={lang} currentPath={currentPath} transition:persist />
     <main class="flex-1">
       <slot />
     </main>

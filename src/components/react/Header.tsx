@@ -17,15 +17,35 @@ export default function Header({ lang, currentPath }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentHash, setCurrentHash] = useState('');
 
-  const t = ui[lang];
-  const projectsPath = getProjectsPath(lang);
+  // Local state that updates on navigation (props don't update with transition:persist)
+  const [activeLang, setActiveLang] = useState(lang);
+  const [activePath, setActivePath] = useState(currentPath);
+
+  const t = ui[activeLang];
+  const projectsPath = getProjectsPath(activeLang);
   const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
   const navItems = [
-    { label: t['nav.home'], href: `${base}/${lang}` },
+    { label: t['nav.home'], href: `${base}/${activeLang}` },
     { label: t['nav.projects'], href: projectsPath },
-    { label: t['nav.contact'], href: `${base}/${lang}#contact` },
+    { label: t['nav.contact'], href: `${base}/${activeLang}#contact` },
   ];
+
+  // Listen for Astro page navigations to update lang/path
+  useEffect(() => {
+    const handlePageLoad = () => {
+      const newPath = window.location.pathname;
+      const langMatch = newPath.match(/\/(en|fr)(\/|$)/);
+      const newLang = (langMatch ? langMatch[1] : 'en') as Lang;
+      setActiveLang(newLang);
+      setActivePath(newPath);
+      setCurrentHash(window.location.hash);
+      setIsMobileMenuOpen(false);
+    };
+
+    document.addEventListener('astro:after-swap', handlePageLoad);
+    return () => document.removeEventListener('astro:after-swap', handlePageLoad);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,43 +61,37 @@ export default function Header({ lang, currentPath }: HeaderProps) {
 
     // Observe contact section to update hash when scrolling
     const contactSection = document.getElementById('contact');
-    
+    let observer: IntersectionObserver | null = null;
+
     if (contactSection) {
-      const observer = new IntersectionObserver(
+      observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              // User is in contact section
               setCurrentHash('#contact');
             } else {
-              // User left contact section - reset to home
               setCurrentHash('');
             }
           });
         },
         {
-          threshold: 0.3, // Section needs to be 30% visible
-          rootMargin: '-80px 0px 0px 0px', // Account for header height
+          threshold: 0.3,
+          rootMargin: '-80px 0px 0px 0px',
         }
       );
 
       observer.observe(contactSection);
-      
-      return () => {
-        observer.disconnect();
-        window.removeEventListener('scroll', handleScroll);
-        window.removeEventListener('hashchange', handleHashChange);
-      };
     }
 
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('hashchange', handleHashChange);
-    
+
     return () => {
+      observer?.disconnect();
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('hashchange', handleHashChange);
     };
-  }, []);
+  }, [activePath]);
 
   const isActive = (href: string) => {
     // Check if it's a hash link (like #contact)
@@ -85,14 +99,13 @@ export default function Header({ lang, currentPath }: HeaderProps) {
       const hrefHash = href.split('#')[1];
       return currentHash === `#${hrefHash}`;
     }
-    
+
     // For home page
-    if (href === `${base}/${lang}`) {
-      // Only active if no hash present
-      return (currentPath === `${base}/${lang}` || currentPath === `${base}/${lang}/`) && !currentHash;
+    if (href === `${base}/${activeLang}`) {
+      return (activePath === `${base}/${activeLang}` || activePath === `${base}/${activeLang}/`) && !currentHash;
     }
-    
-    return currentPath.startsWith(href);
+
+    return activePath.startsWith(href);
   };
 
   return (
@@ -104,14 +117,12 @@ export default function Header({ lang, currentPath }: HeaderProps) {
       <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <motion.a
-            href={`${base}/${lang}`}
-            className="text-xl font-bold text-accent bg-accent/10 px-3 py-1 rounded-full hover:bg-accent/20 transition-colors"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+          <a
+            href={`${base}/${activeLang}`}
+            className="text-xl font-bold text-accent bg-accent/10 px-3 py-1 rounded-full hover:bg-accent/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
           >
             AM
-          </motion.a>
+          </a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
@@ -140,18 +151,18 @@ export default function Header({ lang, currentPath }: HeaderProps) {
             </ul>
 
             <div className="flex items-center gap-2">
-              <LanguageSwitcher lang={lang} currentPath={currentPath} />
               <ThemeToggle />
+              <LanguageSwitcher lang={activeLang} currentPath={activePath} />
             </div>
           </div>
 
           {/* Mobile menu button */}
           <div className="flex md:hidden items-center gap-2">
-            <LanguageSwitcher lang={lang} currentPath={currentPath} />
             <ThemeToggle />
+            <LanguageSwitcher lang={activeLang} currentPath={activePath} />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 rounded-lg hover:bg-background-secondary transition-colors"
+              className="p-3 rounded-lg hover:bg-background-secondary active:scale-95 transition-all"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? (

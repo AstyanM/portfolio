@@ -40,6 +40,7 @@ export default function ProjectCard({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
       whileHover={{ y: -4 }}
+      whileTap={{ scale: 0.98 }}
       className="group block h-full"
     >
       <article className="h-full rounded-xl border border-border bg-background-secondary overflow-hidden transition-all duration-300 hover:border-accent hover:shadow-lg hover:shadow-accent/5">
@@ -58,16 +59,14 @@ export default function ProjectCard({
               </span>
             )}
             {repoUrl && (
-              <a
-                href={repoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="absolute top-2 right-2 p-1.5 rounded-md bg-black/60 text-white hover:bg-accent transition-colors"
+              <button
+                type="button"
+                onClick={(e) => { e.preventDefault(); e.stopPropagation(); window.open(repoUrl, '_blank', 'noopener,noreferrer'); }}
+                className="absolute top-2 right-2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-md bg-black/60 text-white hover:bg-accent active:scale-95 transition-all"
                 title={lang === 'fr' ? 'Voir le code source' : 'View source code'}
               >
                 <Github className="w-4 h-4" />
-              </a>
+              </button>
             )}
           </div>
         ) : (
@@ -81,16 +80,14 @@ export default function ProjectCard({
               </span>
             )}
             {repoUrl && (
-              <a
-                href={repoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="absolute top-2 right-2 p-1.5 rounded-md bg-black/60 text-white hover:bg-accent transition-colors"
+              <button
+                type="button"
+                onClick={(e) => { e.preventDefault(); e.stopPropagation(); window.open(repoUrl, '_blank', 'noopener,noreferrer'); }}
+                className="absolute top-2 right-2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-md bg-black/60 text-white hover:bg-accent active:scale-95 transition-all"
                 title={lang === 'fr' ? 'Voir le code source' : 'View source code'}
               >
                 <Github className="w-4 h-4" />
-              </a>
+              </button>
             )}
           </div>
         )}
@@ -101,7 +98,7 @@ export default function ProjectCard({
             <h3 className="text-lg font-semibold text-foreground group-hover:text-accent transition-colors line-clamp-2">
               {title}
             </h3>
-            <ArrowUpRight className="w-5 h-5 flex-shrink-0 text-foreground-secondary opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all duration-300" />
+            <ArrowUpRight className="w-5 h-5 flex-shrink-0 text-foreground-secondary opacity-100 md:opacity-0 md:-translate-y-1 md:translate-x-1 md:group-hover:opacity-100 md:group-hover:translate-y-0 md:group-hover:translate-x-0 transition-all duration-300" />
           </div>
 
           {description && (
