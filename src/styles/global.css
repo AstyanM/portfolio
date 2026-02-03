@@ -1,4 +1,6 @@
 @import "katex/dist/katex.min.css";
+@import "@fontsource-variable/inter";
+@import "@fontsource/jetbrains-mono";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -33,6 +35,12 @@
   body {
     @apply bg-background text-foreground antialiased;
     @apply font-sans;
+  }
+
+  /* Global focus-visible styles for keyboard navigation */
+  *:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 2px;
   }
 
   /* Custom selection color */

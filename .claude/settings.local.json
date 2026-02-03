@@ -28,7 +28,9 @@
       "Bash(find:*)",
       "mcp__serena__think_about_task_adherence",
       "Bash(npx astro check:*)",
-      "Bash(npx astro:*)"
+      "Bash(npx astro:*)",
+      "Bash(ls:*)",
+      "Bash(dir \"c:\\\\Users\\\\Astyan\\\\Documents\\\\Prevision\\\\portf_test\\\\node_modules\\\\@fontsource-variable\\\\inter\" /b)"
     ]
   }
 }

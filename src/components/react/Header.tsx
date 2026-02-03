@@ -114,7 +114,7 @@ export default function Header({ lang, currentPath }: HeaderProps) {
         isScrolled || isMobileMenuOpen ? 'glass border-b border-border' : 'bg-transparent'
       }`}
     >
-      <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8" aria-label={activeLang === 'fr' ? 'Navigation principale' : 'Main navigation'}>
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <a

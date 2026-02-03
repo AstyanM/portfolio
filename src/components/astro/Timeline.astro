@@ -1,15 +1,13 @@
 ---
 import { Briefcase, GraduationCap, MapPin, Calendar } from 'lucide-react';
+import { useTranslations } from '@/i18n/utils';
+import type { Lang } from '@/i18n/ui';
 
 const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang as Lang);
 
 const translations = {
   fr: {
-    title: "Mon Parcours",
-    subtitle: "De la classe préparatoire à l'ingénierie, avec des expériences en IA et développement.",
-    educationTitle: "Formation",
-    internshipsTitle: "Stages",
-    upcoming: "À venir",
     education: [
       {
         name: "Università di Trento",
@@ -85,11 +83,6 @@ const translations = {
     ]
   },
   en: {
-    title: "My Journey",
-    subtitle: "From preparatory classes to engineering school, with experience in AI and development.",
-    educationTitle: "Education",
-    internshipsTitle: "Internships",
-    upcoming: "Upcoming",
     education: [
       {
         name: "Università di Trento",
@@ -166,16 +159,16 @@ const translations = {
   }
 };
 
-const t = translations[lang] || translations.fr;
+const data = translations[lang] || translations.fr;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <section class="py-12 md:py-16 animate-on-scroll">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="mb-12">
-      <h2 class="text-3xl font-bold text-foreground mb-4">{t.title}</h2>
+      <h2 class="text-3xl font-bold text-foreground mb-4">{t('timeline.title')}</h2>
       <p class="text-foreground-secondary">
-        {t.subtitle}
+        {t('timeline.subtitle')}
       </p>
     </div>
 
@@ -187,11 +180,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <div class="lg:pr-8">
         <h3 class="text-xl font-semibold text-foreground mb-6 flex items-center gap-2">
           <GraduationCap className="w-5 h-5 text-purple-500" />
-          {t.educationTitle}
+          {t('timeline.educationTitle')}
         </h3>
 
         <div class="relative space-y-6 before:absolute before:inset-0 before:ml-6 before:-translate-x-px before:h-full before:w-0.5 before:bg-gradient-to-b before:from-purple-500 before:via-border before:to-transparent">
-          {t.education.map((item) => (
+          {data.education.map((item) => (
             <div class="relative flex items-start">
               <!-- Icon -->
               <div class="w-12 h-12 rounded-lg bg-background border-2 border-purple-500/50 flex items-center justify-center shrink-0 overflow-hidden z-10">
@@ -238,11 +231,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <div class="lg:pl-8">
         <h3 class="text-xl font-semibold text-foreground mb-6 flex items-center gap-2">
           <Briefcase className="w-5 h-5 text-accent" />
-          {t.internshipsTitle}
+          {t('timeline.internshipsTitle')}
         </h3>
 
         <div class="relative space-y-6 before:absolute before:inset-0 before:ml-5 before:-translate-x-px before:h-full before:w-0.5 before:bg-gradient-to-b before:from-accent before:via-border before:to-transparent">
-          {t.internships.map((item) => (
+          {data.internships.map((item) => (
             <div class="relative flex items-start">
               <!-- Timeline dot -->
               <div class={`flex items-center justify-center w-10 h-10 rounded-full border-2 bg-background shrink-0 z-10 ${item.upcoming ? 'border-accent animate-pulse-glow' : 'border-border'}`}>
@@ -257,7 +250,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
                 <div class="flex items-center gap-2 mb-2">
                   {item.upcoming && (
                     <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-accent text-white uppercase">
-                      {t.upcoming}
+                      {t('timeline.upcoming')}
                     </span>
                   )}
                   <span class="text-xs text-foreground-secondary flex items-center gap-1">

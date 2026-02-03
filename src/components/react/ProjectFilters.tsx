@@ -30,34 +30,6 @@ const tagCategories = {
   types: ['Hardware', 'Recherche', 'Embarqué'] as const,
 };
 
-const content = {
-  fr: {
-    allYears: 'Toutes les années',
-    yearLabel: 'Période',
-    tagsLabel: 'Tags',
-    project: 'projet',
-    projects: 'projets',
-    allTags: 'Tous les tags',
-    showMoreTags: 'Afficher tous les filtres',
-    showLessTags: 'Réduire',
-    techniques: 'Techniques',
-    domains: 'Domaines',
-    types: 'Type de réalisation',
-  },
-  en: {
-    allYears: 'All years',
-    yearLabel: 'Period',
-    tagsLabel: 'Tags',
-    project: 'project',
-    projects: 'projects',
-    allTags: 'All tags',
-    showMoreTags: 'Show all filters',
-    showLessTags: 'Show less',
-    techniques: 'Techniques',
-    domains: 'Domains',
-    types: 'Type',
-  },
-};
 
 export default function ProjectFilters({
   years,
@@ -71,7 +43,6 @@ export default function ProjectFilters({
   totalCount,
 }: ProjectFiltersProps) {
   const t = ui[lang];
-  const labels = content[lang];
 
   const translateTag = (tag: Tag): string => {
     const key = `tag.${tag}` as keyof typeof t;
@@ -112,7 +83,7 @@ export default function ProjectFilters({
         <div>
           <div className="flex items-center gap-2 mb-2">
             <Calendar className="w-3.5 h-3.5 text-foreground-secondary" />
-            <span className="text-xs font-medium text-foreground-secondary uppercase tracking-wide">{labels.yearLabel}</span>
+            <span className="text-xs font-medium text-foreground-secondary uppercase tracking-wide">{t['filters.yearLabel']}</span>
           </div>
           {/* First line: All years button centered */}
           <div className="flex justify-center mb-2">
@@ -124,7 +95,7 @@ export default function ProjectFilters({
                   : 'bg-background border-border text-foreground hover:text-accent hover:border-accent'
               }`}
             >
-              {labels.allYears}
+              {t['filters.allYears']}
             </button>
           </div>
           {/* Second line: Year buttons centered */}
@@ -149,7 +120,7 @@ export default function ProjectFilters({
         <div>
           <div className="flex items-center gap-2 mb-2">
             <Filter className="w-3.5 h-3.5 text-foreground-secondary" />
-            <span className="text-xs font-medium text-foreground-secondary uppercase tracking-wide">{labels.tagsLabel}</span>
+            <span className="text-xs font-medium text-foreground-secondary uppercase tracking-wide">{t['filters.tagsLabel']}</span>
           </div>
           {/* First line: All tags button centered */}
           <div className="flex justify-center mb-2">
@@ -192,7 +163,7 @@ export default function ProjectFilters({
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-2 flex-shrink-0 w-24">
             <Calendar className="w-3.5 h-3.5 text-foreground-secondary" />
-            <span className="text-xs font-medium text-foreground-secondary uppercase tracking-wide">{labels.yearLabel}</span>
+            <span className="text-xs font-medium text-foreground-secondary uppercase tracking-wide">{t['filters.yearLabel']}</span>
           </div>
 
           <button
@@ -203,7 +174,7 @@ export default function ProjectFilters({
                 : 'bg-background border-border text-foreground hover:text-accent hover:border-accent'
             }`}
           >
-            {labels.allYears}
+            {t['filters.allYears']}
           </button>
 
           {/* Timeline */}
@@ -269,7 +240,7 @@ export default function ProjectFilters({
             <div className="flex items-center gap-6">
               <div className="flex items-center gap-2 w-24">
                 <Filter className="w-3.5 h-3.5 text-foreground-secondary" />
-                <span className="text-xs font-medium text-foreground-secondary uppercase tracking-wide">{labels.tagsLabel}</span>
+                <span className="text-xs font-medium text-foreground-secondary uppercase tracking-wide">{t['filters.tagsLabel']}</span>
               </div>
 
               <button
@@ -290,7 +261,7 @@ export default function ProjectFilters({
               {categorizedTags.techniques.length > 0 && (
                 <div>
                   <h3 className="text-[10px] font-semibold text-foreground-secondary uppercase tracking-wider mb-1.5 text-center">
-                    {labels.techniques}
+                    {t['filters.techniques']}
                   </h3>
                   <div className="flex flex-wrap gap-1.5 justify-center">
                     {categorizedTags.techniques.map((tag) => {
@@ -317,7 +288,7 @@ export default function ProjectFilters({
               {categorizedTags.domains.length > 0 && (
                 <div>
                   <h3 className="text-[10px] font-semibold text-foreground-secondary uppercase tracking-wider mb-1.5 text-center">
-                    {labels.domains}
+                    {t['filters.domains']}
                   </h3>
                   <div className="flex flex-wrap gap-1.5 justify-center">
                     {categorizedTags.domains.map((tag) => {
@@ -344,7 +315,7 @@ export default function ProjectFilters({
               {categorizedTags.types.length > 0 && (
                 <div>
                   <h3 className="text-[10px] font-semibold text-foreground-secondary uppercase tracking-wider mb-1.5 text-center">
-                    {labels.types}
+                    {t['filters.types']}
                   </h3>
                   <div className="flex flex-wrap gap-1.5 justify-center">
                     {categorizedTags.types.map((tag) => {

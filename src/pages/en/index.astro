@@ -4,7 +4,7 @@ import ProjectGrid from '@/components/react/ProjectGrid';
 import TechStack from '@/components/astro/TechStack.astro';
 import Timeline from '@/components/astro/Timeline.astro';
 import { getCollection } from 'astro:content';
-import { getAssetUrl, getProjectPath, getProjectsPath } from '@/i18n/utils';
+import { getAssetUrl, getProjectPath, getProjectsPath, useTranslations } from '@/i18n/utils';
 import ProjectSpotlight from '@/components/astro/ProjectSpotlight.astro';
 import HeroBackground from '@/components/astro/HeroBackground.astro';
 import Typewriter from '@/components/react/Typewriter';
@@ -35,9 +35,23 @@ const projectsData = projects.slice(0, 5).map((p) => ({
   href: getProjectPath(p.slug.split('/')[1], 'en'),
   coverUrl: getAssetUrl(p.data.cover?.src),
 }));
+
+const t = useTranslations('en');
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Astyan Martin',
+  url: 'https://astyanm.github.io/portfolio/',
+  jobTitle: 'Engineering Student',
+  sameAs: [
+    'https://github.com/AstyanMusic',
+    'https://linkedin.com/in/astyan-music',
+  ],
+};
 ---
 
-<BaseLayout title="Astyan Martin | Portfolio">
+<BaseLayout title="Astyan Martin | Portfolio" jsonLd={jsonLd}>
   <!-- Hero Section -->
   <section class="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
     <!-- Animated Background -->
@@ -51,7 +65,7 @@ const projectsData = projects.slice(0, 5).map((p) => ({
 
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
       <div class="max-w-3xl">
-        <p class="text-accent font-medium mb-4 animate-fade-in">Welcome!</p>
+        <p class="text-accent font-medium mb-4 animate-fade-in">{t('hero.greeting')}</p>
 
         <h1
           class="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 animate-slide-up"
@@ -62,7 +76,7 @@ const projectsData = projects.slice(0, 5).map((p) => ({
         <div class="min-h-[100px] mb-8">
           <Typewriter
             client:visible
-            text="Engineering student, curious and passionate about many technical fields. This portfolio showcases my most significant projects, blending AI exploration, algorithms and hardware design."
+            text={t('hero.description')}
             speed={17}
             delay={300}
             className="text-lg md:text-xl text-foreground-secondary leading-relaxed"
@@ -74,7 +88,7 @@ const projectsData = projects.slice(0, 5).map((p) => ({
             href={getProjectsPath('en')}
             class="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white rounded-lg hover:bg-accent-hover hover:scale-105 transition-all duration-300 font-medium shadow-lg shadow-accent/20"
           >
-            Discover my projects
+            {t('hero.cta')}
             <ArrowRight className="w-4 h-4" />
           </a>
         </div>
@@ -94,8 +108,8 @@ const projectsData = projects.slice(0, 5).map((p) => ({
       </div>
 
       <div class="mb-12">
-        <h2 class="text-3xl font-bold text-foreground mb-2">Other Projects</h2>
-        <p class="text-foreground-secondary">A selection of technical projects combining exploration and innovation.</p>
+        <h2 class="text-3xl font-bold text-foreground mb-2">{t('projects.otherTitle')}</h2>
+        <p class="text-foreground-secondary">{t('projects.subtitle')}</p>
       </div>
 
       <ProjectGrid 

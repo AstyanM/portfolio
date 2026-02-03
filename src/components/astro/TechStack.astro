@@ -1,20 +1,10 @@
 ---
 import { Code2, Brain, Terminal, Globe } from 'lucide-react';
+import { useTranslations } from '@/i18n/utils';
+import type { Lang } from '@/i18n/ui';
 
 const { lang = 'en' } = Astro.props;
-
-const translations = {
-  fr: {
-    title: "Stack Technique",
-    subtitle: "Une boîte à outils complète pour transformer des idées complexes en solutions fonctionnelles, du bas niveau à l'intelligence artificielle avancée."
-  },
-  en: {
-    title: "Tech Stack",
-    subtitle: "A complete toolkit to transform complex ideas into functional solutions, from low-level to advanced AI."
-  }
-};
-
-const t = translations[lang] || translations.fr;
+const t = useTranslations(lang as Lang);
 
 const skills = [
   {
@@ -43,8 +33,8 @@ const skills = [
 <section class="py-12 md:py-16 bg-background-secondary/30 relative overflow-hidden animate-on-scroll">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <div class="mb-12">
-      <h2 class="text-3xl font-bold text-foreground mb-4">{t.title}</h2>
-      <p class="text-foreground-secondary">{t.subtitle}</p>
+      <h2 class="text-3xl font-bold text-foreground mb-4">{t('techstack.title')}</h2>
+      <p class="text-foreground-secondary">{t('techstack.subtitle')}</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
