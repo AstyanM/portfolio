@@ -24,6 +24,11 @@ export default function ThemeToggle() {
     } else {
       document.documentElement.classList.remove('dark');
     }
+
+    const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+    if (themeColorMeta) {
+      themeColorMeta.setAttribute('content', newTheme === 'dark' ? '#0a0a0a' : '#ffffff');
+    }
   };
 
   // Avoid hydration mismatch

@@ -30,7 +30,11 @@
       "Bash(npx astro check:*)",
       "Bash(npx astro:*)",
       "Bash(ls:*)",
-      "Bash(dir \"c:\\\\Users\\\\Astyan\\\\Documents\\\\Prevision\\\\portf_test\\\\node_modules\\\\@fontsource-variable\\\\inter\" /b)"
+      "Bash(dir \"c:\\\\Users\\\\Astyan\\\\Documents\\\\Prevision\\\\portf_test\\\\node_modules\\\\@fontsource-variable\\\\inter\" /b)",
+      "mcp__serena__replace_symbol_body",
+      "Bash(pushd \"c:\\\\Users\\\\Astyan\\\\Documents\\\\Prevision\\\\portf_test\")",
+      "Bash(echo \"EXIT CODE: $?\")",
+      "Bash(echo \"EXIT: $?\")"
     ]
   }
 }
