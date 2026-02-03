@@ -27,7 +27,7 @@ Astro 5 portfolio website with bilingual support (English/French), hosted on Git
 - **Project content**: `src/content/projects/{fr|en}/*.md` - Markdown files with frontmatter (12 bilingual pairs)
 - **Content schema**: [src/content/config.ts](src/content/config.ts) - Zod validation:
   - Required: `title`
-  - Optional: `description`, `date`, `tags` (from consts.ts), `cover`, `lang` (default `fr`), `draft` (default `false`), `liveUrl`, `repoUrl`, `repoPrivate` (default `false`), `teamSize` (positive int), `year` (2000-2100), `conclusion`
+  - Optional: `description`, `cardDescription` (short text for project cards, falls back to `description`), `date`, `tags` (from consts.ts), `cover`, `lang` (default `fr`), `draft` (default `false`), `liveUrl`, `repoUrl`, `repoPrivate` (default `false`), `teamSize` (positive int), `year` (2000-2100), `conclusion`
   - `appendix` object: `structure` (description + tree), `sources` (bibliography entries), `documents` (downloadable files with type pdf|zip|doc|other)
 - **Available tags**: Defined in [src/consts.ts](src/consts.ts) - Must use these exact values: `Deep Learning`, `Traitement du Signal`, `Vision par Ordinateur`, `Simulation`, `Santé`, `Web`, `Sécurité`, `Architecture`, `Hardware`, `Recherche`, `Embarqué`
 
@@ -76,7 +76,7 @@ Astro 5 portfolio website with bilingual support (English/French), hosted on Git
 ## Adding a New Project
 
 1. Create markdown file in both `src/content/projects/fr/` and `src/content/projects/en/` with same filename
-2. Add frontmatter with required `title`, and optional fields (`description`, `date`, `lang`, `tags` from consts.ts, `cover`, `liveUrl`, `repoUrl`, `repoPrivate`, `teamSize`, `year`, `conclusion`, `appendix`)
+2. Add frontmatter with required `title`, and optional fields (`description`, `cardDescription`, `date`, `lang`, `tags` from consts.ts, `cover`, `liveUrl`, `repoUrl`, `repoPrivate`, `teamSize`, `year`, `conclusion`, `appendix`)
 3. Place project images in `src/assets/projects/{slug}/`
 
 ## GitHub Pages Deployment

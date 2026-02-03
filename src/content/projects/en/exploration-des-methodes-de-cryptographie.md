@@ -1,6 +1,6 @@
 ---
 title: "Exploration of Cryptography Methods"
-description: "This project consists of exploring different cryptography methods by implementing them in code. The objective is to study encryption security and feasibility, while proposing tools allowing to decrypt messages when possible. We classified methods according to their complexity, starting with the simplest before approaching more advanced algorithms."
+description: "Implementation and analysis of various cryptography methods, from the Caesar cipher to asymmetric systems like RSA. Each method is evaluated in terms of security and accompanied by decryption tools when possible."
 cardDescription: "Implementing and analyzing classical and modern ciphers in Python."
 tags: ["Sécurité"]
 cover: "/images/projects/exploration-des-methodes-de-cryptographie/crypto.png"

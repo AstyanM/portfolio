@@ -83,7 +83,8 @@ src/
 ---
 title: "Project Title"          # required
 lang: en                        # en | fr
-description: "Short summary"
+description: "Full project summary"
+cardDescription: "Short one-liner for project cards"
 date: "2024-06-15"
 year: 2024
 tags: ["Deep Learning", "Web"]  # from src/consts.ts

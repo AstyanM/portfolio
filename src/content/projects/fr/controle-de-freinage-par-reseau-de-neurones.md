@@ -1,6 +1,6 @@
 ---
 title: "Contrôle de freinage par réseau de neurones"
-description: "Ce projet visait à concevoir un système de freinage anti-blocage (ABS) intelligent en utilisant des réseaux de neurones. L'objectif était de maintenir un ratio de glissement optimal lors du freinage afin d'assurer une adhérence maximale, tout en remplaçant les méthodes classiques (type PID) par une stratégie de linéarisation par retour utilisant le contrôleur NARMA-L2."
+description: "Conception d'un système de freinage anti-blocage (ABS) intelligent utilisant des réseaux de neurones pour maintenir un ratio de glissement optimal. Le contrôleur NARMA-L2, basé sur une stratégie de linéarisation par retour, remplace les méthodes classiques de type PID."
 cardDescription: "Système ABS intelligent utilisant un contrôleur NARMA-L2."
 tags: ["Deep Learning", "Simulation", "Recherche"]
 cover: "/images/projects/controle-de-freinage-par-reseau-de-neurones/comparison_results.png"

@@ -1,6 +1,6 @@
 ---
 title: "Motivation Letter Writing Assistant"
-description: "The project aims to help students write their Parcoursup motivation letters by using a fine-tuned CamemBERT language model to identify and structure different parts of a motivation letter."
+description: "Writing assistant for Parcoursup motivation letters, using a fine-tuned CamemBERT model to identify and structure the different sections of a motivation letter. The system also includes a spell-checking server based on LanguageTool."
 cardDescription: "Parcoursup writing assistant powered by CamemBERT to structure letters."
 tags: ["Web"]
 cover: "/images/projects/redaction-de-projets-motives/image-1.png"

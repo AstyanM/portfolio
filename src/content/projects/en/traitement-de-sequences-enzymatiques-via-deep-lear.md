@@ -1,6 +1,6 @@
 ---
 title: "Processing Enzymatic Sequences via Deep Learning"
-description: "In this work, we explore enzymology using deep learning. Specifically, we seek to use experimentally obtained data to design and train a neural network capable of predicting each enzyme's activity on different available substrates."
+description: "Prediction of enzymatic activity on various substrates using a neural network trained on experimental data. The project explores biological sequence processing and various deep learning architectures to optimize predictions."
 cardDescription: "Predicting enzymatic activity on various substrates using neural networks."
 tags: ["Deep Learning", "Santé", "Recherche"]
 cover: "/images/projects/traitement-de-sequences-enzymatiques-via-deep-lear/clustal2.png"

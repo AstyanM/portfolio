@@ -27,7 +27,8 @@
       "Bash(node -e:*)",
       "Bash(find:*)",
       "mcp__serena__think_about_task_adherence",
-      "Bash(npx astro check:*)"
+      "Bash(npx astro check:*)",
+      "Bash(npx astro:*)"
     ]
   }
 }

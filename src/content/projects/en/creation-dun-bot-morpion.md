@@ -1,6 +1,6 @@
 ---
 title: "Creation of a Tic-Tac-Toe Bot"
-description: "This report focuses on the project organization, the distribution of responsibilities within the teams, the technical difficulties overcome, and future perspectives."
+description: "Development of a bot capable of playing Ultimate Tic-Tac-Toe using game tree search algorithms. The system uses the Negamax algorithm with alpha-beta pruning to compute the best move in real time."
 cardDescription: "Ultimate tic-tac-toe bot with Minimax, Negamax and alpha-beta pruning."
 tags: ["Simulation"]
 cover: "/images/projects/creation-dun-bot-morpion/g.png"

@@ -1,6 +1,6 @@
 ---
 title: "Creation of a 3D Printer"
-description: "This project consists of designing and manufacturing a functional Delta 3D printer. The objective is to master the entire rapid prototyping process, going through several essential steps: CAD modeling, parts printing, mechanical assembly, and printer calibration. We also studied the specifics of its architecture and control system to ensure precise and reliable operation."
+description: "Design and manufacturing of a functional Delta 3D printer, covering the full rapid prototyping process. The project includes CAD modeling, parts printing, mechanical assembly, and system calibration."
 cardDescription: "Designing and building a functional Delta 3D printer from scratch."
 tags: ["Hardware"]
 cover: "/images/projects/creation-dune-imprimante-3d/05264723-4451-49d6-9aae-f9f1348ce313.png"
