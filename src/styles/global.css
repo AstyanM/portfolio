@@ -326,24 +326,6 @@
     height: 100%;
   }
 
-  /* Spotlight image reveal */
-  .spotlight-image-reveal::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgb(var(--color-accent));
-    transform: scaleX(1);
-    transform-origin: right;
-    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-    transition-delay: 0.3s;
-    z-index: 1;
-    border-radius: inherit;
-  }
-
-  .spotlight-image-reveal.is-visible::after {
-    transform: scaleX(0);
-  }
-
   /* Contact icon hover animations */
   @keyframes icon-bounce {
     0%, 100% { transform: translateY(0); }
@@ -407,16 +389,6 @@
       animation-duration: 0.4s;
     }
 
-    .spotlight-image-reveal::after {
-      transform: none;
-      transition: opacity 0.5s ease-out;
-    }
-
-    .spotlight-image-reveal.is-visible::after {
-      opacity: 0;
-      transform: none;
-    }
-
     .timeline-line {
       transition-duration: 0.6s;
     }
@@ -469,10 +441,6 @@
   .animate-cta-entrance {
     opacity: 1;
     animation: none;
-  }
-
-  .spotlight-image-reveal::after {
-    display: none;
   }
 
   .timeline-line {

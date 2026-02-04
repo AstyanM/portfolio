@@ -37,7 +37,7 @@ const currentPath = Astro.url.pathname;
     <!-- Scroll animation observer -->
     <script>
       function initScrollAnimations() {
-        const animateElements = document.querySelectorAll('.animate-on-scroll, .spotlight-image-reveal');
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
         const staggerContainers = document.querySelectorAll('.stagger-children');
         const isMobile = window.innerWidth <= 768;
         const staggerDelay = isMobile ? 50 : 80;

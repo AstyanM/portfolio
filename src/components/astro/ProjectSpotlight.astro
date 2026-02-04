@@ -29,14 +29,14 @@ const projectUrl = getProjectPath(projectSlug, lang);
     
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <!-- Image Side -->
-      <div class="relative group">
+      <div class="relative group animate-on-scroll">
         <!-- Optimized Gradient Blur: Static opacity, hardware accelerated -->
-        <div 
-          class="absolute -inset-4 bg-gradient-to-r from-accent to-purple-600 rounded-2xl opacity-20 blur-lg transition-opacity duration-500 will-change-transform" 
+        <div
+          class="absolute -inset-4 bg-gradient-to-r from-accent to-purple-600 rounded-2xl opacity-20 blur-lg transition-opacity duration-500 will-change-transform"
           style="transform: translateZ(0);"
         ></div>
-        
-        <div class="relative rounded-xl overflow-hidden shadow-2xl border border-accent/20 aspect-video spotlight-image-reveal">
+
+        <div class="relative rounded-xl overflow-hidden shadow-2xl border border-accent/20 aspect-video">
           {data.cover ? (
             <img
               src={getAssetUrl(data.cover?.src || data.cover)}
