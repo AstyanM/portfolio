@@ -31,22 +31,36 @@
     }
   }
 
+  @keyframes blob-entrance {
+    from {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    to {
+      opacity: 0.7;
+      transform: scale(1);
+    }
+  }
+
   /* Desktop: Full effects */
   @media (min-width: 769px) {
     .blob {
-      filter: blur(96px); /* blur-3xl equivalent */
-      opacity: 0.7;
+      filter: blur(96px);
+      opacity: 0;
       mix-blend-mode: multiply;
-      animation: blob 7s infinite;
+      animation: blob-entrance 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+                 blob 7s 1.2s infinite;
       will-change: transform;
     }
 
     .blob-2 {
-      animation-delay: 2s;
+      animation: blob-entrance 1.2s 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+                 blob 7s 1.5s infinite;
     }
 
     .blob-3 {
-      animation-delay: 4s;
+      animation: blob-entrance 1.2s 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+                 blob 7s 1.8s infinite;
     }
   }
 

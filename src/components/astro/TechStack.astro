@@ -30,18 +30,18 @@ const skills = [
 ];
 ---
 
-<section class="py-12 md:py-16 bg-background-secondary/30 relative overflow-hidden animate-on-scroll">
+<section class="py-12 md:py-16 bg-background-secondary/30 relative overflow-hidden">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="mb-12">
+    <div class="mb-12 animate-on-scroll">
       <h2 class="text-3xl font-bold text-foreground mb-4">{t('techstack.title')}</h2>
       <p class="text-foreground-secondary">{t('techstack.subtitle')}</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
       {skills.map((skill) => {
         const Icon = skill.icon;
         return (
-          <div class="bg-background-secondary p-6 rounded-xl border border-border/50 hover:border-accent/50 transition-colors group">
+          <div class="bg-background-secondary p-6 rounded-xl border border-border/50 hover:border-accent/50 transition-colors group stagger-item-scale">
             <div class="flex items-center gap-3 mb-4">
               <div class="p-2 rounded-lg bg-accent/10 text-accent group-hover:bg-accent group-hover:text-white transition-colors">
                 <Icon className="w-6 h-6" />
@@ -49,8 +49,8 @@ const skills = [
               <h3 class="font-semibold text-foreground">{skill.category}</h3>
             </div>
             <div class="flex flex-wrap gap-2">
-              {skill.items.map((item) => (
-                <span class="px-2 py-1 text-sm rounded bg-background border border-border text-foreground-secondary">
+              {skill.items.map((item, i) => (
+                <span style={`transition-delay: ${i * 40}ms`} class="px-2 py-1 text-sm rounded bg-background border border-border text-foreground-secondary skill-tag-animate">
                   {item}
                 </span>
               ))}

@@ -8,17 +8,17 @@ const t = useTranslations(lang as Lang);
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
-<section id="contact" class="py-16 md:py-24 bg-background-secondary/30 animate-on-scroll">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">{t('contact.title')}</h2>
-    <p class="text-lg text-foreground-secondary mb-8">{t('contact.subtitle')}</p>
+<section id="contact" class="py-16 md:py-24 bg-background-secondary/30">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center stagger-children">
+    <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4 stagger-item">{t('contact.title')}</h2>
+    <p class="text-lg text-foreground-secondary mb-8 stagger-item">{t('contact.subtitle')}</p>
 
     <div class="flex flex-col items-center gap-8">
       <!-- CTAs -->
-      <div class="flex flex-col sm:flex-row items-center gap-4">
+      <div class="flex flex-col sm:flex-row items-center gap-4 stagger-item">
         <a
           href="mailto:martinastyan.pro@gmail.com"
-          class="inline-flex items-center gap-3 px-8 py-4 bg-accent text-white rounded-xl hover:bg-accent-hover transition-all duration-300 font-medium text-lg shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/30 hover:scale-105"
+          class="contact-icon-mail inline-flex items-center gap-3 px-8 py-4 bg-accent text-white rounded-xl hover:bg-accent-hover transition-all duration-300 font-medium text-lg shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/30 hover:scale-105"
         >
           <Mail className="w-5 h-5" />
           {t('contact.cta')}
@@ -35,19 +35,19 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       </div>
 
       <!-- Divider -->
-      <div class="flex items-center gap-4 text-foreground-secondary">
+      <div class="flex items-center gap-4 text-foreground-secondary stagger-item">
         <div class="w-16 h-px bg-border"></div>
         <span class="text-sm">{t('contact.or')}</span>
         <div class="w-16 h-px bg-border"></div>
       </div>
 
       <!-- Social Links -->
-      <div class="flex items-center gap-6">
+      <div class="flex items-center gap-6 stagger-item">
         <a
           href="https://github.com/AstyanM"
           target="_blank"
           rel="noopener noreferrer"
-          class="flex items-center gap-2 px-5 py-3 rounded-xl border border-border bg-background hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 group"
+          class="contact-icon-github flex items-center gap-2 px-5 py-3 rounded-xl border border-border bg-background hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 group"
           aria-label="GitHub"
         >
           <Github className="w-5 h-5 text-foreground-secondary group-hover:text-foreground transition-colors" />
@@ -58,7 +58,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           href="https://linkedin.com/in/astyan-martin"
           target="_blank"
           rel="noopener noreferrer"
-          class="flex items-center gap-2 px-5 py-3 rounded-xl border border-border bg-background hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 group"
+          class="contact-icon-linkedin flex items-center gap-2 px-5 py-3 rounded-xl border border-border bg-background hover:border-accent/50 hover:bg-accent/5 transition-all duration-300 group"
           aria-label="LinkedIn"
         >
           <Linkedin className="w-5 h-5 text-foreground-secondary group-hover:text-foreground transition-colors" />

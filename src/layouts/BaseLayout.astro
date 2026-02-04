@@ -37,9 +37,12 @@ const currentPath = Astro.url.pathname;
     <!-- Scroll animation observer -->
     <script>
       function initScrollAnimations() {
-        const elements = document.querySelectorAll('.animate-on-scroll');
+        const animateElements = document.querySelectorAll('.animate-on-scroll, .spotlight-image-reveal');
+        const staggerContainers = document.querySelectorAll('.stagger-children');
+        const isMobile = window.innerWidth <= 768;
+        const staggerDelay = isMobile ? 50 : 80;
 
-        if (elements.length === 0) return;
+        if (animateElements.length === 0 && staggerContainers.length === 0) return;
 
         const observer = new IntersectionObserver(
           (entries) => {
@@ -56,25 +59,57 @@ const currentPath = Astro.url.pathname;
           }
         );
 
-        elements.forEach((el) => {
-          // Check if element is already in viewport on page load
+        const staggerObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                const items = entry.target.querySelectorAll(
+                  '.stagger-item, .stagger-item-left, .stagger-item-right, .stagger-item-scale'
+                );
+                items.forEach((item, i) => {
+                  item.style.transitionDelay = `${i * staggerDelay}ms`;
+                  item.classList.add('is-visible');
+                });
+                staggerObserver.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px',
+          }
+        );
+
+        animateElements.forEach((el) => {
           const rect = el.getBoundingClientRect();
           const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
-          
           if (isInViewport) {
-            // Immediately show elements that are already visible
             el.classList.add('is-visible');
           } else {
-            // Observe elements below the fold
             observer.observe(el);
+          }
+        });
+
+        staggerContainers.forEach((container) => {
+          const rect = container.getBoundingClientRect();
+          const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
+          if (isInViewport) {
+            container.classList.add('is-visible');
+            const items = container.querySelectorAll(
+              '.stagger-item, .stagger-item-left, .stagger-item-right, .stagger-item-scale'
+            );
+            items.forEach((item, i) => {
+              item.style.transitionDelay = `${i * staggerDelay}ms`;
+              item.classList.add('is-visible');
+            });
+          } else {
+            staggerObserver.observe(container);
           }
         });
       }
 
-      // Run on initial load
       initScrollAnimations();
-
-      // Re-run after View Transitions
       document.addEventListener('astro:after-swap', initScrollAnimations);
     </script>
   </body>
