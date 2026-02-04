@@ -1,6 +1,7 @@
 ---
 title: "Making Medical Data Speak"
-description: "This project is in collaboration with the Public Interest Group SIB. The objective is to design an application that exploits unstructured data from Computerized Patient Records (CPR), particularly from medical reports, prescriptions, or orders. This project aims to facilitate the integration of this data into hospital systems to improve healthcare decision-making."
+description: "Application for exploiting unstructured data from Computerized Patient Records (CPR) based on medical reports and prescriptions, in collaboration with the Public Interest Group SIB. The system leverages OCR and natural language processing to support clinical decision-making."
+cardDescription: "Exploiting unstructured patient records with OCR and NLP for SIB."
 
 tags: ["Santé", "Recherche"]
 cover: "/images/projects/faire-parler-les-donnees-medicales/4544eafe-6418-44fb-8eaa-1bc83c83c536.png"

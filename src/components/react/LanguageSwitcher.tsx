@@ -40,7 +40,8 @@ export default function LanguageSwitcher({ lang, currentPath }: LanguageSwitcher
   return (
     <a
       href={alternateUrl}
-      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-background-secondary border border-border hover:border-accent transition-colors text-sm font-medium text-foreground-secondary hover:text-foreground active:scale-95"
+      data-astro-prefetch="viewport"
+      className="flex items-center gap-1.5 px-3 py-3 md:py-1.5 rounded-lg bg-background-secondary border border-border hover:border-accent transition-colors text-sm font-medium text-foreground-secondary hover:text-foreground active:scale-95"
       title={`Switch to ${alternateLang === 'fr' ? 'Français' : 'English'}`}
     >
       <Globe className="w-4 h-4" />

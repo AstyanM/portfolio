@@ -42,6 +42,31 @@ export function getAlternateLang(lang: Lang): Lang {
   return lang === 'fr' ? 'en' : 'fr';
 }
 
+// Get the alternate URL for the current page (for hreflang tags)
+export function getAlternateUrl(currentUrl: URL, targetLang: Lang, site: URL | undefined): string {
+  const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+  let pathname = currentUrl.pathname;
+
+  // Remove base path
+  if (pathname.startsWith(base)) {
+    pathname = pathname.slice(base.length);
+  }
+
+  // Replace /fr/ or /en/ prefix with target lang
+  const newPath = pathname.replace(/^\/(fr|en)/, `/${targetLang}`);
+
+  // Handle project route differences: /fr/projets/ <-> /en/projects/
+  let finalPath: string;
+  if (targetLang === 'fr') {
+    finalPath = newPath.replace(/^\/fr\/projects(\/|$)/, '/fr/projets$1');
+  } else {
+    finalPath = newPath.replace(/^\/en\/projets(\/|$)/, '/en/projects$1');
+  }
+
+  const origin = site?.origin || currentUrl.origin;
+  return `${origin}${base}${finalPath}`;
+}
+
 // Get full URL for public assets (images, etc.) with base path
 export function getAssetUrl(path: string): string {
   if (!path) return '';

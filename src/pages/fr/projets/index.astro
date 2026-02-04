@@ -30,7 +30,7 @@ const years = Object.entries(yearCounts)
 const projectsData = projects.map((p) => ({
   slug: p.slug,
   title: p.data.title,
-  description: p.data.description,
+  description: p.data.cardDescription ?? p.data.description,
   tags: p.data.tags,
   href: getProjectPath(p.slug.split('/')[1], 'fr'),
   coverUrl: getAssetUrl(p.data.cover?.src),

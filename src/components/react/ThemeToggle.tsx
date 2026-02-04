@@ -24,13 +24,18 @@ export default function ThemeToggle() {
     } else {
       document.documentElement.classList.remove('dark');
     }
+
+    const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+    if (themeColorMeta) {
+      themeColorMeta.setAttribute('content', newTheme === 'dark' ? '#0a0a0a' : '#ffffff');
+    }
   };
 
   // Avoid hydration mismatch
   if (!mounted) {
     return (
       <button
-        className="p-2 rounded-lg bg-background-secondary border border-border"
+        className="p-3 md:p-2 rounded-lg bg-background-secondary border border-border"
         aria-label="Toggle theme"
       >
         <div className="w-5 h-5" />
@@ -41,7 +46,7 @@ export default function ThemeToggle() {
   return (
     <motion.button
       onClick={toggleTheme}
-      className="p-2 rounded-lg bg-background-secondary border border-border hover:border-accent transition-colors"
+      className="p-3 md:p-2 rounded-lg bg-background-secondary border border-border hover:border-accent transition-colors"
       aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
       whileTap={{ scale: 0.95 }}
     >

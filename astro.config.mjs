@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
+import sitemap from '@astrojs/sitemap';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import { rehypeFigureCaption } from './src/plugins/rehype-figure-caption.mjs';
@@ -20,6 +21,15 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
     mdx(),
+    sitemap({
+      i18n: {
+        defaultLocale: 'en',
+        locales: {
+          en: 'en',
+          fr: 'fr',
+        },
+      },
+    }),
   ],
   markdown: {
     shikiConfig: {
@@ -28,8 +38,8 @@ export default defineConfig({
     },
     remarkPlugins: [remarkMath],
     rehypePlugins: [
-      rehypeKatex, 
-      rehypeFigureCaption, 
+      [rehypeKatex, { strict: 'ignore' }],
+      rehypeFigureCaption,
       rehypeVideo,
       [rehypeBaseUrl, { base: baseUrl }]
     ],
@@ -40,6 +50,9 @@ export default defineConfig({
     routing: {
       prefixDefaultLocale: true,
     },
+  },
+  prefetch: {
+    defaultStrategy: 'viewport',
   },
   image: {
     service: {

@@ -5,6 +5,7 @@ import ProjectCtaCard from './ProjectCtaCard';
 import TagFilterEnhanced from './TagFilterEnhanced';
 import type { Tag } from '@/consts';
 import { availableTags } from '@/consts';
+import { ui } from '@/i18n/ui';
 
 interface Project {
   slug: string;
@@ -162,9 +163,7 @@ export default function ProjectGrid({
           animate={{ opacity: 1 }}
           className="text-center text-foreground-secondary py-12"
         >
-          {lang === 'fr'
-            ? 'Aucun projet avec ce tag.'
-            : 'No projects with this tag.'}
+          {ui[lang]['projects.noResults']}
         </motion.p>
       )}
     </div>

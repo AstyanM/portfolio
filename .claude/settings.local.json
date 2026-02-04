@@ -21,7 +21,20 @@
       "mcp__serena__find_file",
       "mcp__serena__find_symbol",
       "mcp__serena__think_about_whether_you_are_done",
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "Bash(npm ls:*)",
+      "Bash(findstr:*)",
+      "Bash(node -e:*)",
+      "Bash(find:*)",
+      "mcp__serena__think_about_task_adherence",
+      "Bash(npx astro check:*)",
+      "Bash(npx astro:*)",
+      "Bash(ls:*)",
+      "Bash(dir \"c:\\\\Users\\\\Astyan\\\\Documents\\\\Prevision\\\\portf_test\\\\node_modules\\\\@fontsource-variable\\\\inter\" /b)",
+      "mcp__serena__replace_symbol_body",
+      "Bash(pushd \"c:\\\\Users\\\\Astyan\\\\Documents\\\\Prevision\\\\portf_test\")",
+      "Bash(echo \"EXIT CODE: $?\")",
+      "Bash(echo \"EXIT: $?\")"
     ]
   }
 }

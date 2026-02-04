@@ -294,7 +294,7 @@ const hasContent = appendix.structure || (appendix.sources && appendix.sources.l
   /* Documents Grid */
   .documents-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
     gap: 1rem;
   }
 
@@ -308,6 +308,7 @@ const hasContent = appendix.structure || (appendix.sources && appendix.sources.l
     border-radius: 0.75rem;
     text-decoration: none;
     transition: all 0.2s ease;
+    overflow: hidden;
   }
 
   .document-card:hover {

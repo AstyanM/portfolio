@@ -1,6 +1,4 @@
-import { motion } from 'framer-motion';
-import { Calendar, Filter, ChevronDown, ChevronUp } from 'lucide-react';
-import { useState } from 'react';
+import { Calendar, Filter } from 'lucide-react';
 import type { Tag } from '@/consts';
 import { ui } from '@/i18n/ui';
 
@@ -14,12 +12,12 @@ interface ProjectFiltersProps {
   years: YearCount[];
   selectedYear: number | null;
   onSelectYear: (year: number | null) => void;
-  
+
   // Tag filter
   tags: readonly Tag[];
   selectedTags: Tag[];
   onSelectTags: (tags: Tag[]) => void;
-  
+
   lang: 'fr' | 'en';
   tagCounts: Record<Tag, number>;
   totalCount: number;
@@ -32,34 +30,6 @@ const tagCategories = {
   types: ['Hardware', 'Recherche', 'Embarqué'] as const,
 };
 
-const content = {
-  fr: {
-    allYears: 'Toutes les années',
-    yearLabel: 'Période',
-    tagsLabel: 'Tags',
-    project: 'projet',
-    projects: 'projets',
-    allTags: 'Tous les tags',
-    showMoreTags: 'Afficher tous les filtres',
-    showLessTags: 'Réduire',
-    techniques: 'Techniques',
-    domains: 'Domaines',
-    types: 'Type de réalisation',
-  },
-  en: {
-    allYears: 'All years',
-    yearLabel: 'Period',
-    tagsLabel: 'Tags',
-    project: 'project',
-    projects: 'projects',
-    allTags: 'All tags',
-    showMoreTags: 'Show all filters',
-    showLessTags: 'Show less',
-    techniques: 'Techniques',
-    domains: 'Domains',
-    types: 'Type',
-  },
-};
 
 export default function ProjectFilters({
   years,
@@ -73,7 +43,6 @@ export default function ProjectFilters({
   totalCount,
 }: ProjectFiltersProps) {
   const t = ui[lang];
-  const labels = content[lang];
 
   const translateTag = (tag: Tag): string => {
     const key = `tag.${tag}` as keyof typeof t;
@@ -114,37 +83,35 @@ export default function ProjectFilters({
         <div>
           <div className="flex items-center gap-2 mb-2">
             <Calendar className="w-3.5 h-3.5 text-foreground-secondary" />
-            <span className="text-xs font-medium text-foreground-secondary uppercase tracking-wide">{labels.yearLabel}</span>
+            <span className="text-xs font-medium text-foreground-secondary uppercase tracking-wide">{t['filters.yearLabel']}</span>
           </div>
           {/* First line: All years button centered */}
           <div className="flex justify-center mb-2">
-            <motion.button
+            <button
               onClick={() => onSelectYear(null)}
-              whileTap={{ scale: 0.95 }}
-              className={`px-3 py-1.5 rounded-lg text-sm transition-colors border ${
+              className={`px-3 py-1.5 rounded-lg text-sm transition-all border active:scale-95 ${
                 selectedYear === null
                   ? 'bg-accent text-white border-accent'
                   : 'bg-background border-border text-foreground hover:text-accent hover:border-accent'
               }`}
             >
-              {labels.allYears}
-            </motion.button>
+              {t['filters.allYears']}
+            </button>
           </div>
           {/* Second line: Year buttons centered */}
           <div className="flex flex-wrap gap-2 justify-center">
             {years.map((item) => (
-              <motion.button
+              <button
                 key={item.year}
                 onClick={() => onSelectYear(item.year === selectedYear ? null : item.year)}
-                whileTap={{ scale: 0.95 }}
-                className={`px-3 py-1.5 rounded-lg text-sm transition-colors border ${
+                className={`px-3 py-1.5 rounded-lg text-sm transition-all border active:scale-95 ${
                   selectedYear === item.year
                     ? 'bg-accent text-white border-accent'
                     : 'bg-background border-border text-foreground hover:text-accent hover:border-accent'
                 }`}
               >
                 {item.year} <span className="opacity-60">({item.count})</span>
-              </motion.button>
+              </button>
             ))}
           </div>
         </div>
@@ -153,39 +120,37 @@ export default function ProjectFilters({
         <div>
           <div className="flex items-center gap-2 mb-2">
             <Filter className="w-3.5 h-3.5 text-foreground-secondary" />
-            <span className="text-xs font-medium text-foreground-secondary uppercase tracking-wide">{labels.tagsLabel}</span>
+            <span className="text-xs font-medium text-foreground-secondary uppercase tracking-wide">{t['filters.tagsLabel']}</span>
           </div>
           {/* First line: All tags button centered */}
           <div className="flex justify-center mb-2">
-            <motion.button
+            <button
               onClick={handleClearAllTags}
-              whileTap={{ scale: 0.95 }}
-              className={`px-3 py-1.5 rounded-lg text-sm transition-colors border ${
+              className={`px-3 py-1.5 rounded-lg text-sm transition-all border active:scale-95 ${
                 isAllTagsSelected
                   ? 'bg-accent text-white border-accent'
                   : 'bg-background border-border text-foreground hover:text-accent hover:border-accent'
               }`}
             >
               {t['projects.filter.all']}
-            </motion.button>
+            </button>
           </div>
           {/* Second line: Tag buttons centered */}
           <div className="flex flex-wrap gap-2 justify-center">
             {tags.map((tag) => {
               const isSelected = selectedTags.includes(tag);
               return (
-                <motion.button
+                <button
                   key={tag}
                   onClick={() => handleToggleTag(tag)}
-                  whileTap={{ scale: 0.95 }}
-                  className={`px-3 py-1.5 rounded-lg text-sm transition-colors border ${
+                  className={`px-3 py-1.5 rounded-lg text-sm transition-all border active:scale-95 ${
                     isSelected
                       ? 'bg-accent text-white border-accent'
                       : 'bg-background border-border text-foreground hover:text-accent hover:border-accent'
                   }`}
                 >
                   {translateTag(tag)}
-                </motion.button>
+                </button>
               );
             })}
           </div>
@@ -198,21 +163,19 @@ export default function ProjectFilters({
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-2 flex-shrink-0 w-24">
             <Calendar className="w-3.5 h-3.5 text-foreground-secondary" />
-            <span className="text-xs font-medium text-foreground-secondary uppercase tracking-wide">{labels.yearLabel}</span>
+            <span className="text-xs font-medium text-foreground-secondary uppercase tracking-wide">{t['filters.yearLabel']}</span>
           </div>
-          
-          <motion.button
+
+          <button
             onClick={() => onSelectYear(null)}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors border ${
+            className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all border hover:scale-[1.02] active:scale-[0.98] ${
               selectedYear === null
                 ? 'bg-accent text-white border-accent'
                 : 'bg-background border-border text-foreground hover:text-accent hover:border-accent'
             }`}
           >
-            {labels.allYears}
-          </motion.button>
+            {t['filters.allYears']}
+          </button>
 
           {/* Timeline */}
           <div className="flex-1 relative min-w-[200px] max-w-[500px] my-2">
@@ -231,10 +194,8 @@ export default function ProjectFilters({
                       onClick={() => onSelectYear(item.year === selectedYear ? null : item.year)}
                       className="group block"
                     >
-                      <motion.div
-                        whileHover={{ scale: 1.15 }}
-                        whileTap={{ scale: 0.95 }}
-                        className={`w-3 h-3 rounded-full border-2 transition-colors ${
+                      <div
+                        className={`w-3 h-3 rounded-full border-2 transition-all hover:scale-[1.15] active:scale-95 ${
                           isSelected
                             ? 'bg-accent border-accent shadow-md shadow-accent/30'
                             : 'bg-background border-accent/40 hover:border-accent'
@@ -257,12 +218,10 @@ export default function ProjectFilters({
           {/* Year labels */}
           <div className="flex items-center gap-2">
             {years.map((item) => (
-              <motion.button
+              <button
                 key={`label-${item.year}`}
                 onClick={() => onSelectYear(item.year === selectedYear ? null : item.year)}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors border ${
+                className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all border hover:scale-[1.02] active:scale-[0.98] ${
                   selectedYear === item.year
                     ? 'bg-accent text-white border-accent'
                     : 'bg-background border-border text-foreground hover:text-accent hover:border-accent'
@@ -270,7 +229,7 @@ export default function ProjectFilters({
               >
                 {item.year}
                 <span className="ml-1 text-xs opacity-60">({item.count})</span>
-              </motion.button>
+              </button>
             ))}
           </div>
         </div>
@@ -281,21 +240,19 @@ export default function ProjectFilters({
             <div className="flex items-center gap-6">
               <div className="flex items-center gap-2 w-24">
                 <Filter className="w-3.5 h-3.5 text-foreground-secondary" />
-                <span className="text-xs font-medium text-foreground-secondary uppercase tracking-wide">{labels.tagsLabel}</span>
+                <span className="text-xs font-medium text-foreground-secondary uppercase tracking-wide">{t['filters.tagsLabel']}</span>
               </div>
-              
-              <motion.button
+
+              <button
                 onClick={handleClearAllTags}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors border ${
+                className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all border hover:scale-[1.02] active:scale-[0.98] ${
                   isAllTagsSelected
                     ? 'bg-accent text-white border-accent'
                     : 'bg-background border-border text-foreground hover:text-accent hover:border-accent'
                 }`}
               >
                 {t['projects.filter.all']}
-              </motion.button>
+              </button>
             </div>
 
             {/* Categories */}
@@ -304,25 +261,23 @@ export default function ProjectFilters({
               {categorizedTags.techniques.length > 0 && (
                 <div>
                   <h3 className="text-[10px] font-semibold text-foreground-secondary uppercase tracking-wider mb-1.5 text-center">
-                    {labels.techniques}
+                    {t['filters.techniques']}
                   </h3>
                   <div className="flex flex-wrap gap-1.5 justify-center">
                     {categorizedTags.techniques.map((tag) => {
                       const isSelected = selectedTags.includes(tag);
                       return (
-                        <motion.button
+                        <button
                           key={tag}
                           onClick={() => handleToggleTag(tag)}
-                          whileHover={{ scale: 1.02 }}
-                          whileTap={{ scale: 0.98 }}
-                          className={`px-3 py-1.5 rounded-lg text-sm transition-colors border ${
+                          className={`px-3 py-1.5 rounded-lg text-sm transition-all border hover:scale-[1.02] active:scale-[0.98] ${
                             isSelected
                               ? 'bg-accent text-white border-accent'
                               : 'bg-background border-border text-foreground hover:text-accent hover:border-accent'
                           }`}
                         >
                           {translateTag(tag)}
-                        </motion.button>
+                        </button>
                       );
                     })}
                   </div>
@@ -333,25 +288,23 @@ export default function ProjectFilters({
               {categorizedTags.domains.length > 0 && (
                 <div>
                   <h3 className="text-[10px] font-semibold text-foreground-secondary uppercase tracking-wider mb-1.5 text-center">
-                    {labels.domains}
+                    {t['filters.domains']}
                   </h3>
                   <div className="flex flex-wrap gap-1.5 justify-center">
                     {categorizedTags.domains.map((tag) => {
                       const isSelected = selectedTags.includes(tag);
                       return (
-                        <motion.button
+                        <button
                           key={tag}
                           onClick={() => handleToggleTag(tag)}
-                          whileHover={{ scale: 1.02 }}
-                          whileTap={{ scale: 0.98 }}
-                          className={`px-3 py-1.5 rounded-lg text-sm transition-colors border ${
+                          className={`px-3 py-1.5 rounded-lg text-sm transition-all border hover:scale-[1.02] active:scale-[0.98] ${
                             isSelected
                               ? 'bg-accent text-white border-accent'
                               : 'bg-background border-border text-foreground hover:text-accent hover:border-accent'
                           }`}
                         >
                           {translateTag(tag)}
-                        </motion.button>
+                        </button>
                       );
                     })}
                   </div>
@@ -362,25 +315,23 @@ export default function ProjectFilters({
               {categorizedTags.types.length > 0 && (
                 <div>
                   <h3 className="text-[10px] font-semibold text-foreground-secondary uppercase tracking-wider mb-1.5 text-center">
-                    {labels.types}
+                    {t['filters.types']}
                   </h3>
                   <div className="flex flex-wrap gap-1.5 justify-center">
                     {categorizedTags.types.map((tag) => {
                       const isSelected = selectedTags.includes(tag);
                       return (
-                        <motion.button
+                        <button
                           key={tag}
                           onClick={() => handleToggleTag(tag)}
-                          whileHover={{ scale: 1.02 }}
-                          whileTap={{ scale: 0.98 }}
-                          className={`px-3 py-1.5 rounded-lg text-sm transition-colors border ${
+                          className={`px-3 py-1.5 rounded-lg text-sm transition-all border hover:scale-[1.02] active:scale-[0.98] ${
                             isSelected
                               ? 'bg-accent text-white border-accent'
                               : 'bg-background border-border text-foreground hover:text-accent hover:border-accent'
                           }`}
                         >
                           {translateTag(tag)}
-                        </motion.button>
+                        </button>
                       );
                     })}
                   </div>

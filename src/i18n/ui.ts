@@ -54,6 +54,7 @@ export const ui = {
     'contact.subtitle': 'Intéressé par mon profil ou envie de discuter d\'un projet ?',
     'contact.cta': 'Envoyer un email',
     'contact.or': 'ou retrouvez-moi sur',
+    'contact.downloadCv': 'Télécharger mon CV',
 
     // Footer
     'footer.rights': 'Tous droits réservés.',
@@ -66,6 +67,42 @@ export const ui = {
     // Similar Projects
     'similar.title': 'Ces projets pourraient vous intéresser',
     'similar.titleSingular': 'Ce projet pourrait vous intéresser',
+
+    // Hero (extended)
+    'hero.description': "Étudiant en ingénierie, curieux et passionné par de nombreux domaines techniques. Ce portfolio regroupe mes projets les plus significatifs, mêlant exploration de l'IA, algorithmes et conception matérielle.",
+
+    // Projects (extended)
+    'projects.otherTitle': 'Autres Projets',
+    'projects.noResults': 'Aucun projet avec ce tag.',
+
+    // Tech Stack
+    'techstack.title': 'Stack Technique',
+    'techstack.subtitle': "Une boîte à outils complète pour transformer des idées complexes en solutions fonctionnelles, du bas niveau à l'intelligence artificielle avancée.",
+
+    // Timeline
+    'timeline.title': 'Mon Parcours',
+    'timeline.subtitle': "De la classe préparatoire à l'ingénierie, avec des expériences en IA et développement.",
+    'timeline.educationTitle': 'Formation',
+    'timeline.internshipsTitle': 'Stages',
+    'timeline.upcoming': 'À venir',
+
+    // Spotlight
+    'spotlight.label': 'Projet à la Une',
+    'spotlight.btn': 'Voir le projet en détails',
+
+    // Filters
+    'filters.allYears': 'Toutes les années',
+    'filters.yearLabel': 'Période',
+    'filters.tagsLabel': 'Tags',
+    'filters.project': 'projet',
+    'filters.projects': 'projets',
+    'filters.allTags': 'Tous les tags',
+    'filters.showMoreTags': 'Afficher tous les filtres',
+    'filters.showLessTags': 'Réduire',
+    'filters.techniques': 'Techniques',
+    'filters.domains': 'Domaines',
+    'filters.types': 'Type de réalisation',
+
   },
   en: {
     // Navigation
@@ -113,6 +150,7 @@ export const ui = {
     'contact.subtitle': 'Interested in my profile or want to discuss a project?',
     'contact.cta': 'Send an email',
     'contact.or': 'or find me on',
+    'contact.downloadCv': 'Download my Resume',
 
     // Footer
     'footer.rights': 'All rights reserved.',
@@ -125,5 +163,41 @@ export const ui = {
     // Similar Projects
     'similar.title': 'These projects might interest you',
     'similar.titleSingular': 'This project might interest you',
+
+    // Hero (extended)
+    'hero.description': 'Engineering student, curious and passionate about many technical fields. This portfolio showcases my most significant projects, blending AI exploration, algorithms and hardware design.',
+
+    // Projects (extended)
+    'projects.otherTitle': 'Other Projects',
+    'projects.noResults': 'No projects with this tag.',
+
+    // Tech Stack
+    'techstack.title': 'Tech Stack',
+    'techstack.subtitle': 'A complete toolkit to transform complex ideas into functional solutions, from low-level to advanced AI.',
+
+    // Timeline
+    'timeline.title': 'My Journey',
+    'timeline.subtitle': 'From preparatory classes to engineering school, with experience in AI and development.',
+    'timeline.educationTitle': 'Education',
+    'timeline.internshipsTitle': 'Internships',
+    'timeline.upcoming': 'Upcoming',
+
+    // Spotlight
+    'spotlight.label': 'Featured Project',
+    'spotlight.btn': 'View project details',
+
+    // Filters
+    'filters.allYears': 'All years',
+    'filters.yearLabel': 'Period',
+    'filters.tagsLabel': 'Tags',
+    'filters.project': 'project',
+    'filters.projects': 'projects',
+    'filters.allTags': 'All tags',
+    'filters.showMoreTags': 'Show all filters',
+    'filters.showLessTags': 'Show less',
+    'filters.techniques': 'Techniques',
+    'filters.domains': 'Domains',
+    'filters.types': 'Type',
+
   },
 } as const;

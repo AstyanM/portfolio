@@ -44,6 +44,20 @@ const getTeamLabel = (size: number | undefined) => {
 
 const teamLabel = getTeamLabel(teamSize);
 
+// JSON-LD structured data for project
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: title,
+  ...(description && { description }),
+  ...(year && { datePublished: `${year}` }),
+  author: {
+    '@type': 'Person',
+    name: 'Astyan Martin',
+  },
+  ...(tags.length > 0 && { keywords: tags.join(', ') }),
+};
+
 // Tag translation helper
 const translateTag = (tag: string): string => {
   const key = `tag.${tag}` as keyof (typeof ui)[typeof lang];
@@ -51,7 +65,7 @@ const translateTag = (tag: string): string => {
 };
 ---
 
-<BaseLayout title={`${title} | Astyan Martin`} description={description}>
+<BaseLayout title={`${title} | Astyan Martin`} description={description} jsonLd={jsonLd}>
   <!-- Hero Section -->
   <div class="relative w-full bg-gradient-to-br from-accent/5 via-background to-purple-500/5 border-b border-border pt-16">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -145,7 +159,7 @@ const translateTag = (tag: string): string => {
 
   <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <!-- Table of Contents -->
-    <TableOfContents client:load lang={lang} />
+    <TableOfContents client:only="react" lang={lang} />
 
     <!-- Content -->
     <div class="prose prose-lg mx-auto">
@@ -198,7 +212,8 @@ const translateTag = (tag: string): string => {
       z-index: 10;
     }
 
-    .code-block-wrapper:hover .copy-button {
+    .code-block-wrapper:hover .copy-button,
+    .code-block-wrapper:focus-within .copy-button {
       opacity: 1;
     }
 
@@ -228,8 +243,8 @@ const translateTag = (tag: string): string => {
       border-color: #22c55e;
     }
   </style>
-  <ReadingProgress client:load />
-  <Lightbox client:idle />
+  <ReadingProgress client:only="react" />
+  <Lightbox client:only="react" />
 
   <script>
     function setupLightbox() {
