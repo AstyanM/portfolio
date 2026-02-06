@@ -19,26 +19,28 @@ Astro 5 portfolio website with bilingual support (English/French), hosted on Git
 ### Routing & Internationalization
 - **Default locale**: English (`en`)
 - **Locales**: `en`, `fr` with prefix routing (`/en/...`, `/fr/...`), `prefixDefaultLocale: true`
-- **i18n utilities**: [src/i18n/utils.ts](src/i18n/utils.ts) - `getLangFromUrl()`, `useTranslations()`, `getProjectsPath()`, `getLocalizedPath()`, `getProjectPath()`, `getAlternateLang()`, `getAssetUrl()`
-- **UI translations**: [src/i18n/ui.ts](src/i18n/ui.ts) - Add new translation keys here (40+ keys across nav, hero, projects, tags, contact, footer, 404)
+- **i18n utilities**: [src/i18n/utils.ts](src/i18n/utils.ts) - `getLangFromUrl()`, `useTranslations()`, `getProjectsPath()`, `getLocalizedPath()`, `getProjectPath()`, `getAlternateLang()`, `getAlternateUrl()`, `getAssetUrl()`
+- **UI translations**: [src/i18n/ui.ts](src/i18n/ui.ts) - Add new translation keys here (60+ keys across nav, hero, projects, tags, contact, footer, 404, timeline, spotlight, filters)
 - **Project routes differ by locale**: `/fr/projets/[slug]` vs `/en/projects/[slug]`
 
 ### Content System
 - **Project content**: `src/content/projects/{fr|en}/*.md` - Markdown files with frontmatter (12 bilingual pairs)
 - **Content schema**: [src/content/config.ts](src/content/config.ts) - Zod validation:
   - Required: `title`
-  - Optional: `description`, `cardDescription` (short text for project cards, falls back to `description`), `date`, `tags` (from consts.ts), `cover`, `lang` (default `fr`), `draft` (default `false`), `liveUrl`, `repoUrl`, `repoPrivate` (default `false`), `teamSize` (positive int), `year` (2000-2100), `conclusion`
+  - Optional: `description`, `cardDescription` (short text for project cards, falls back to `description`), `date`, `tags` (from consts.ts), `cover`, `lang` (default `fr`), `draft` (default `false`), `liveUrl`, `repoUrl`, `repoPrivate` (default `false`), `teamSize` (positive int), `year` (2000-2100), `conclusion`, `impact`
+  - `impact` array: Objects with `value` (string, e.g. "95%") and `label` (string, e.g. "Accuracy") for Results & Impact metrics
   - `appendix` object: `structure` (description + tree), `sources` (bibliography entries), `documents` (downloadable files with type pdf|zip|doc|other)
 - **Available tags**: Defined in [src/consts.ts](src/consts.ts) - Must use these exact values: `Deep Learning`, `Traitement du Signal`, `Vision par Ordinateur`, `Simulation`, `Santé`, `Web`, `Sécurité`, `Architecture`, `Hardware`, `Recherche`, `Embarqué`
 
 ### Component Organization
-- **Astro components**: `src/components/astro/` - Server-rendered (Appendix, BaseHead, Conclusion, Contact, Footer, HeroBackground, ProjectSpotlight, SimilarProjects, TechStack, Timeline)
+- **Astro components**: `src/components/astro/` - Server-rendered (Appendix, BaseHead, Conclusion, Contact, Footer, HeroBackground, Impact, ProjectSpotlight, SimilarProjects, TechStack, Timeline)
 - **React components**: `src/components/react/` - Interactive with `client:*` directives (Header, ThemeToggle, LanguageSwitcher, Lightbox, ProjectCard, ProjectCtaCard, ProjectFilters, ProjectGrid, ProjectsPageClient, ProjectsTimeline, ReadingProgress, TableOfContents, TagFilter, TagFilterEnhanced, Typewriter)
 - **Layouts**: `src/layouts/` - BaseLayout wraps all pages (with ViewTransitions), ProjectLayout for project detail pages (includes TOC, reading progress, lightbox, conclusion, appendix, similar projects)
 
 ### Pages
 - `src/pages/index.astro` - Root redirect
 - `src/pages/404.astro` - Error page
+- `src/pages/rss.xml.ts` - RSS feed endpoint
 - `src/pages/{en|fr}/index.astro` - Localized home pages
 - `src/pages/en/projects/{index,[...slug]}.astro` - English project listing & detail
 - `src/pages/fr/projets/{index,[...slug]}.astro` - French project listing & detail
@@ -76,7 +78,7 @@ Astro 5 portfolio website with bilingual support (English/French), hosted on Git
 ## Adding a New Project
 
 1. Create markdown file in both `src/content/projects/fr/` and `src/content/projects/en/` with same filename
-2. Add frontmatter with required `title`, and optional fields (`description`, `cardDescription`, `date`, `lang`, `tags` from consts.ts, `cover`, `liveUrl`, `repoUrl`, `repoPrivate`, `teamSize`, `year`, `conclusion`, `appendix`)
+2. Add frontmatter with required `title`, and optional fields (`description`, `cardDescription`, `date`, `lang`, `tags` from consts.ts, `cover`, `liveUrl`, `repoUrl`, `repoPrivate`, `teamSize`, `year`, `conclusion`, `impact`, `appendix`)
 3. Place project images in `src/assets/projects/{slug}/`
 
 ## GitHub Pages Deployment
