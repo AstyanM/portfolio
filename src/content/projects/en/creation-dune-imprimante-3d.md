@@ -8,6 +8,13 @@ lang: en
 draft: false
 teamSize: 8
 year: 2024
+impact:
+  - value: "105h"
+    label: "of cumulative 3D printing"
+  - value: "1 kg"
+    label: "of filament used"
+  - value: "4"
+    label: "mechanical subassemblies designed in CAD"
 conclusion: |
   This project allowed us to explore in depth the entire rapid prototyping process, from CAD design and modeling to parts printing and final assembly of the Delta 3D printer. Each step required thorough reflection on design choices, mechanical constraints, and specifics of the Delta architecture, notably its control and movement system. The multiple tests and adjustments made allowed us to optimize components to ensure fluid and precise operation. This experience not only familiarized us with additive manufacturing technologies but also with technical challenges related to implementing a complex system, thus constituting a solid foundation for future engineering and prototyping projects.
 ---

@@ -1,0 +1,135 @@
+---
+import { useTranslations } from '@/i18n/utils';
+import type { Lang } from '@/i18n/ui';
+
+interface ImpactItem {
+  value: string;
+  label: string;
+}
+
+interface Props {
+  items: ImpactItem[];
+  lang: Lang;
+}
+
+const { items, lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<aside class="impact-section">
+  <div class="impact-card">
+    <div class="impact-header">
+      <svg class="impact-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+      </svg>
+      <h2 id="impact" class="impact-title">{t('project.impact')}</h2>
+    </div>
+    <div class="impact-grid">
+      {items.map((item) => (
+        <div class="impact-metric">
+          <span class="metric-value">{item.value}</span>
+          <span class="metric-label">{item.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</aside>
+
+<style>
+  .impact-section {
+    margin-bottom: 2rem;
+  }
+
+  .impact-card {
+    background: rgb(240, 253, 244);
+    border: 1px solid rgb(200, 235, 210);
+    border-radius: 1rem;
+    padding: 1.75rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .impact-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, #10b981, #34d399);
+    border-radius: 1rem 0 0 1rem;
+  }
+
+  .impact-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .impact-icon {
+    color: #10b981;
+    flex-shrink: 0;
+  }
+
+  .impact-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: rgb(var(--color-foreground));
+    margin: 0;
+    letter-spacing: 0.01em;
+  }
+
+  .impact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .impact-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .impact-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .impact-metric {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .metric-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #059669;
+    line-height: 1.2;
+  }
+
+  .metric-label {
+    font-size: 0.85rem;
+    color: rgb(var(--color-foreground-secondary));
+    line-height: 1.4;
+  }
+
+  /* Dark mode */
+  :global(.dark) .impact-card {
+    background: rgb(22, 35, 28);
+    border-color: rgb(40, 70, 50);
+  }
+
+  :global(.dark) .metric-value {
+    color: #34d399;
+  }
+
+  @media (max-width: 640px) {
+    .impact-card {
+      padding: 1.25rem 1rem;
+    }
+  }
+</style>

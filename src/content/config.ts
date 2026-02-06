@@ -24,6 +24,12 @@ const structureSchema = z.object({
   tree: z.string(), // The folder tree structure
 });
 
+// Schema for impact/results metrics
+const impactItemSchema = z.object({
+  value: z.string(),
+  label: z.string(),
+});
+
 // Schema for appendix
 const appendixSchema = z.object({
   structure: structureSchema.optional(),
@@ -55,6 +61,8 @@ const projectsCollection = defineCollection({
     year: z.number().int().min(2000).max(2100).optional(),
     // Conclusion du projet (affichée séparément avec style harmonisé)
     conclusion: z.string().optional(),
+    // Résultats et impact du projet (métriques chiffrées)
+    impact: z.array(impactItemSchema).optional(),
     // Annexes du projet (structure, sources, documents)
     appendix: appendixSchema.optional(),
   }),

@@ -10,6 +10,15 @@ draft: false
 teamSize: 12
 year: 2024
 repoPrivate: true
+impact:
+  - value: "1800h+"
+    label: "de travail cumulé sur le projet"
+  - value: "10"
+    label: "itérations avec du personnel médical"
+  - value: "1000+"
+    label: "dossiers patients anonymisés utilisés pour l'entraînement"
+  - value: "Livré"
+    label: "à l'hôpital pour mise en production"
 conclusion: |
   Le projet a permis de développer un outil performant d'exploitation des données médicales, facilitant le triage des patients et la gestion hospitalière. L'intégration d'un modèle LLM et de Machine Learning a permis d'obtenir des résultats optimaux, ouvrant la voie à des améliorations futures comme l'optimisation des modèles ou l'intégration de bases de données françaises.
 ---

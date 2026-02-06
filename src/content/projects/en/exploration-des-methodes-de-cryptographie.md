@@ -9,6 +9,11 @@ draft: true
 teamSize: 1
 year: 2023
 repoUrl: "https://github.com/AstyanM/cryptographie"
+impact:
+  - value: "7"
+    label: "encryption methods implemented"
+  - value: "4"
+    label: "types of attacks developed (brute force, dictionary, frequency, factorization)"
 conclusion: |
   This project allowed me to explore the foundations of cryptography through different algorithms, from their implementation in Python to their breaking when possible. From simple methods like Caesar cipher to asymmetric systems like RSA, each technique presents fascinating challenges in terms of security and feasibility. This experience constitutes a solid foundation for understanding data security issues and the evolution of modern cryptographic techniques.
 ---

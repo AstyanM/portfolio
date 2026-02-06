@@ -10,6 +10,15 @@ draft: false
 teamSize: 12
 year: 2024
 repoPrivate: true
+impact:
+  - value: "1800h+"
+    label: "of cumulative work on the project"
+  - value: "10"
+    label: "iterations with medical staff"
+  - value: "1000+"
+    label: "anonymized patient records used for training"
+  - value: "Delivered"
+    label: "to the hospital for production deployment"
 conclusion: |
   The project enabled the development of a performant tool for exploiting medical data, facilitating patient triage and hospital management. The integration of an LLM model and Machine Learning allowed for optimal results, paving the way for future improvements such as model optimization or integration of French databases.
 ---

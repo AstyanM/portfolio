@@ -10,6 +10,7 @@ import TableOfContents from '@/components/react/TableOfContents';
 import Conclusion from '@/components/astro/Conclusion.astro';
 import Appendix from '@/components/astro/Appendix.astro';
 import SimilarProjects from '@/components/astro/SimilarProjects.astro';
+import Impact from '@/components/astro/Impact.astro';
 
 interface Props {
   project: CollectionEntry<'projects'>;
@@ -158,6 +159,11 @@ const translateTag = (tag: string): string => {
   </div>
 
   <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Impact / Results -->
+    {project.data.impact && project.data.impact.length > 0 && (
+      <Impact items={project.data.impact} lang={lang} />
+    )}
+
     <!-- Table of Contents -->
     <TableOfContents client:only="react" lang={lang} />
 

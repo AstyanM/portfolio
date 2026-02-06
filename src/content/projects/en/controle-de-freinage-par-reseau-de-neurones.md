@@ -9,6 +9,13 @@ draft: false
 teamSize: 1
 year: 2025
 repoUrl: "https://github.com/AstyanM/abs_narmal2"
+impact:
+  - value: "20k"
+    label: "data points for training"
+  - value: "50"
+    label: "braking scenarios simulated"
+  - value: "1"
+    label: "scientific article written"
 conclusion: |
   This project enabled the design, simulation, and comparison of an intelligent braking controller based on neural networks. Beyond the technical work, the objective was also to produce a scientific article in English, which synthesized the theoretical foundations, design choices, results, and limitations of the approach.
 

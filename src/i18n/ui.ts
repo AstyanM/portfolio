@@ -48,6 +48,7 @@ export const ui = {
     'project.liveDemo': 'Voir le projet',
     'project.sourceCode': 'Code source',
     'project.privateRepo': 'Dépôt privé',
+    'project.impact': 'Résultats & Impact',
 
     // Contact
     'contact.title': 'Me Contacter',
@@ -55,6 +56,8 @@ export const ui = {
     'contact.cta': 'Envoyer un email',
     'contact.or': 'ou retrouvez-moi sur',
     'contact.downloadCv': 'Télécharger mon CV',
+    'contact.availability': 'Ouvert aux opportunités professionnelles',
+    'contact.emailSubject': 'Contact depuis votre portfolio',
 
     // Footer
     'footer.rights': 'Tous droits réservés.',
@@ -144,6 +147,7 @@ export const ui = {
     'project.liveDemo': 'Live demo',
     'project.sourceCode': 'Source code',
     'project.privateRepo': 'Private repository',
+    'project.impact': 'Results & Impact',
 
     // Contact
     'contact.title': 'Get in Touch',
@@ -151,6 +155,8 @@ export const ui = {
     'contact.cta': 'Send an email',
     'contact.or': 'or find me on',
     'contact.downloadCv': 'Download my Resume',
+    'contact.availability': 'Open to professional opportunities',
+    'contact.emailSubject': 'Contact from your portfolio',
 
     // Footer
     'footer.rights': 'All rights reserved.',

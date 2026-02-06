@@ -8,6 +8,13 @@ lang: fr
 draft: true
 teamSize: 4
 year: 2024
+impact:
+  - value: "3"
+    label: "bâtiments conçus (logements, salle culturelle, supérette)"
+  - value: "2"
+    label: "maquettes physiques réalisées"
+  - value: "4"
+    label: "plans techniques au 1/100 et 1/500"
 conclusion: |
   Ce projet nous a permis d'explorer les différentes étapes de la conception architecturale dans un contexte de développement durable. En combinant analyse de site, conception modulaire et urbanisme écologique, nous avons pu proposer une solution viable pour la réhabilitation d'une zone urbaine abandonnée. Ce travail pourrait constituer une base solide pour la mise en place d'un projet réel de reconstruction et d'aménagement urbain.
 ---

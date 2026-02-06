@@ -9,6 +9,21 @@ teamSize: 1
 year: 2025
 repoPrivate: true
 liveUrl: "https://simulateur-parcoursup.prepa-prevision.fr/"
+impact:
+  - value: "50k+"
+    label: "lignes de code maintenues et déployées"
+  - value: "10k+"
+    label: "leads générés"
+  - value: "200k+"
+    label: "simulations effectuées"
+  - value: "60k+"
+    label: "vœux réalisés sur la plateforme"
+  - value: "Top 1"
+    label: "résultat SEO sur le mot-clé principal"
+  - value: "50%"
+    label: "des leads acquis via le référencement naturel"
+  - value: "250"
+    label: "lettres de motivation générées automatiquement"
 conclusion: |
   La solution combine open data, enrichissements contrôlés et modélisation explicable. L'architecture modulaire (FastAPI/React) facilite la maintenance, l'extension et le recalibrage local. Les limites tiennent à la granularité des données agrégées et aux hypothèses distributionnelles ; elles sont compensées par des bornes explicites, un facteur principal et des seuils documentés.
 appendix:

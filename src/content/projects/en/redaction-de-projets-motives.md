@@ -10,6 +10,13 @@ teamSize: 1
 year: 2025
 repoPrivate: true
 liveUrl: "http://lettre-motivation.prepa-prevision.fr"
+impact:
+  - value: "93%"
+    label: "fine-tuned CamemBERT model accuracy"
+  - value: "320"
+    label: "letters annotated for training"
+  - value: "In production"
+    label: "deployed and accessible online"
 conclusion: |
   This project demonstrates that it is possible to combine automatic language processing and linguistic analysis to offer students objective and transparent support in writing their Parcoursup motivation letters. Thanks to the integration of CamemBERT for text structuring and LanguageTool for correction, the tool offers fine evaluation, clear indicators, and relevant suggestions without resorting to a chatbot. This work illustrates an autonomous, explainable, and practical approach to supporting written expression in an academic context.
 appendix:

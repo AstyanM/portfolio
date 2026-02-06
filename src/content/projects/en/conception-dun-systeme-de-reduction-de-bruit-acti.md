@@ -8,6 +8,13 @@ lang: en
 draft: false
 teamSize: 2
 year: 2023
+impact:
+  - value: "95%"
+    label: "noise reduction measured (electrical circuit)"
+  - value: "93%"
+    label: "efficiency at 440 Hz (phase opposition)"
+  - value: "3"
+    label: "prototypes designed and tested"
 conclusion: |
   This project allowed us to explore active noise reduction in depth, from the first experiments on destructive interference to modeling and implementing an advanced digital system. Each step highlighted the challenges related to implementing such a system, particularly signal processing precision and hardware constraints.
 

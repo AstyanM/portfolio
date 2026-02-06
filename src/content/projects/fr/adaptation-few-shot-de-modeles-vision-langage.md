@@ -9,6 +9,13 @@ draft: false
 teamSize: 2
 year: 2025
 repoUrl: "https://github.com/AstyanM/nn_few_shot"
+impact:
+  - value: "92%"
+    label: "de précision sur les classes de base (CoOp)"
+  - value: "102"
+    label: "catégories de fleurs classifiées (Oxford Flowers-102)"
+  - value: "4"
+    label: "architectures implémentées et comparées"
 conclusion: |
   Ce projet nous a permis d'explorer en profondeur les défis liés à l'adaptation few-shot des modèles vision-langage. De l'évaluation zero-shot aux améliorations de CoOp et CoCoOp, nous avons implémenté des solutions avancées comprenant vision, texte, apprentissage profond et visualisation. Les résultats démontrent qu'il est possible de concilier précision sur les classes vues et généralisation sur les classes nouvelles, avec peu de données.
 ---

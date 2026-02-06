@@ -9,6 +9,11 @@ draft: false
 teamSize: 2
 year: 2024
 repoUrl: "https://github.com/AstyanM/enzymes"
+impact:
+  - value: "4"
+    label: "architectures de réseaux testées (Dense, Conv1D, LSTM)"
+  - value: "18"
+    label: "activités enzymatiques prédites simultanément"
 conclusion: |
   Ce travail nous a permis d'explorer l'enzymologie en la combinant aux méthodes de machine learning. Avant d'évaluer la performance de notre réseau de neurones, nous avons dû surmonter plusieurs défis, notamment l'extraction et le traitement des données, le choix de leur format et l'alignement des séquences.
 

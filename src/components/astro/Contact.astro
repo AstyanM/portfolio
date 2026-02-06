@@ -10,6 +10,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 <section id="contact" class="py-16 md:py-24 bg-background-secondary/30">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center stagger-children">
+    <p class="inline-flex items-center gap-2 text-sm text-foreground-secondary mb-6 stagger-item">
+      <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse flex-shrink-0"></span>
+      {t('contact.availability')}
+    </p>
     <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4 stagger-item">{t('contact.title')}</h2>
     <p class="text-lg text-foreground-secondary mb-8 stagger-item">{t('contact.subtitle')}</p>
 
@@ -17,7 +21,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <!-- CTAs -->
       <div class="flex flex-col sm:flex-row items-center gap-4 stagger-item">
         <a
-          href="mailto:martinastyan.pro@gmail.com"
+          href={`mailto:martinastyan.pro@gmail.com?subject=${encodeURIComponent(t('contact.emailSubject'))}`}
           class="contact-icon-mail inline-flex items-center gap-3 px-8 py-4 bg-accent text-white rounded-xl hover:bg-accent-hover transition-all duration-300 font-medium text-lg shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/30 hover:scale-105"
         >
           <Mail className="w-5 h-5" />

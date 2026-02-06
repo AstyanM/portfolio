@@ -9,6 +9,21 @@ teamSize: 1
 year: 2025
 repoPrivate: true
 liveUrl: "https://simulateur-parcoursup.prepa-prevision.fr/"
+impact:
+  - value: "50k+"
+    label: "lines of code maintained and deployed"
+  - value: "10k+"
+    label: "leads generated"
+  - value: "200k+"
+    label: "simulations performed"
+  - value: "60k+"
+    label: "wishes created on the platform"
+  - value: "Top 1"
+    label: "SEO result on the main keyword"
+  - value: "50%"
+    label: "of leads acquired through organic search"
+  - value: "250"
+    label: "cover letters generated automatically"
 conclusion: |
   The solution combines open data, controlled enrichments, and explainable modeling. The modular architecture (FastAPI/React) facilitates maintenance, extension, and local recalibration. Limitations relate to the granularity of aggregated data and distributional assumptions; they are compensated by explicit bounds, a main factor, and documented thresholds.
 appendix:

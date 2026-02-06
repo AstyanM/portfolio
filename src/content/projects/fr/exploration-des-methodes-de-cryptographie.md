@@ -9,6 +9,11 @@ draft: true
 teamSize: 1
 year: 2023
 repoUrl: "https://github.com/AstyanM/cryptographie"
+impact:
+  - value: "7"
+    label: "méthodes de chiffrement implémentées"
+  - value: "4"
+    label: "types d'attaques développés (brute force, dictionnaire, fréquence, factorisation)"
 conclusion: |
   Ce projet m'a permis d'explorer les fondements de la cryptographie à travers différents algorithmes, de leur implémentation en Python jusqu'à leur cassage lorsque cela était possible. Des méthodes simples comme le chiffre de César aux systèmes asymétriques comme RSA, chaque technique présente des défis fascinants en termes de sécurité et de faisabilité. Cette expérience constitue une base solide pour comprendre les enjeux de la sécurisation des données et l'évolution des techniques cryptographiques modernes.
 ---

@@ -8,6 +8,13 @@ lang: en
 draft: true
 teamSize: 4
 year: 2024
+impact:
+  - value: "3"
+    label: "buildings designed (housing, cultural center, supermarket)"
+  - value: "2"
+    label: "physical mockups built"
+  - value: "4"
+    label: "technical plans at 1/100 and 1/500 scale"
 conclusion: |
   This project allowed us to explore the different stages of architectural design in a sustainable development context. By combining site analysis, modular design, and ecological urbanism, we were able to propose a viable solution for the rehabilitation of an abandoned urban zone. This work could constitute a solid foundation for setting up a real reconstruction and urban planning project.
 ---

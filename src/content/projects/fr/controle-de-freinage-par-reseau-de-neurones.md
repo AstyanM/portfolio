@@ -9,6 +9,13 @@ draft: false
 teamSize: 1
 year: 2025
 repoUrl: "https://github.com/AstyanM/abs_narmal2"
+impact:
+  - value: "20k"
+    label: "points de données pour l'entraînement"
+  - value: "50"
+    label: "scénarios de freinage simulés"
+  - value: "1"
+    label: "article scientifique rédigé"
 conclusion: |
   Ce projet a permis de concevoir, simuler et comparer un contrôleur de freinage intelligent basé sur des réseaux de neurones. En plus des travaux techniques, l'objectif était aussi de produire un article scientifique en anglais, qui a synthétisé les fondements théoriques, les choix de conception, les résultats et les limites de l'approche.
 
