@@ -19,6 +19,12 @@ conclusion: |
   Ce projet nous a permis d'explorer en profondeur la réduction de bruit active, depuis les premières expériences sur les interférences destructives jusqu'à la modélisation et l'implémentation d'un système numérique avancé. Chaque étape a mis en évidence les défis liés à la mise en œuvre d'un tel système, notamment la précision du traitement du signal et les contraintes matérielles.
 
   Malgré des difficultés techniques avec le Raspberry Pi, les résultats obtenus sur les premiers prototypes sont prometteurs et suggèrent que l'utilisation d'un matériel plus performant pourrait aboutir à une solution pleinement fonctionnelle. Ce travail constitue une base solide pour approfondir l'optimisation du traitement du signal et l'intégration de systèmes embarqués dédiés à la réduction du bruit.
+appendix:
+  documents:
+    - title: "Rapport TIPE"
+      description: "Rapport complet du TIPE sur la réduction de bruit active par opposition de phase"
+      url: "/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/TIPE_Réduction_de_bruit_Astyan.pdf"
+      type: pdf
 ---
 
 ## Introduction
@@ -49,7 +55,7 @@ Figure 2 - Schéma du premier montage
 
 ![Figure 3 -  Résultats associés : 93% d’efficacité](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/hp_colles_courbe.png)
 
-Figure 3 -  Résultats associés : 93% d’efficacité
+Figure 3 - Résultats associés : 93% d’efficacité
 
 ![Figure 4 - Schéma du deuxième montage](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/montage_hp_2_page-0001.jpg)
 
@@ -176,4 +182,3 @@ Les deux derniers systèmes étant très complexes et chronophages, nous aurions
 
 - **Miniaturisation portable** du système intermédiaire
 - Trouver un équivalent de la plaque **Sysam** moins complexe que le Raspberry Pi
-
