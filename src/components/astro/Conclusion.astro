@@ -12,83 +12,23 @@ const title = lang === 'fr' ? 'Conclusion' : 'Conclusion';
 const paragraphs = content.split(/\n\n+/).filter(p => p.trim());
 ---
 
-<aside class="conclusion-section">
-  <div class="conclusion-card">
-    <div class="conclusion-header">
-      <svg class="conclusion-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<aside class="mt-16">
+  <div class="bg-background-secondary/50 border border-border rounded-2xl p-7 sm:p-5 relative overflow-hidden">
+    <!-- Accent left bar -->
+    <div class="absolute left-0 top-0 bottom-0 w-1 bg-accent rounded-l-2xl"></div>
+
+    <div class="flex items-center gap-3 mb-4">
+      <svg class="w-5 h-5 text-accent flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
         <polyline points="22 4 12 14.01 9 11.01"/>
       </svg>
-      <h2 id="conclusion" class="conclusion-title">{title}</h2>
+      <h2 id="conclusion" class="text-xl font-semibold text-foreground tracking-tight m-0">{title}</h2>
     </div>
-    <div class="conclusion-content">
+
+    <div>
       {paragraphs.map((paragraph) => (
-        <p>{paragraph.replace(/\n/g, ' ').replace(/[-*]\s+/g, '').replace(/\*\*/g, '').trim()}</p>
+        <p class="text-foreground-secondary leading-relaxed mb-4 last:mb-0">{paragraph.replace(/\n/g, ' ').replace(/[-*]\s+/g, '').replace(/\*\*/g, '').trim()}</p>
       ))}
     </div>
   </div>
 </aside>
-
-<style>
-  .conclusion-section {
-    margin-top: 4rem;
-  }
-
-  .conclusion-card {
-    /* Light mode: fond bleu-gris doux */
-    background: rgb(240, 245, 252);
-    border: 1px solid rgb(200, 215, 235);
-    border-radius: 1rem;
-    padding: 1.75rem 2rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  /* Subtle accent bar on the left */
-  .conclusion-card::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 4px;
-    background: rgb(var(--color-accent));
-    border-radius: 1rem 0 0 1rem;
-  }
-
-  .conclusion-header {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-  }
-
-  .conclusion-icon {
-    color: rgb(var(--color-accent));
-    flex-shrink: 0;
-  }
-
-  .conclusion-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: rgb(var(--color-foreground));
-    margin: 0;
-    letter-spacing: 0.01em;
-  }
-
-  .conclusion-content p {
-    color: rgb(var(--color-foreground-secondary));
-    line-height: 1.8;
-    margin-bottom: 1rem;
-  }
-
-  .conclusion-content p:last-child {
-    margin-bottom: 0;
-  }
-
-  /* Dark mode: fond gris-bleu foncé qui se détache */
-  :global(.dark) .conclusion-card {
-    background: rgb(28, 35, 45);
-    border-color: rgb(50, 65, 85);
-  }
-</style>

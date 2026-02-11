@@ -32,7 +32,7 @@ const projectUrl = getProjectPath(projectSlug, lang);
       <div class="relative group animate-on-scroll">
         <!-- Optimized Gradient Blur: Static opacity, hardware accelerated -->
         <div
-          class="absolute -inset-4 bg-gradient-to-r from-accent to-purple-600 rounded-2xl opacity-20 blur-lg transition-opacity duration-500 will-change-transform"
+          class="absolute -inset-4 bg-gradient-to-r from-accent to-amber-400 rounded-2xl opacity-20 blur-lg transition-opacity duration-500 will-change-transform"
           style="transform: translateZ(0);"
         ></div>
 
@@ -49,17 +49,17 @@ const projectUrl = getProjectPath(projectSlug, lang);
             />
           ) : (
             <!-- Premium gradient for featured project without cover -->
-            <div class="w-full h-full bg-gradient-to-br from-accent/30 via-purple-500/25 to-accent/20 relative overflow-hidden">
+            <div class="w-full h-full bg-gradient-to-br from-accent/30 via-accent/25 to-accent/20 relative overflow-hidden">
               <!-- Animated overlay patterns -->
               <div class="absolute inset-0 opacity-20">
                 <div class="absolute top-10 left-10 w-32 h-32 bg-accent/30 rounded-full blur-2xl animate-pulse"></div>
-                <div class="absolute bottom-20 right-20 w-40 h-40 bg-purple-500/30 rounded-full blur-3xl" style="animation: pulse 3s ease-in-out infinite;"></div>
+                <div class="absolute bottom-20 right-20 w-40 h-40 bg-accent/30 rounded-full blur-3xl" style="animation: pulse 3s ease-in-out infinite;"></div>
                 <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-accent/20 rounded-full blur-3xl"></div>
               </div>
               <!-- Geometric patterns -->
               <div class="absolute inset-0 opacity-10">
                 <div class="absolute top-1/4 right-1/4 w-48 h-1 bg-accent/40 rotate-45"></div>
-                <div class="absolute bottom-1/4 left-1/4 w-48 h-1 bg-purple-500/40 -rotate-45"></div>
+                <div class="absolute bottom-1/4 left-1/4 w-48 h-1 bg-accent/40 -rotate-45"></div>
               </div>
               <!-- Title overlay -->
               <div class="absolute inset-0 flex items-center justify-center">
@@ -84,7 +84,7 @@ const projectUrl = getProjectPath(projectSlug, lang);
           {t('spotlight.label')}
         </div>
 
-        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4 leading-tight stagger-item">
+        <h2 class="text-3xl md:text-4xl font-bold font-display text-foreground mb-4 leading-tight stagger-item">
           {data.title}
         </h2>
 

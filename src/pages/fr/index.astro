@@ -55,31 +55,32 @@ const jsonLd = {
 
 <BaseLayout title="Astyan Martin | Portfolio" jsonLd={jsonLd}>
   <!-- Hero Section -->
-  <section class="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
+  <section class="relative pt-36 pb-20 md:pt-48 md:pb-28 overflow-hidden">
     <!-- Animated Background -->
     <HeroBackground />
-    
+
     <!-- Background gradient overlay for text readability -->
     <div
       class="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background pointer-events-none"
     >
     </div>
 
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative">
       <div class="max-w-3xl">
-        <p class="text-accent font-medium mb-4 animate-fade-in">{t('hero.greeting')}</p>
+        <p class="text-accent font-medium mb-4 animate-on-scroll-blur">{t('hero.greeting')}</p>
 
         <h1
-          class="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 animate-slide-up"
+          class="font-display text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-foreground mb-4 animate-slide-up"
         >
-          <span class="gradient-text">Astyan Martin</span>
+          Astyan Martin
         </h1>
+        <div class="h-1 w-24 bg-accent rounded-full mb-6 animate-slide-up"></div>
 
         <div class="min-h-[100px] mb-8">
           <Typewriter
             client:visible
             text={t('hero.description')}
-            speed={17}
+            speed={12}
             delay={300}
             className="text-lg md:text-xl text-foreground-secondary leading-relaxed"
           />
@@ -88,7 +89,7 @@ const jsonLd = {
         <div class="flex flex-wrap gap-4">
           <a
             href={getProjectsPath('fr')}
-            class="animate-cta-entrance inline-flex items-center gap-2 px-6 py-3 bg-accent text-white rounded-lg hover:bg-accent-hover hover:scale-105 transition-all duration-300 font-medium shadow-lg shadow-accent/20"
+            class="animate-cta-entrance inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background rounded-lg hover:bg-accent hover:text-white transition-all duration-300 font-medium"
           >
             {t('hero.cta')}
             <ArrowRight className="w-4 h-4" />
@@ -99,10 +100,12 @@ const jsonLd = {
   </section>
 
   <TechStack lang="fr" />
+  <div class="max-w-xs mx-auto h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
   <Timeline lang="fr" />
+  <div class="max-w-xs mx-auto h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
 
   <!-- Featured Projects Section -->
-  <section class="py-12 md:py-16 animate-on-scroll">
+  <section class="py-16 md:py-20 animate-on-scroll">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="mb-16">
@@ -110,7 +113,7 @@ const jsonLd = {
       </div>
 
       <div class="mb-12">
-        <h2 class="text-3xl font-bold text-foreground mb-2">{t('projects.otherTitle')}</h2>
+        <h2 class="text-3xl font-bold font-display text-foreground mb-2">{t('projects.otherTitle')}</h2>
         <p class="text-foreground-secondary">{t('projects.subtitle')}</p>
       </div>
 

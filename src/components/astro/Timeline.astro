@@ -159,10 +159,10 @@ const data = translations[lang] || translations.fr;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
-<section class="py-12 md:py-16">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="py-20 md:py-28">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="mb-12 animate-on-scroll">
-      <h2 class="text-3xl font-bold text-foreground mb-4">{t('timeline.title')}</h2>
+      <h2 class="text-3xl font-bold font-display text-foreground mb-4">{t('timeline.title')}</h2>
       <p class="text-foreground-secondary">
         {t('timeline.subtitle')}
       </p>
@@ -175,16 +175,16 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <!-- Formation -->
       <div class="lg:pr-8 stagger-children">
         <h3 class="text-xl font-semibold text-foreground mb-6 flex items-center gap-2 stagger-item-left">
-          <GraduationCap className="w-5 h-5 text-purple-500" />
+          <GraduationCap className="w-5 h-5 text-teal-600 dark:text-teal-400" />
           {t('timeline.educationTitle')}
         </h3>
 
         <div class="relative space-y-6">
-          <div class="timeline-line absolute top-0 left-0 ml-6 -translate-x-px w-0.5 bg-gradient-to-b from-purple-500 via-border to-transparent"></div>
+          <div class="timeline-line absolute top-0 left-0 ml-6 -translate-x-px w-0.5 bg-gradient-to-b from-teal-600 via-border to-transparent"></div>
           {data.education.map((item) => (
             <div class="relative flex items-start stagger-item-left">
               <!-- Icon -->
-              <div class="w-12 h-12 rounded-lg bg-background border-2 border-purple-500/50 flex items-center justify-center shrink-0 overflow-hidden z-10">
+              <div class="w-12 h-12 rounded-lg bg-background border-2 border-teal-600/50 flex items-center justify-center shrink-0 overflow-hidden z-10">
                 <img
                   src={`${base}/assets/schools/${item.icon}_light.png`}
                   alt={item.name}
@@ -193,11 +193,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
                   data-base-path={base}
                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
                 />
-                <GraduationCap className="w-6 h-6 text-purple-500 hidden" />
+                <GraduationCap className="w-6 h-6 text-teal-600 dark:text-teal-400 hidden" />
               </div>
 
               <!-- Connector -->
-              <div class="w-4 h-0.5 mt-5 bg-gradient-to-r from-purple-500/50 to-purple-500/20 shrink-0"></div>
+              <div class="w-4 h-0.5 mt-5 bg-gradient-to-r from-teal-600/50 to-teal-600/20 shrink-0"></div>
 
               <!-- Content -->
               <div class="flex-1 p-4 rounded-xl border border-border bg-background-secondary">
@@ -205,7 +205,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
                   <h4 class="font-semibold text-foreground">{item.name}</h4>
                   <span class="text-xs text-foreground-secondary whitespace-nowrap">{item.period}</span>
                 </div>
-                <p class="text-sm text-purple-500 mb-1">{item.detail}</p>
+                <p class="text-sm text-teal-600 dark:text-teal-400 mb-1">{item.detail}</p>
                 <p class="text-xs text-foreground-secondary flex items-center gap-1 mb-2">
                   <MapPin className="w-3 h-3" />
                   {item.location}

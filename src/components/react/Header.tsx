@@ -119,7 +119,7 @@ export default function Header({ lang, currentPath }: HeaderProps) {
           {/* Logo */}
           <a
             href={`${base}/${activeLang}`}
-            className="text-xl font-bold text-accent bg-accent/10 px-3 py-1 rounded-full hover:bg-accent/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
+            className="text-xl font-bold font-display bg-foreground text-background px-3 py-1 rounded-full hover:bg-accent hover:scale-[1.02] active:scale-[0.98] transition-all"
           >
             AM
           </a>

@@ -87,7 +87,7 @@ export default function TagFilterEnhanced({
   const isAllSelected = selectedTags.length === 0;
 
   return (
-    <div className="mb-8 py-6 px-6 rounded-2xl bg-gradient-to-br from-accent/10 via-purple-500/8 to-accent/10 border-2 border-accent/20 shadow-xl shadow-black/5 dark:shadow-black/20 backdrop-blur-sm">
+    <div className="mb-8 py-6 px-6 rounded-xl bg-background-secondary/80 border border-border shadow-sm">
       {/* Mobile: Simple wrap */}
       <div className="md:hidden">
         <div className="flex flex-wrap gap-2 justify-center">

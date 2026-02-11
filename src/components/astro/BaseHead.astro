@@ -28,7 +28,7 @@ const currentUrl = getAlternateUrl(Astro.url, lang as Lang, Astro.site);
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="theme-color" content="#ffffff" />
+<meta name="theme-color" content="#FCFAF7" />
 <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
 <meta name="generator" content={Astro.generator} />
 
@@ -89,7 +89,7 @@ const currentUrl = getAlternateUrl(Astro.url, lang as Lang, Astro.site);
 
     const themeColorMeta = document.querySelector('meta[name="theme-color"]');
     if (themeColorMeta) {
-      themeColorMeta.setAttribute('content', theme === 'dark' ? '#0a0a0a' : '#ffffff');
+      themeColorMeta.setAttribute('content', theme === 'dark' ? '#0C0A09' : '#FCFAF7');
     }
   };
 

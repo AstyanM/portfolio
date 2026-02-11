@@ -72,7 +72,7 @@ export default function ProjectCard({
             )}
           </div>
         ) : (
-          <div className="aspect-video w-full bg-gradient-to-br from-accent/20 to-purple-500/20 flex items-center justify-center relative">
+          <div className="aspect-video w-full bg-gradient-to-br from-accent/15 to-accent/5 flex items-center justify-center relative">
             <span className="text-4xl font-bold text-accent/40">
               {title.charAt(0)}
             </span>
@@ -97,7 +97,7 @@ export default function ProjectCard({
         {/* Content */}
         <div className="p-5">
           <div className="flex items-start justify-between gap-2 mb-2">
-            <h3 className="text-lg font-semibold text-foreground group-hover:text-accent transition-colors line-clamp-2">
+            <h3 className="text-lg font-semibold font-display text-foreground group-hover:text-accent transition-colors line-clamp-2">
               {title}
             </h3>
             <ArrowUpRight className="w-5 h-5 flex-shrink-0 text-foreground-secondary opacity-100 md:opacity-0 md:-translate-y-1 md:translate-x-1 md:group-hover:opacity-100 md:group-hover:translate-y-0 md:group-hover:translate-x-0 transition-all duration-300" />

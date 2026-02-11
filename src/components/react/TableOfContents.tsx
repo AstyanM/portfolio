@@ -113,7 +113,7 @@ export default function TableOfContents({ lang }: TableOfContentsProps) {
   };
 
   return (
-    <div className="mb-8 border border-border rounded-lg bg-background-secondary/50">
+    <div className="mb-8 border border-border border-l-2 border-l-accent rounded-lg bg-background-secondary/50">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between px-4 py-3 text-left hover:bg-background-secondary/80 transition-colors rounded-lg"

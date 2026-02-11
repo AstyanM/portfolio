@@ -16,7 +16,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Vercel/Linear inspired palette - using RGB for opacity support
+        // Warm stone + amber palette - using RGB for opacity support
         background: {
           DEFAULT: withOpacity('--color-background'),
           secondary: withOpacity('--color-background-secondary'),
@@ -32,7 +32,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['Instrument Sans Variable', 'system-ui', 'sans-serif'],
+        sans: ['Inter Variable', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
       },
       animation: {

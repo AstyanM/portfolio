@@ -54,27 +54,15 @@ const t = translations[lang];
 // Parse the tree structure into a visual representation with hierarchy tracking
 function parseTree(tree: string): { name: string; indent: number; isFile: boolean; depth: number }[] {
   const lines = tree.split('\n').filter(line => line.trim());
-  let currentDepth = 0;
-  const depthStack: number[] = [0];
 
-  return lines.map((line, index) => {
-    // Count indentation (each level is typically 4 spaces or a tab, or tree chars)
+  return lines.map((line) => {
     const match = line.match(/^([\s│├└─]*)/);
     const prefix = match ? match[1] : '';
-    // Calculate indent based on tree characters or spaces
     const indent = Math.floor(prefix.replace(/[│├└─]/g, ' ').length / 4);
-    // Get the name (remove tree characters)
     const name = line.replace(/^[\s│├└─]+/, '').trim();
-    // Check if it's a file (has an extension)
     const isFile = /\.\w+$/.test(name);
 
-    // Track folder depth for coloring
-    if (!isFile) {
-      // It's a folder - calculate its depth based on indent
-      currentDepth = indent;
-    }
-
-    return { name, indent, isFile, depth: isFile ? indent : indent };
+    return { name, indent, isFile, depth: indent };
   }).filter(item => item.name);
 }
 
@@ -98,43 +86,46 @@ const hasContent = appendix.structure || (appendix.sources && appendix.sources.l
 ---
 
 {hasContent && (
-  <aside class="appendix-section">
-    <div class="appendix-card">
-      <div class="appendix-header">
-        <svg class="appendix-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <aside class="mt-16">
+    <div class="bg-background-secondary/30 border border-border rounded-2xl p-7 sm:p-5 relative overflow-hidden">
+      <!-- Accent left bar -->
+      <div class="absolute left-0 top-0 bottom-0 w-1 bg-accent rounded-l-2xl"></div>
+
+      <div class="flex items-center gap-3 mb-6 pb-4 border-b border-border">
+        <svg class="w-5 h-5 text-accent flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>
           <path d="M8 7h6"/>
           <path d="M8 11h8"/>
         </svg>
-        <h2 id="appendix" class="appendix-title">{t.title}</h2>
+        <h2 id="appendix" class="text-2xl font-bold text-foreground tracking-tight m-0">{t.title}</h2>
       </div>
 
-      <div class="appendix-content">
+      <div class="flex flex-col gap-8">
         {/* Documents Section */}
         {appendix.documents && appendix.documents.length > 0 && (
-          <div class="appendix-subsection">
-            <h3 class="subsection-title">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <div>
+            <h3 class="flex items-center gap-2 text-lg font-semibold text-foreground mb-4">
+              <svg class="text-accent/80" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                 <polyline points="7 10 12 15 17 10"/>
                 <line x1="12" y1="15" x2="12" y2="3"/>
               </svg>
               {t.documents}
             </h3>
-            <div class="documents-grid">
+            <div class="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-4">
               {appendix.documents.map((doc) => (
-                <a href={doc.url} target="_blank" rel="noopener noreferrer" class="document-card">
-                  <div class="document-icon">
+                <a href={doc.url} target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-4 bg-background border border-border rounded-xl no-underline hover:border-accent hover:shadow-lg hover:shadow-accent/10 hover:-translate-y-0.5 transition-all">
+                  <div class="flex-shrink-0 text-accent">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                       <path d={getDocIcon(doc.type)}/>
                     </svg>
                   </div>
-                  <div class="document-info">
-                    <span class="document-title">{doc.title}</span>
-                    {doc.description && <span class="document-desc">{doc.description}</span>}
-                    <span class="document-type">{doc.type.toUpperCase()}</span>
+                  <div class="flex-1 flex flex-col gap-1 min-w-0">
+                    <span class="font-semibold text-foreground truncate">{doc.title}</span>
+                    {doc.description && <span class="text-sm text-foreground-secondary truncate">{doc.description}</span>}
+                    <span class="text-xs font-semibold text-accent uppercase tracking-wider">{doc.type.toUpperCase()}</span>
                   </div>
-                  <div class="document-download">
+                  <div class="flex-shrink-0 text-foreground-secondary/50 hover:text-accent transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                       <polyline points="7 10 12 15 17 10"/>
@@ -149,35 +140,37 @@ const hasContent = appendix.structure || (appendix.sources && appendix.sources.l
 
         {/* Structure Section */}
         {appendix.structure && (
-          <div class="appendix-subsection">
-            <h3 class="subsection-title">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <div>
+            <h3 class="flex items-center gap-2 text-lg font-semibold text-foreground mb-4">
+              <svg class="text-accent/80" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
               </svg>
               {t.structure}
             </h3>
             {appendix.structure.description && (
-              <p class="structure-description">{appendix.structure.description}</p>
+              <p class="text-foreground-secondary mb-4 text-sm">{appendix.structure.description}</p>
             )}
-            <div class="tree-container">
-              {treeItems.map((item, index) => (
+            <div class="bg-[rgb(var(--color-background-secondary))] rounded-xl p-5 font-mono text-sm overflow-x-auto">
+              {treeItems.map((item) => (
                 <div
-                  class={`tree-item ${item.isFile ? 'is-file' : `is-folder depth-${Math.min(item.depth, 2)}`}`}
-                  style={`--indent: ${item.indent}`}
+                  class="flex items-center gap-2 py-1"
+                  style={`padding-left: ${item.indent * 1.25}rem`}
                 >
-                  <span class="tree-icon">
+                  <span class="flex-shrink-0 flex items-center">
                     {item.isFile ? (
-                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <svg class="text-foreground-secondary/60" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
                         <polyline points="13 2 13 9 20 9"/>
                       </svg>
                     ) : (
-                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <svg class="text-accent" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
                       </svg>
                     )}
                   </span>
-                  <span class="tree-name">{item.name}</span>
+                  <span class={item.isFile ? 'text-foreground-secondary' : 'text-accent font-medium'}>
+                    {item.name}
+                  </span>
                 </div>
               ))}
             </div>
@@ -186,24 +179,24 @@ const hasContent = appendix.structure || (appendix.sources && appendix.sources.l
 
         {/* Sources/Bibliography Section */}
         {appendix.sources && appendix.sources.length > 0 && (
-          <div class="appendix-subsection">
-            <h3 class="subsection-title">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <div>
+            <h3 class="flex items-center gap-2 text-lg font-semibold text-foreground mb-4">
+              <svg class="text-accent/80" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>
               </svg>
               {t.sources}
             </h3>
-            <ol class="bibliography-list">
+            <ol class="list-none p-0 m-0 flex flex-col gap-4">
               {appendix.sources.map((source, index) => (
-                <li class="bibliography-item">
-                  <span class="bib-number">[{index + 1}]</span>
-                  <div class="bib-content">
-                    <span class="bib-authors">{source.authors}</span>
-                    <span class="bib-year">({source.year}).</span>
-                    <span class="bib-title">{source.title}.</span>
-                    {source.publisher && <span class="bib-publisher">{source.publisher}.</span>}
+                <li class="flex gap-3 p-4 bg-background border border-border rounded-xl text-sm leading-relaxed sm:flex-col sm:gap-2">
+                  <span class="flex-shrink-0 font-bold text-accent text-xs">[{index + 1}]</span>
+                  <div class="inline">
+                    <span class="text-foreground font-medium">{source.authors}</span>
+                    <span class="text-foreground-secondary ml-1">({source.year}).</span>
+                    <span class="text-foreground italic ml-1">{source.title}.</span>
+                    {source.publisher && <span class="text-foreground-secondary ml-1">{source.publisher}.</span>}
                     {source.url && (
-                      <a href={source.url} target="_blank" rel="noopener noreferrer" class="bib-link">
+                      <a href={source.url} target="_blank" rel="noopener noreferrer" class="block mt-2 text-accent text-xs break-all no-underline hover:underline">
                         {source.url}
                       </a>
                     )}
@@ -217,339 +210,3 @@ const hasContent = appendix.structure || (appendix.sources && appendix.sources.l
     </div>
   </aside>
 )}
-
-<style>
-  .appendix-section {
-    margin-top: 4rem;
-  }
-
-  .appendix-card {
-    /* Light mode: fond violet-gris doux (différent du bleu de conclusion) */
-    background: rgb(248, 245, 252);
-    border: 1px solid rgb(220, 210, 235);
-    border-radius: 1rem;
-    padding: 1.75rem 2rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .appendix-card::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 4px;
-    background: linear-gradient(to bottom, #8b5cf6, #a855f7);
-    border-radius: 1rem 0 0 1rem;
-  }
-
-  .appendix-header {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid rgb(230, 220, 245);
-  }
-
-  .appendix-icon {
-    color: #8b5cf6;
-    flex-shrink: 0;
-  }
-
-  .appendix-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: rgb(var(--color-foreground));
-    margin: 0;
-    letter-spacing: -0.01em;
-  }
-
-  .appendix-content {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  .appendix-subsection {
-    padding-top: 0;
-  }
-
-  .subsection-title {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: rgb(var(--color-foreground));
-    margin: 0 0 1rem 0;
-  }
-
-  .subsection-title svg {
-    color: rgb(var(--color-accent));
-    opacity: 0.8;
-  }
-
-  /* Documents Grid */
-  .documents-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
-    gap: 1rem;
-  }
-
-  .document-card {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem 1.25rem;
-    background: rgb(255, 255, 255);
-    border: 1px solid rgb(220, 230, 245);
-    border-radius: 0.75rem;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    overflow: hidden;
-  }
-
-  .document-card:hover {
-    border-color: rgb(var(--color-accent));
-    box-shadow: 0 4px 12px rgba(var(--color-accent), 0.15);
-    transform: translateY(-2px);
-  }
-
-  .document-icon {
-    flex-shrink: 0;
-    color: rgb(var(--color-accent));
-  }
-
-  .document-info {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-    min-width: 0;
-  }
-
-  .document-title {
-    font-weight: 600;
-    color: rgb(var(--color-foreground));
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .document-desc {
-    font-size: 0.875rem;
-    color: rgb(var(--color-foreground-secondary));
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .document-type {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: rgb(var(--color-accent));
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .document-download {
-    flex-shrink: 0;
-    color: rgb(var(--color-foreground-secondary));
-    opacity: 0.5;
-    transition: all 0.2s ease;
-  }
-
-  .document-card:hover .document-download {
-    color: rgb(var(--color-accent));
-    opacity: 1;
-  }
-
-  /* Structure / Tree */
-  .structure-description {
-    color: rgb(var(--color-foreground-secondary));
-    margin-bottom: 1rem;
-    font-size: 0.95rem;
-  }
-
-  .tree-container {
-    background: rgb(30, 35, 45);
-    border-radius: 0.75rem;
-    padding: 1.25rem 1.5rem;
-    font-family: 'JetBrains Mono', 'Fira Code', monospace;
-    font-size: 0.875rem;
-    overflow-x: auto;
-  }
-
-  .tree-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.25rem 0;
-    padding-left: calc(var(--indent, 0) * 1.25rem);
-    color: rgb(200, 210, 230);
-  }
-
-  .tree-icon {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-  }
-
-  .tree-name {
-    white-space: nowrap;
-  }
-
-  /* Files - gray */
-  .tree-item.is-file .tree-icon {
-    color: rgb(140, 155, 180);
-  }
-
-  .tree-item.is-file .tree-name {
-    color: rgb(180, 190, 210);
-  }
-
-  /* Root folders (depth 0) - yellow/amber */
-  .tree-item.is-folder.depth-0 .tree-icon {
-    color: rgb(250, 200, 80);
-  }
-
-  .tree-item.is-folder.depth-0 .tree-name {
-    color: rgb(250, 200, 80);
-    font-weight: 600;
-  }
-
-  /* Nested folders (depth 1) - green */
-  .tree-item.is-folder.depth-1 .tree-icon {
-    color: rgb(74, 222, 128);
-  }
-
-  .tree-item.is-folder.depth-1 .tree-name {
-    color: rgb(74, 222, 128);
-    font-weight: 500;
-  }
-
-  /* Deeper folders (depth 2+) - cyan/teal */
-  .tree-item.is-folder.depth-2 .tree-icon {
-    color: rgb(45, 212, 191);
-  }
-
-  .tree-item.is-folder.depth-2 .tree-name {
-    color: rgb(45, 212, 191);
-    font-weight: 500;
-  }
-
-  /* Bibliography */
-  .bibliography-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .bibliography-item {
-    display: flex;
-    gap: 0.75rem;
-    padding: 1rem;
-    background: rgb(255, 255, 255);
-    border: 1px solid rgb(220, 230, 245);
-    border-radius: 0.75rem;
-    font-size: 0.95rem;
-    line-height: 1.6;
-  }
-
-  .bib-number {
-    flex-shrink: 0;
-    font-weight: 700;
-    color: rgb(var(--color-accent));
-    font-size: 0.85rem;
-  }
-
-  .bib-content {
-    display: inline;
-  }
-
-  .bib-authors {
-    color: rgb(var(--color-foreground));
-    font-weight: 500;
-  }
-
-  .bib-year {
-    color: rgb(var(--color-foreground-secondary));
-    margin-left: 0.25rem;
-  }
-
-  .bib-title {
-    color: rgb(var(--color-foreground));
-    font-style: italic;
-    margin-left: 0.25rem;
-  }
-
-  .bib-publisher {
-    color: rgb(var(--color-foreground-secondary));
-    margin-left: 0.25rem;
-  }
-
-  .bib-link {
-    display: block;
-    margin-top: 0.5rem;
-    color: rgb(var(--color-accent));
-    font-size: 0.85rem;
-    word-break: break-all;
-    text-decoration: none;
-  }
-
-  .bib-link:hover {
-    text-decoration: underline;
-  }
-
-  /* Dark mode: fond violet-gris foncé (différent du bleu-gris de conclusion) */
-  :global(.dark) .appendix-card {
-    background: rgb(32, 28, 42);
-    border-color: rgb(60, 50, 80);
-  }
-
-  :global(.dark) .appendix-header {
-    border-bottom-color: rgb(60, 50, 80);
-  }
-
-  :global(.dark) .document-card {
-    background: rgb(35, 42, 55);
-    border-color: rgb(50, 65, 85);
-  }
-
-  :global(.dark) .document-card:hover {
-    background: rgb(40, 48, 62);
-  }
-
-  :global(.dark) .bibliography-item {
-    background: rgb(35, 42, 55);
-    border-color: rgb(50, 65, 85);
-  }
-
-  :global(.dark) .tree-container {
-    background: rgb(20, 25, 32);
-  }
-
-  @media (max-width: 640px) {
-    .appendix-card {
-      padding: 1.25rem 1rem;
-    }
-
-    .documents-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .bibliography-item {
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .bib-number {
-      font-size: 0.8rem;
-    }
-  }
-</style>

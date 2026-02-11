@@ -32,14 +32,14 @@ export default function ProjectCtaCard({ href, lang, index = 0 }: ProjectCtaCard
       whileHover={{ y: -4 }}
       className="group block h-full"
     >
-      <article className="h-full rounded-xl border-2 border-dashed border-accent/30 bg-gradient-to-br from-accent/5 to-purple-500/5 overflow-hidden transition-all duration-300 hover:border-accent hover:shadow-lg hover:shadow-accent/10 flex flex-col items-center justify-center p-8 min-h-[400px]">
+      <article className="h-full rounded-xl border-2 border-dashed border-accent/20 bg-accent/[0.03] overflow-hidden transition-all duration-300 hover:border-accent hover:shadow-lg hover:shadow-accent/10 flex flex-col items-center justify-center p-8 min-h-[400px]">
         {/* Icon */}
         <div className="w-20 h-20 rounded-full bg-accent/10 flex items-center justify-center mb-6 transition-all duration-300 group-hover:bg-accent/20 group-hover:scale-110">
           <Folder className="w-10 h-10 text-accent" />
         </div>
 
         {/* Content */}
-        <h3 className="text-2xl font-bold text-foreground text-center mb-3 group-hover:text-accent transition-colors">
+        <h3 className="text-2xl font-bold font-display text-foreground text-center mb-3 group-hover:text-accent transition-colors">
           {t.title}
         </h3>
         

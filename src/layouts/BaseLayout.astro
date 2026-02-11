@@ -37,7 +37,7 @@ const currentPath = Astro.url.pathname;
     <!-- Scroll animation observer -->
     <script>
       function initScrollAnimations() {
-        const animateElements = document.querySelectorAll('.animate-on-scroll');
+        const animateElements = document.querySelectorAll('.animate-on-scroll, .animate-on-scroll-blur');
         const staggerContainers = document.querySelectorAll('.stagger-children');
         const isMobile = window.innerWidth <= 768;
         const staggerDelay = isMobile ? 50 : 80;
@@ -112,5 +112,20 @@ const currentPath = Astro.url.pathname;
       initScrollAnimations();
       document.addEventListener('astro:after-swap', initScrollAnimations);
     </script>
+
+    <style is:global>
+      ::view-transition-old(root) {
+        animation: 0.25s ease-out both fade-out;
+      }
+      ::view-transition-new(root) {
+        animation: 0.25s ease-out both fade-in;
+      }
+      @keyframes fade-out {
+        to { opacity: 0; }
+      }
+      @keyframes fade-in {
+        from { opacity: 0; }
+      }
+    </style>
   </body>
 </html>
