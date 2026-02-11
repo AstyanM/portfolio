@@ -10,6 +10,10 @@ export default function ReadingProgress() {
 
     return (
         <motion.div
+            role="progressbar"
+            aria-label="Reading progress"
+            aria-valuemin={0}
+            aria-valuemax={100}
             className="fixed top-0 left-0 right-0 h-0.5 bg-accent origin-left z-[100]"
             style={{ scaleX }}
         />

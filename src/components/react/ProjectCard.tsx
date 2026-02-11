@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Github } from 'lucide-react';
 import type { Tag } from '@/consts';
-import { ui } from '@/i18n/ui';
+import { translateTag } from '@/i18n/utils';
 
 interface ProjectCardProps {
   title: string;
@@ -27,23 +27,21 @@ export default function ProjectCard({
   index = 0,
   lang,
 }: ProjectCardProps) {
-  const t = ui[lang];
-
-  const translateTag = (tag: Tag): string => {
-    const key = `tag.${tag}` as keyof typeof t;
-    return t[key] || tag;
-  };
   return (
-    <motion.a
-      href={href}
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
       whileHover={{ y: -4 }}
       whileTap={{ scale: 0.98 }}
-      className="group block h-full"
+      className="group relative block h-full"
     >
       <article className="h-full rounded-xl border border-border bg-background-secondary overflow-hidden transition-all duration-300 hover:border-accent hover:shadow-lg hover:shadow-accent/5">
+        {/* Stretched main link */}
+        <a href={href} className="absolute inset-0 z-[1]" aria-label={title}>
+          <span className="sr-only">{title}</span>
+        </a>
+
         {/* Cover Image */}
         {coverUrl ? (
           <div className="aspect-video w-full overflow-hidden bg-background relative">
@@ -61,14 +59,15 @@ export default function ProjectCard({
               </span>
             )}
             {repoUrl && (
-              <button
-                type="button"
-                onClick={(e) => { e.preventDefault(); e.stopPropagation(); window.open(repoUrl, '_blank', 'noopener,noreferrer'); }}
-                className="absolute top-2 right-2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-md bg-black/60 text-white hover:bg-accent active:scale-95 transition-all"
+              <a
+                href={repoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute top-2 right-2 z-[2] min-h-[44px] min-w-[44px] flex items-center justify-center rounded-md bg-black/60 text-white hover:bg-accent active:scale-95 transition-all"
                 title={lang === 'fr' ? 'Voir le code source' : 'View source code'}
               >
                 <Github className="w-4 h-4" />
-              </button>
+              </a>
             )}
           </div>
         ) : (
@@ -82,14 +81,15 @@ export default function ProjectCard({
               </span>
             )}
             {repoUrl && (
-              <button
-                type="button"
-                onClick={(e) => { e.preventDefault(); e.stopPropagation(); window.open(repoUrl, '_blank', 'noopener,noreferrer'); }}
-                className="absolute top-2 right-2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-md bg-black/60 text-white hover:bg-accent active:scale-95 transition-all"
+              <a
+                href={repoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute top-2 right-2 z-[2] min-h-[44px] min-w-[44px] flex items-center justify-center rounded-md bg-black/60 text-white hover:bg-accent active:scale-95 transition-all"
                 title={lang === 'fr' ? 'Voir le code source' : 'View source code'}
               >
                 <Github className="w-4 h-4" />
-              </button>
+              </a>
             )}
           </div>
         )}
@@ -113,7 +113,7 @@ export default function ProjectCard({
             <div className="flex flex-wrap gap-2">
               {tags.slice(0, 3).map((tag) => (
                 <span key={tag} className="tag text-xs">
-                  {translateTag(tag)}
+                  {translateTag(tag, lang)}
                 </span>
               ))}
               {tags.length > 3 && (
@@ -123,6 +123,6 @@ export default function ProjectCard({
           )}
         </div>
       </article>
-    </motion.a>
+    </motion.div>
   );
 }

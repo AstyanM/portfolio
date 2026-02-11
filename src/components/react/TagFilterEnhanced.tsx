@@ -3,6 +3,7 @@ import { Filter, ChevronDown, ChevronUp } from 'lucide-react';
 import { useState } from 'react';
 import type { Tag } from '@/consts';
 import { ui } from '@/i18n/ui';
+import { translateTag } from '@/i18n/utils';
 
 interface TagFilterEnhancedProps {
   tags: readonly Tag[];
@@ -46,11 +47,6 @@ export default function TagFilterEnhanced({
       showMore: 'Show all filters',
       showLess: 'Show less',
     },
-  };
-
-  const translateTag = (tag: Tag): string => {
-    const key = `tag.${tag}` as keyof typeof t;
-    return t[key] || tag;
   };
 
   const labels = categoryLabels[lang];
@@ -119,7 +115,7 @@ export default function TagFilterEnhanced({
                 }`}
                 whileTap={{ scale: 0.95 }}
               >
-                {translateTag(tag)}
+                {translateTag(tag, lang)}
                 <span className={`ml-1.5 text-xs ${isSelected ? 'opacity-70' : 'opacity-60'}`}>
                   ({tagCounts[tag]})
                 </span>
@@ -155,6 +151,7 @@ export default function TagFilterEnhanced({
             
             <motion.button
               onClick={() => setIsExpanded(true)}
+              aria-expanded={isExpanded}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-accent hover:bg-accent/10 transition-colors border border-accent/20"
@@ -191,6 +188,7 @@ export default function TagFilterEnhanced({
               
               <motion.button
                 onClick={() => setIsExpanded(false)}
+                aria-expanded={isExpanded}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-accent hover:bg-accent/10 transition-colors border border-accent/20"
@@ -221,7 +219,7 @@ export default function TagFilterEnhanced({
                         whileTap={{ scale: 0.95 }}
                         whileHover={{ scale: 1.05 }}
                       >
-                        {translateTag(tag)}
+                        {translateTag(tag, lang)}
                         <span className={`ml-1.5 text-xs ${isSelected ? 'opacity-70' : 'opacity-60'}`}>
                           ({tagCounts[tag]})
                         </span>
@@ -253,7 +251,7 @@ export default function TagFilterEnhanced({
                         whileTap={{ scale: 0.95 }}
                         whileHover={{ scale: 1.05 }}
                       >
-                        {translateTag(tag)}
+                        {translateTag(tag, lang)}
                         <span className={`ml-1.5 text-xs ${isSelected ? 'opacity-70' : 'opacity-60'}`}>
                           ({tagCounts[tag]})
                         </span>
@@ -285,7 +283,7 @@ export default function TagFilterEnhanced({
                         whileTap={{ scale: 0.95 }}
                         whileHover={{ scale: 1.05 }}
                       >
-                        {translateTag(tag)}
+                        {translateTag(tag, lang)}
                         <span className={`ml-1.5 text-xs ${isSelected ? 'opacity-70' : 'opacity-60'}`}>
                           ({tagCounts[tag]})
                         </span>

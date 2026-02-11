@@ -1,7 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import { getLangFromUrl, useTranslations, getProjectsPath } from '@/i18n/utils';
-import { ui } from '@/i18n/ui';
+import { getLangFromUrl, useTranslations, getProjectsPath, translateTag } from '@/i18n/utils';
 import type { CollectionEntry } from 'astro:content';
 import { ExternalLink, Github, ArrowLeft, Users, Calendar, Lock } from 'lucide-react';
 import ReadingProgress from '@/components/react/ReadingProgress';
@@ -59,11 +58,6 @@ const jsonLd = {
   ...(tags.length > 0 && { keywords: tags.join(', ') }),
 };
 
-// Tag translation helper
-const translateTag = (tag: string): string => {
-  const key = `tag.${tag}` as keyof (typeof ui)[typeof lang];
-  return ui[lang][key] || tag;
-};
 ---
 
 <BaseLayout title={`${title} | Astyan Martin`} description={description} jsonLd={jsonLd}>
@@ -104,7 +98,7 @@ const translateTag = (tag: string): string => {
           tags.length > 0 && (
             <div class="flex flex-wrap gap-2 mb-6">
               {tags.map((tag) => (
-                <span class="tag">{translateTag(tag)}</span>
+                <span class="tag">{translateTag(tag, lang)}</span>
               ))}
             </div>
           )
@@ -187,17 +181,6 @@ const translateTag = (tag: string): string => {
   </article>
 
   <style is:global>
-    /* Force figure caption styling */
-    .prose .figure-caption, .figure-caption {
-      text-align: center !important;
-      font-style: italic !important;
-      font-size: 0.875rem !important;
-      color: rgb(var(--color-foreground-secondary)) !important;
-      margin-top: 0.5rem !important;
-      margin-bottom: 2rem !important;
-      display: block !important;
-    }
-
     /* Code block copy button */
     .code-block-wrapper {
       position: relative;
@@ -242,11 +225,11 @@ const translateTag = (tag: string): string => {
 
     .copy-button.copied .check-icon {
       display: block;
-      color: #22c55e;
+      color: rgb(34, 197, 94); /* green-500 */
     }
 
     .copy-button.copied {
-      border-color: #22c55e;
+      border-color: rgb(34, 197, 94); /* green-500 */
     }
   </style>
   <ReadingProgress client:only="react" />

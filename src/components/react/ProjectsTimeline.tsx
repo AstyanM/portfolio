@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Calendar } from 'lucide-react';
+import { ui } from '@/i18n/ui';
 
 interface ProjectsTimelineProps {
   years: { year: number; count: number }[];
@@ -9,20 +10,7 @@ interface ProjectsTimelineProps {
 }
 
 export default function ProjectsTimeline({ years, selectedYear, onSelectYear, lang }: ProjectsTimelineProps) {
-  const content = {
-    fr: {
-      allYears: 'Toutes les années',
-      projects: 'projets',
-      project: 'projet'
-    },
-    en: {
-      allYears: 'All years',
-      projects: 'projects',
-      project: 'project'
-    }
-  };
-
-  const t = content[lang];
+  const t = ui[lang];
 
   return (
     <div className="mb-6 py-8 px-6 rounded-xl bg-background-secondary/80 border border-border shadow-sm overflow-visible">
@@ -40,7 +28,7 @@ export default function ProjectsTimeline({ years, selectedYear, onSelectYear, la
                 : 'bg-background-secondary text-foreground border-border hover:border-accent/50'
             }`}
           >
-            {t.allYears}
+            {t['filters.allYears']}
           </motion.button>
         </div>
         
@@ -80,7 +68,7 @@ export default function ProjectsTimeline({ years, selectedYear, onSelectYear, la
               : 'bg-background-secondary text-foreground border-border hover:border-accent/50 hover:text-accent'
           }`}
         >
-          {t.allYears}
+          {t['filters.allYears']}
         </motion.button>
 
         {/* Timeline Container */}
@@ -118,7 +106,7 @@ export default function ProjectsTimeline({ years, selectedYear, onSelectYear, la
                         <div className="text-center">
                           <div className="font-bold">{item.year}</div>
                           <div className="text-xs mt-0.5 opacity-90">
-                            {item.count} {item.count === 1 ? t.project : t.projects}
+                            {item.count} {item.count === 1 ? t['filters.project'] : t['filters.projects']}
                           </div>
                         </div>
                         {/* Arrow */}

@@ -1,18 +1,11 @@
 ---
 import { getEntry } from 'astro:content';
 import { ArrowRight, Star } from 'lucide-react';
-import { ui } from '@/i18n/ui';
-import { getProjectPath, getAssetUrl, useTranslations } from '@/i18n/utils';
+import { getProjectPath, getAssetUrl, useTranslations, translateTag } from '@/i18n/utils';
 import type { Lang } from '@/i18n/ui';
 
 const { lang = 'en' } = Astro.props;
 const t = useTranslations(lang as Lang);
-
-// Tag translation helper
-const translateTag = (tag: string): string => {
-  const key = `tag.${tag}` as keyof (typeof ui)[typeof lang];
-  return ui[lang][key] || tag;
-};
 
 const projectSlug = 'simulateur-parcoursup';
 const fullSlug = `${lang}/${projectSlug}`;
@@ -95,7 +88,7 @@ const projectUrl = getProjectPath(projectSlug, lang);
         <div class="flex flex-wrap gap-2 mb-8 stagger-item">
           {data.tags.slice(0, 4).map(tag => (
             <span class="px-3 py-1 text-sm bg-background border border-border rounded-lg text-foreground-secondary">
-              {translateTag(tag)}
+              {translateTag(tag, lang as Lang)}
             </span>
           ))}
         </div>

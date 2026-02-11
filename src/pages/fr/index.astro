@@ -117,11 +117,11 @@ const jsonLd = {
         <p class="text-foreground-secondary">{t('projects.subtitle')}</p>
       </div>
 
-      <ProjectGrid 
-        client:visible 
-        projects={projectsData} 
-        lang="fr" 
-        showFilter={false} 
+      <ProjectGrid
+        client:visible
+        projects={projectsData}
+        lang="fr"
+        showFilter={false}
         mobileLimit={2}
         ctaCard={{ href: getProjectsPath('fr') }}
       />

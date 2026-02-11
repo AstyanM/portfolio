@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Folder } from 'lucide-react';
+import { ui } from '@/i18n/ui';
 
 interface ProjectCtaCardProps {
   href: string;
@@ -8,20 +9,7 @@ interface ProjectCtaCardProps {
 }
 
 export default function ProjectCtaCard({ href, lang, index = 0 }: ProjectCtaCardProps) {
-  const content = {
-    fr: {
-      title: 'Découvrir tous mes projets',
-      description: 'Explorez l\'ensemble de mes réalisations techniques et innovations',
-      cta: 'Voir tous les projets'
-    },
-    en: {
-      title: 'Discover all my projects',
-      description: 'Explore all my technical achievements and innovations',
-      cta: 'View all projects'
-    }
-  };
-
-  const t = content[lang];
+  const t = ui[lang];
 
   return (
     <motion.a
@@ -40,16 +28,16 @@ export default function ProjectCtaCard({ href, lang, index = 0 }: ProjectCtaCard
 
         {/* Content */}
         <h3 className="text-2xl font-bold font-display text-foreground text-center mb-3 group-hover:text-accent transition-colors">
-          {t.title}
+          {t['cta.title']}
         </h3>
-        
+
         <p className="text-foreground-secondary text-center mb-6 max-w-xs">
-          {t.description}
+          {t['cta.description']}
         </p>
 
         {/* CTA Button */}
         <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-white rounded-lg group-hover:bg-accent-hover group-hover:scale-105 transition-all duration-300 font-medium shadow-lg shadow-accent/20">
-          {t.cta}
+          {t['cta.button']}
           <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
         </div>
       </article>

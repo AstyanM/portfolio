@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { List, ChevronDown, ChevronUp } from 'lucide-react';
+import { ui } from '@/i18n/ui';
 
 interface TocItem {
   id: string;
@@ -17,10 +18,7 @@ export default function TableOfContents({ lang }: TableOfContentsProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeId, setActiveId] = useState<string>('');
 
-  const labels = {
-    fr: 'Sommaire',
-    en: 'Table of Contents',
-  };
+  const t = ui[lang];
 
   useEffect(() => {
     const article = document.querySelector('article .prose');
@@ -117,10 +115,11 @@ export default function TableOfContents({ lang }: TableOfContentsProps) {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between px-4 py-3 text-left hover:bg-background-secondary/80 transition-colors rounded-lg"
+        aria-expanded={isOpen}
       >
         <span className="flex items-center gap-2 font-medium text-foreground">
           <List className="w-4 h-4 text-accent" />
-          {labels[lang]}
+          {t['toc.title']}
         </span>
         {isOpen ? (
           <ChevronUp className="w-4 h-4 text-foreground-secondary" />

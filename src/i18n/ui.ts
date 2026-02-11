@@ -66,6 +66,8 @@ export const ui = {
     '404.title': 'Page non trouvée',
     '404.description': "La page que vous cherchez n'existe pas.",
     '404.backHome': "Retour à l'accueil",
+    '404.viewProjects': 'Voir les projets',
+    '404.contact': 'Me contacter',
 
     // Similar Projects
     'similar.title': 'Ces projets pourraient vous intéresser',
@@ -105,6 +107,14 @@ export const ui = {
     'filters.techniques': 'Techniques',
     'filters.domains': 'Domaines',
     'filters.types': 'Type de réalisation',
+
+    // CTA Card
+    'cta.title': 'Découvrir tous mes projets',
+    'cta.description': "Explorez l'ensemble de mes réalisations techniques et innovations",
+    'cta.button': 'Voir tous les projets',
+
+    // Table of Contents
+    'toc.title': 'Sommaire',
 
   },
   en: {
@@ -165,6 +175,8 @@ export const ui = {
     '404.title': 'Page not found',
     '404.description': "The page you're looking for doesn't exist.",
     '404.backHome': 'Back to home',
+    '404.viewProjects': 'View projects',
+    '404.contact': 'Contact me',
 
     // Similar Projects
     'similar.title': 'These projects might interest you',
@@ -204,6 +216,14 @@ export const ui = {
     'filters.techniques': 'Techniques',
     'filters.domains': 'Domains',
     'filters.types': 'Type',
+
+    // CTA Card
+    'cta.title': 'Discover all my projects',
+    'cta.description': 'Explore all my technical achievements and innovations',
+    'cta.button': 'View all projects',
+
+    // Table of Contents
+    'toc.title': 'Table of Contents',
 
   },
 } as const;

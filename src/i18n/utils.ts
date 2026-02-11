@@ -79,3 +79,8 @@ export function getAssetUrl(path: string): string {
   }
   return path;
 }
+
+export function translateTag(tag: string, lang: Lang): string {
+  const key = `tag.${tag}` as keyof (typeof ui)[typeof lang];
+  return ui[lang][key] || tag;
+}

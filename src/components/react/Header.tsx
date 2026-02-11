@@ -83,7 +83,7 @@ export default function Header({ lang, currentPath }: HeaderProps) {
       observer.observe(contactSection);
     }
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('hashchange', handleHashChange);
 
     return () => {
@@ -164,6 +164,7 @@ export default function Header({ lang, currentPath }: HeaderProps) {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="p-3 rounded-lg hover:bg-background-secondary active:scale-95 transition-all"
               aria-label="Toggle menu"
+              aria-expanded={isMobileMenuOpen}
             >
               {isMobileMenuOpen ? (
                 <X className="w-5 h-5 text-foreground" />
