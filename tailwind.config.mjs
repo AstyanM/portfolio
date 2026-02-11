@@ -32,8 +32,8 @@ export default {
         },
       },
       fontFamily: {
-        display: ['Instrument Sans Variable', 'system-ui', 'sans-serif'],
-        sans: ['Inter Variable', 'system-ui', 'sans-serif'],
+        display: ['Sora Variable', 'system-ui', 'sans-serif'],
+        sans: ['Plus Jakarta Sans Variable', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
       },
       animation: {
