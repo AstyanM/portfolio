@@ -20,16 +20,49 @@ const projectUrl = getProjectPath(projectSlug, lang);
 <section class="py-12 md:py-16 bg-background-secondary/20 rounded-xl">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <!-- Content Side -->
+      <div class="stagger-children">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-sm font-medium mb-6 border border-accent/20 stagger-item">
+          <Star className="w-4 h-4 fill-accent" />
+          {t('spotlight.label')}
+        </div>
+
+        <h2 class="text-3xl md:text-4xl font-bold font-display text-foreground mb-4 leading-tight stagger-item">
+          {data.title}
+        </h2>
+
+        <p class="text-lg text-foreground-secondary mb-6 lg:mb-6 leading-relaxed stagger-item">
+          {data.description}
+        </p>
+
+        <!-- Tags & CTA: hidden on mobile, shown on desktop -->
+        <div class="hidden lg:flex flex-wrap gap-2 mb-8 stagger-item">
+          {data.tags.slice(0, 4).map(tag => (
+            <span class="px-3 py-1 text-sm bg-background border border-border rounded-lg text-foreground-secondary">
+              {translateTag(tag, lang as Lang)}
+            </span>
+          ))}
+        </div>
+
+        <a
+          href={projectUrl}
+          class="hidden lg:inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background rounded-lg hover:bg-foreground/90 hover:scale-105 transition-all duration-300 font-medium shadow-lg stagger-item"
+        >
+          {t('spotlight.btn')}
+          <ArrowRight class="w-4 h-4" />
+        </a>
+      </div>
+
       <!-- Image Side -->
-      <div class="relative group animate-on-scroll">
-        <!-- Optimized Gradient Blur: Static opacity, hardware accelerated -->
+      <div class="relative group animate-on-scroll lg:order-first">
+        <!-- Gradient glow -->
         <div
-          class="absolute -inset-4 bg-gradient-to-r from-accent to-amber-400 rounded-2xl opacity-20 blur-lg transition-opacity duration-500 will-change-transform"
+          class="absolute -inset-2 bg-gradient-to-r from-accent/20 to-amber-300/15 rounded-xl blur-lg transition-opacity duration-500 will-change-transform"
           style="transform: translateZ(0);"
         ></div>
 
-        <div class="relative rounded-xl overflow-hidden shadow-2xl border border-accent/20 aspect-video">
+        <div class="relative rounded-xl overflow-hidden shadow-2xl border border-border aspect-video">
           {data.cover ? (
             <img
               src={getAssetUrl(data.cover?.src || data.cover)}
@@ -70,22 +103,9 @@ const projectUrl = getProjectPath(projectSlug, lang);
         </div>
       </div>
 
-      <!-- Content Side -->
-      <div class="stagger-children">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-sm font-medium mb-6 border border-accent/20 stagger-item">
-          <Star className="w-4 h-4 fill-accent" />
-          {t('spotlight.label')}
-        </div>
-
-        <h2 class="text-3xl md:text-4xl font-bold font-display text-foreground mb-4 leading-tight stagger-item">
-          {data.title}
-        </h2>
-
-        <p class="text-lg text-foreground-secondary mb-6 leading-relaxed stagger-item">
-          {data.description}
-        </p>
-
-        <div class="flex flex-wrap gap-2 mb-8 stagger-item">
+      <!-- Tags & CTA: mobile only, after image -->
+      <div class="lg:hidden">
+        <div class="flex flex-wrap gap-2 mb-8">
           {data.tags.slice(0, 4).map(tag => (
             <span class="px-3 py-1 text-sm bg-background border border-border rounded-lg text-foreground-secondary">
               {translateTag(tag, lang as Lang)}
@@ -93,9 +113,9 @@ const projectUrl = getProjectPath(projectSlug, lang);
           ))}
         </div>
 
-        <a 
+        <a
           href={projectUrl}
-          class="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background rounded-lg hover:bg-foreground/90 hover:scale-105 transition-all duration-300 font-medium shadow-lg stagger-item"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background rounded-lg hover:bg-foreground/90 hover:scale-105 transition-all duration-300 font-medium shadow-lg"
         >
           {t('spotlight.btn')}
           <ArrowRight class="w-4 h-4" />

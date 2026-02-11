@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <style>
+    .bg { fill: #FCFAF7; }
+    .mono { fill: #1C1917; }
+  </style>
+  <rect class="bg" width="100" height="100" rx="22"/>
+  <text class="mono" x="50" y="68" font-family="system-ui, -apple-system, sans-serif" font-size="42" font-weight="800" text-anchor="middle" letter-spacing="-2">AM</text>
+</svg>
