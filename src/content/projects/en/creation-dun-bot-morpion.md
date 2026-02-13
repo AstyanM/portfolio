@@ -8,7 +8,7 @@ lang: en
 draft: false
 teamSize: 4
 year: 2024
-repoUrl: "https://github.com/AstyanM/tictactoe"
+repoUrl: "https://github.com/AstyanM/tictactoe-search-tree-algorithm"
 conclusion: |
   This project allowed us to explore the different stages of designing a bot playing Ultimate Tic-Tac-Toe, from implementing game rules to optimizing the Minimax algorithm with alpha-beta pruning. Each aspect was adjusted to ensure efficient strategic decisions while respecting time constraints. This experience constitutes a solid foundation for deepening artificial intelligence techniques applied to games and search algorithm optimization.
 ---

@@ -8,7 +8,7 @@ lang: en
 draft: true
 teamSize: 1
 year: 2023
-repoUrl: "https://github.com/AstyanM/cryptographie"
+repoUrl: "https://github.com/AstyanM/cryptography-methods"
 impact:
   - value: "7"
     label: "encryption methods implemented"

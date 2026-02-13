@@ -8,7 +8,7 @@ lang: fr
 draft: false
 teamSize: 2
 year: 2024
-repoUrl: "https://github.com/AstyanM/enzymes"
+repoUrl: "https://github.com/AstyanM/deep-learning-enzyme-activity"
 impact:
   - value: "4"
     label: "architectures de réseaux testées (Dense, Conv1D, LSTM)"

@@ -8,7 +8,7 @@ lang: fr
 draft: false
 teamSize: 2
 year: 2025
-repoUrl: "https://github.com/AstyanM/nn_few_shot"
+repoUrl: "https://github.com/AstyanM/few-shot-learning-clip"
 impact:
   - value: "92%"
     label: "de précision sur les classes de base (CoOp)"

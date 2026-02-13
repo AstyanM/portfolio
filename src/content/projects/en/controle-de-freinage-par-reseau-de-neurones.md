@@ -8,7 +8,7 @@ lang: en
 draft: false
 teamSize: 1
 year: 2025
-repoUrl: "https://github.com/AstyanM/abs_narmal2"
+repoUrl: "https://github.com/AstyanM/abs-narmal-2"
 impact:
   - value: "20k"
     label: "data points for training"

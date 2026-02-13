@@ -1,30 +1,51 @@
-# Portfolio - Astyan Martin
+<p align="center">
+  <img src="public/favicon.svg" width="80" alt="AM Logo" />
+</p>
 
-Personal portfolio showcasing engineering projects, built with Astro 5 and React 19.
+<h1 align="center">Astyan Martin — Portfolio</h1>
 
-**Live site:** [astyanm.github.io/portfolio](https://astyanm.github.io/portfolio/)
+<p align="center">
+  <img alt="Astro" src="https://img.shields.io/badge/Astro_5-BC52EE?logo=astro&logoColor=fff">
+  <img alt="React" src="https://img.shields.io/badge/React_19-61DAFB?logo=react&logoColor=000">
+  <img alt="Tailwind CSS" src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=fff">
+  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff">
+  <img alt="GitHub Pages" src="https://img.shields.io/badge/GitHub_Pages-222?logo=github&logoColor=fff">
+</p>
+
+<p align="center">
+  Bilingual (EN/FR) portfolio website showcasing engineering and research projects<br>in deep learning, signal processing, embedded systems and web development.
+</p>
+
+<p align="center">
+  <a href="https://astyanm.github.io/portfolio/"><strong>View Live Site &rarr;</strong></a>
+</p>
+
+---
 
 ## Features
 
-- **Bilingual** - Full English/French support with locale-prefixed routing and language switcher
-- **Dark/Light mode** - Class-based theming with system preference detection
-- **Project showcase** - Grid and timeline views with tag-based filtering
-- **Rich markdown** - LaTeX equations (KaTeX), syntax highlighting (Shiki), video embedding, figure captions
-- **Project detail pages** - Table of contents, reading progress bar, image lightbox, appendices with bibliography and downloadable documents
-- **Animations** - Scroll-triggered animations and typewriter effect (framer-motion), with `prefers-reduced-motion` support
-- **Optimized images** - Sharp-based image processing at build time
+- **Bilingual** — Full English/French support with locale-prefixed routing and language switcher
+- **Dark / Light mode** — Class-based theming with system preference detection
+- **Project showcase** — Grid and timeline views with tag-based filtering
+- **Rich markdown** — LaTeX equations (KaTeX), syntax highlighting (Shiki), video embedding, figure captions
+- **Project detail pages** — Table of contents, reading progress bar, image lightbox, appendices with bibliography and downloadable documents
+- **Animations** — Scroll-triggered animations and typewriter effect via framer-motion, with `prefers-reduced-motion` support
+- **Optimized images** — Sharp-based image processing at build time
+- **RSS feed** — Auto-generated project feed
 
 ## Tech Stack
 
-| Category       | Technologies                               |
-| -------------- | ------------------------------------------ |
-| Framework      | Astro 5, React 19                          |
-| Styling        | Tailwind CSS 3.4, CSS custom properties    |
-| Content        | Markdown/MDX, Zod schema validation        |
-| Math           | remark-math, rehype-katex                  |
-| Animations     | framer-motion, CSS animations              |
-| Icons          | lucide-react                               |
-| Deployment     | GitHub Pages, GitHub Actions               |
+| Category | Technologies |
+|---|---|
+| Framework | Astro 5, React 19 |
+| Language | TypeScript |
+| Styling | Tailwind CSS 3.4, CSS custom properties |
+| Content | Markdown / MDX, Zod schema validation |
+| Math | remark-math, rehype-katex |
+| Animations | framer-motion, CSS animations |
+| Icons | lucide-react |
+| Images | Sharp |
+| Deployment | GitHub Pages, GitHub Actions |
 
 ## Getting Started
 
@@ -36,6 +57,8 @@ Personal portfolio showcasing engineering projects, built with Astro 5 and React
 ### Installation
 
 ```bash
+git clone https://github.com/AstyanM/portfolio.git
+cd portfolio
 npm install
 ```
 
@@ -59,7 +82,7 @@ src/
 │   ├── config.ts            # Zod content schemas
 │   └── projects/{en,fr}/    # Bilingual project markdown files
 ├── i18n/
-│   ├── ui.ts                # Translation strings
+│   ├── ui.ts                # Translation strings (60+ keys)
 │   └── utils.ts             # i18n helper functions
 ├── layouts/
 │   ├── BaseLayout.astro     # Main layout (ViewTransitions)
@@ -68,7 +91,8 @@ src/
 │   ├── en/                  # English routes
 │   ├── fr/                  # French routes
 │   ├── index.astro          # Root redirect
-│   └── 404.astro            # Error page
+│   ├── 404.astro            # Error page
+│   └── rss.xml.ts           # RSS feed
 ├── plugins/                 # Custom rehype plugins
 ├── styles/global.css        # Theme variables & prose styles
 └── consts.ts                # Available tags
@@ -95,6 +119,9 @@ repoUrl: https://github.com/...
 repoPrivate: false
 draft: false
 conclusion: "Closing remarks displayed in a separate section."
+impact:
+  - value: "95%"
+    label: "Accuracy"
 appendix:
   sources:
     - authors: "Doe, J."
@@ -113,10 +140,17 @@ appendix:
 
 ## Deployment
 
-The site deploys automatically to GitHub Pages on push to `main` via the workflow in `.github/workflows/deploy.yml` (Node 20, `npm ci && npm run build`).
+The site deploys automatically to GitHub Pages on push to `main` via `.github/workflows/deploy.yml`.
 
-Configuration in `astro.config.mjs`:
 ```js
+// astro.config.mjs
 site: 'https://astyanm.github.io'
 base: '/portfolio/'
 ```
+
+## Author
+
+**Astyan Martin** — Engineering student at Centrale Méditerranée
+
+- [GitHub](https://github.com/AstyanM)
+- [Portfolio](https://astyanm.github.io/portfolio/)
