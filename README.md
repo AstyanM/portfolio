@@ -150,7 +150,7 @@ base: '/portfolio/'
 
 ## Author
 
-**Astyan Martin** — Engineering student at Centrale Méditerranée
+**Astyan Martin** — Engineering student
 
 - [GitHub](https://github.com/AstyanM)
 - [Portfolio](https://astyanm.github.io/portfolio/)
