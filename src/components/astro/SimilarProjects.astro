@@ -36,10 +36,13 @@ const similarProjects = projectsWithScore
   .sort((a, b) => {
     // Primary: more tags in common
     if (b.score !== a.score) return b.score - a.score;
-    // Secondary: more recent year
+    // Secondary: more recent year+month
     const yearA = a.project.data.year ?? 0;
     const yearB = b.project.data.year ?? 0;
-    return yearB - yearA;
+    if (yearA !== yearB) return yearB - yearA;
+    const monthA = a.project.data.month ?? 0;
+    const monthB = b.project.data.month ?? 0;
+    return monthB - monthA;
   })
   .slice(0, 2) // Max 2 projects
   .map((p) => p.project);

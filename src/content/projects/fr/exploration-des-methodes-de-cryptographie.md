@@ -1,4 +1,4 @@
----
+﻿---
 title: "Exploration des méthodes de Cryptographie"
 description: "Implémentation et analyse de différentes méthodes de cryptographie, du chiffre de César jusqu'aux systèmes asymétriques comme RSA. Chaque méthode est évaluée en termes de sécurité et accompagnée d'outils de déchiffrement lorsque cela est possible."
 cardDescription: "Implémentation et analyse de chiffrements classiques et modernes en Python."
@@ -8,6 +8,7 @@ lang: fr
 draft: true
 teamSize: 1
 year: 2023
+month: 6
 repoUrl: "https://github.com/AstyanM/cryptography-methods"
 impact:
   - value: "7"

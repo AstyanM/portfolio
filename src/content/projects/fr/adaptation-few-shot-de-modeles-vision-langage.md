@@ -1,4 +1,4 @@
----
+﻿---
 title: "Adaptation Few-Shot de Modèles Vision-Langage"
 description: "Adaptation few-shot du modèle CLIP pour améliorer la classification d'images sur des catégories connues tout en préservant la généralisation zero-shot. Comparaison d'approches récentes (CoOp, CoCoOp) sur le dataset Oxford Flowers-102, avec implémentation, évaluation et propositions d'améliorations."
 cardDescription: "Adapter CLIP avec peu d'exemples pour classifier des fleurs via CoOp et CoCoOp."
@@ -8,6 +8,7 @@ lang: fr
 draft: false
 teamSize: 2
 year: 2025
+month: 6
 repoUrl: "https://github.com/AstyanM/few-shot-learning-clip"
 impact:
   - value: "92%"

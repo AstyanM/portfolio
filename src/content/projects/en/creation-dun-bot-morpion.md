@@ -1,4 +1,4 @@
----
+﻿---
 title: "Creation of a Tic-Tac-Toe Bot"
 description: "Development of a bot capable of playing Ultimate Tic-Tac-Toe using game tree search algorithms. The system uses the Negamax algorithm with alpha-beta pruning to compute the best move in real time."
 cardDescription: "Ultimate tic-tac-toe bot with Minimax, Negamax and alpha-beta pruning."
@@ -8,6 +8,7 @@ lang: en
 draft: true
 teamSize: 4
 year: 2024
+month: 11
 repoUrl: "https://github.com/AstyanM/tictactoe-search-tree-algorithm"
 conclusion: |
   This project allowed us to explore the different stages of designing a bot playing Ultimate Tic-Tac-Toe, from implementing game rules to optimizing the Minimax algorithm with alpha-beta pruning. Each aspect was adjusted to ensure efficient strategic decisions while respecting time constraints. This experience constitutes a solid foundation for deepening artificial intelligence techniques applied to games and search algorithm optimization.

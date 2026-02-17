@@ -1,4 +1,4 @@
----
+﻿---
 title: "Creation of a Radio"
 description: "Design and construction of a functional FM receiver ensuring clear and stable radio signal reception. The project covers signal filtering, audio amplification, frequency synthesis, and FM demodulation."
 cardDescription: "Designing and building an FM receiver with filtering and demodulation."
@@ -8,6 +8,7 @@ lang: en
 draft: false
 teamSize: 2
 year: 2024
+month: 12
 conclusion: |
   This project allowed us to explore the different steps of designing an FM receiver, from circuit theory to practical tests and simulations. Each module was optimized to ensure stable reception and optimal sound quality. This experience constitutes a solid foundation for deepening signal processing and radio frequency communication techniques.
 ---

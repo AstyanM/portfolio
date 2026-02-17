@@ -1,4 +1,4 @@
----
+﻿---
 title: "Processing Enzymatic Sequences via Deep Learning"
 description: "Prediction of enzymatic activity on various substrates using a neural network trained on experimental data. The project explores biological sequence processing and various deep learning architectures to optimize predictions."
 cardDescription: "Predicting enzymatic activity on various substrates using neural networks."
@@ -8,6 +8,7 @@ lang: en
 draft: false
 teamSize: 2
 year: 2024
+month: 9
 repoUrl: "https://github.com/AstyanM/deep-learning-enzyme-activity"
 impact:
   - value: "4"

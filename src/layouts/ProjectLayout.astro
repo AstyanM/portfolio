@@ -16,7 +16,7 @@ interface Props {
 }
 
 const { project } = Astro.props;
-const { title, description, date, tags, cover, liveUrl, repoUrl, repoPrivate, teamSize, year, conclusion, appendix } = project.data;
+const { title, description, date, tags, cover, liveUrl, repoUrl, repoPrivate, teamSize, year, month, conclusion, appendix } = project.data;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const projectsPath = getProjectsPath(lang);
@@ -81,7 +81,7 @@ const jsonLd = {
           {year && (
             <span class="inline-flex items-center gap-1.5 text-sm font-medium px-3 py-1.5 rounded-full bg-background-secondary border border-border">
               <Calendar className="w-3.5 h-3.5" />
-              {year}
+              {month ? `${t(`month.${month}` as any)} ${year}` : year}
             </span>
           )}
 

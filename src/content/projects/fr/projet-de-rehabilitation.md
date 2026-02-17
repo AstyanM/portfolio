@@ -1,4 +1,4 @@
----
+﻿---
 title: "Projet de Réhabilitation"
 description: "Conception d'un environnement urbain durable pour la réhabilitation d'une zone abandonnée de Villeneuve-d'Ascq, intégrant des habitations modulables et éco-responsables. La démarche comprend l'analyse du site, la conception architecturale et la réalisation de plans et maquettes."
 cardDescription: "Conception d'un environnement urbain durable pour une zone abandonnée."
@@ -8,6 +8,7 @@ lang: fr
 draft: true
 teamSize: 4
 year: 2024
+month: 5
 impact:
   - value: "3"
     label: "bâtiments conçus (logements, salle culturelle, supérette)"

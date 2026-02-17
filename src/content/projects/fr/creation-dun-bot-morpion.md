@@ -1,4 +1,4 @@
----
+﻿---
 title: "Création d'un Bot Morpion"
 description: "Développement d'un bot capable de jouer au super-morpion en s'appuyant sur des algorithmes de recherche dans les arbres de jeu. Le système utilise l'algorithme Négamax avec élagage alpha-bêta pour calculer le meilleur coup en temps réel."
 cardDescription: "Bot de super-morpion avec Minimax, Négamax et élagage alpha-bêta."
@@ -8,6 +8,7 @@ lang: fr
 draft: true
 teamSize: 4
 year: 2024
+month: 11
 repoUrl: "https://github.com/AstyanM/tictactoe-search-tree-algorithm"
 conclusion: |
   Ce projet nous a permis d'explorer les différentes étapes de la conception d'un bot jouant au super-morpion, depuis l'implémentation des règles du jeu jusqu'à l'optimisation de l'algorithme Minimax avec élagage alpha-bêta. Chaque aspect a été ajusté pour garantir des décisions stratégiques efficaces tout en respectant les contraintes de temps. Cette expérience constitue une base solide pour approfondir les techniques d'intelligence artificielle appliquées aux jeux et l'optimisation des algorithmes de recherche.

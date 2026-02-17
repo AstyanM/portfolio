@@ -1,4 +1,4 @@
----
+﻿---
 title: "Rédaction de projets motivés"
 description: "Outil d'aide à la rédaction de projets motivés Parcoursup, s'appuyant sur un modèle CamemBERT fine-tuné pour identifier et structurer les différentes parties d'une lettre de motivation. Le système intègre également un serveur de correction orthographique basé sur LanguageTool."
 cardDescription: "Assistant d'écriture Parcoursup basé sur CamemBERT pour structurer les lettres."
@@ -8,6 +8,7 @@ lang: fr
 draft: false
 teamSize: 1
 year: 2025
+month: 11
 repoPrivate: true
 liveUrl: "http://lettre-motivation.prepa-prevision.fr"
 impact:

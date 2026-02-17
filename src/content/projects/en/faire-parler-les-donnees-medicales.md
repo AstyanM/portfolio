@@ -1,4 +1,4 @@
----
+﻿---
 title: "Making Medical Data Speak"
 description: "Application for exploiting unstructured data from Computerized Patient Records (CPR) based on medical reports and prescriptions, in collaboration with the Public Interest Group SIB. The system leverages OCR and natural language processing to support clinical decision-making."
 cardDescription: "Exploiting unstructured patient records with OCR and NLP for SIB."
@@ -9,6 +9,7 @@ lang: en
 draft: false
 teamSize: 12
 year: 2024
+month: 11
 repoPrivate: true
 impact:
   - value: "1800h+"

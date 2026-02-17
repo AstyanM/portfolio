@@ -16,6 +16,7 @@ interface Project {
   coverUrl?: string;
   repoUrl?: string;
   year?: number;
+  month?: number;
 }
 
 interface ProjectGridProps {

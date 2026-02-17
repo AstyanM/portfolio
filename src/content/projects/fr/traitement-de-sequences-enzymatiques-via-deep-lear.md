@@ -1,4 +1,4 @@
----
+﻿---
 title: "Traitement de séquences enzymatiques via Deep Learning"
 description: "Prédiction de l'activité enzymatique sur différents substrats à l'aide d'un réseau de neurones entraîné sur des données expérimentales. Le projet explore le traitement de séquences biologiques et différentes architectures de deep learning pour optimiser les prédictions."
 cardDescription: "Prédire l'activité enzymatique sur différents substrats par réseaux de neurones."
@@ -8,6 +8,7 @@ lang: fr
 draft: false
 teamSize: 2
 year: 2024
+month: 9
 repoUrl: "https://github.com/AstyanM/deep-learning-enzyme-activity"
 impact:
   - value: "4"

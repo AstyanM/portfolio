@@ -8,11 +8,14 @@ const allProjects = await getCollection('projects', ({ data }) => {
   return data.lang === 'en' && !data.draft;
 });
 
-// Sort by year (most recent first)
+// Sort by year+month (most recent first)
 const projects = allProjects.sort((a, b) => {
   const yearA = a.data.year ?? 0;
   const yearB = b.data.year ?? 0;
-  return yearB - yearA;
+  if (yearA !== yearB) return yearB - yearA;
+  const monthA = a.data.month ?? 0;
+  const monthB = b.data.month ?? 0;
+  return monthB - monthA;
 });
 
 // Calculate year counts for timeline
@@ -36,6 +39,7 @@ const projectsData = projects.map((p) => ({
   coverUrl: getAssetUrl(p.data.cover?.src),
   repoUrl: p.data.repoPrivate ? undefined : p.data.repoUrl,
   year: p.data.year,
+  month: p.data.month,
 }));
 ---
 

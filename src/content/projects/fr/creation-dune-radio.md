@@ -1,4 +1,4 @@
----
+﻿---
 title: "Création d'une radio"
 description: "Conception et réalisation d'un récepteur FM fonctionnel assurant une réception claire et stable des signaux radio. Le projet couvre la filtration du signal, l'amplification audio, la synthèse de fréquence et la démodulation FM."
 cardDescription: "Conception et réalisation d'un récepteur FM avec filtrage et démodulation."
@@ -8,6 +8,7 @@ lang: fr
 draft: false
 teamSize: 2
 year: 2024
+month: 12
 conclusion: |
   Ce projet nous a permis d'explorer les différentes étapes de la conception d'un récepteur FM, depuis la théorie des circuits jusqu'aux tests pratiques et simulations. Chaque module a été optimisé pour garantir une réception stable et une qualité sonore optimale. Cette expérience constitue une base solide pour approfondir les techniques de traitement du signal et de communication radiofréquence.
 ---

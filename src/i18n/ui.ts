@@ -118,6 +118,20 @@ export const ui = {
     // Table of Contents
     'toc.title': 'Sommaire',
 
+    // Months
+    'month.1': 'Janvier',
+    'month.2': 'Février',
+    'month.3': 'Mars',
+    'month.4': 'Avril',
+    'month.5': 'Mai',
+    'month.6': 'Juin',
+    'month.7': 'Juillet',
+    'month.8': 'Août',
+    'month.9': 'Septembre',
+    'month.10': 'Octobre',
+    'month.11': 'Novembre',
+    'month.12': 'Décembre',
+
   },
   en: {
     // Navigation
@@ -228,6 +242,20 @@ export const ui = {
 
     // Table of Contents
     'toc.title': 'Table of Contents',
+
+    // Months
+    'month.1': 'January',
+    'month.2': 'February',
+    'month.3': 'March',
+    'month.4': 'April',
+    'month.5': 'May',
+    'month.6': 'June',
+    'month.7': 'July',
+    'month.8': 'August',
+    'month.9': 'September',
+    'month.10': 'October',
+    'month.11': 'November',
+    'month.12': 'December',
 
   },
 } as const;

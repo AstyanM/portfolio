@@ -1,4 +1,4 @@
----
+﻿---
 title: "Faire Parler les Données Médicales"
 description: "Application d'exploitation des données non structurées des Dossiers Patients Informatisés (DPI) à partir de comptes rendus médicaux et d'ordonnances, en collaboration avec le GIP SIB. Le système s'appuie sur l'OCR et le traitement du langage naturel pour faciliter la prise de décision clinique."
 cardDescription: "Exploiter les dossiers patients non structurés avec OCR et NLP pour le GIP SIB."
@@ -9,6 +9,7 @@ lang: fr
 draft: false
 teamSize: 12
 year: 2024
+month: 11
 repoPrivate: true
 impact:
   - value: "1800h+"

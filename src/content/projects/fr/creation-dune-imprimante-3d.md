@@ -1,4 +1,4 @@
----
+﻿---
 title: "Création d'une imprimante 3D"
 description: "Conception et fabrication d'une imprimante 3D Delta fonctionnelle, couvrant l'ensemble du processus de prototypage rapide. Le projet comprend la modélisation CAO, l'impression des pièces, l'assemblage mécanique et la calibration du système."
 cardDescription: "Conception et fabrication d'une imprimante 3D Delta de A à Z."
@@ -8,6 +8,7 @@ lang: fr
 draft: true
 teamSize: 8
 year: 2024
+month: 10
 impact:
   - value: "105h"
     label: "d'impression 3D cumulées"

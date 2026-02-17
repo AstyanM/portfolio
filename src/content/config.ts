@@ -59,6 +59,8 @@ const projectsCollection = defineCollection({
     teamSize: z.number().int().positive().optional(),
     // Année du projet
     year: z.number().int().min(2000).max(2100).optional(),
+    // Mois du projet (1-12)
+    month: z.number().int().min(1).max(12).optional(),
     // Conclusion du projet (affichée séparément avec style harmonisé)
     conclusion: z.string().optional(),
     // Résultats et impact du projet (métriques chiffrées)

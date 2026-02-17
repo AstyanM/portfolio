@@ -1,4 +1,4 @@
----
+﻿---
 title: "Motivation Letter Writing Assistant"
 description: "Writing assistant for Parcoursup motivation letters, using a fine-tuned CamemBERT model to identify and structure the different sections of a motivation letter. The system also includes a spell-checking server based on LanguageTool."
 cardDescription: "Parcoursup writing assistant powered by CamemBERT to structure letters."
@@ -8,6 +8,7 @@ lang: en
 draft: false
 teamSize: 1
 year: 2025
+month: 11
 repoPrivate: true
 liveUrl: "http://lettre-motivation.prepa-prevision.fr"
 impact:

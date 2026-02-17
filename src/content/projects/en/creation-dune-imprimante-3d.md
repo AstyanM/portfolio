@@ -1,4 +1,4 @@
----
+﻿---
 title: "Creation of a 3D Printer"
 description: "Design and manufacturing of a functional Delta 3D printer, covering the full rapid prototyping process. The project includes CAD modeling, parts printing, mechanical assembly, and system calibration."
 cardDescription: "Designing and building a functional Delta 3D printer from scratch."
@@ -8,6 +8,7 @@ lang: en
 draft: true
 teamSize: 8
 year: 2024
+month: 10
 impact:
   - value: "105h"
     label: "of cumulative 3D printing"

@@ -1,4 +1,4 @@
----
+﻿---
 title: "OpenWhisper"
 description: "Application desktop de transcription vocale en temps réel, 100% locale, propulsée par faster-whisper (OpenAI Whisper via CTranslate2). Architecture deux couches Tauri v2 + React communiquant avec un backend Python FastAPI, offrant dictée, transcription live, upload de fichiers, recherche sémantique et post-traitement LLM."
 cardDescription: "Transcrire la voix en texte en temps réel, 100% en local, via faster-whisper et Tauri."
@@ -7,7 +7,8 @@ cover: "/images/projects/openwhisper/transcription-live.png"
 lang: fr
 draft: false
 teamSize: 1
-year: 2025
+year: 2026
+month: 2
 repoUrl: "https://github.com/AstyanM/open-whisper"
 impact:
   - value: "~1s"

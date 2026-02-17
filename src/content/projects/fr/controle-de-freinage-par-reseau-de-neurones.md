@@ -1,4 +1,4 @@
----
+﻿---
 title: "Contrôle de freinage par réseau de neurones"
 description: "Conception d'un système de freinage anti-blocage (ABS) intelligent utilisant des réseaux de neurones pour maintenir un ratio de glissement optimal. Le contrôleur NARMA-L2, basé sur une stratégie de linéarisation par retour, remplace les méthodes classiques de type PID."
 cardDescription: "Système ABS intelligent utilisant un contrôleur NARMA-L2."
@@ -8,6 +8,7 @@ lang: fr
 draft: false
 teamSize: 1
 year: 2025
+month: 6
 repoUrl: "https://github.com/AstyanM/abs-narmal-2"
 impact:
   - value: "20k"

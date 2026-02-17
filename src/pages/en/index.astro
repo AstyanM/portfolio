@@ -19,11 +19,14 @@ const allProjects = await getCollection('projects', ({ data }) => {
 const spotlightSlug = 'simulateur-parcoursup';
 const filteredProjectsList = allProjects.filter(p => !p.slug.includes(spotlightSlug));
 
-// Sort by year (most recent first)
+// Sort by year+month (most recent first)
 const projects = filteredProjectsList.sort((a, b) => {
   const yearA = a.data.year ?? 0;
   const yearB = b.data.year ?? 0;
-  return yearB - yearA;
+  if (yearA !== yearB) return yearB - yearA;
+  const monthA = a.data.month ?? 0;
+  const monthB = b.data.month ?? 0;
+  return monthB - monthA;
 });
 
 // Transform for ProjectGrid (showing 5 + CTA card)

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Conception d'un système de Réduction de Bruit Active"
 description: "Conception d'un système de réduction de bruit active par opposition de phase, combinant approches théoriques, expérimentales et électroniques. Le système est développé en trois étapes : expérimentation sur haut-parleurs, modélisation électrique et implémentation numérique sur Raspberry Pi."
 cardDescription: "Atténuer un bruit par opposition de phase, de l'expérimentation au Raspberry Pi."
@@ -8,6 +8,7 @@ lang: fr
 draft: false
 teamSize: 2
 year: 2023
+month: 9
 impact:
   - value: "95%"
     label: "de réduction de bruit mesurée (circuit électrique)"

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Exploration of Cryptography Methods"
 description: "Implementation and analysis of various cryptography methods, from the Caesar cipher to asymmetric systems like RSA. Each method is evaluated in terms of security and accompanied by decryption tools when possible."
 cardDescription: "Implementing and analyzing classical and modern ciphers in Python."
@@ -8,6 +8,7 @@ lang: en
 draft: true
 teamSize: 1
 year: 2023
+month: 6
 repoUrl: "https://github.com/AstyanM/cryptography-methods"
 impact:
   - value: "7"
