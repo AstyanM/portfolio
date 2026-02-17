@@ -5,7 +5,7 @@ cardDescription: "Conception et fabrication d'une imprimante 3D Delta de A à Z.
 tags: ["Hardware"]
 cover: "/images/projects/creation-dune-imprimante-3d/05264723-4451-49d6-9aae-f9f1348ce313.png"
 lang: fr
-draft: false
+draft: true
 teamSize: 8
 year: 2024
 impact:

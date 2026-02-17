@@ -5,7 +5,7 @@ cardDescription: "Designing and building a functional Delta 3D printer from scra
 tags: ["Hardware"]
 cover: "/images/projects/creation-dune-imprimante-3d/05264723-4451-49d6-9aae-f9f1348ce313.png"
 lang: en
-draft: false
+draft: true
 teamSize: 8
 year: 2024
 impact:

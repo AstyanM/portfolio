@@ -5,7 +5,7 @@ cardDescription: "Bot de super-morpion avec Minimax, Négamax et élagage alpha-
 tags: ["Simulation"]
 cover: "/images/projects/creation-dun-bot-morpion/g.png"
 lang: fr
-draft: false
+draft: true
 teamSize: 4
 year: 2024
 repoUrl: "https://github.com/AstyanM/tictactoe-search-tree-algorithm"
