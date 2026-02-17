@@ -2,6 +2,7 @@
 export const availableTags = [
   // Techniques
   'Deep Learning',
+  'NLP',
   'Traitement du Signal',
   'Vision par Ordinateur',
   'Simulation',
@@ -9,11 +10,12 @@ export const availableTags = [
   'Santé',
   'Web',
   'Sécurité',
-  'Architecture',
   // Type de réalisation
   'Hardware',
   'Recherche',
   'Embarqué',
+  'Desktop',
+  'Data Science',
 ] as const;
 
 export type Tag = (typeof availableTags)[number];

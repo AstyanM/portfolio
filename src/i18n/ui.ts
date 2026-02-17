@@ -32,16 +32,18 @@ export const ui = {
 
     // Tags
     'tag.Deep Learning': 'Deep Learning',
+    'tag.NLP': 'NLP',
     'tag.Traitement du Signal': 'Traitement du Signal',
     'tag.Vision par Ordinateur': 'Vision par Ordinateur',
     'tag.Simulation': 'Simulation',
     'tag.Santé': 'Santé',
     'tag.Web': 'Web',
     'tag.Sécurité': 'Sécurité',
-    'tag.Architecture': 'Architecture',
     'tag.Hardware': 'Hardware',
     'tag.Recherche': 'Recherche',
     'tag.Embarqué': 'Embarqué',
+    'tag.Desktop': 'Desktop',
+    'tag.Data Science': 'Data Science',
 
     // Project detail
     'project.backToProjects': 'Retour aux projets',
@@ -141,16 +143,18 @@ export const ui = {
 
     // Tags
     'tag.Deep Learning': 'Deep Learning',
+    'tag.NLP': 'NLP',
     'tag.Traitement du Signal': 'Signal Processing',
     'tag.Vision par Ordinateur': 'Computer Vision',
     'tag.Simulation': 'Simulation',
     'tag.Santé': 'Health',
     'tag.Web': 'Web',
     'tag.Sécurité': 'Security',
-    'tag.Architecture': 'Architecture',
     'tag.Hardware': 'Hardware',
     'tag.Recherche': 'Research',
     'tag.Embarqué': 'Embedded',
+    'tag.Desktop': 'Desktop',
+    'tag.Data Science': 'Data Science',
 
     // Project detail
     'project.backToProjects': 'Back to projects',

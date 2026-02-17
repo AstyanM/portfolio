@@ -3,7 +3,7 @@ title: "Faire Parler les Données Médicales"
 description: "Application d'exploitation des données non structurées des Dossiers Patients Informatisés (DPI) à partir de comptes rendus médicaux et d'ordonnances, en collaboration avec le GIP SIB. Le système s'appuie sur l'OCR et le traitement du langage naturel pour faciliter la prise de décision clinique."
 cardDescription: "Exploiter les dossiers patients non structurés avec OCR et NLP pour le GIP SIB."
 
-tags: ["Santé", "Recherche"]
+tags: ["NLP", "Santé", "Data Science"]
 cover: "/images/projects/faire-parler-les-donnees-medicales/4544eafe-6418-44fb-8eaa-1bc83c83c536.png"
 lang: fr
 draft: false

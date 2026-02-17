@@ -2,7 +2,7 @@
 title: "Rehabilitation Project"
 description: "Design of a sustainable urban environment for the rehabilitation of an abandoned area in Villeneuve-d'Ascq, incorporating modular and eco-friendly housing. The approach includes site analysis, architectural design, and production of plans and models."
 cardDescription: "Designing a sustainable urban environment for an abandoned area."
-tags: ["Architecture"]
+tags: []
 cover: "/images/projects/projet-de-rehabilitation/122bb7e5-0094-43a2-9db5-0a17ae1c1869.png"
 lang: en
 draft: true

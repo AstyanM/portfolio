@@ -16,9 +16,9 @@ interface TagFilterEnhancedProps {
 
 // Catégorisation des tags
 const tagCategories = {
-  techniques: ['Deep Learning', 'Traitement du Signal', 'Vision par Ordinateur', 'Simulation'] as const,
-  domains: ['Santé', 'Web', 'Sécurité', 'Architecture'] as const,
-  types: ['Hardware', 'Recherche', 'Embarqué'] as const,
+  techniques: ['Deep Learning', 'NLP', 'Traitement du Signal', 'Vision par Ordinateur', 'Simulation'] as const,
+  domains: ['Santé', 'Web', 'Sécurité'] as const,
+  types: ['Hardware', 'Recherche', 'Embarqué', 'Desktop', 'Data Science'] as const,
 };
 
 export default function TagFilterEnhanced({

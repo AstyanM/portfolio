@@ -30,7 +30,7 @@ Astro 5 portfolio website with bilingual support (English/French), hosted on Git
   - Optional: `description`, `cardDescription` (short text for project cards, falls back to `description`), `date`, `tags` (from consts.ts), `cover`, `lang` (default `fr`), `draft` (default `false`), `liveUrl`, `repoUrl`, `repoPrivate` (default `false`), `teamSize` (positive int), `year` (2000-2100), `conclusion`, `impact`
   - `impact` array: Objects with `value` (string, e.g. "95%") and `label` (string, e.g. "Accuracy") for Results & Impact metrics
   - `appendix` object: `structure` (description + tree), `sources` (bibliography entries), `documents` (downloadable files with type pdf|zip|doc|other)
-- **Available tags**: Defined in [src/consts.ts](src/consts.ts) - Must use these exact values: `Deep Learning`, `Traitement du Signal`, `Vision par Ordinateur`, `Simulation`, `Santé`, `Web`, `Sécurité`, `Architecture`, `Hardware`, `Recherche`, `Embarqué`
+- **Available tags**: Defined in [src/consts.ts](src/consts.ts) - Must use these exact values: `Deep Learning`, `NLP`, `Traitement du Signal`, `Vision par Ordinateur`, `Simulation`, `Santé`, `Web`, `Sécurité`, `Hardware`, `Recherche`, `Embarqué`, `Desktop`, `Data Science`
 
 ### Component Organization
 - **Astro components**: `src/components/astro/` - Server-rendered (Appendix, BaseHead, Conclusion, Contact, Footer, HeroBackground, Impact, ProjectSpotlight, SimilarProjects, TechStack, Timeline)
