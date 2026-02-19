@@ -20,6 +20,23 @@ impact:
 summary: "Montrer dix photos d'une fleur à un modèle qui ne l'a jamais vue, puis lui demander de la reconnaître dans la nature. C'est le défi du few-shot learning. Nous avons pris CLIP, un gros modèle vision-langage, et nous lui avons appris à se spécialiser sur de nouvelles catégories avec très peu de données, tout en s'assurant qu'il n'oublie pas le reste. Quatre approches comparées, 92 % de précision sur les classes connues."
 conclusion: |
   Ce projet nous a permis d'explorer en profondeur les défis liés à l'adaptation few-shot des modèles vision-langage. De l'évaluation zero-shot aux améliorations de CoOp et CoCoOp, nous avons implémenté des solutions avancées comprenant vision, texte, apprentissage profond et visualisation. Les résultats démontrent qu'il est possible de concilier précision sur les classes vues et généralisation sur les classes nouvelles, avec peu de données.
+appendix:
+  sources:
+    - authors: "Zhou, K., Yang, J., Loy, C. C., Liu, Z."
+      year: 2022
+      title: "Learning to Prompt for Vision-Language Models (CoOp)"
+      publisher: "International Journal of Computer Vision"
+      url: "https://arxiv.org/abs/2109.01134"
+    - authors: "Zhou, K., Yang, J., Loy, C. C., Liu, Z."
+      year: 2022
+      title: "Conditional Prompt Learning for Vision-Language Models (CoCoOp)"
+      publisher: "CVPR 2022"
+      url: "https://arxiv.org/abs/2203.05557"
+    - authors: "McInnes, L., Healy, J., Melville, J."
+      year: 2018
+      title: "UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction"
+      publisher: "arXiv"
+      url: "https://arxiv.org/abs/1802.03426"
 ---
 
 ## 1. Préparation du Dataset

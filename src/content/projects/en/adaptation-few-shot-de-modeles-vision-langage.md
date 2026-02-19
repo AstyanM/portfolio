@@ -20,6 +20,23 @@ impact:
 summary: "Show a model ten photos of a flower it has never seen, then ask it to recognize that flower in the wild. That's few-shot learning. We took CLIP, a large vision-language model, and taught it to specialize on new categories with very little data while making sure it doesn't forget everything else. We compared four approaches and pushed accuracy to 92 % on known classes."
 conclusion: |
   This project allowed us to explore in depth the challenges related to few-shot adaptation of vision-language models. From zero-shot evaluation to improvements of CoOp and CoCoOp, we implemented advanced solutions involving vision, text, deep learning, and visualization. Results demonstrate that it is possible to reconcile precision on seen classes and generalization on novel classes, with little data.
+appendix:
+  sources:
+    - authors: "Zhou, K., Yang, J., Loy, C. C., Liu, Z."
+      year: 2022
+      title: "Learning to Prompt for Vision-Language Models (CoOp)"
+      publisher: "International Journal of Computer Vision"
+      url: "https://arxiv.org/abs/2109.01134"
+    - authors: "Zhou, K., Yang, J., Loy, C. C., Liu, Z."
+      year: 2022
+      title: "Conditional Prompt Learning for Vision-Language Models (CoCoOp)"
+      publisher: "CVPR 2022"
+      url: "https://arxiv.org/abs/2203.05557"
+    - authors: "McInnes, L., Healy, J., Melville, J."
+      year: 2018
+      title: "UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction"
+      publisher: "arXiv"
+      url: "https://arxiv.org/abs/1802.03426"
 ---
 
 ## 1. Dataset Preparation

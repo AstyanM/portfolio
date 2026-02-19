@@ -22,6 +22,23 @@ conclusion: |
   Une fois ces étapes maîtrisées, nous avons testé différentes architectures et variantes de réseaux de neurones, mais les résultats sont restés mitigés. Plusieurs facteurs peuvent expliquer ces limites : un besoin d'ajustement plus fin des hyperparamètres et des architectures, une capacité de calcul insuffisante pour entraîner des modèles plus complexes sur un grand nombre d'époques, l'absence d'informations sur les substrats alors qu'ils influencent l'activité enzymatique, et la difficulté inhérente à prédire cette activité uniquement à partir de la séquence en 2D.
 
   Pour améliorer ces résultats, il serait pertinent d'exploiter la structure 3D des enzymes, par exemple avec AlphaFold, afin d'identifier les sites actifs. L'intégration d'un réseau convolutionnel 3D et la prise en compte des substrats pourraient également affiner les prédictions.
+appendix:
+  sources:
+    - authors: "Larkin, M. A., et al."
+      year: 2007
+      title: "Clustal W and Clustal X version 2.0"
+      publisher: "Bioinformatics, Oxford Academic"
+      url: "https://academic.oup.com/bioinformatics/article/23/21/2947/371686"
+    - authors: "Hochreiter, S., Schmidhuber, J."
+      year: 1997
+      title: "Long Short-Term Memory"
+      publisher: "Neural Computation, MIT Press"
+      url: "https://www.bioinf.jku.at/publications/older/2604.pdf"
+    - authors: "Jumper, J., et al."
+      year: 2021
+      title: "Highly accurate protein structure prediction with AlphaFold"
+      publisher: "Nature"
+      url: "https://www.nature.com/articles/s41586-021-03819-2"
 ---
 
 ## 1. Traitement des données

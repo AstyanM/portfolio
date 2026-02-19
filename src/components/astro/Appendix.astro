@@ -82,6 +82,15 @@ function getDocIcon(type: string): string {
   }
 }
 
+// Extract domain from URL for display
+function getDomain(url: string): string {
+  try {
+    return new URL(url).hostname.replace(/^www\./, '');
+  } catch {
+    return url;
+  }
+}
+
 const hasContent = appendix.structure || (appendix.sources && appendix.sources.length > 0) || (appendix.documents && appendix.documents.length > 0);
 ---
 
@@ -188,16 +197,26 @@ const hasContent = appendix.structure || (appendix.sources && appendix.sources.l
             </h3>
             <ol class="list-none p-0 m-0 flex flex-col gap-4">
               {appendix.sources.map((source, index) => (
-                <li class="flex gap-3 p-4 bg-background border border-border rounded-xl text-sm leading-relaxed sm:flex-col sm:gap-2">
-                  <span class="flex-shrink-0 font-bold text-accent text-xs">[{index + 1}]</span>
-                  <div class="inline">
-                    <span class="text-foreground font-medium">{source.authors}</span>
-                    <span class="text-foreground-secondary ml-1">({source.year}).</span>
-                    <span class="text-foreground italic ml-1">{source.title}.</span>
-                    {source.publisher && <span class="text-foreground-secondary ml-1">{source.publisher}.</span>}
+                <li class="flex gap-4 p-4 bg-background border border-border rounded-xl text-sm leading-relaxed">
+                  <span class="flex-shrink-0 w-7 h-7 rounded-full bg-accent/10 text-accent text-xs font-bold flex items-center justify-center mt-0.5">
+                    {index + 1}
+                  </span>
+                  <div class="flex flex-col gap-1.5 min-w-0">
+                    <span class="text-foreground font-semibold leading-snug">{source.title}</span>
+                    <span class="text-foreground-secondary text-xs">
+                      {source.authors} <span class="text-foreground-secondary/60">&middot;</span> {source.year}
+                    </span>
+                    {source.publisher && (
+                      <span class="text-foreground-secondary/70 text-xs italic">{source.publisher}</span>
+                    )}
                     {source.url && (
-                      <a href={source.url} target="_blank" rel="noopener noreferrer" class="block mt-2 text-accent text-xs break-all no-underline hover:underline">
-                        {source.url}
+                      <a href={source.url} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 mt-1 text-accent text-xs no-underline hover:underline w-fit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                          <polyline points="15 3 21 3 21 9"/>
+                          <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                        {getDomain(source.url)}
                       </a>
                     )}
                   </div>

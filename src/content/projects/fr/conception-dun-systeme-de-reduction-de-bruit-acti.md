@@ -27,6 +27,17 @@ appendix:
       description: "Rapport complet du TIPE sur la réduction de bruit active par opposition de phase"
       url: "/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/TIPE_Réduction_de_bruit_Astyan.pdf"
       type: pdf
+  sources:
+    - authors: "Kuo, S. M., Morgan, D. R."
+      year: 1996
+      title: "Active Noise Control Systems: Algorithms and DSP Implementations"
+      publisher: "Wiley"
+      url: "https://www.wiley.com/en-us/Active+Noise+Control+Systems%3A+Algorithms+and+DSP+Implementations-p-9780471134831"
+    - authors: "Nelson, P. A., Elliott, S. J."
+      year: 1992
+      title: "Active Control of Sound"
+      publisher: "Academic Press"
+      url: "https://www.sciencedirect.com/book/9780125154208/active-control-of-sound"
 ---
 
 ## Introduction

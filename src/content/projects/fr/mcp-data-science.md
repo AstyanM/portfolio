@@ -53,6 +53,12 @@ appendix:
       │       ├── dimensionality.py
       │       └── reporting.py
       └── tests/
+  sources:
+    - authors: "Anthropic"
+      year: 2024
+      title: "Model Context Protocol — Specification"
+      publisher: "Anthropic"
+      url: "https://modelcontextprotocol.io"
 ---
 
 ## 1. Le protocole MCP

@@ -28,6 +28,22 @@ appendix:
       description: "Article au format PDF décrivant la modélisation et les résultats expérimentaux"
       url: "/images/projects/controle-de-freinage-par-reseau-de-neurones/article_scientifique_abs_nn_system.pdf"
       type: pdf
+  sources:
+    - authors: "Narendra, K. S., Parthasarathy, K."
+      year: 1990
+      title: "Identification and Control of Dynamical Systems Using Neural Networks"
+      publisher: "IEEE Transactions on Neural Networks"
+      url: "https://ieeexplore.ieee.org/document/80202"
+    - authors: "Nørgaard, M., Ravn, O., Poulsen, N. K., Hansen, L. K."
+      year: 2000
+      title: "Neural Networks for Modelling and Control of Dynamic Systems"
+      publisher: "Springer"
+      url: "https://link.springer.com/book/9781852332273"
+    - authors: "Precup, R.-E., Preitl, S."
+      year: 2006
+      title: "PI and PID Controllers Tuning for Integral-Type Servo Systems to Ensure Robust Stability and Controller Robustness"
+      publisher: "Electrical Engineering"
+      url: "https://link.springer.com/article/10.1007/s00202-006-0031-4"
 ---
 
 ## 1. Modélisation du système

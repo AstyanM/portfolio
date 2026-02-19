@@ -23,6 +23,23 @@ impact:
 summary: "Un hôpital génère des milliers de comptes rendus, d'ordonnances et de notes, mais l'essentiel reste dans des champs de texte libre qu'aucun système ne sait interroger. À douze, nous avons construit un outil qui lit ces dossiers non structurés, les indexe avec un LLM, trie les patients par degré de criticité et prédit la durée de séjour. Le produit fini a été livré à l'hôpital pour mise en production."
 conclusion: |
   Le projet a permis de développer un outil performant d'exploitation des données médicales, facilitant le triage des patients et la gestion hospitalière. L'intégration d'un modèle LLM et de Machine Learning a permis d'obtenir des résultats optimaux, ouvrant la voie à des améliorations futures comme l'optimisation des modèles ou l'intégration de bases de données françaises.
+appendix:
+  sources:
+    - authors: "Johnson, A. E. W., et al."
+      year: 2023
+      title: "MIMIC-IV, a freely accessible electronic health record dataset"
+      publisher: "Scientific Data, Nature"
+      url: "https://www.nature.com/articles/s41597-022-01899-x"
+    - authors: "Chen, T., Guestrin, C."
+      year: 2016
+      title: "XGBoost: A Scalable Tree Boosting System"
+      publisher: "ACM KDD 2016"
+      url: "https://arxiv.org/abs/1603.02754"
+    - authors: "Jiang, A., et al."
+      year: 2023
+      title: "Mistral 7B"
+      publisher: "arXiv"
+      url: "https://arxiv.org/abs/2310.06825"
 ---
 
 ## 1. Architecture du Système

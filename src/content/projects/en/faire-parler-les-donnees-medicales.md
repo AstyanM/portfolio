@@ -23,6 +23,23 @@ impact:
 summary: "A hospital generates thousands of medical reports, prescriptions and notes, but most of it sits in free-text fields that no system can query. With a team of twelve, we built a tool that reads these unstructured records, indexes them with an LLM, triages patients by criticality and predicts length of stay. The finished product was delivered to the hospital for production use."
 conclusion: |
   The project enabled the development of a performant tool for exploiting medical data, facilitating patient triage and hospital management. The integration of an LLM model and Machine Learning allowed for optimal results, paving the way for future improvements such as model optimization or integration of French databases.
+appendix:
+  sources:
+    - authors: "Johnson, A. E. W., et al."
+      year: 2023
+      title: "MIMIC-IV, a freely accessible electronic health record dataset"
+      publisher: "Scientific Data, Nature"
+      url: "https://www.nature.com/articles/s41597-022-01899-x"
+    - authors: "Chen, T., Guestrin, C."
+      year: 2016
+      title: "XGBoost: A Scalable Tree Boosting System"
+      publisher: "ACM KDD 2016"
+      url: "https://arxiv.org/abs/1603.02754"
+    - authors: "Jiang, A., et al."
+      year: 2023
+      title: "Mistral 7B"
+      publisher: "arXiv"
+      url: "https://arxiv.org/abs/2310.06825"
 ---
 
 ## 1. System Architecture

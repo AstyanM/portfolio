@@ -45,6 +45,17 @@ appendix:
           ├───storage
           ├───search
           └───llm
+  sources:
+    - authors: "Radford, A., Kim, J. W., Xu, T., et al."
+      year: 2023
+      title: "Robust Speech Recognition via Large-Scale Weak Supervision (Whisper)"
+      publisher: "ICML 2023"
+      url: "https://arxiv.org/abs/2212.04356"
+    - authors: "Klein, G., et al."
+      year: 2020
+      title: "Efficient and High-Quality Neural Machine Translation with OpenNMT (CTranslate2)"
+      publisher: "OpenNMT"
+      url: "https://github.com/OpenNMT/CTranslate2"
 ---
 
 ## 1. Architecture
