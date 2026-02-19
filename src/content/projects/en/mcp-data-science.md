@@ -55,8 +55,6 @@ appendix:
       └── tests/
 ---
 
-> A typical data science pipeline requires skills in pandas, scikit-learn and matplotlib, and is classically carried out in a Jupyter notebook. MCP Data Science encapsulates this entire pipeline in an MCP server: any compatible LLM can drive it in natural language, from raw CSV to a final HTML report.
-
 ## 1. The MCP Protocol
 
 The **Model Context Protocol (MCP)** is an open-source protocol published by Anthropic in November 2024 to standardize how LLMs interact with external tools and data sources. It relies on **JSON-RPC 2.0** and uses **stdio** as transport: the client starts the server process and communicates with it through standard streams, with no network port or remote service required.

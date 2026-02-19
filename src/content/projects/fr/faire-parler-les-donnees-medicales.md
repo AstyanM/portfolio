@@ -25,11 +25,6 @@ conclusion: |
   Le projet a permis de développer un outil performant d'exploitation des données médicales, facilitant le triage des patients et la gestion hospitalière. L'intégration d'un modèle LLM et de Machine Learning a permis d'obtenir des résultats optimaux, ouvrant la voie à des améliorations futures comme l'optimisation des modèles ou l'intégration de bases de données françaises.
 ---
 
-> Nous nous appuyons sur des technologies avancées comme l'OCR et le traitement du langage naturel (NLP), en combinant des outils libres et payants, afin de créer une solution optimisée et accessible aux utilisateurs finaux du secteur médical. Le projet inclut également un état de l'art pour identifier les solutions existantes et un démonstrateur technique.
->
-> Je suis entouré d'experts dans les domaines de l'IA, du Big Data, et de l'exploitation des données de santé, et nous collaborons avec le laboratoire Cristal ainsi que le SIB. Ce projet innovant est une opportunité majeure pour transformer les données médicales en outils d'aide à la décision clinique.
->
-
 ## 1. Architecture du Système
 
 Le projet repose sur une architecture modulaire intégrant plusieurs pôles techniques :

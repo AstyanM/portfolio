@@ -47,8 +47,6 @@ appendix:
           └───llm
 ---
 
-> Cloud transcription services send every second of audio to remote servers. For sensitive content (corporate meetings, medical consultations, legal notes), this raises a privacy concern. OpenWhisper provides a fully local alternative without sacrificing quality or usability.
-
 ## 1. Architecture
 
 The system relies on a two-layer architecture:

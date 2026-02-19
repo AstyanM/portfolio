@@ -15,13 +15,6 @@ conclusion: |
   This project allowed us to explore the different stages of designing a bot playing Ultimate Tic-Tac-Toe, from implementing game rules to optimizing the Minimax algorithm with alpha-beta pruning. Each aspect was adjusted to ensure efficient strategic decisions while respecting time constraints. This experience constitutes a solid foundation for deepening artificial intelligence techniques applied to games and search algorithm optimization.
 ---
 
-> The first program, **`tttree`**, explores the implementation of **minimax** to generate the graphical representation of a Tic-Tac-Toe decision tree.
->
-> The second program, **`sm-refresh`**, introduces algebraic notation (FEN) for moves and requires a minimax interaction with the computer. It also involves realizing the graphical display of positions, both **pseudo-graphical** on standard output and **graphical** in a file.
->
-> Finally, the third program, **`sm-bot`**, requires the implementation of the **negamax** algorithm and **alpha-beta** pruning to calculate the best move in Ultimate Tic-Tac-Toe (Super Morpion).
->
-
 ### Organization
 
 For the final organization of the program, we chose to do it as follows (excluding header files):

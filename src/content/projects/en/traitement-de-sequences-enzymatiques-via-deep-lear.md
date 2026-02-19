@@ -24,9 +24,6 @@ conclusion: |
   To improve these results, it would be relevant to exploit enzymes' 3D structure, for example with AlphaFold, to identify active sites. Integration of a 3D convolutional network and consideration of substrates could also refine predictions.
 ---
 
-> In this work, we explore enzymology using deep learning. Specifically, we seek to use experimentally obtained data to design and train a neural network capable of predicting each enzyme's activity on different available substrates.
->
-
 ## 1. Data Processing
 
 ### a) Dataset Cleanup

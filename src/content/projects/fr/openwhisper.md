@@ -47,8 +47,6 @@ appendix:
           └───llm
 ---
 
-> Les services de transcription cloud envoient chaque seconde d'audio à des serveurs distants. Pour du contenu sensible (réunions d'entreprise, consultations médicales, notes juridiques), cela pose un problème de confidentialité. OpenWhisper propose une alternative entièrement locale, sans sacrifier la qualité ni l'ergonomie.
-
 ## 1. Architecture
 
 Le système repose sur une architecture à deux couches :

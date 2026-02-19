@@ -25,11 +25,6 @@ conclusion: |
   The project enabled the development of a performant tool for exploiting medical data, facilitating patient triage and hospital management. The integration of an LLM model and Machine Learning allowed for optimal results, paving the way for future improvements such as model optimization or integration of French databases.
 ---
 
-> We rely on advanced technologies such as OCR and Natural Language Processing (NLP), combining free and paid tools, to create an optimized solution accessible to end users in the medical sector. The project also includes a state-of-the-art review to identify existing solutions and a technical demonstrator.
->
-> I am surrounded by experts in the fields of AI, Big Data, and health data exploitation, and we collaborate with the Cristal laboratory and SIB. This innovative project is a major opportunity to transform medical data into clinical decision support tools.
->
-
 ## 1. System Architecture
 
 The project relies on a modular architecture integrating several technical areas:
