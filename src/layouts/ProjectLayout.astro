@@ -10,13 +10,14 @@ import Conclusion from '@/components/astro/Conclusion.astro';
 import Appendix from '@/components/astro/Appendix.astro';
 import SimilarProjects from '@/components/astro/SimilarProjects.astro';
 import Impact from '@/components/astro/Impact.astro';
+import Summary from '@/components/astro/Summary.astro';
 
 interface Props {
   project: CollectionEntry<'projects'>;
 }
 
 const { project } = Astro.props;
-const { title, description, date, tags, cover, liveUrl, repoUrl, repoPrivate, teamSize, year, month, conclusion, appendix } = project.data;
+const { title, description, date, tags, cover, liveUrl, repoUrl, repoPrivate, teamSize, year, month, conclusion, appendix, summary } = project.data;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const projectsPath = getProjectsPath(lang);
@@ -104,13 +105,9 @@ const jsonLd = {
           )
         }
 
-        <!-- Description card -->
-        {description && (
-          <div class="bg-background-secondary/50 border border-border rounded-xl p-4 mb-6">
-            <p class="text-foreground-secondary leading-relaxed text-sm md:text-base">
-              {description}
-            </p>
-          </div>
+        <!-- Summary (vulgarized explanation for non-specialists) -->
+        {summary && (
+          <Summary content={summary} lang={lang} />
         )}
 
         <!-- Action buttons -->
@@ -156,6 +153,15 @@ const jsonLd = {
     <!-- Impact / Results -->
     {project.data.impact && project.data.impact.length > 0 && (
       <Impact items={project.data.impact} lang={lang} />
+    )}
+
+    <!-- Description card -->
+    {description && (
+      <div class="bg-background-secondary/50 border border-border rounded-xl p-4 mb-8">
+        <p class="text-foreground-secondary leading-relaxed text-sm md:text-base">
+          {description}
+        </p>
+      </div>
     )}
 
     <!-- Table of Contents -->

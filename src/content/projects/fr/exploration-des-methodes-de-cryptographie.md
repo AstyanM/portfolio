@@ -15,6 +15,7 @@ impact:
     label: "méthodes de chiffrement implémentées"
   - value: "4"
     label: "types d'attaques développés (brute force, dictionnaire, fréquence, factorisation)"
+summary: "Comment cacher un message pour que seul le bon destinataire puisse le lire, et à quel point est-ce dur de le casser ? J'ai implémenté sept méthodes de chiffrement en Python, du vieux César jusqu'à RSA, et pour chacune j'ai aussi écrit les outils pour la casser : force brute, attaque par dictionnaire, analyse fréquentielle, factorisation. Un tour d'horizon concret de pourquoi certains codes tombent en secondes et d'autres résistent."
 conclusion: |
   Ce projet m'a permis d'explorer les fondements de la cryptographie à travers différents algorithmes, de leur implémentation en Python jusqu'à leur cassage lorsque cela était possible. Des méthodes simples comme le chiffre de César aux systèmes asymétriques comme RSA, chaque technique présente des défis fascinants en termes de sécurité et de faisabilité. Cette expérience constitue une base solide pour comprendre les enjeux de la sécurisation des données et l'évolution des techniques cryptographiques modernes.
 ---

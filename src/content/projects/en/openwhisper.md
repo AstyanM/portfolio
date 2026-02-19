@@ -19,6 +19,7 @@ impact:
     label: "sent to the cloud — 100% local processing"
   - value: "115"
     label: "automated tests (96 backend + 19 frontend)"
+summary: "Most transcription services send every second of your audio to the cloud. OpenWhisper does it all on your machine: press a shortcut, talk, and the text appears at your cursor, in a dedicated window, or from a dropped audio file. I built a Tauri desktop app backed by faster-whisper that runs entirely offline, with about one second of latency on a GPU."
 conclusion: |
   OpenWhisper shows that it is possible to build a performant and user-friendly transcription tool without compromising user privacy. The two-layer architecture combines Rust's native performance with the richness of the Python AI ecosystem. The project totals approximately 15,000 lines of code (TypeScript, Python, Rust) and 115 automated tests covering both backend and frontend.
 appendix:

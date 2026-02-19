@@ -17,6 +17,7 @@ impact:
     label: "catégories de fleurs classifiées (Oxford Flowers-102)"
   - value: "4"
     label: "architectures implémentées et comparées"
+summary: "Montrer dix photos d'une fleur à un modèle qui ne l'a jamais vue, puis lui demander de la reconnaître dans la nature. C'est le défi du few-shot learning. Nous avons pris CLIP, un gros modèle vision-langage, et nous lui avons appris à se spécialiser sur de nouvelles catégories avec très peu de données, tout en s'assurant qu'il n'oublie pas le reste. Quatre approches comparées, 92 % de précision sur les classes connues."
 conclusion: |
   Ce projet nous a permis d'explorer en profondeur les défis liés à l'adaptation few-shot des modèles vision-langage. De l'évaluation zero-shot aux améliorations de CoOp et CoCoOp, nous avons implémenté des solutions avancées comprenant vision, texte, apprentissage profond et visualisation. Les résultats démontrent qu'il est possible de concilier précision sur les classes vues et généralisation sur les classes nouvelles, avec peu de données.
 ---

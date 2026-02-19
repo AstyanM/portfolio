@@ -18,6 +18,7 @@ impact:
     label: "letters annotated for training"
   - value: "In production"
     label: "deployed and accessible online"
+summary: "Every year, hundreds of thousands of French students write motivation letters for Parcoursup with little guidance on what a good one looks like. I built a web tool that reads a letter, identifies its structure with a fine-tuned CamemBERT model, checks grammar via LanguageTool, and returns a detailed score with concrete suggestions. No chatbot, just transparent metrics."
 conclusion: |
   This project demonstrates that it is possible to combine automatic language processing and linguistic analysis to offer students objective and transparent support in writing their Parcoursup motivation letters. Thanks to the integration of CamemBERT for text structuring and LanguageTool for correction, the tool offers fine evaluation, clear indicators, and relevant suggestions without resorting to a chatbot. This work illustrates an autonomous, explainable, and practical approach to supporting written expression in an academic context.
 appendix:

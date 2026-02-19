@@ -15,6 +15,7 @@ impact:
     label: "network architectures tested (Dense, Conv1D, LSTM)"
   - value: "18"
     label: "enzymatic activities predicted simultaneously"
+summary: "An enzyme is a molecular machine whose shape determines what chemical reactions it can speed up. We fed experimental data on dozens of enzymes into dense, convolutional and LSTM networks to see if the raw amino-acid sequence alone could predict activity on 18 different substrates. The honest answer: partly. But the road there taught us a lot about biological data and its limits."
 conclusion: |
   This work allowed us to explore enzymology by combining it with machine learning methods. Before evaluating our neural network's performance, we had to overcome several challenges, notably data extraction and processing, format choice, and sequence alignment.
 

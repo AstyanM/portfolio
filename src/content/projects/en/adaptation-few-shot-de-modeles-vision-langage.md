@@ -17,6 +17,7 @@ impact:
     label: "flower categories classified (Oxford Flowers-102)"
   - value: "4"
     label: "architectures implemented and compared"
+summary: "Show a model ten photos of a flower it has never seen, then ask it to recognize that flower in the wild. That's few-shot learning. We took CLIP, a large vision-language model, and taught it to specialize on new categories with very little data while making sure it doesn't forget everything else. We compared four approaches and pushed accuracy to 92 % on known classes."
 conclusion: |
   This project allowed us to explore in depth the challenges related to few-shot adaptation of vision-language models. From zero-shot evaluation to improvements of CoOp and CoCoOp, we implemented advanced solutions involving vision, text, deep learning, and visualization. Results demonstrate that it is possible to reconcile precision on seen classes and generalization on novel classes, with little data.
 ---

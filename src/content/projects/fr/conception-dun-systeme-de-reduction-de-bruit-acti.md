@@ -16,6 +16,7 @@ impact:
     label: "d'efficacité à 440 Hz (opposition de phase)"
   - value: "3"
     label: "prototypes conçus et testés"
+summary: "Les casques à réduction de bruit fonctionnent en générant un son exactement opposé au bruit ambiant. Nous avons construit ce principe de zéro : d'abord avec deux haut-parleurs en opposition de phase (93 % de réduction à 440 Hz), puis avec un circuit analogique (95 %), et enfin avec un Raspberry Pi traitant le signal numériquement. Trois prototypes, trois approches, un seul objectif : le silence."
 conclusion: |
   Ce projet nous a permis d'explorer en profondeur la réduction de bruit active, depuis les premières expériences sur les interférences destructives jusqu'à la modélisation et l'implémentation d'un système numérique avancé. Chaque étape a mis en évidence les défis liés à la mise en œuvre d'un tel système, notamment la précision du traitement du signal et les contraintes matérielles.
 

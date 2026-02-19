@@ -16,6 +16,7 @@ impact:
     label: "physical mockups built"
   - value: "4"
     label: "technical plans at 1/100 and 1/500 scale"
+summary: "An abandoned plot of land near a university campus, no shops, no gathering places. Our team of four reimagined this space from the ground up: eco-friendly housing on stilts, a modular cultural hall, a local convenience store. We produced architectural plans at 1/100 and 1/500 scale, 3D models and two physical mockups, all designed around sustainable materials and natural light."
 conclusion: |
   This project allowed us to explore the different stages of architectural design in a sustainable development context. By combining site analysis, modular design, and ecological urbanism, we were able to propose a viable solution for the rehabilitation of an abandoned urban zone. This work could constitute a solid foundation for setting up a real reconstruction and urban planning project.
 ---

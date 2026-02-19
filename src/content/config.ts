@@ -67,6 +67,8 @@ const projectsCollection = defineCollection({
     impact: z.array(impactItemSchema).optional(),
     // Annexes du projet (structure, sources, documents)
     appendix: appendixSchema.optional(),
+    // Résumé vulgarisé pour les non-spécialistes
+    summary: z.string().optional(),
   }),
 });
 

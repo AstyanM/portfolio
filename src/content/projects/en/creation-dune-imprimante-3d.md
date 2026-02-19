@@ -16,6 +16,7 @@ impact:
     label: "of filament used"
   - value: "4"
     label: "mechanical subassemblies designed in CAD"
+summary: "Building a 3D printer with a 3D printer: that's essentially what we did. Our team of eight designed every part of a Delta-style printer in CAD, printed them on existing machines (105 hours, 1 kg of filament), then assembled the whole thing: frame, carriages, belt system, print head. The full rapid-prototyping loop, from screen to working machine."
 conclusion: |
   This project allowed us to explore in depth the entire rapid prototyping process, from CAD design and modeling to parts printing and final assembly of the Delta 3D printer. Each step required thorough reflection on design choices, mechanical constraints, and specifics of the Delta architecture, notably its control and movement system. The multiple tests and adjustments made allowed us to optimize components to ensure fluid and precise operation. This experience not only familiarized us with additive manufacturing technologies but also with technical challenges related to implementing a complex system, thus constituting a solid foundation for future engineering and prototyping projects.
 ---

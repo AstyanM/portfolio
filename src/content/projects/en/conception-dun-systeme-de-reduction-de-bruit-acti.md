@@ -16,6 +16,7 @@ impact:
     label: "efficiency at 440 Hz (phase opposition)"
   - value: "3"
     label: "prototypes designed and tested"
+summary: "Noise-cancelling headphones work by generating a sound that is the exact opposite of the noise around you. We built that principle from scratch: first with two speakers in phase opposition (93 % reduction at 440 Hz), then with an analog circuit (95 %), and finally with a Raspberry Pi processing the signal digitally. Three prototypes, three approaches, one goal: silence."
 conclusion: |
   This project allowed us to explore active noise reduction in depth, from the first experiments on destructive interference to modeling and implementing an advanced digital system. Each step highlighted the challenges related to implementing such a system, particularly signal processing precision and hardware constraints.
 

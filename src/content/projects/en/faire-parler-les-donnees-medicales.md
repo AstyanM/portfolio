@@ -20,6 +20,7 @@ impact:
     label: "anonymized patient records used for training"
   - value: "Delivered"
     label: "to the hospital for production deployment"
+summary: "A hospital generates thousands of medical reports, prescriptions and notes, but most of it sits in free-text fields that no system can query. With a team of twelve, we built a tool that reads these unstructured records, indexes them with an LLM, triages patients by criticality and predicts length of stay. The finished product was delivered to the hospital for production use."
 conclusion: |
   The project enabled the development of a performant tool for exploiting medical data, facilitating patient triage and hospital management. The integration of an LLM model and Machine Learning allowed for optimal results, paving the way for future improvements such as model optimization or integration of French databases.
 ---

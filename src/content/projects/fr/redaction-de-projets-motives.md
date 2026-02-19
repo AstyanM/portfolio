@@ -18,6 +18,7 @@ impact:
     label: "lettres annotées pour l'entraînement"
   - value: "En production"
     label: "déployé et accessible en ligne"
+summary: "Chaque année, des centaines de milliers de lycéens rédigent leurs projets motivés sur Parcoursup sans trop savoir à quoi ressemble une bonne lettre. J'ai construit un outil web qui lit une lettre, identifie sa structure grâce à un modèle CamemBERT fine-tuné, vérifie la grammaire via LanguageTool, et renvoie une note détaillée avec des suggestions concrètes. Pas de chatbot, juste des métriques transparentes."
 conclusion: |
   Ce projet démontre qu'il est possible de combiner traitement automatique du langage et analyse linguistique pour offrir aux étudiants un accompagnement objectif et transparent dans la rédaction de leurs projets motivés Parcoursup. Grâce à l'intégration de CamemBERT pour la structuration des textes et de LanguageTool pour la correction, l'outil propose une évaluation fine, des indicateurs clairs et des suggestions pertinentes sans recours à un chatbot. Ce travail illustre une approche autonome, explicable et pratique du soutien à l'expression écrite dans un contexte académique.
 appendix:

@@ -15,6 +15,7 @@ impact:
     label: "encryption methods implemented"
   - value: "4"
     label: "types of attacks developed (brute force, dictionary, frequency, factorization)"
+summary: "How do you hide a message so that only the right person can read it, and how hard is it to break in? I implemented seven encryption methods in Python, from the ancient Caesar shift to RSA, and for each one I also wrote the tools to crack it: brute force, dictionary attacks, frequency analysis, factorization. A hands-on tour of why some codes collapse in seconds and others hold firm."
 conclusion: |
   This project allowed me to explore the foundations of cryptography through different algorithms, from their implementation in Python to their breaking when possible. From simple methods like Caesar cipher to asymmetric systems like RSA, each technique presents fascinating challenges in terms of security and feasibility. This experience constitutes a solid foundation for understanding data security issues and the evolution of modern cryptographic techniques.
 ---

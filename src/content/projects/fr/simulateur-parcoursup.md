@@ -25,6 +25,7 @@ impact:
     label: "des leads acquis via le référencement naturel"
   - value: "250"
     label: "lettres de motivation générées automatiquement"
+summary: "Candidater sur Parcoursup, c'est un peu une boîte noire : on envoie ses notes et on attend. J'ai construit un simulateur qui prend le profil d'un élève (notes, spécialités, lycée) et estime ses chances d'admission pour n'importe quelle formation, à partir des données ouvertes du ministère et de statistiques explicables. Plus de 200 000 simulations ont été réalisées sur la plateforme."
 conclusion: |
   La solution combine open data, enrichissements contrôlés et modélisation explicable. L'architecture modulaire (FastAPI/React) facilite la maintenance, l'extension et le recalibrage local. Les limites tiennent à la granularité des données agrégées et aux hypothèses distributionnelles ; elles sont compensées par des bornes explicites, un facteur principal et des seuils documentés.
 appendix:

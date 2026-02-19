@@ -17,6 +17,7 @@ impact:
     label: "scénarios de freinage simulés"
   - value: "1"
     label: "article scientifique rédigé"
+summary: "Quand on freine fort sur une route mouillée, l'ABS empêche les roues de se bloquer. Le contrôleur derrière suit d'habitude des règles fixes. Ici, je l'ai remplacé par un réseau de neurones entraîné sur 50 scénarios de freinage simulés, qui apprend à maintenir l'adhérence idéale entre le pneu et la route, en s'adaptant en temps réel au lieu de suivre une recette prédéfinie."
 conclusion: |
   Ce projet a permis de concevoir, simuler et comparer un contrôleur de freinage intelligent basé sur des réseaux de neurones. En plus des travaux techniques, l'objectif était aussi de produire un article scientifique en anglais, qui a synthétisé les fondements théoriques, les choix de conception, les résultats et les limites de l'approche.
 

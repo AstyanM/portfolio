@@ -16,6 +16,7 @@ impact:
     label: "maquettes physiques réalisées"
   - value: "4"
     label: "plans techniques au 1/100 et 1/500"
+summary: "Un terrain abandonné à côté d'un campus universitaire, pas de commerces, pas de lieux de rencontre. Notre équipe de quatre a repensé cet espace de zéro : des logements éco-responsables sur pilotis, une salle culturelle modulable, une supérette de proximité. Le tout documenté avec des plans au 1/100 et 1/500, des modèles 3D et deux maquettes physiques, pensé autour de matériaux durables et de lumière naturelle."
 conclusion: |
   Ce projet nous a permis d'explorer les différentes étapes de la conception architecturale dans un contexte de développement durable. En combinant analyse de site, conception modulaire et urbanisme écologique, nous avons pu proposer une solution viable pour la réhabilitation d'une zone urbaine abandonnée. Ce travail pourrait constituer une base solide pour la mise en place d'un projet réel de reconstruction et d'aménagement urbain.
 ---

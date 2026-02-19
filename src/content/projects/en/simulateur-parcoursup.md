@@ -25,6 +25,7 @@ impact:
     label: "of leads acquired through organic search"
   - value: "250"
     label: "cover letters generated automatically"
+summary: "Applying to French universities through Parcoursup feels like a black box: you submit your grades and wait. I built a simulator that takes a student's profile (grades, specialties, high school) and estimates their chances of admission for any program, using government open data and explainable statistics. More than 200 000 simulations have been run on the platform."
 conclusion: |
   The solution combines open data, controlled enrichments, and explainable modeling. The modular architecture (FastAPI/React) facilitates maintenance, extension, and local recalibration. Limitations relate to the granularity of aggregated data and distributional assumptions; they are compensated by explicit bounds, a main factor, and documented thresholds.
 appendix:

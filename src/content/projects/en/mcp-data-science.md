@@ -18,6 +18,7 @@ impact:
     label: "documented agent pipeline phases"
   - value: "~3 min"
     label: "for a complete report on a CSV file"
+summary: "Imagine being able to analyse a data file simply by describing what you want out loud: \"look at this file, clean it up, find what drives sales the most, and generate a report\". That's exactly what this project does. I built a toolkit that any AI can use to perform data analysis in plain language, without writing a single line of code."
 conclusion: |
   MCP Data Science shows that it is possible to encapsulate a complete data science pipeline in a standardized protocol and make it accessible through natural language. By strictly following the MCP contract (uniform return values, no raised exceptions, LLM-facing docstrings), the server works equally well with Claude, Cursor, or any future compatible client.
 

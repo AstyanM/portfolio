@@ -10,6 +10,7 @@ teamSize: 4
 year: 2024
 month: 11
 repoUrl: "https://github.com/AstyanM/tictactoe-search-tree-algorithm"
+summary: "Ultimate Tic-Tac-Toe is a 9×9 board where each move dictates which sub-grid your opponent plays in next. Far too complex for a human to compute every possibility. We wrote a bot in C that builds a game tree, evaluates positions with Negamax and prunes dead branches with alpha-beta, all under a time budget that adapts move by move."
 conclusion: |
   This project allowed us to explore the different stages of designing a bot playing Ultimate Tic-Tac-Toe, from implementing game rules to optimizing the Minimax algorithm with alpha-beta pruning. Each aspect was adjusted to ensure efficient strategic decisions while respecting time constraints. This experience constitutes a solid foundation for deepening artificial intelligence techniques applied to games and search algorithm optimization.
 ---

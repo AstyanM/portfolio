@@ -51,6 +51,7 @@ export const ui = {
     'project.sourceCode': 'Code source',
     'project.privateRepo': 'Dépôt privé',
     'project.impact': 'Résultats & Impact',
+    'project.summary.label': 'En résumé',
 
     // Contact
     'contact.title': 'Me Contacter',
@@ -176,6 +177,7 @@ export const ui = {
     'project.sourceCode': 'Source code',
     'project.privateRepo': 'Private repository',
     'project.impact': 'Results & Impact',
+    'project.summary.label': 'In a nutshell',
 
     // Contact
     'contact.title': 'Get in Touch',

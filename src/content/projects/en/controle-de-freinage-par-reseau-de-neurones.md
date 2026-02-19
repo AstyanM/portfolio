@@ -17,6 +17,7 @@ impact:
     label: "braking scenarios simulated"
   - value: "1"
     label: "scientific article written"
+summary: "When you brake hard on a wet road, your car's ABS keeps the wheels from locking. The controller behind it usually follows fixed rules. Here, I replaced it with a neural network trained on 50 simulated braking scenarios that learns to maintain the ideal grip between tire and road surface, adapting in real time instead of following a predetermined recipe."
 conclusion: |
   This project enabled the design, simulation, and comparison of an intelligent braking controller based on neural networks. Beyond the technical work, the objective was also to produce a scientific article in English, which synthesized the theoretical foundations, design choices, results, and limitations of the approach.
 

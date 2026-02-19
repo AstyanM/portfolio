@@ -16,6 +16,7 @@ impact:
     label: "de filament utilisé"
   - value: "4"
     label: "sous-ensembles mécaniques conçus en CAO"
+summary: "Fabriquer une imprimante 3D avec une imprimante 3D : c'est en gros ce qu'on a fait. Notre équipe de huit a modélisé chaque pièce d'une imprimante Delta en CAO, les a imprimées sur des machines existantes (105 heures, 1 kg de filament), puis a tout assemblé : châssis, chariots, système de courroie, tête d'impression. La boucle complète du prototypage rapide, de l'écran à la machine fonctionnelle."
 conclusion: |
   Ce projet nous a permis d'explorer en profondeur l'ensemble du processus de prototypage rapide, depuis la conception et la modélisation en CAO jusqu'à l'impression des pièces et l'assemblage final de l'imprimante 3D Delta. Chaque étape a nécessité une réflexion approfondie sur les choix de conception, les contraintes mécaniques et les spécificités de l'architecture Delta, notamment son système de commande et de déplacement. Les multiples tests et ajustements réalisés nous ont permis d'optimiser les composants pour garantir un fonctionnement fluide et précis. Cette expérience nous a non seulement familiarisés avec les technologies de fabrication additive, mais aussi avec les défis techniques liés à la mise en œuvre d'un système complexe, constituant ainsi une base solide pour de futurs projets en ingénierie et prototypage.
 ---

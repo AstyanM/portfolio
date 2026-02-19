@@ -9,6 +9,7 @@ draft: false
 teamSize: 2
 year: 2024
 month: 12
+summary: "Turning an invisible electromagnetic wave into the voice of a radio host requires a surprisingly precise chain of electronics. We designed and built an FM receiver from scratch: filters to isolate the right frequency band, a synthesizer to lock onto a station, a PLL to extract the audio, and an amplifier to drive a speaker. Everything validated with LTSpice simulations before soldering."
 conclusion: |
   This project allowed us to explore the different steps of designing an FM receiver, from circuit theory to practical tests and simulations. Each module was optimized to ensure stable reception and optimal sound quality. This experience constitutes a solid foundation for deepening signal processing and radio frequency communication techniques.
 ---

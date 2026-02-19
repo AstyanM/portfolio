@@ -9,6 +9,7 @@ draft: false
 teamSize: 2
 year: 2024
 month: 12
+summary: "Transformer une onde électromagnétique invisible en voix d'animateur radio demande une chaîne d'électronique étonnamment précise. Nous avons conçu et construit un récepteur FM de A à Z : filtres pour isoler la bonne bande de fréquence, synthétiseur pour s'accrocher à une station, PLL pour extraire l'audio, et amplificateur pour piloter un haut-parleur. Le tout validé en simulation LTSpice avant de souder."
 conclusion: |
   Ce projet nous a permis d'explorer les différentes étapes de la conception d'un récepteur FM, depuis la théorie des circuits jusqu'aux tests pratiques et simulations. Chaque module a été optimisé pour garantir une réception stable et une qualité sonore optimale. Cette expérience constitue une base solide pour approfondir les techniques de traitement du signal et de communication radiofréquence.
 ---

@@ -10,6 +10,7 @@ teamSize: 4
 year: 2024
 month: 11
 repoUrl: "https://github.com/AstyanM/tictactoe-search-tree-algorithm"
+summary: "Le super-morpion est un plateau 9×9 où chaque coup dicte dans quelle sous-grille l'adversaire doit jouer. Bien trop complexe pour qu'un humain calcule toutes les possibilités. Nous avons écrit un bot en C qui construit un arbre de jeu, évalue les positions avec Négamax et élague les branches mortes par alpha-bêta, le tout sous un budget temps qui s'adapte coup par coup."
 conclusion: |
   Ce projet nous a permis d'explorer les différentes étapes de la conception d'un bot jouant au super-morpion, depuis l'implémentation des règles du jeu jusqu'à l'optimisation de l'algorithme Minimax avec élagage alpha-bêta. Chaque aspect a été ajusté pour garantir des décisions stratégiques efficaces tout en respectant les contraintes de temps. Cette expérience constitue une base solide pour approfondir les techniques d'intelligence artificielle appliquées aux jeux et l'optimisation des algorithmes de recherche.
 ---

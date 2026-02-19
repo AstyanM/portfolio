@@ -15,6 +15,7 @@ impact:
     label: "architectures de réseaux testées (Dense, Conv1D, LSTM)"
   - value: "18"
     label: "activités enzymatiques prédites simultanément"
+summary: "Une enzyme est une machine moléculaire dont la forme détermine quelles réactions chimiques elle peut accélérer. Nous avons injecté des données expérimentales sur des dizaines d'enzymes dans des réseaux de neurones (dense, convolutionnel, LSTM) pour voir si la séquence d'acides aminés brute suffisait à prédire l'activité sur 18 substrats différents. La réponse honnête : en partie. Mais le chemin nous a beaucoup appris sur les données biologiques et leurs limites."
 conclusion: |
   Ce travail nous a permis d'explorer l'enzymologie en la combinant aux méthodes de machine learning. Avant d'évaluer la performance de notre réseau de neurones, nous avons dû surmonter plusieurs défis, notamment l'extraction et le traitement des données, le choix de leur format et l'alignement des séquences.
 

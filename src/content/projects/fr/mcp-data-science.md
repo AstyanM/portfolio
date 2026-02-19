@@ -18,6 +18,7 @@ impact:
     label: "phases du pipeline agent documentées"
   - value: "~3 min"
     label: "pour un rapport complet sur un fichier CSV"
+summary: "Imaginez pouvoir analyser un fichier de données simplement en le décrivant à voix haute : « regarde ce fichier, nettoie-le, trouve ce qui influence le plus les ventes, et génère un rapport ». C'est exactement ce que permet ce projet. J'ai construit une boîte à outils que n'importe quelle IA peut utiliser pour faire de l'analyse de données en langage naturel, sans écrire une seule ligne de code."
 conclusion: |
   MCP Data Science montre qu'il est possible d'encapsuler un pipeline de data science complet dans un protocole standardisé et de le rendre accessible en langage naturel. En respectant scrupuleusement le contrat MCP (retours uniformes, pas d'exceptions levées, docstrings LLM-facing), on obtient un serveur aussi bien utilisable par Claude que par Cursor ou n'importe quel futur client.
 
