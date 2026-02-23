@@ -222,7 +222,7 @@ Figure 10 - Summary of Prediction Deliverable Operation
 
 Figure 11: Different Steps of API Operation
 
-## 4. Technical Deliverables
+## 4. Documentation and Final Deliverables
 
 - **Documented source code and API**: Available on GitHub
 - **User and technical documentation**: Detailed explanation of modules and usage guide

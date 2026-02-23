@@ -57,7 +57,7 @@ Après avoir trouvé les valeurs exactes reportées ici pour les deux cellules, 
 | R1 | 60kΩ | 62kΩ |
 | R2 | 301kΩ | 300kΩ |
 | R3 | 65kΩ | 70kΩ |
-| R4 | 296kΩ | 300k |
+| R4 | 296kΩ | 300kΩ |
 
 ![Figure 4 - Représentation théorique](/images/projects/creation-dune-radio/1-3.png)
 
@@ -76,7 +76,7 @@ Figure 6 - Filtre de Rauch
 $$
 C_1 = C_2 = C_3 = C\\
 Q = \frac{1}{3}\sqrt{\frac{R_2}{R_1}}\\
-\omega_c = \frac{1}{C\sqrt{R_1}{R_2}}
+\omega_c = \frac{1}{C\sqrt{R_1 R_2}}
 $$
 
 ![Figure 7 - Réalisation des filtres en cascade](/images/projects/creation-dune-radio/1-5.png)
@@ -110,6 +110,10 @@ Cela nous donne les informations suivantes à rentrer sous forme d'octets dans n
 | Registre 5 | 00000110 |
 | Registre 6 | 01011100 |
 | Registre 7 | 00100010 |
+
+## 3. Synthèse et démodulation de Fréquence
+
+Pour syntoniser la bonne station radio, nous avons conçu un synthétiseur de fréquence. En partant d'un quartz oscillant à 10,7 MHz, nous avons calculé les diviseurs et multiplicateurs nécessaires pour capter la fréquence cible de Radio Campus (94,35 MHz). Ces paramètres ont été implémentés dans un programme Arduino permettant d'ajuster la fréquence de réception de manière précise. Voici un exemple de configuration I2C du synthétiseur :
 
 ```c
 #include <Wire.h>
@@ -147,10 +151,6 @@ void configureSynth() {
 }
 
 ```
-
-## 3. Synthèse et démodulation de Fréquence
-
-Pour syntoniser la bonne station radio, nous avons conçu un synthétiseur de fréquence. En partant d'un quartz oscillant à 10,7 MHz, nous avons calculé les diviseurs et multiplicateurs nécessaires pour capter la fréquence cible de Radio Campus (94,35 MHz). Ces paramètres ont été implémentés dans un programme Arduino permettant d'ajuster la fréquence de réception de manière précise.
 
 Les formules utilisées sont les suivantes :
 

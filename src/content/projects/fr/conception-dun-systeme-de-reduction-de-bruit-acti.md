@@ -135,7 +135,7 @@ Avec en vert la courbe du signal sans réduction et en jaune celle du signal ave
 
 ## 3. Système Électronique
 
-### a) Utilisation d’un plaque Sysam
+### a) Utilisation d'une plaque Sysam
 
 Pour explorer cette nouvelle possibilité, nous avons développé un programme de traitement du signal en python afin d’enregistrer un son, de le traiter avec notre programme grâce à la plaque Sysam puis le renvoyer dans un autre haut-parleur. Expérimentalement, nous avons commencé par un signal sinusoïdal que nous avons déphasé afin de pouvoir évaluer clairement l’efficacité de notre solution.
 
@@ -161,7 +161,7 @@ Pour le conditionnement du signal d’entrée, il a été décidé d’utiliser 
 
 Figure 14 - Amplificateur sommateur pour le conditionnement d’entrée
 
-Pour le signal de sortie, nous avons pu observer que le faible taux d’échantillonage du Raspberry Pi était à l’origine d’arêtes vives en sortie. Nous avons donc choisi d’utiliser un filtre passe-bas pour y remédier.
+Pour le signal de sortie, nous avons pu observer que le faible taux d’échantillonnage du Raspberry Pi était à l’origine d’arêtes vives en sortie. Nous avons donc choisi d’utiliser un filtre passe-bas pour y remédier.
 
 ![Figure 15 - Passe-bas pour le conditionnement de sortie](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/montage_ali_2_page-0001.jpg)
 
@@ -189,8 +189,7 @@ Cependant, l’implémentation sur le **Raspberry Pi** nous a posé plusieurs d�
 - Un problème de **distorsion sonore** a été observé en sortie sans raison évidente
 - Certaines broches de sortie du **Raspberry Pi** ont été endommagées lors des tests, rendant impossible la mise en pratique finale
 
-La mise en pratique n’a donc pas pu être effectuée malgré l’élaboration de toute la partie théorique en amont. Toutefois, je suis convaincu qu’au vu des résultats prometteurs des autres expériences, ce
-système aurait sûrement pu aboutir.
+La mise en pratique n’a donc pas pu être effectuée malgré l’élaboration de toute la partie théorique en amont. Toutefois, au vu des résultats prometteurs des autres expériences, ce système aurait vraisemblablement pu aboutir.
 Les deux derniers systèmes étant très complexes et chronophages, nous aurions aussi pu explorer d’autres pistes :
 
 - **Miniaturisation portable** du système intermédiaire

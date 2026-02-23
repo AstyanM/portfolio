@@ -159,7 +159,7 @@ self.meta_net = nn.Sequential(
 
 Ces ajustements ont permis de gagner en robustesse sans trop augmenter le coût d’entraînement :
 
-![image.png](/images/projects/adaptation-few-shot-de-modeles-vision-langage/image-6.png)
+![Figure 7 - Résultats CoCoOp amélioré](/images/projects/adaptation-few-shot-de-modeles-vision-langage/image-6.png)
 
 ## 7. Amélioration de Meta-Net
 
@@ -180,9 +180,9 @@ Nous avons également utilisé la méthode UMAP pour visualiser la distribution 
 
 Figure 8 - Distribution des tokens sans amélioration
 
-![Figure 8 - Distribution des tokens avec amélioration](/images/projects/adaptation-few-shot-de-modeles-vision-langage/tokens_train_umap_enhancement.png)
+![Figure 9 - Distribution des tokens avec amélioration](/images/projects/adaptation-few-shot-de-modeles-vision-langage/tokens_train_umap_enhancement.png)
 
-Figure 8 - Distribution des tokens avec amélioration
+Figure 9 - Distribution des tokens avec amélioration
 
 | **Métrique** | **Sans amélioration** | **Avec amélioration** | **Interprétation** |
 | --- | --- | --- | --- |

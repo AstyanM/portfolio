@@ -180,9 +180,9 @@ We also used the UMAP method to visualize token distribution.
 
 Figure 8 - Token Distribution without Enhancement
 
-![Figure 8 - Token Distribution with Enhancement](/images/projects/adaptation-few-shot-de-modeles-vision-langage/tokens_train_umap_enhancement.png)
+![Figure 9 - Token Distribution with Enhancement](/images/projects/adaptation-few-shot-de-modeles-vision-langage/tokens_train_umap_enhancement.png)
 
-Figure 8 - Token Distribution with Enhancement
+Figure 9 - Token Distribution with Enhancement
 
 | **Metric** | **Without Enhancement** | **With Enhancement** | **Interpretation** |
 | --- | --- | --- | --- |

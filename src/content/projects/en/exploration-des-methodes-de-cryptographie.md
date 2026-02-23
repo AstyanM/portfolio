@@ -32,7 +32,7 @@ The algorithm replaces each letter with the one found at a defined distance (the
 new_letter_place = useful.alpha.index(alpha_letter) + key % 26
 if new_letter_place >= 26:
 		new_letter_place -= 26
-		encrypted_sentence += useful.alpha[new_letter_place]
+encrypted_sentence += useful.alpha[new_letter_place]
 ```
 
 ### b) Decryption and Dictionary Attack

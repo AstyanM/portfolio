@@ -278,7 +278,7 @@ int a[3];
             else if(mp.tableau[t[i][j]] == N(trait)){
                 a[j] = 3;
             }
-            else if(mp.tableau[t[i][j] == infini]){
+            else if(mp.tableau[t[i][j]] == infini){
                 a[j] = 5;
             }
 

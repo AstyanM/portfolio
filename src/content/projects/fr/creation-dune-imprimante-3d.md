@@ -60,7 +60,7 @@ Figure 3 - Modélisation 3D du Lower Frame
 
 ### c) Carriage
 
-Cette partie, sur laquelle j'ai travaillé personnellement, vise à modéliser le chariot qui doit coulisser autour des tiges métalliques afin de faire bouger la tête d'impression dans l'espace grâce à un moteur et un microcontrôleur. Ce chariot se doit de suivre ces indications pour assurer le bon fonctionnement de l'imprimante :
+Cette partie vise à modéliser le chariot qui doit coulisser autour des tiges métalliques afin de faire bouger la tête d'impression dans l'espace grâce à un moteur et un microcontrôleur. Ce chariot se doit de suivre ces indications pour assurer le bon fonctionnement de l'imprimante :
 
 - Fixation des aimants sans perte d'amplitude des bras
 - Liaison glissière autour des tiges métalliques

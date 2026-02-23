@@ -25,7 +25,7 @@ impact:
     label: "des leads acquis via le référencement naturel"
   - value: "250"
     label: "lettres de motivation générées automatiquement"
-summary: "Candidater sur Parcoursup, c'est un peu une boîte noire : on envoie ses notes et on attend. J'ai construit un simulateur qui prend le profil d'un élève (notes, spécialités, lycée) et estime ses chances d'admission pour n'importe quelle formation, à partir des données ouvertes du ministère et de statistiques explicables. Plus de 200 000 simulations ont été réalisées sur la plateforme."
+summary: "Candidater sur Parcoursup, c'est un peu une boîte noire : on envoie ses notes et on attend. Ce simulateur prend le profil d'un élève (notes, spécialités, lycée) et estime ses chances d'admission pour n'importe quelle formation, à partir des données ouvertes du ministère et de statistiques explicables. Plus de 200 000 simulations ont été réalisées sur la plateforme."
 conclusion: |
   La solution combine open data, enrichissements contrôlés et modélisation explicable. L'architecture modulaire (FastAPI/React) facilite la maintenance, l'extension et le recalibrage local. Les limites tiennent à la granularité des données agrégées et aux hypothèses distributionnelles ; elles sont compensées par des bornes explicites, un facteur principal et des seuils documentés.
 appendix:
@@ -35,7 +35,7 @@ appendix:
       url: "/images/projects/simulateur-parcoursup/article_scientifique.pdf"
       type: pdf
   structure:
-    description: "Environ 40k lignes de code maintenues et organisées"
+    description: "Environ 50k lignes de code maintenues et organisées"
     tree: |
       backend
       ├───core
@@ -227,7 +227,7 @@ appendix:
   M_{\text{lycee}}=\operatorname{clamp}\!\big(\exp(k(2p-1)),\, m_{\min},\, m_{\max}\big)
   $$
 
-  avec $mu_x=0.548$, $\sigma_x=0.182$, $m_{\min}=0.85$, , $k=\ln(m_{\max})$.
+  avec $\mu_x=0.548$, $\sigma_x=0.182$, $m_{\min}=0.85$, $k=\ln(m_{\max})$.
 
   Si `infos=0` alors $M_{\text{lycee}}=1$.
 
@@ -273,7 +273,7 @@ Si `concours = 1`, une pondération **post-dossier** est appliquée à partir d�
 
 - **Framework** : FastAPI (`main.py`)
   Config via `core/config.py`, middlewares (CORS, `UserIdMiddleware`), dépendances `core/deps.py`.
-- **Infrastructure de Recherche** : Intégration de **Typesense**, un moteur de recherche typolerant et rapide, pour l'indexation et l'interrogation instantanée des formations et établissements.
+- **Infrastructure de Recherche** : Intégration de **Typesense**, un moteur de recherche tolérant aux fautes de frappe et rapide, pour l'indexation et l'interrogation instantanée des formations et établissements.
 - **Routeurs** :
   - `routers/simulate.py` : API de simulation (modèle `Profil`, appel `compute_admission`).
   - `routers/formations.py` : recherche & stats formations (BM25, filtres géo, distributions).
@@ -326,7 +326,7 @@ Figure 5 : Interface graphique de la page de recherche
 
 ### a) Hébergement Railway
 
-Hébergement complet du backend et frontend avec une base de données **PostgresSQL** connectés et instance **Typesense** (Docker).
+Hébergement complet du backend et frontend avec une base de données **PostgreSQL** connectés et instance **Typesense** (Docker).
 
 ![Figure 6 : Infrastructure Railway](/images/projects/simulateur-parcoursup/image-1.png)
 

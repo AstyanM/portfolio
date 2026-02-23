@@ -17,7 +17,7 @@ impact:
     label: "types d'attaques développés (brute force, dictionnaire, fréquence, factorisation)"
 summary: "Comment cacher un message pour que seul le bon destinataire puisse le lire, et à quel point est-ce dur de le casser ? J'ai implémenté sept méthodes de chiffrement en Python, du vieux César jusqu'à RSA, et pour chacune j'ai aussi écrit les outils pour la casser : force brute, attaque par dictionnaire, analyse fréquentielle, factorisation. Un tour d'horizon concret de pourquoi certains codes tombent en secondes et d'autres résistent."
 conclusion: |
-  Ce projet m'a permis d'explorer les fondements de la cryptographie à travers différents algorithmes, de leur implémentation en Python jusqu'à leur cassage lorsque cela était possible. Des méthodes simples comme le chiffre de César aux systèmes asymétriques comme RSA, chaque technique présente des défis fascinants en termes de sécurité et de faisabilité. Cette expérience constitue une base solide pour comprendre les enjeux de la sécurisation des données et l'évolution des techniques cryptographiques modernes.
+  Ce projet explore les fondements de la cryptographie à travers différents algorithmes, de leur implémentation en Python jusqu'à leur cassage lorsque cela était possible. Des méthodes simples comme le chiffre de César aux systèmes asymétriques comme RSA, chaque technique présente des défis fascinants en termes de sécurité et de faisabilité. Cette expérience constitue une base solide pour comprendre les enjeux de la sécurisation des données et l'évolution des techniques cryptographiques modernes.
 ---
 
 ## 1. Chiffre de César : Une sécurité illusoire
@@ -32,7 +32,7 @@ L'algorithme remplace chaque lettre par celle qui se trouve à une distance déf
 new_letter_place = useful.alpha.index(alpha_letter) + key % 26
 if new_letter_place >= 26:
 		new_letter_place -= 26
-		encrypted_sentence += useful.alpha[new_letter_place]
+encrypted_sentence += useful.alpha[new_letter_place]
 ```
 
 ### b) Déchiffrement et Attaque par dictionnaire
@@ -130,7 +130,7 @@ La substitution consiste à remplacer chaque lettre par une autre selon une tabl
 
 ### a) Chiffrement
 
-Pour cela, nous pouvons le coder facilement dans nos fonctions Python :
+Le chiffrement s'implémente facilement en Python :
 
 ```python
 new_words = substitute.encrypt_substitution(text=word, dico=dico)
@@ -191,7 +191,7 @@ Le chiffrement RSA est **asymétrique** : il utilise une paire de clés (des nom
 
 ### a) Génération de nombres pseudo-premiers
 
-J'utilise ici des tests probabilistes comme celui de **Miller-Rabin** permet de générer des nombres pseudo-premiers rapidement :
+Des tests probabilistes comme celui de **Miller-Rabin** permettent de générer des nombres pseudo-premiers rapidement :
 
 ```python
 k = 28

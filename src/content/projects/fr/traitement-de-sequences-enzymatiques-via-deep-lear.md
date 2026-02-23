@@ -43,7 +43,7 @@ appendix:
 
 ## 1. Traitement des données
 
-### a) Epuration du dataset
+### a) Épuration du dataset
 
 Après avoir importé les données sous forme de fichier CSV dans notre notebook, nous avons procédé à plusieurs traitements :
 
@@ -154,7 +154,7 @@ model.add(Dense(18))
 
 Ainsi, à partir des inputs que nous lui fournissons (les séquences encodées sous forme de tableaux), le modèle prédit 18 valeurs en sortie, correspondant aux 18 activités cherchées pour les différents substrats.
 
-Nous avons ensuite entraîné ce modèle sur l’ensemble des séquences que l’on a préalablement séparées en données de **train ****et de **test *:***
+Nous avons ensuite entraîné ce modèle sur l'ensemble des séquences que l'on a préalablement séparées en données de **train** et de **test** :
 
 ```python
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=78)
@@ -166,7 +166,7 @@ Nous obtenons ici le loss de train (bleu) et le loss de test (en jaune).
 
 Figure 4 - Train & Test loss
 
-Nous sommes clairement confrontés à un problème **d’overfitting** : le modèle apprend par coeur les données d’entrées tandis qu’il ne parvient pas à généraliser sur des données qu’il n’a pas vues durant son entraînement. Le modèle n’est donc pas adapté : tentons d’en créer un peu évolué.
+Nous sommes clairement confrontés à un problème **d’overfitting** : le modèle apprend par cœur les données d’entrées tandis qu’il ne parvient pas à généraliser sur des données qu’il n’a pas vues durant son entraînement. Le modèle n’est donc pas adapté : tentons d’en créer un peu évolué.
 
 ### b) Deuxième modèle : réseau dense un peu plus évolué
 

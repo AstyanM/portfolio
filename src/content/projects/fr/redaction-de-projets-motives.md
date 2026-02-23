@@ -10,7 +10,7 @@ teamSize: 1
 year: 2025
 month: 11
 repoPrivate: true
-liveUrl: "http://lettre-motivation.prepa-prevision.fr"
+liveUrl: "https://lettre-motivation.prepa-prevision.fr"
 impact:
   - value: "93%"
     label: "de précision du modèle CamemBERT fine-tuné"
@@ -18,7 +18,7 @@ impact:
     label: "lettres annotées pour l'entraînement"
   - value: "En production"
     label: "déployé et accessible en ligne"
-summary: "Chaque année, des centaines de milliers de lycéens rédigent leurs projets motivés sur Parcoursup sans trop savoir à quoi ressemble une bonne lettre. J'ai construit un outil web qui lit une lettre, identifie sa structure grâce à un modèle CamemBERT fine-tuné, vérifie la grammaire via LanguageTool, et renvoie une note détaillée avec des suggestions concrètes. Pas de chatbot, juste des métriques transparentes."
+summary: "Chaque année, des centaines de milliers de lycéens rédigent leurs projets motivés sur Parcoursup sans trop savoir à quoi ressemble une bonne lettre. Cet outil web lit une lettre, identifie sa structure grâce à un modèle CamemBERT fine-tuné, vérifie la grammaire via LanguageTool, et renvoie une note détaillée avec des suggestions concrètes. Pas de chatbot, juste des métriques transparentes."
 conclusion: |
   Ce projet démontre qu'il est possible de combiner traitement automatique du langage et analyse linguistique pour offrir aux étudiants un accompagnement objectif et transparent dans la rédaction de leurs projets motivés Parcoursup. Grâce à l'intégration de CamemBERT pour la structuration des textes et de LanguageTool pour la correction, l'outil propose une évaluation fine, des indicateurs clairs et des suggestions pertinentes sans recours à un chatbot. Ce travail illustre une approche autonome, explicable et pratique du soutien à l'expression écrite dans un contexte académique.
 appendix:
@@ -104,7 +104,7 @@ Le cœur du système est un modèle **CamemBERT** (version de BERT adaptée au f
 
 Figure 2 : Courbes d’entraînement Loss/Accuracy du jeu de données
 
-1. **Persistance du modèle** : le modèle et le tokenizer sont sauvegardés (fichiers `.pt` et vocabulaire). Le chemin est spécifié via `MODEL_DIR`/`MODEL_PATH`.
+3. **Persistance du modèle** : le modèle et le tokenizer sont sauvegardés (fichiers `.pt` et vocabulaire). Le chemin est spécifié via `MODEL_DIR`/`MODEL_PATH`.
 
 En production, le modèle est chargé une seule fois et mis en cache afin de minimiser la latence des requêtes.
 
@@ -204,9 +204,9 @@ Figure 4 : Interface graphique de la page d’évaluation
 
 Hébergement complet du backend et frontend sur **Railway.**
 
-![ Figure 3 : Infrastructure Railway](/images/projects/redaction-de-projets-motives/image-4.png)
+![Figure 5 : Infrastructure Railway](/images/projects/redaction-de-projets-motives/image-4.png)
 
- Figure 3 : Infrastructure Railway
+Figure 5 : Infrastructure Railway
 
 Les étapes importantes sont :
 

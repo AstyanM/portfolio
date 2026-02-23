@@ -10,7 +10,7 @@ teamSize: 1
 year: 2025
 month: 11
 repoPrivate: true
-liveUrl: "http://lettre-motivation.prepa-prevision.fr"
+liveUrl: "https://lettre-motivation.prepa-prevision.fr"
 impact:
   - value: "93%"
     label: "fine-tuned CamemBERT model accuracy"
@@ -204,9 +204,9 @@ Figure 4: Evaluation Page Graphical Interface
 
 Complete backend and frontend hosting on **Railway.**
 
-![Figure 3: Railway Infrastructure](/images/projects/redaction-de-projets-motives/image-4.png)
+![Figure 5: Railway Infrastructure](/images/projects/redaction-de-projets-motives/image-4.png)
 
-Figure 3: Railway Infrastructure
+Figure 5: Railway Infrastructure
 
 The important steps are:
 

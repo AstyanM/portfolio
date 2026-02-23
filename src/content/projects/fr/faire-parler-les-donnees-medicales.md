@@ -138,7 +138,7 @@ Finalement, pour que notre projet ait un statut clair, nous avons rédigé et si
 
 ## 3. Livrables techniques
 
-A cause de la confidentialité qui entoure la partie technique de ce projet, je ne peux malheureusement pas partager le code que nous avons rédigé. Je serais donc concis mais la solution mise en place est bien plus complexe que ce que je décris ici.
+En raison de la confidentialité qui entoure la partie technique de ce projet, le code ne peut malheureusement pas être partagé. La description reste donc concise, mais la solution mise en place est bien plus complexe que ce qui est présenté ici.
 
 ### a) Pôle Indexation
 
@@ -222,7 +222,7 @@ Figure 10 - Fonctionnement résumé du livrable de prédiction
 
 Figure 11 : Différentes étapes du fonctionnement de l’API
 
-## 4. Livrables Techniques
+## 4. Documentation et livrables finaux
 
 - **Code source et API documentée** : Disponible sur GitHub
 - **Documentation utilisateur et technique** : Explication détaillée des modules et guide d’utilisation

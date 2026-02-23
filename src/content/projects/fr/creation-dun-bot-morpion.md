@@ -24,7 +24,7 @@ Pour l'organisation finale du programme, nous avons choisi de la faire de la sor
 - **`main.c`** : utilisation de la ligne de commande et création des structures de jeu nécessaires
 - **`g.dot`** : fichier dot pour la création d'une figure png qui représente l'état du jeu
 - **`g.png`** : figure png qui représente l'état du jeu
-- **`refresh.html`** : page html pour représenter l'état du jeu à partir de la figure précédente, en rafraichissant automatiquement la page
+- **`refresh.html`** : page html pour représenter l'état du jeu à partir de la figure précédente, en rafraîchissant automatiquement la page
 - **`makefile`** : fichier permettant les manipulations simples en ligne de commande
 - **`makefile_sources`** : liste des fichiers c à compiler lors de l'utilisation de la commande **make**
 
@@ -278,7 +278,7 @@ int a[3];
 						else if(mp.tableau[t[i][j]] == N(trait)){
                 a[j] = 3;
             }
-						else if(mp.tableau[t[i][j] == infini]){
+						else if(mp.tableau[t[i][j]] == infini){
                 a[j] = 5;
             }
 
@@ -441,7 +441,7 @@ void time_calculate() {
 
 La gestion du temps dans notre programme se fait grâce à la fonction **`temps_to_depth`** ainsi que d'un fichier texte extérieur à **`sm_bot.exe`**, appelé **`depth.txt`**
 
-Nous nous sommes basés sur un temps de 15 minutes par joueur, auxquelles ont rajoute 30 secondes par coup du joueur. De plus, en l'absence d'indication contraire, le temps pour effectuer un coup n'est limité que par le temps total de la partie.
+Nous nous sommes basés sur un temps de 15 minutes par joueur, auxquelles on rajoute 30 secondes par coup du joueur. De plus, en l'absence d'indication contraire, le temps pour effectuer un coup n'est limité que par le temps total de la partie.
 
 ```c
 void temps_to_depth(const double temps){

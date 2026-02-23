@@ -116,9 +116,9 @@ As for the convenience store, it also responds to a real existing demand:
 
 Figure 11 - Exterior View of Convenience Store
 
-![Figure 12 - Interior View of Cultural Hall](/images/projects/projet-de-rehabilitation/452ed6d0-e585-478b-9785-edd0ad104706.png)
+![Figure 12 - Interior View of Convenience Store](/images/projects/projet-de-rehabilitation/452ed6d0-e585-478b-9785-edd0ad104706.png)
 
-Figure 12 - Interior View of Cultural Hall
+Figure 12 - Interior View of Convenience Store
 
 ![Figure 13 - Convenience Store Plan 1/100](/images/projects/projet-de-rehabilitation/1b437efc-67cf-49f4-bd09-90c711f29fdf.png)
 

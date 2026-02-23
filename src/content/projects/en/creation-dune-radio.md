@@ -57,7 +57,7 @@ After finding the exact values reported here for both cells, we can experimental
 | R1 | 60kΩ | 62kΩ |
 | R2 | 301kΩ | 300kΩ |
 | R3 | 65kΩ | 70kΩ |
-| R4 | 296kΩ | 300k |
+| R4 | 296kΩ | 300kΩ |
 
 ![Figure 4 - Theoretical Representation](/images/projects/creation-dune-radio/1-3.png)
 
@@ -76,7 +76,7 @@ Figure 6 - Rauch Filter
 $$
 C_1 = C_2 = C_3 = C\\
 Q = \frac{1}{3}\sqrt{\frac{R_2}{R_1}}\\
-\omega_c = \frac{1}{C\sqrt{R_1}{R_2}}
+\omega_c = \frac{1}{C\sqrt{R_1 R_2}}
 $$
 
 ![Figure 7 - Cascaded Filter Realization](/images/projects/creation-dune-radio/1-5.png)
@@ -110,6 +110,10 @@ This gives us the following information to enter as bytes in our module:
 | Register 5 | 00000110 |
 | Register 6 | 01011100 |
 | Register 7 | 00100010 |
+
+## 3. Frequency Synthesis and Demodulation
+
+To tune to the right radio station, we designed a frequency synthesizer. Starting from a quartz oscillating at 10.7 MHz, we calculated the necessary dividers and multipliers to capture the target frequency of Radio Campus (94.35 MHz). These parameters were implemented in an Arduino program allowing precise adjustment of the reception frequency. Here is an example of I2C configuration for the synthesizer:
 
 ```c
 #include <Wire.h>
@@ -147,10 +151,6 @@ void configureSynth() {
 }
 
 ```
-
-## 3. Frequency Synthesis and Demodulation
-
-To tune to the right radio station, we designed a frequency synthesizer. Starting from a quartz oscillating at 10.7 MHz, we calculated the necessary dividers and multipliers to capture the target frequency of Radio Campus (94.35 MHz). These parameters were implemented in an Arduino program allowing precise adjustment of the reception frequency.
 
 The formulas used are as follows:
 

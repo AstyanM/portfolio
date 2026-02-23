@@ -37,7 +37,7 @@ Enfin, chaque parcelle étant constructible et sans restriction particulière, n
 
 Figure 2 - Plan masse du projet en 1/500
 
-A partir de toutes ces contraintes, nous avons pu mettre sur pied un projet complet que je vais détailler tout au long de cette page :
+À partir de toutes ces contraintes, un projet complet a été mis sur pied, détaillé tout au long de cette page :
 
 ![Figure 3 - Introduction globale au projet](/images/projects/projet-de-rehabilitation/liucf7vg.jpg)
 
@@ -116,9 +116,9 @@ Quant à la supérette, elle répond elle aussi à une réelle demande présente
 
 Figure 11 - Vue extérieure de la supérette
 
-![Figure 12 - Vue intérieure de la salle culturelle](/images/projects/projet-de-rehabilitation/452ed6d0-e585-478b-9785-edd0ad104706.png)
+![Figure 12 - Vue intérieure de la supérette](/images/projects/projet-de-rehabilitation/452ed6d0-e585-478b-9785-edd0ad104706.png)
 
-Figure 12 - Vue intérieure de la salle culturelle
+Figure 12 - Vue intérieure de la supérette
 
 ![Figure 13 - Plan au 1/100 de la supérette](/images/projects/projet-de-rehabilitation/1b437efc-67cf-49f4-bd09-90c711f29fdf.png)
 

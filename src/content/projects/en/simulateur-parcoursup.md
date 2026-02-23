@@ -35,7 +35,7 @@ appendix:
       url: "/images/projects/simulateur-parcoursup/article_scientifique.pdf"
       type: pdf
   structure:
-    description: "Approximately 40k lines of code maintained and organized"
+    description: "Approximately 50k lines of code maintained and organized"
     tree: |
       backend
       ├───core
