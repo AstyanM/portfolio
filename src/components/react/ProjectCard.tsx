@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Github } from 'lucide-react';
+import { ArrowUpRight, Github, ExternalLink } from 'lucide-react';
 import type { Tag } from '@/consts';
 import { translateTag } from '@/i18n/utils';
 
@@ -11,6 +11,7 @@ interface ProjectCardProps {
   href: string;
   coverUrl?: string;
   repoUrl?: string;
+  liveUrl?: string;
   year?: number;
   index?: number;
   lang: 'fr' | 'en';
@@ -23,6 +24,7 @@ export default function ProjectCard({
   href,
   coverUrl,
   repoUrl,
+  liveUrl,
   year,
   index = 0,
   lang,
@@ -58,16 +60,31 @@ export default function ProjectCard({
                 {year}
               </span>
             )}
-            {repoUrl && (
-              <a
-                href={repoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="absolute top-2 right-2 z-[2] min-h-[44px] min-w-[44px] flex items-center justify-center rounded-md bg-black/60 text-white hover:bg-accent active:scale-95 transition-all"
-                title={lang === 'fr' ? 'Voir le code source' : 'View source code'}
-              >
-                <Github className="w-4 h-4" />
-              </a>
+            {(liveUrl || repoUrl) && (
+              <div className="absolute top-2 right-2 z-[2] flex flex-col gap-1.5">
+                {liveUrl && (
+                  <a
+                    href={liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-md bg-accent text-white hover:bg-accent-hover active:scale-95 transition-all"
+                    title={lang === 'fr' ? 'Voir la démo' : 'View live demo'}
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                )}
+                {repoUrl && (
+                  <a
+                    href={repoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-md bg-black/60 text-white hover:bg-accent active:scale-95 transition-all"
+                    title={lang === 'fr' ? 'Voir le code source' : 'View source code'}
+                  >
+                    <Github className="w-4 h-4" />
+                  </a>
+                )}
+              </div>
             )}
           </div>
         ) : (
@@ -80,16 +97,31 @@ export default function ProjectCard({
                 {year}
               </span>
             )}
-            {repoUrl && (
-              <a
-                href={repoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="absolute top-2 right-2 z-[2] min-h-[44px] min-w-[44px] flex items-center justify-center rounded-md bg-black/60 text-white hover:bg-accent active:scale-95 transition-all"
-                title={lang === 'fr' ? 'Voir le code source' : 'View source code'}
-              >
-                <Github className="w-4 h-4" />
-              </a>
+            {(liveUrl || repoUrl) && (
+              <div className="absolute top-2 right-2 z-[2] flex flex-col gap-1.5">
+                {liveUrl && (
+                  <a
+                    href={liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-md bg-accent text-white hover:bg-accent-hover active:scale-95 transition-all"
+                    title={lang === 'fr' ? 'Voir la démo' : 'View live demo'}
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                )}
+                {repoUrl && (
+                  <a
+                    href={repoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-md bg-black/60 text-white hover:bg-accent active:scale-95 transition-all"
+                    title={lang === 'fr' ? 'Voir le code source' : 'View source code'}
+                  >
+                    <Github className="w-4 h-4" />
+                  </a>
+                )}
+              </div>
             )}
           </div>
         )}

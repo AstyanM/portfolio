@@ -1,7 +1,7 @@
 ---
 title: "Exploring a RAG Pipeline"
 description: "Systematic exploration of a Retrieval-Augmented Generation pipeline with open-source tools. 10 notebooks benchmark each component (chunking, embeddings, retrieval, reranking, query translation, routing, advanced patterns, RAGAS evaluation), then a Chainlit application assembles the best choices into a local, streamed chat."
-cardDescription: "Full RAG pipeline benchmarked across 10 notebooks and assembled into a 100% local Chainlit chat."
+cardDescription: "RAG pipeline benchmark and assembly of the tool into a Chainlit chat."
 tags: ["Deep Learning", "NLP", "Data Science"]
 lang: en
 draft: false

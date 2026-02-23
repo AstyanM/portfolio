@@ -9,7 +9,7 @@ teamSize: 1
 year: 2025
 month: 10
 repoPrivate: true
-liveUrl: "https://simulateur-parcoursup.prepa-prevision.fr/"
+liveUrl: "https://prepa-prevision.fr/simulateur-parcoursup/"
 impact:
   - value: "50k+"
     label: "lines of code maintained and deployed"

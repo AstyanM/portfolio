@@ -56,6 +56,7 @@ const cardsData = similarProjects.map((p, index) => ({
   href: getProjectPath(p.slug.split('/')[1], lang),
   coverUrl: getAssetUrl(p.data.cover?.src),
   repoUrl: p.data.repoPrivate ? undefined : p.data.repoUrl,
+  liveUrl: p.data.liveUrl,
   year: p.data.year,
   index,
   lang,
@@ -79,6 +80,7 @@ const cardsData = similarProjects.map((p, index) => ({
             href={card.href}
             coverUrl={card.coverUrl}
             repoUrl={card.repoUrl}
+            liveUrl={card.liveUrl}
             year={card.year}
             index={card.index}
             lang={card.lang}

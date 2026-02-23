@@ -15,6 +15,7 @@ interface Project {
   href: string;
   coverUrl?: string;
   repoUrl?: string;
+  liveUrl?: string;
   year?: number;
   month?: number;
 }
@@ -130,6 +131,7 @@ export default function ProjectGrid({
                 href={project.href}
                 coverUrl={project.coverUrl}
                 repoUrl={project.repoUrl}
+                liveUrl={project.liveUrl}
                 year={project.year}
                 index={index}
                 lang={lang}
