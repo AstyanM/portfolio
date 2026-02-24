@@ -48,7 +48,7 @@ Nous avons utilisé le dataset **Oxford Flowers-102**, composé de 102 catégori
 
 Nous avons appliqué une séparation stricte entre classes vues et non vues, assurant une bonne généralisation et une évaluation équitable.
 
-![Figure 1 - Exemples d’images issues du dataset](/images/projects/adaptation-few-shot-de-modeles-vision-langage/image.png)
+![Figure 1 - Exemples d’images issues du dataset](../../../assets/images/projects/adaptation-few-shot-de-modeles-vision-langage/image.png)
 
 Figure 1 - Exemples d’images issues du dataset
 
@@ -69,7 +69,7 @@ Cette évaluation établit une ligne de base pour mesurer l’impact des méthod
 
 ## 3. Méthode CoOp : Context Optimization
 
-![Figure 2 - CoOp Overview](/images/projects/adaptation-few-shot-de-modeles-vision-langage/image-1.png)
+![Figure 2 - CoOp Overview](../../../assets/images/projects/adaptation-few-shot-de-modeles-vision-langage/image-1.png)
 
 Figure 2 - CoOp Overview
 
@@ -87,7 +87,7 @@ class PromptLearner(nn.Module):
 
 Les résultats montrent une nette amélioration sur les classes de base mais une dégradation sur les classes novel due à l’overfitting :
 
-![Figure 3 - Résultats CoOp](/images/projects/adaptation-few-shot-de-modeles-vision-langage/image-2.png)
+![Figure 3 - Résultats CoOp](../../../assets/images/projects/adaptation-few-shot-de-modeles-vision-langage/image-2.png)
 
 Figure 3 - Résultats CoOp
 
@@ -99,7 +99,7 @@ $$
 \tilde{c} = c + \epsilon, \quad \epsilon \sim \mathcal{N}(0, \sigma^2), \quad \sigma = \text{noise\_scale} \times \max(|c|)
 $$
 
-![Figure 4 - Résultats CoOp avec bruit gaussien](/images/projects/adaptation-few-shot-de-modeles-vision-langage/image-3.png)
+![Figure 4 - Résultats CoOp avec bruit gaussien](../../../assets/images/projects/adaptation-few-shot-de-modeles-vision-langage/image-3.png)
 
 Figure 4 - Résultats CoOp avec bruit gaussien
 
@@ -116,7 +116,7 @@ if self.training and self.noise_scale:
 
 ## 5. Méthode CoCoOp : Context Conditionnel
 
-![Figure 5 - CoCoOp Overview](/images/projects/adaptation-few-shot-de-modeles-vision-langage/image-4.png)
+![Figure 5 - CoCoOp Overview](../../../assets/images/projects/adaptation-few-shot-de-modeles-vision-langage/image-4.png)
 
 Figure 5 - CoCoOp Overview
 
@@ -135,7 +135,7 @@ ctx_shifted = ctx + self.meta_net(image_features)
 
 Cette méthode permet d’obtenir une meilleure généralisation aux classes novel tout en conservant des performances élevées sur les classes base :
 
-![Figure 6 - Résultats CoCoOp](/images/projects/adaptation-few-shot-de-modeles-vision-langage/image-5.png)
+![Figure 6 - Résultats CoCoOp](../../../assets/images/projects/adaptation-few-shot-de-modeles-vision-langage/image-5.png)
 
 Figure 6 - Résultats CoCoOp
 
@@ -159,7 +159,7 @@ self.meta_net = nn.Sequential(
 
 Ces ajustements ont permis de gagner en robustesse sans trop augmenter le coût d’entraînement :
 
-![Figure 7 - Résultats CoCoOp amélioré](/images/projects/adaptation-few-shot-de-modeles-vision-langage/image-6.png)
+![Figure 7 - Résultats CoCoOp amélioré](../../../assets/images/projects/adaptation-few-shot-de-modeles-vision-langage/image-6.png)
 
 ## 7. Amélioration de Meta-Net
 
@@ -176,11 +176,11 @@ Pour cela, nous avons appliqué une **amplification adaptative de contraste**, m
 
 Nous avons également utilisé la méthode UMAP pour visualiser la distribution des tokens.
 
-![Figure 8 - Distribution des tokens sans amélioration](/images/projects/adaptation-few-shot-de-modeles-vision-langage/tokens_train_umap_no_enhancement.png)
+![Figure 8 - Distribution des tokens sans amélioration](../../../assets/images/projects/adaptation-few-shot-de-modeles-vision-langage/tokens_train_umap_no_enhancement.png)
 
 Figure 8 - Distribution des tokens sans amélioration
 
-![Figure 9 - Distribution des tokens avec amélioration](/images/projects/adaptation-few-shot-de-modeles-vision-langage/tokens_train_umap_enhancement.png)
+![Figure 9 - Distribution des tokens avec amélioration](../../../assets/images/projects/adaptation-few-shot-de-modeles-vision-langage/tokens_train_umap_enhancement.png)
 
 Figure 9 - Distribution des tokens avec amélioration
 

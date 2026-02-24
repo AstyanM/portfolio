@@ -21,7 +21,7 @@ conclusion: |
   This project allowed us to explore in depth the entire rapid prototyping process, from CAD design and modeling to parts printing and final assembly of the Delta 3D printer. Each step required thorough reflection on design choices, mechanical constraints, and specifics of the Delta architecture, notably its control and movement system. The multiple tests and adjustments made allowed us to optimize components to ensure fluid and precise operation. This experience not only familiarized us with additive manufacturing technologies but also with technical challenges related to implementing a complex system, thus constituting a solid foundation for future engineering and prototyping projects.
 ---
 
-![Figure 1 - Commercial Delta Printer](/images/projects/creation-dune-imprimante-3d/1.jpg)
+![Figure 1 - Commercial Delta Printer](../../../assets/images/projects/creation-dune-imprimante-3d/1.jpg)
 
 Figure 1 - Commercial Delta Printer
 
@@ -39,7 +39,7 @@ The objectives to be met for this part are as follows:
 
 This led the group to make choices and realize the 3D modeling below:
 
-![Figure 2 - Upper Frame 3D Modeling](/images/projects/creation-dune-imprimante-3d/276b557f-f805-4401-896b-ce306aaa9999.png)
+![Figure 2 - Upper Frame 3D Modeling](../../../assets/images/projects/creation-dune-imprimante-3d/276b557f-f805-4401-896b-ce306aaa9999.png)
 
 Figure 2 - Upper Frame 3D Modeling
 
@@ -54,7 +54,7 @@ Similarly, this part must meet several criteria:
 
 Therefore, this modeling was chosen:
 
-![Figure 3 - Lower Frame 3D Modeling](/images/projects/creation-dune-imprimante-3d/84d5894f-0c08-4de7-9443-5d6bdda7aa65.png)
+![Figure 3 - Lower Frame 3D Modeling](../../../assets/images/projects/creation-dune-imprimante-3d/84d5894f-0c08-4de7-9443-5d6bdda7aa65.png)
 
 Figure 3 - Lower Frame 3D Modeling
 
@@ -69,17 +69,17 @@ This part, on which I worked personally, aims to model the carriage that must sl
 
 We started by making test versions of this part, which we progressively printed and improved to test several structures.
 
-![Figure 4 - Example of a test print](/images/projects/creation-dune-imprimante-3d/05264723-4451-49d6-9aae-f9f1348ce313.png)
+![Figure 4 - Example of a test print](../../../assets/images/projects/creation-dune-imprimante-3d/05264723-4451-49d6-9aae-f9f1348ce313.png)
 
 Figure 4 - Example of a test print
 
 Finally, we settled after several test sessions on a structure that allows locking the belt thanks to multiple notches located inside the 3D structure:
 
-![Figure 5 - Carriage 3D Modeling](/images/projects/creation-dune-imprimante-3d/05b356e7-c0e4-43de-bf97-6f13191887c5.png)
+![Figure 5 - Carriage 3D Modeling](../../../assets/images/projects/creation-dune-imprimante-3d/05b356e7-c0e4-43de-bf97-6f13191887c5.png)
 
 Figure 5 - Carriage 3D Modeling
 
-![Figure 6 - Printed and functional carriage](/images/projects/creation-dune-imprimante-3d/3988d843-4f02-4613-8154-a03fd5eb8e2d.png)
+![Figure 6 - Printed and functional carriage](../../../assets/images/projects/creation-dune-imprimante-3d/3988d843-4f02-4613-8154-a03fd5eb8e2d.png)
 
 Figure 6 - Printed and functional carriage
 
@@ -91,13 +91,13 @@ For this last part, the structure prerequisites were as follows:
 -   Dimensioning the head to have a minimum volume in the printing space
 -   Preserving the brand spirit
 
-![Figure 7 - Toolhead 3D Modeling](/images/projects/creation-dune-imprimante-3d/be846340-17fa-42ea-9fd1-39eff77900b4.png)
+![Figure 7 - Toolhead 3D Modeling](../../../assets/images/projects/creation-dune-imprimante-3d/be846340-17fa-42ea-9fd1-39eff77900b4.png)
 
 Figure 7 - Toolhead 3D Modeling
 
 ## 2. Printing and Assembly
 
-![Figure 8 - 3D Structure Assembly](/images/projects/creation-dune-imprimante-3d/eb712480-cbe0-47a0-943b-67ef344ff8e0.png)
+![Figure 8 - 3D Structure Assembly](../../../assets/images/projects/creation-dune-imprimante-3d/eb712480-cbe0-47a0-943b-67ef344ff8e0.png)
 
 Figure 8 - 3D Structure Assembly
 
@@ -112,7 +112,7 @@ To print the parts, we used Prusa I3 MK2 3D printers with the following settings
 
 For such an operation, counting unsuccessful attempts and all tests performed, we used 1 kg of filament and 105 h of printing in total. This allowed us to reach the assembly stage with the printed components and those we already had available (motor, metal rods, print bed...):
 
-![Figure 9 - Final Assembly](/images/projects/creation-dune-imprimante-3d/05cd9ead-dc18-4f70-b9be-baa9ab28ef29.png)
+![Figure 9 - Final Assembly](../../../assets/images/projects/creation-dune-imprimante-3d/05cd9ead-dc18-4f70-b9be-baa9ab28ef29.png)
 
 Figure 9 - Final Assembly
 

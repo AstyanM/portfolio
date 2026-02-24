@@ -49,7 +49,7 @@ Noise is a mechanical vibration of a fluid that can be measured in decibels (dB)
 
 Active reduction is particularly useful for attenuating certain precise frequencies and complementing the limits of passive reduction. However, it requires a high-performance electronic system capable of analyzing and processing sound signals in real time.
 
-![Figure 1 - Phase Opposition Simulation](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/simulation_opposition_bis_page-0001.jpg)
+![Figure 1 - Phase Opposition Simulation](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/simulation_opposition_bis_page-0001.jpg)
 
 Figure 1 - Phase Opposition Simulation
 
@@ -62,19 +62,19 @@ The first experiment consisted of generating phase opposition between two speake
 - Two speakers were placed facing each other and powered by a **signal generator** with a 180° phase shift
 - Noise reduction was measured at different distances, and efficiency reached **up to 93%** for a frequency of **440 Hz**
 
-![Figure 2 - First Setup Diagram](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/montage_hp_colles_page-0001.jpg)
+![Figure 2 - First Setup Diagram](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/montage_hp_colles_page-0001.jpg)
 
 Figure 2 - First Setup Diagram
 
-![Figure 3 - Associated Results: 93% Efficiency](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/hp_colles_courbe.png)
+![Figure 3 - Associated Results: 93% Efficiency](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/hp_colles_courbe.png)
 
 Figure 3 - Associated Results: 93% Efficiency
 
-![Figure 4 - Second Setup Diagram](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/montage_hp_2_page-0001.jpg)
+![Figure 4 - Second Setup Diagram](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/montage_hp_2_page-0001.jpg)
 
 Figure 4 - Second Setup Diagram
 
-![Figure 5 - Associated Results: 86% Efficiency](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/hp_distants_l.png)
+![Figure 5 - Associated Results: 86% Efficiency](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/hp_distants_l.png)
 
 Figure 5 - Associated Results: 86% Efficiency
 
@@ -95,17 +95,17 @@ The objective was to design a circuit capable of generating a phase-shifted sign
 - A sinusoidal voltage of **1 kHz** is sent to a circuit composed of resistors and capacitors to produce a **phase shift** via the function $2\arctan(R_1C\omega)$
 - The obtained signal was then added to ambient noise via a **summing amplifier**, thus simulating noise cancellation by superposition of opposite waves
 
-![Figure 6 - Phase Shifter-Summer Circuit Diagram](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/montagedephaseursommateur_page-0001.jpg)
+![Figure 6 - Phase Shifter-Summer Circuit Diagram](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/montagedephaseursommateur_page-0001.jpg)
 
 Figure 6 - Phase Shifter-Summer Circuit Diagram
 
 A first circuit was assembled and tested:
 
-![Figure 7 - Electrical System](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/photo_circuit_simple.jpg)
+![Figure 7 - Electrical System](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/photo_circuit_simple.jpg)
 
 Figure 7 - Electrical System
 
-![Figure 8 - Measured Associated Results](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/photo_resultat_elec.jpg)
+![Figure 8 - Measured Associated Results](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/photo_resultat_elec.jpg)
 
 Figure 8 - Measured Associated Results
 
@@ -117,17 +117,17 @@ This circuit aims to simulate a more classic use of active noise reduction princ
 
 The noise is therefore the music played that we try to remove from the signal sent by the GBF.
 
-![Figure 9 - General System Principle](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/chain_page-0001.jpg)
+![Figure 9 - General System Principle](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/chain_page-0001.jpg)
 
 Figure 9 - General System Principle
 
 We then assembled and tested our system:
 
-![Figure 10 - Electrical System](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/photo_intermediaire.jpg)
+![Figure 10 - Electrical System](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/photo_intermediaire.jpg)
 
 Figure 10 - Electrical System
 
-![Figure 11 - Measured Associated Results](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/photo_resultats_intermediaire-1.jpg)
+![Figure 11 - Measured Associated Results](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/photo_resultats_intermediaire-1.jpg)
 
 Figure 11 - Measured Associated Results
 
@@ -139,7 +139,7 @@ With the green curve showing the signal without reduction and the yellow one sho
 
 To explore this new possibility, we developed a signal processing program in Python to record a sound, process it with our program through the Sysam board, and then send it back to another speaker. Experimentally, we started with a sinusoidal signal that we phase-shifted to clearly evaluate our solution's efficiency.
 
-![Figure 12 - First Electronic System with Sysam Board](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/photo_sysam.jpg)
+![Figure 12 - First Electronic System with Sysam Board](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/photo_sysam.jpg)
 
 Figure 12 - First Electronic System with Sysam Board
 
@@ -151,19 +151,19 @@ To automate sound signal analysis and correction, a digital system was developed
 
 The implemented protocol then includes several steps:
 
-![Figure 13 - Signal Processing Protocol](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/chaine.png)
+![Figure 13 - Signal Processing Protocol](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/chaine.png)
 
 Figure 13 - Signal Processing Protocol
 
 For input signal conditioning, we decided to use a summing amplifier to shift the voltage range above $0V$ with an amplitude of $2V$.
 
-![Figure 14 - Summing Amplifier for Input Conditioning](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/montage_ali_1_page-0001.jpg)
+![Figure 14 - Summing Amplifier for Input Conditioning](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/montage_ali_1_page-0001.jpg)
 
 Figure 14 - Summing Amplifier for Input Conditioning
 
 For the output signal, we observed that the Raspberry Pi's low sampling rate caused sharp edges at output. We therefore chose to use a low-pass filter to remedy this.
 
-![Figure 15 - Low-Pass Filter for Output Conditioning](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/montage_ali_2_page-0001.jpg)
+![Figure 15 - Low-Pass Filter for Output Conditioning](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/montage_ali_2_page-0001.jpg)
 
 Figure 15 - Low-Pass Filter for Output Conditioning
 
@@ -175,11 +175,11 @@ A user interface system was also designed to dynamically adjust system parameter
 
 Finally, we were able to model the final circuit and build it:
 
-![Figure 16 - Final Project Modeling](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/circuit_complet.jpg)
+![Figure 16 - Final Project Modeling](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/circuit_complet.jpg)
 
 Figure 16 - Final Project Modeling
 
-![Figure 17 - System in Working Condition](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/photo_astyan_avance.jpg)
+![Figure 17 - System in Working Condition](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/photo_astyan_avance.jpg)
 
 Figure 17 - System in Working Condition
 

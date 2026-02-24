@@ -55,7 +55,7 @@ Le projet repose sur une architecture modulaire intégrant plusieurs pôles tech
 
 Le projet a suivi une méthodologie rigoureuse avec une planification détaillée et des documents structurants. Les documents qui ont servi de base à cette planification sont le cahier des charges que l’on a rédigé en accord avec le client et le diagramme des exigences fonctionnelles suivant :
 
-![Figure 1 - Diagramme des exigences fonctionnelles](/images/projects/faire-parler-les-donnees-medicales/exigences.png)
+![Figure 1 - Diagramme des exigences fonctionnelles](../../../assets/images/projects/faire-parler-les-donnees-medicales/exigences.png)
 
 Figure 1 - Diagramme des exigences fonctionnelles
 
@@ -82,7 +82,7 @@ Le projet a été structuré en plusieurs phases :
 
 Cela nous a alors permis de réaliser un diagramme de Gantt sur toute la durée du projet, qui a été modifié au fur et à mesure des avancées et auquel nous nous sommes tenus :
 
-![Figure 2 - Diagramme de Gantt](/images/projects/faire-parler-les-donnees-medicales/fef6d892-17e1-480b-a48b-3fa27d176df7.png)
+![Figure 2 - Diagramme de Gantt](../../../assets/images/projects/faire-parler-les-donnees-medicales/fef6d892-17e1-480b-a48b-3fa27d176df7.png)
 
 Figure 2 - Diagramme de Gantt
 
@@ -90,13 +90,13 @@ Figure 2 - Diagramme de Gantt
 
 Une analyse SWOT a été réalisée pour identifier les risques et opportunités du projet :
 
-![Figure 3 - Matrice SWOT](/images/projects/faire-parler-les-donnees-medicales/swot_v2.png)
+![Figure 3 - Matrice SWOT](../../../assets/images/projects/faire-parler-les-donnees-medicales/swot_v2.png)
 
 Figure 3 - Matrice SWOT
 
 A cela, nous avons aussi ajouté un plan de gestion des risques qui a lui aussi été modifié au cours de notre travail :
 
-![Figure 4 - Plan de gestion des risques](/images/projects/faire-parler-les-donnees-medicales/gestiondesrisques.png)
+![Figure 4 - Plan de gestion des risques](../../../assets/images/projects/faire-parler-les-donnees-medicales/gestiondesrisques.png)
 
 Figure 4 - Plan de gestion des risques
 
@@ -104,7 +104,7 @@ Figure 4 - Plan de gestion des risques
 
 Ce découpage des tâches s’est divisé en 2 parties majeures, tout comme notre projet : la première inclut la familiarisation au projet et la création des livrables alors que la deuxième se concentre sur l’amélioration de ces derniers et l’utilisation d’une API.
 
-![Figure 5 - Work Breakdown Structure](/images/projects/faire-parler-les-donnees-medicales/4544eafe-6418-44fb-8eaa-1bc83c83c536.png)
+![Figure 5 - Work Breakdown Structure](../../../assets/images/projects/faire-parler-les-donnees-medicales/4544eafe-6418-44fb-8eaa-1bc83c83c536.png)
 
 Figure 5 - Work Breakdown Structure
 
@@ -112,7 +112,7 @@ Figure 5 - Work Breakdown Structure
 
 Après avoir fait tout ce travail de préparation et afin de pouvoir commencer la partie technique de ce projet, nous avons rédigé une matrice RACI qui permet de définir le rôle de chaque intervenant dans ce projet :
 
-![Figure 6 - Extrait de la matrice RACI](/images/projects/faire-parler-les-donnees-medicales/raci.png)
+![Figure 6 - Extrait de la matrice RACI](../../../assets/images/projects/faire-parler-les-donnees-medicales/raci.png)
 
 Figure 6 - Extrait de la matrice RACI
 
@@ -120,7 +120,7 @@ Figure 6 - Extrait de la matrice RACI
 
 Au cours de ce projet, nous avons eu l’opportunité de travailler avec de nombreux experts dans leurs domaines afin de nous aider à avancer. Nous avons donc recensé tous ceux auxquels nous avons fait appel et noté le total des heures de formations et de consultation que l’on a utilisés. A la fin, nous avions utilisé 14h de consultation interne (avec des personnes qui sont employées par le groupe Centrale Lille) et 23h de consultation externe (avec des représentants du SIB et du personnel médical).
 
-![Figure 7 - Ensemble des consultants rencontrés](/images/projects/faire-parler-les-donnees-medicales/consultants.png)
+![Figure 7 - Ensemble des consultants rencontrés](../../../assets/images/projects/faire-parler-les-donnees-medicales/consultants.png)
 
 Figure 7 - Ensemble des consultants rencontrés
 
@@ -152,13 +152,13 @@ Les fondations de ce travail ont été réalisées en synthétisant des données
 - Synthèse et indexation de ces données
 - Travail sur l’explicabilité du résultat
 
-![Figure 8 - Schématisation du fonctionnement de notre solution](/images/projects/faire-parler-les-donnees-medicales/explicabilite.png)
+![Figure 8 - Schématisation du fonctionnement de notre solution](../../../assets/images/projects/faire-parler-les-donnees-medicales/explicabilite.png)
 
 Figure 8 - Schématisation du fonctionnement de notre solution
 
 **Résultat :** On arrive finalement à indexer les données du patient dans un fichier structuré
 
-![Figure 9 - Exemple de CR avant et après indexation](/images/projects/faire-parler-les-donnees-medicales/capture_dcran_2025-02-18_005443.png)
+![Figure 9 - Exemple de CR avant et après indexation](../../../assets/images/projects/faire-parler-les-donnees-medicales/capture_dcran_2025-02-18_005443.png)
 
 Figure 9 - Exemple de CR avant et après indexation
 
@@ -205,7 +205,7 @@ Afin de décider du résultat du triage, plusieurs données jugées comme ayant 
 - **StandardScaler** pour la normalisation des données
 - **Analyse en Composantes Principales (PCA)** pour la réduction de dimension
 
-![Figure 10 - Fonctionnement résumé du livrable de prédiction](/images/projects/faire-parler-les-donnees-medicales/capture_dcran_2025-02-18_010534.png)
+![Figure 10 - Fonctionnement résumé du livrable de prédiction](../../../assets/images/projects/faire-parler-les-donnees-medicales/capture_dcran_2025-02-18_010534.png)
 
 Figure 10 - Fonctionnement résumé du livrable de prédiction
 
@@ -218,7 +218,7 @@ Figure 10 - Fonctionnement résumé du livrable de prédiction
 - Permettre aux services hospitaliers d’accéder aux prédictions via une interface intuitive
 - Gérer les accès et permissions via une base de données sécurisée
 
-![Figure 11 : Différentes étapes du fonctionnement de l’API](/images/projects/faire-parler-les-donnees-medicales/capture_dcran_2025-02-18_010534-1.png)
+![Figure 11 : Différentes étapes du fonctionnement de l’API](../../../assets/images/projects/faire-parler-les-donnees-medicales/capture_dcran_2025-02-18_010534-1.png)
 
 Figure 11 : Différentes étapes du fonctionnement de l’API
 

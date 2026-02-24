@@ -123,11 +123,11 @@ dot g2.dot -T png -o g2.png
 
 We obtain the following 2 figures, which correspond well to what we are looking for given the command:
 
-![Figure 1 - First morpion](/images/projects/creation-dun-bot-morpion/g1.png)
+![Figure 1 - First morpion](../../../assets/images/projects/creation-dun-bot-morpion/g1.png)
 
 Figure 1 - First morpion
 
-![Figure 2 - Second morpion](/images/projects/creation-dun-bot-morpion/g2.png)
+![Figure 2 - Second morpion](../../../assets/images/projects/creation-dun-bot-morpion/g2.png)
 
 Figure 2 - Second morpion
 
@@ -139,21 +139,21 @@ Furthermore, we implemented the **`minimax`** function:
 
 After execution, we then obtain these figures:
 
-![Figure 3 - Minimax possibilities tree](/images/projects/creation-dun-bot-morpion/g1-1.png)
+![Figure 3 - Minimax possibilities tree](../../../assets/images/projects/creation-dun-bot-morpion/g1-1.png)
 
 Figure 3 - Minimax possibilities tree
 
-![Figure 4 - Global minimax possibilities tree](/images/projects/creation-dun-bot-morpion/g2-1.png)
+![Figure 4 - Global minimax possibilities tree](../../../assets/images/projects/creation-dun-bot-morpion/g2-1.png)
 
 Figure 4 - Global minimax possibilities tree
 
 To go further, we can improve this program by integrating a **`negamax`** with Alpha-Beta pruning, which will give for example these results for the same inputs:
 
-![Figure 5 - Negamax possibilities tree](/images/projects/creation-dun-bot-morpion/unnamed1.png)
+![Figure 5 - Negamax possibilities tree](../../../assets/images/projects/creation-dun-bot-morpion/unnamed1.png)
 
 Figure 5 - Negamax possibilities tree
 
-![Figure 6 - Global negamax possibilities tree](/images/projects/creation-dun-bot-morpion/unnamed2.png)
+![Figure 6 - Global negamax possibilities tree](../../../assets/images/projects/creation-dun-bot-morpion/unnamed2.png)
 
 Figure 6 - Global negamax possibilities tree
 
@@ -361,11 +361,11 @@ Indeed, we can see the 9 grids of the supermorpion, the one of the main morpion,
 
 Then, we can also create the **`png`** file, which updates the **`refresh.html`** page:
 
-![Figure 7 - Png file](/images/projects/creation-dun-bot-morpion/g.png)
+![Figure 7 - Png file](../../../assets/images/projects/creation-dun-bot-morpion/g.png)
 
 Figure 7 - Png file
 
-![Figure 8 - refresh.html page](/images/projects/creation-dun-bot-morpion/untitled.png)
+![Figure 8 - refresh.html page](../../../assets/images/projects/creation-dun-bot-morpion/untitled.png)
 
 Figure 8 - refresh.html page
 

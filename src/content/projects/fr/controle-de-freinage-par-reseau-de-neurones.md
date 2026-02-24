@@ -54,7 +54,7 @@ $$
 \lambda = \frac{v - r\omega}{v}
 $$
 
-![Figure 1 - Modèle simplifié du quart de voiture](/images/projects/controle-de-freinage-par-reseau-de-neurones/quarter_car_model.png)
+![Figure 1 - Modèle simplifié du quart de voiture](../../../assets/images/projects/controle-de-freinage-par-reseau-de-neurones/quarter_car_model.png)
 
 Figure 1 - Modèle simplifié du quart de voiture
 
@@ -120,13 +120,13 @@ Pour entraîner les réseaux, un ensemble de 50 scénarios de freinage simulés 
 | Glissement initial         | 0.1–0.4    |
 | Couple de freinage initial | 0–20 Nm    |
 
-![Figure 2 - Analyse des données générées](/images/projects/controle-de-freinage-par-reseau-de-neurones/data_quality_analysis.png)
+![Figure 2 - Analyse des données générées](../../../assets/images/projects/controle-de-freinage-par-reseau-de-neurones/data_quality_analysis.png)
 
 Figure 2 - Analyse des données générées
 
 Les réseaux ont été entraînés sur environ 20 000 points de données avec une méthode standard (Adam, 5 à 10 époques). L’objectif était de prédire avec précision la réponse du système et d’en extraire une loi de commande stable.
 
-![Figure 3 - Perte d’apprentissage des deux réseaux de neurones](/images/projects/controle-de-freinage-par-reseau-de-neurones/training_curves.png)
+![Figure 3 - Perte d’apprentissage des deux réseaux de neurones](../../../assets/images/projects/controle-de-freinage-par-reseau-de-neurones/training_curves.png)
 
 Figure 3 - Perte d’apprentissage des deux réseaux de neurones
 
@@ -138,7 +138,7 @@ Le contrôleur NARMA-L2 a été comparé au contrôleur PID classique :
 - **Effort de freinage :** le NARMA-L2 applique des pressions de freinage plus faibles, parfois instables, mais suffisantes pour un ralentissement comparable.
 - **Réduction du stress mécanique :** des efforts de freinage plus doux peuvent prolonger la durée de vie des composants.
 
-![Figure 4 - Comparaison des performances : glissement et couple de freinage](/images/projects/controle-de-freinage-par-reseau-de-neurones/comparison_results.png)
+![Figure 4 - Comparaison des performances : glissement et couple de freinage](../../../assets/images/projects/controle-de-freinage-par-reseau-de-neurones/comparison_results.png)
 
 Figure 4 - Comparaison des performances : glissement et couple de freinage
 

@@ -220,7 +220,7 @@ Cependant, RSA peut être vulnérable aux attaques de factorisation si les nombr
 
 On peut alors synthétiser toutes ces méthodes de chiffrement dans un programme global qui permet, à partir d'un menu à choix pour l'utilisateur, de choisir la méthode que l'on veut utiliser et ainsi de pouvoir chiffrer et déchiffrer comme on veut :
 
-![Figure 1 - Cas d'utilisation du programme final](/images/projects/exploration-des-methodes-de-cryptographie/crypto.png)
+![Figure 1 - Cas d'utilisation du programme final](../../../assets/images/projects/exploration-des-methodes-de-cryptographie/crypto.png)
 
 Figure 1 - Cas d'utilisation du programme final
 

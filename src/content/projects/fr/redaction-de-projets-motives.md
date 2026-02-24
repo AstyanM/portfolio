@@ -87,7 +87,7 @@ Le nettoyage et la préparation du corpus comportent plusieurs étapes :
 3. **Création du dataset** : un fichier CSV est généré avec deux colonnes (`text`, `label`). Le label est un entier de 0 à 3 correspondant à la section.
 4. **Division en ensembles** : les données sont divisées en jeux d’entraînement (80 %) et de validation (20 %). Un échantillon est conservé pour tester le modèle final.
 
-![Figure 1 : Distribution du nombre de phrases par classes](/images/projects/redaction-de-projets-motives/image.png)
+![Figure 1 : Distribution du nombre de phrases par classes](../../../assets/images/projects/redaction-de-projets-motives/image.png)
 
 Figure 1 : Distribution du nombre de phrases par classes
 
@@ -100,7 +100,7 @@ Le cœur du système est un modèle **CamemBERT** (version de BERT adaptée au f
 1. **Fine‑tuning** : à partir du modèle pré‑entraîné `camembert-base`, l’architecture est ajustée avec une couche de sortie de taille 4. Le jeu d’entraînement est utilisé sur plusieurs epochs avec un optimiseur AdamW.
 2. **Évaluation** : la performance est mesurée sur le jeu de validation via l’accuracy, le F1-score et la matrice de confusion. Le modèle final atteint une accuracy d’environ 93 %, montrant donc que la différence entre les sections est bien capturée.
 
-![Figure 2 : Courbes d’entraînement Loss/Accuracy du jeu de données](/images/projects/redaction-de-projets-motives/image-1.png)
+![Figure 2 : Courbes d’entraînement Loss/Accuracy du jeu de données](../../../assets/images/projects/redaction-de-projets-motives/image-1.png)
 
 Figure 2 : Courbes d’entraînement Loss/Accuracy du jeu de données
 
@@ -173,7 +173,7 @@ L’API FastAPI est conçue autour de trois routers :
 
 Les services sont importés depuis `backend/services/` ; ils utilisent `transformers` pour charger CamemBERT, `language_tool_python` pour les corrections et des fonctions maison pour les métriques. La configuration (`core/config.py`) centralise les paramètres (chemins, CORS, etc.).
 
-![Figure 3 : Documentation des endpoints de l’API](/images/projects/redaction-de-projets-motives/image-2.png)
+![Figure 3 : Documentation des endpoints de l’API](../../../assets/images/projects/redaction-de-projets-motives/image-2.png)
 
 Figure 3 : Documentation des endpoints de l’API
 
@@ -196,7 +196,7 @@ Elle propose :
 
 L’architecture suit le modèle composant/context de React : des hooks gèrent l’état de la lettre et des résultats, tandis que des composants spécialisés s’occupent de l’affichage. Les appels à l’API sont centralisés dans `frontend/api/` pour faciliter leur modification.
 
-![Figure 4 : Interface graphique de la page d’évaluation](/images/projects/redaction-de-projets-motives/image-3.png)
+![Figure 4 : Interface graphique de la page d’évaluation](../../../assets/images/projects/redaction-de-projets-motives/image-3.png)
 
 Figure 4 : Interface graphique de la page d’évaluation
 
@@ -204,7 +204,7 @@ Figure 4 : Interface graphique de la page d’évaluation
 
 Hébergement complet du backend et frontend sur **Railway.**
 
-![Figure 5 : Infrastructure Railway](/images/projects/redaction-de-projets-motives/image-4.png)
+![Figure 5 : Infrastructure Railway](../../../assets/images/projects/redaction-de-projets-motives/image-4.png)
 
 Figure 5 : Infrastructure Railway
 

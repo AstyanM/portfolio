@@ -77,7 +77,7 @@ Le choix de Tauri permet d'obtenir un binaire de 5 à 10 MB (contre ~150 MB avec
 
 Le pipeline transforme l'audio du microphone en texte, en continu.
 
-![Figure 2 - Transcription en temps réel](/images/projects/openwhisper/transcription-live.png)
+![Figure 2 - Transcription en temps réel](../../../assets/images/projects/openwhisper/transcription-live.png)
 
 Figure 2 - Mode transcription en temps réel
 
@@ -116,7 +116,7 @@ Le mode `auto` détecte la présence d'un GPU CUDA et sélectionne le modèle op
 
 ### a) Mode dictée
 
-![Figure 3 - Mode dictée](/images/projects/openwhisper/dictation-mode.png)
+![Figure 3 - Mode dictée](../../../assets/images/projects/openwhisper/dictation-mode.png)
 
 Figure 3 - Mode dictée
 
@@ -128,7 +128,7 @@ Le raccourci `Ctrl+Shift+T` ouvre la fenêtre de transcription dédiée. Le text
 
 ### c) Mode upload
 
-![Figure 4 - Transcription de fichier](/images/projects/openwhisper/file-upload.png)
+![Figure 4 - Transcription de fichier](../../../assets/images/projects/openwhisper/file-upload.png)
 
 Figure 4 - Transcription de fichier audio
 
@@ -136,7 +136,7 @@ Le drag-and-drop ou le sélecteur de fichier accepte 9 formats audio (WAV, MP3, 
 
 ## 4. Recherche sémantique
 
-![Figure 5 - Recherche sémantique](/images/projects/openwhisper/session-search.png)
+![Figure 5 - Recherche sémantique](../../../assets/images/projects/openwhisper/session-search.png)
 
 Figure 5 - Recherche dans l'historique des sessions
 

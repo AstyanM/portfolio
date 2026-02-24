@@ -77,7 +77,7 @@ Tauri produces a 5 to 10 MB binary (versus ~150 MB with Electron) with reduced m
 
 The pipeline transforms microphone audio into text, continuously.
 
-![Figure 2 - Real-time transcription](/images/projects/openwhisper/transcription-live.png)
+![Figure 2 - Real-time transcription](../../../assets/images/projects/openwhisper/transcription-live.png)
 
 Figure 2 - Real-time transcription mode
 
@@ -116,7 +116,7 @@ The `auto` mode detects the presence of a CUDA GPU and selects the optimal model
 
 ### a) Dictation mode
 
-![Figure 3 - Dictation mode](/images/projects/openwhisper/dictation-mode.png)
+![Figure 3 - Dictation mode](../../../assets/images/projects/openwhisper/dictation-mode.png)
 
 Figure 3 - Dictation mode
 
@@ -128,7 +128,7 @@ The shortcut `Ctrl+Shift+T` opens a dedicated transcription window. Text accumul
 
 ### c) File upload mode
 
-![Figure 4 - File transcription](/images/projects/openwhisper/file-upload.png)
+![Figure 4 - File transcription](../../../assets/images/projects/openwhisper/file-upload.png)
 
 Figure 4 - Audio file transcription
 
@@ -136,7 +136,7 @@ Drag-and-drop or the file picker accepts 9 audio formats (WAV, MP3, FLAC, OGG, M
 
 ## 4. Semantic Search
 
-![Figure 5 - Semantic search](/images/projects/openwhisper/session-search.png)
+![Figure 5 - Semantic search](../../../assets/images/projects/openwhisper/session-search.png)
 
 Figure 5 - Session history search
 

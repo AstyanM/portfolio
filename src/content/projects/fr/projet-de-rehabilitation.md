@@ -33,13 +33,13 @@ Pour répondre aux besoins des habitants, nous avons intégré des espaces cultu
 
 Enfin, chaque parcelle étant constructible et sans restriction particulière, nous avons pu concevoir un aménagement flexible et optimisé :
 
-![Figure 2 - Plan masse du projet en 1/500](/images/projects/projet-de-rehabilitation/e8ededf6-7456-4bd7-9784-2c09d55b47cd.png)
+![Figure 2 - Plan masse du projet en 1/500](../../../assets/images/projects/projet-de-rehabilitation/e8ededf6-7456-4bd7-9784-2c09d55b47cd.png)
 
 Figure 2 - Plan masse du projet en 1/500
 
 À partir de toutes ces contraintes, un projet complet a été mis sur pied, détaillé tout au long de cette page :
 
-![Figure 3 - Introduction globale au projet](/images/projects/projet-de-rehabilitation/liucf7vg.jpg)
+![Figure 3 - Introduction globale au projet](../../../assets/images/projects/projet-de-rehabilitation/liucf7vg.jpg)
 
 Figure 3 - Introduction globale au projet
 
@@ -51,7 +51,7 @@ Le projet propose la construction de logements adaptés à un environnement dura
 - Le plein pied permet de ne pas obstruer la vue
 - Chaque logement pourra avoir son jardin
 
-![Figure 4 - Vue globale du projet intégrant les logements](/images/projects/projet-de-rehabilitation/a04df5e5-8222-44e8-bbe0-4f38bfcf6720.png)
+![Figure 4 - Vue globale du projet intégrant les logements](../../../assets/images/projects/projet-de-rehabilitation/a04df5e5-8222-44e8-bbe0-4f38bfcf6720.png)
 
 Figure 4 - Vue globale du projet intégrant les logements
 
@@ -61,7 +61,7 @@ Les habitations suivent un design modulaire qui permet une optimisation de l'esp
 
 En effet, nous avons tout d’abord décidé d’utiliser le plus possible de matériaux naturels pour coller à l’idée d’un logement respectueux de l’environnement. De plus, nous avons choisi volontairement des toits avec une pente et une construction partiellement sur pilotis afin de générer de la profondeur et du contraste pour se différencier des bâtiments environnants :
 
-![Figure 5 - Vue extérieure des logements](/images/projects/projet-de-rehabilitation/8a48617e-1159-4b06-8d06-5130d49640cc.png)
+![Figure 5 - Vue extérieure des logements](../../../assets/images/projects/projet-de-rehabilitation/8a48617e-1159-4b06-8d06-5130d49640cc.png)
 
 Figure 5 - Vue extérieure des logements
 
@@ -74,11 +74,11 @@ Les bâtiments sont conçus selon les normes en vigueur et intègrent plusieurs 
 - Construction en partie sur pilotis et pieux (pour ne pas envahir l’espace naturel)
 - Orientation et fenêtres afin de maximiser la lumière naturelle
 
-![Figure 6 - Plan au 1/100 des logements](/images/projects/projet-de-rehabilitation/fb6b5903-d93f-4478-a33b-53f7d98f2607.png)
+![Figure 6 - Plan au 1/100 des logements](../../../assets/images/projects/projet-de-rehabilitation/fb6b5903-d93f-4478-a33b-53f7d98f2607.png)
 
 Figure 6 - Plan au 1/100 des logements
 
-![Figure 7 - Récapitulatif de la partie dédiée aux logements](/images/projects/projet-de-rehabilitation/ftc6f-m1.jpg)
+![Figure 7 - Récapitulatif de la partie dédiée aux logements](../../../assets/images/projects/projet-de-rehabilitation/ftc6f-m1.jpg)
 
 Figure 7 - Récapitulatif de la partie dédiée aux logements
 
@@ -93,15 +93,15 @@ Nous avons intégré une **salle culturelle avec buvette** pour répondre à plu
 - **Lieu d’échange et de socialisation** : La salle culturelle permet l’organisation d’événements, d’expositions et d’ateliers favorisant la cohésion sociale. L’espace est modulable pour s’adapter aux différentes activités proposées
 - **Dynamisation du quartier** : En proposant une buvette intégrée, cet espace devient un point de rencontre attractif, propice aux échanges et à la vie communautaire
 
-![Figure 8 - Vue extérieure de la salle culturelle](/images/projects/projet-de-rehabilitation/cfbf4b62-dbfe-4954-9cf9-89b998699df8.png)
+![Figure 8 - Vue extérieure de la salle culturelle](../../../assets/images/projects/projet-de-rehabilitation/cfbf4b62-dbfe-4954-9cf9-89b998699df8.png)
 
 Figure 8 - Vue extérieure de la salle culturelle
 
-![Figure 9 - Vue intérieure de la salle culturelle](/images/projects/projet-de-rehabilitation/122bb7e5-0094-43a2-9db5-0a17ae1c1869.png)
+![Figure 9 - Vue intérieure de la salle culturelle](../../../assets/images/projects/projet-de-rehabilitation/122bb7e5-0094-43a2-9db5-0a17ae1c1869.png)
 
 Figure 9 - Vue intérieure de la salle culturelle
 
-![Figure 10 - Plan au 1/100 de la salle culturelle](/images/projects/projet-de-rehabilitation/17130331-7a2e-4f9a-9c9f-893d4055f43e.png)
+![Figure 10 - Plan au 1/100 de la salle culturelle](../../../assets/images/projects/projet-de-rehabilitation/17130331-7a2e-4f9a-9c9f-893d4055f43e.png)
 
 Figure 10 - Plan au 1/100 de la salle culturelle
 
@@ -112,19 +112,19 @@ Quant à la supérette, elle répond elle aussi à une réelle demande présente
 - **Accès facilité aux produits de première nécessité** : La supérette favorise les circuits courts en privilégiant les producteurs locaux, limitant ainsi l’empreinte carbone et renforçant l’économie locale
 - **Manque de commerces :** Les alentours font partie de la cité scientifique, qui n’intègre aucun commerce non étatique, menant alors vers une demande forte
 
-![Figure 11 - Vue extérieure de la supérette](/images/projects/projet-de-rehabilitation/c7d28f0b-ab14-4742-8f38-232abe79bd2e.png)
+![Figure 11 - Vue extérieure de la supérette](../../../assets/images/projects/projet-de-rehabilitation/c7d28f0b-ab14-4742-8f38-232abe79bd2e.png)
 
 Figure 11 - Vue extérieure de la supérette
 
-![Figure 12 - Vue intérieure de la supérette](/images/projects/projet-de-rehabilitation/452ed6d0-e585-478b-9785-edd0ad104706.png)
+![Figure 12 - Vue intérieure de la supérette](../../../assets/images/projects/projet-de-rehabilitation/452ed6d0-e585-478b-9785-edd0ad104706.png)
 
 Figure 12 - Vue intérieure de la supérette
 
-![Figure 13 - Plan au 1/100 de la supérette](/images/projects/projet-de-rehabilitation/1b437efc-67cf-49f4-bd09-90c711f29fdf.png)
+![Figure 13 - Plan au 1/100 de la supérette](../../../assets/images/projects/projet-de-rehabilitation/1b437efc-67cf-49f4-bd09-90c711f29fdf.png)
 
 Figure 13 - Plan au 1/100 de la supérette
 
-![Figure 14 - Récapitulatif de la partie publique](/images/projects/projet-de-rehabilitation/rzskmhn5.jpg)
+![Figure 14 - Récapitulatif de la partie publique](../../../assets/images/projects/projet-de-rehabilitation/rzskmhn5.jpg)
 
 Figure 14 - Récapitulatif de la partie publique
 
@@ -132,11 +132,11 @@ Figure 14 - Récapitulatif de la partie publique
 
 Pour mieux visualiser l’ensemble du projet, nous avons réalisé des maquettes physiques :
 
-![Figure 15 - Première maquette](/images/projects/projet-de-rehabilitation/213ce5dc-94f8-4096-9718-26c579101369.png)
+![Figure 15 - Première maquette](../../../assets/images/projects/projet-de-rehabilitation/213ce5dc-94f8-4096-9718-26c579101369.png)
 
 Figure 15 - Première maquette
 
-![Figure 16 - Maquette finale](/images/projects/projet-de-rehabilitation/a00fd6ba-2333-44b5-a726-e7a663a72aee.png)
+![Figure 16 - Maquette finale](../../../assets/images/projects/projet-de-rehabilitation/a00fd6ba-2333-44b5-a726-e7a663a72aee.png)
 
 Figure 16 - Maquette finale
 

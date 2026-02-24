@@ -220,7 +220,7 @@ However, RSA can be vulnerable to factorization attacks if numbers are not large
 
 We can then synthesize all these encryption methods in a global program which allows, from a choice menu for the user, to choose the method we want to use and thus be able to encrypt and decrypt as we wish:
 
-![Figure 1 - Final Program Use Case](/images/projects/exploration-des-methodes-de-cryptographie/crypto.png)
+![Figure 1 - Final Program Use Case](../../../assets/images/projects/exploration-des-methodes-de-cryptographie/crypto.png)
 
 Figure 1 - Final Program Use Case
 

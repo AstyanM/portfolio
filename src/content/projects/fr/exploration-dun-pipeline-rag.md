@@ -114,7 +114,7 @@ Cinq stratégies de découpage ont été comparées. Le recursive splitter (qui 
 
 Un grid search sur la taille (500-2000) et l'overlap (0-400) confirme que **1000/200 est le point optimal**. Au-delà de 200 d'overlap, les gains sont négligeables.
 
-![Figure 1 - Heatmap de la qualité de retrieval selon les paramètres de chunking](/images/projects/exploration-dun-pipeline-rag/retrieval_quality_heatmap.png)
+![Figure 1 - Heatmap de la qualité de retrieval selon les paramètres de chunking](../../../assets/images/projects/exploration-dun-pipeline-rag/retrieval_quality_heatmap.png)
 
 Figure 1 - Heatmap de la qualité de retrieval selon les paramètres de chunking
 
@@ -131,7 +131,7 @@ Quatre modèles d'embedding ont été évalués. Le critère décisif n'est pas 
 
 mxbai-embed-large domine avec 0.207 contre 0.100 pour nomic-embed-text, soit **+107%** de capacité à discriminer les documents pertinents. C'est le choix retenu pour la suite.
 
-![Figure 2 - Heatmap de la séparation sémantique par modèle d'embedding](/images/projects/exploration-dun-pipeline-rag/embeddings_separation_heatmap.png)
+![Figure 2 - Heatmap de la séparation sémantique par modèle d'embedding](../../../assets/images/projects/exploration-dun-pipeline-rag/embeddings_separation_heatmap.png)
 
 Figure 2 - Séparation sémantique par modèle d'embedding et par question
 
@@ -141,7 +141,7 @@ Cinq stratégies ont été benchmarkées. BM25 seul est insuffisant pour des req
 
 MMR avec lambda=0.9 est marginalement meilleur que la similarity pure (MRR 0.605 vs 0.597), mais la diversité forcée à lambda plus bas dégrade les résultats. Le Multi-Query ajoute 100x de latence (5s) sans amélioration.
 
-![Figure 3 - Précision de retrieval par catégorie et par stratégie](/images/projects/exploration-dun-pipeline-rag/retrieval_precision_by_category_and_strategy.png)
+![Figure 3 - Précision de retrieval par catégorie et par stratégie](../../../assets/images/projects/exploration-dun-pipeline-rag/retrieval_precision_by_category_and_strategy.png)
 
 Figure 3 - Précision de retrieval par catégorie de question et par stratégie
 
@@ -155,7 +155,7 @@ En **query translation**, cinq techniques de reformulation ont été comparées.
 
 En **routing**, diriger les requêtes vers des sous-index par catégorie produit une chute de 38% du MRR, même avec 76% de précision de routage. La cause est un déséquilibre du corpus : après filtrage, les tutoriels comptent 1 656 chunks contre 1 seul chunk pour la référence API.
 
-![Figure 4 - MRR par stratégie de routing et par catégorie de requête](/images/projects/exploration-dun-pipeline-rag/mrr_heatmap_routing_strategy_and_queray_category.png)
+![Figure 4 - MRR par stratégie de routing et par catégorie de requête](../../../assets/images/projects/exploration-dun-pipeline-rag/mrr_heatmap_routing_strategy_and_queray_category.png)
 
 Figure 4 - MRR par stratégie de routing et par catégorie de requête
 
@@ -181,7 +181,7 @@ RAGAS évalue quatre métriques complémentaires : la **faithfulness** (la répo
 
 Le pipeline hybrid + reranked domine avec 0.871 de moyenne, pour seulement +35% de latence par rapport au naive. HyDE est le pire compromis : 2.7x plus lent avec le recall le plus bas. Le gap de +0.09 entre naive et hybrid+reranked provient entièrement de la qualité du retrieval qui fournit un meilleur contexte au LLM.
 
-![Figure 5 - Métriques RAGAS par configuration de pipeline](/images/projects/exploration-dun-pipeline-rag/ragas_metrics_per_pipeline_config.png)
+![Figure 5 - Métriques RAGAS par configuration de pipeline](../../../assets/images/projects/exploration-dun-pipeline-rag/ragas_metrics_per_pipeline_config.png)
 
 Figure 5 - Métriques RAGAS par configuration de pipeline
 
@@ -191,7 +191,7 @@ Le pipeline de production assemble les meilleurs choix : recursive chunking (100
 
 L'interface Chainlit propose quatre modes (Simple, Hybrid, Hybrid+Rerank, Direct LLM), un panneau de paramètres interactif (nombre de résultats, affichage des sources, mémoire de conversation), et le streaming token par token. Chaque réponse affiche ses sources dans des panneaux cliquables qui révèlent le chunk complet retrouvé, ainsi que les métriques de timing (retrieval, génération, total).
 
-![Figure 6 - Conversation dans l'interface Chainlit avec les 5 sources retrouvées et les métriques de timing](/images/projects/exploration-dun-pipeline-rag/conversation_llm.png)
+![Figure 6 - Conversation dans l'interface Chainlit avec les 5 sources retrouvées et les métriques de timing](../../../assets/images/projects/exploration-dun-pipeline-rag/conversation_llm.png)
 
 Figure 6 - Réponse du pipeline à une question sur la mémoire conversationnelle, avec les 5 sources et les temps de retrieval/génération
 

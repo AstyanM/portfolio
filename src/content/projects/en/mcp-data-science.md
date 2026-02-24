@@ -72,7 +72,7 @@ The lifecycle of a call is as follows: the LLM decides to call a tool, sends a J
 
 `FastMCP` is the official high-level Python library for MCP. It provides a `@mcp.tool()` decorator that introspects the Python signature to automatically generate the tool's JSON Schema, and supports `Image` returns (binary PNG) in addition to text.
 
-![Figure 1 - Settings of the load_csv tool in MCP Inspector](/images/projects/mcp-data-science/mcp-inspector.png)
+![Figure 1 - Settings of the load_csv tool in MCP Inspector](../../../assets/images/projects/mcp-data-science/mcp-inspector.png)
 
 Figure 1 - A tool and its parameters in MCP Inspector
 
@@ -158,11 +158,11 @@ A `fig_to_image_and_store()` variant also stores the PNG bytes in `DataStore._pl
 
 `save_report_html` produces a single HTML file with plots embedded as base64, no external dependencies, ready to share. The output follows an 8-section structure (Executive Summary, Data Overview, Exploratory Analysis, Statistical Tests, Cleaning Log, Feature Engineering, Modeling Results, Conclusions) with a complete design system (CSS custom properties, typography, 900px responsive).
 
-![Figure 2 - Data overview in the generated HTML report](/images/projects/mcp-data-science/rapport-vue-ensemble_en.png)
+![Figure 2 - Data overview in the generated HTML report](../../../assets/images/projects/mcp-data-science/rapport-vue-ensemble_en.png)
 
 Figure 2 - Data overview in the generated HTML report
 
-![Figure 3 - Chart and associated analysis in the HTML report](/images/projects/mcp-data-science/rapport-graphique_en.png)
+![Figure 3 - Chart and associated analysis in the HTML report](../../../assets/images/projects/mcp-data-science/rapport-graphique_en.png)
 
 Figure 3 - Generated chart and associated analysis in the HTML report
 
@@ -170,6 +170,6 @@ Figure 3 - Generated chart and associated analysis in the HTML report
 
 The user asks in natural language: *"Load sales_2024.csv, run a quality report, clean the data, train a Random Forest to predict revenue and generate an HTML report."* Claude then orchestrates around twenty tool calls in the correct order, guided by the 13-phase guide embedded in the server.
 
-![Figure 4 - Using the MCP server within Claude Code](/images/projects/mcp-data-science/workflow-claude-code_en.png)
+![Figure 4 - Using the MCP server within Claude Code](../../../assets/images/projects/mcp-data-science/workflow-claude-code_en.png)
 
 Figure 4 - Usage within Claude Code

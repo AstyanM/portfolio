@@ -55,7 +55,7 @@ The project relies on a modular architecture integrating several technical areas
 
 The project followed a rigorous methodology with detailed planning and structured documents. The documents that served as the basis for this planning are the specifications we drafted in agreement with the client and the following functional requirements diagram:
 
-![Figure 1 - Functional Requirements Diagram](/images/projects/faire-parler-les-donnees-medicales/exigences.png)
+![Figure 1 - Functional Requirements Diagram](../../../assets/images/projects/faire-parler-les-donnees-medicales/exigences.png)
 
 Figure 1 - Functional Requirements Diagram
 
@@ -82,7 +82,7 @@ The project was structured in several phases:
 
 This allowed us to create a Gantt chart for the entire project duration, which was modified as progress was made and to which we adhered:
 
-![Figure 2 - Gantt Chart](/images/projects/faire-parler-les-donnees-medicales/fef6d892-17e1-480b-a48b-3fa27d176df7.png)
+![Figure 2 - Gantt Chart](../../../assets/images/projects/faire-parler-les-donnees-medicales/fef6d892-17e1-480b-a48b-3fa27d176df7.png)
 
 Figure 2 - Gantt Chart
 
@@ -90,13 +90,13 @@ Figure 2 - Gantt Chart
 
 A SWOT analysis was conducted to identify project risks and opportunities:
 
-![Figure 3 - SWOT Matrix](/images/projects/faire-parler-les-donnees-medicales/swot_v2.png)
+![Figure 3 - SWOT Matrix](../../../assets/images/projects/faire-parler-les-donnees-medicales/swot_v2.png)
 
 Figure 3 - SWOT Matrix
 
 Additionally, we also added a risk management plan that was also modified during our work:
 
-![Figure 4 - Risk Management Plan](/images/projects/faire-parler-les-donnees-medicales/gestiondesrisques.png)
+![Figure 4 - Risk Management Plan](../../../assets/images/projects/faire-parler-les-donnees-medicales/gestiondesrisques.png)
 
 Figure 4 - Risk Management Plan
 
@@ -104,7 +104,7 @@ Figure 4 - Risk Management Plan
 
 This task breakdown was divided into 2 major parts, just like our project: the first includes familiarization with the project and deliverable creation, while the second focuses on their improvement and API usage.
 
-![Figure 5 - Work Breakdown Structure](/images/projects/faire-parler-les-donnees-medicales/4544eafe-6418-44fb-8eaa-1bc83c83c536.png)
+![Figure 5 - Work Breakdown Structure](../../../assets/images/projects/faire-parler-les-donnees-medicales/4544eafe-6418-44fb-8eaa-1bc83c83c536.png)
 
 Figure 5 - Work Breakdown Structure
 
@@ -112,7 +112,7 @@ Figure 5 - Work Breakdown Structure
 
 After all this preparation work and to be able to start the technical part of this project, we drafted a RACI matrix that defines the role of each stakeholder in this project:
 
-![Figure 6 - RACI Matrix Excerpt](/images/projects/faire-parler-les-donnees-medicales/raci.png)
+![Figure 6 - RACI Matrix Excerpt](../../../assets/images/projects/faire-parler-les-donnees-medicales/raci.png)
 
 Figure 6 - RACI Matrix Excerpt
 
@@ -120,7 +120,7 @@ Figure 6 - RACI Matrix Excerpt
 
 Throughout this project, we had the opportunity to work with numerous experts in their fields to help us progress. We therefore recorded all those we called upon and noted the total hours of training and consultation we used. In the end, we had used 14 hours of internal consultation (with people employed by the Centrale Lille group) and 23 hours of external consultation (with SIB representatives and medical staff).
 
-![Figure 7 - All Consultants Met](/images/projects/faire-parler-les-donnees-medicales/consultants.png)
+![Figure 7 - All Consultants Met](../../../assets/images/projects/faire-parler-les-donnees-medicales/consultants.png)
 
 Figure 7 - All Consultants Met
 
@@ -152,13 +152,13 @@ The foundations of this work were built by synthesizing patient data into a text
 - Synthesis and indexing of this data
 - Work on result explainability
 
-![Figure 8 - Schematic of Our Solution's Operation](/images/projects/faire-parler-les-donnees-medicales/explicabilite.png)
+![Figure 8 - Schematic of Our Solution's Operation](../../../assets/images/projects/faire-parler-les-donnees-medicales/explicabilite.png)
 
 Figure 8 - Schematic of Our Solution's Operation
 
 **Result:** We finally manage to index patient data into a structured file
 
-![Figure 9 - Example of Report Before and After Indexing](/images/projects/faire-parler-les-donnees-medicales/capture_dcran_2025-02-18_005443.png)
+![Figure 9 - Example of Report Before and After Indexing](../../../assets/images/projects/faire-parler-les-donnees-medicales/capture_dcran_2025-02-18_005443.png)
 
 Figure 9 - Example of Report Before and After Indexing
 
@@ -205,7 +205,7 @@ To decide the triage result, several data points deemed to have a strong influen
 - **StandardScaler** for data normalization
 - **Principal Component Analysis (PCA)** for dimensionality reduction
 
-![Figure 10 - Summary of Prediction Deliverable Operation](/images/projects/faire-parler-les-donnees-medicales/capture_dcran_2025-02-18_010534.png)
+![Figure 10 - Summary of Prediction Deliverable Operation](../../../assets/images/projects/faire-parler-les-donnees-medicales/capture_dcran_2025-02-18_010534.png)
 
 Figure 10 - Summary of Prediction Deliverable Operation
 
@@ -218,7 +218,7 @@ Figure 10 - Summary of Prediction Deliverable Operation
 - Allow hospital services to access predictions via an intuitive interface
 - Manage access and permissions via a secure database
 
-![Figure 11: Different Steps of API Operation](/images/projects/faire-parler-les-donnees-medicales/capture_dcran_2025-02-18_010534-1.png)
+![Figure 11: Different Steps of API Operation](../../../assets/images/projects/faire-parler-les-donnees-medicales/capture_dcran_2025-02-18_010534-1.png)
 
 Figure 11: Different Steps of API Operation
 

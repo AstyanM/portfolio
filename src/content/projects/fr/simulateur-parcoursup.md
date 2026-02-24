@@ -152,7 +152,7 @@ appendix:
 
    Transformation bornée en $M_{lycee} \in [0.85, 1.15]$ via z-score → CDF → exponentielle ; si `infos=0` alors $M_{lycee} = 1.0$.
 
-   ![Figure 1 : Pipeline de traitement des données](/images/projects/simulateur-parcoursup/database_relationships.png)
+   ![Figure 1 : Pipeline de traitement des données](../../../assets/images/projects/simulateur-parcoursup/database_relationships.png)
 
    Figure 1 : Pipeline de traitement des données
 
@@ -284,7 +284,7 @@ Si `concours = 1`, une pondération **post-dossier** est appliquée à partir d�
   - `routers/share.py` : envoi des résultats par mail (rendu HTML, Brevo).
 - **Base & ORM** : `db/database.py` (SQLAlchemy / SQLite), `models/profile.py`.
 
-![Figure 2 : Documentation des endpoints de l’API](/images/projects/simulateur-parcoursup/screencapture-localhost-8000-docs-2025-12-29-15_24_35.png)
+![Figure 2 : Documentation des endpoints de l’API](../../../assets/images/projects/simulateur-parcoursup/screencapture-localhost-8000-docs-2025-12-29-15_24_35.png)
 
 Figure 2 : Documentation des endpoints de l’API
 
@@ -303,11 +303,11 @@ Figure 2 : Documentation des endpoints de l’API
   - **Partage et profils publics** : Création de pages de profil publiques accessibles via URL unique, permettant aux vendeurs d’accéder facilement aux simulations et listes de vœux des élèves.
   - **Comparateur de formations** : Outil interactif permettant de comparer côte à côte plusieurs formations sur des critères clés (sélectivité, débouchés, attendus).
 
-![Figure 3 : Fiche profil accessible](/images/projects/simulateur-parcoursup/screencapture-simulateur-med-hermione-co-info-profil-1de629dabe09aeb6aef9a135c7706444-2025-12-29-15_30_17.png)
+![Figure 3 : Fiche profil accessible](../../../assets/images/projects/simulateur-parcoursup/screencapture-simulateur-med-hermione-co-info-profil-1de629dabe09aeb6aef9a135c7706444-2025-12-29-15_30_17.png)
 
 Figure 3 : Fiche profil accessible
 
-![Figure 4 : Comparateur de formations](/images/projects/simulateur-parcoursup/screencapture-localhost-5173-comparateur-2025-12-29-15_31_50.png)
+![Figure 4 : Comparateur de formations](../../../assets/images/projects/simulateur-parcoursup/screencapture-localhost-5173-comparateur-2025-12-29-15_31_50.png)
 
 Figure 4 : Comparateur de formations
 
@@ -319,7 +319,7 @@ Figure 4 : Comparateur de formations
   - `pages/` : accueil, formations, simulateur, profil, lettre.
   - `utils/` : pagination, conversions, helpers.
 
-![Figure 5 : Interface graphique de la page de recherche](/images/projects/simulateur-parcoursup/image.png)
+![Figure 5 : Interface graphique de la page de recherche](../../../assets/images/projects/simulateur-parcoursup/image.png)
 
 Figure 5 : Interface graphique de la page de recherche
 
@@ -329,7 +329,7 @@ Figure 5 : Interface graphique de la page de recherche
 
 Hébergement complet du backend et frontend avec une base de données **PostgreSQL** connectés et instance **Typesense** (Docker).
 
-![Figure 6 : Infrastructure Railway](/images/projects/simulateur-parcoursup/image-1.png)
+![Figure 6 : Infrastructure Railway](../../../assets/images/projects/simulateur-parcoursup/image-1.png)
 
 Figure 6 : Infrastructure Railway
 
@@ -339,6 +339,6 @@ Figure 6 : Infrastructure Railway
 - **Processus** : Synchronisation quotidienne des données (Profils et Vœux) depuis la base de données vers des Google Sheets segmentés par client.
 - **Finalité** : Alimentation automatique des données de suivi et déclenchement de sous-workflows pour la mise à jour des tableaux de bord (Dashboards).
 
-![Figure 7 : Workflow automatisation n8n](/images/projects/simulateur-parcoursup/image-2.png)
+![Figure 7 : Workflow automatisation n8n](../../../assets/images/projects/simulateur-parcoursup/image-2.png)
 
 Figure 7 : Workflow automatisation n8n

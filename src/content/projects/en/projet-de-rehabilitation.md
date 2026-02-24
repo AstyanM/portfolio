@@ -33,13 +33,13 @@ To meet residents' needs, we integrated cultural and friendly spaces as well as 
 
 Finally, since each plot was buildable and without particular restrictions, we were able to design a flexible and optimized layout:
 
-![Figure 2 - Project Ground Plan 1/500](/images/projects/projet-de-rehabilitation/e8ededf6-7456-4bd7-9784-2c09d55b47cd.png)
+![Figure 2 - Project Ground Plan 1/500](../../../assets/images/projects/projet-de-rehabilitation/e8ededf6-7456-4bd7-9784-2c09d55b47cd.png)
 
 Figure 2 - Project Ground Plan 1/500
 
 From all these constraints, we were able to set up a complete project that I will detail throughout this page:
 
-![Figure 3 - Global Introduction to the Project](/images/projects/projet-de-rehabilitation/liucf7vg.jpg)
+![Figure 3 - Global Introduction to the Project](../../../assets/images/projects/projet-de-rehabilitation/liucf7vg.jpg)
 
 Figure 3 - Global Introduction to the Project
 
@@ -51,7 +51,7 @@ The project proposes the construction of housing adapted to a sustainable enviro
 -   Single-story design avoids obstructing the view
 -   Each housing unit can have its own garden
 
-![Figure 4 - Global View of Project Integrating Housing](/images/projects/projet-de-rehabilitation/a04df5e5-8222-44e8-bbe0-4f38bfcf6720.png)
+![Figure 4 - Global View of Project Integrating Housing](../../../assets/images/projects/projet-de-rehabilitation/a04df5e5-8222-44e8-bbe0-4f38bfcf6720.png)
 
 Figure 4 - Global View of Project Integrating Housing
 
@@ -61,7 +61,7 @@ Homes follow a modular design that allows space optimization while remaining ple
 
 Indeed, we first decided to use as many natural materials as possible to stick to the idea of environmentally friendly housing. Furthermore, we deliberately chose roofs with a slope and construction partially on stilts to generate depth and contrast to stand out from surrounding buildings:
 
-![Figure 5 - Exterior View of Housing](/images/projects/projet-de-rehabilitation/8a48617e-1159-4b06-8d06-5130d49640cc.png)
+![Figure 5 - Exterior View of Housing](../../../assets/images/projects/projet-de-rehabilitation/8a48617e-1159-4b06-8d06-5130d49640cc.png)
 
 Figure 5 - Exterior View of Housing
 
@@ -74,11 +74,11 @@ Buildings are designed according to current standards and integrate several elem
 -   Construction partly on stilts and piles (not to invade natural space)
 -   Orientation and windows to maximize natural light
 
-![Figure 6 - Housing Plan 1/100](/images/projects/projet-de-rehabilitation/fb6b5903-d93f-4478-a33b-53f7d98f2607.png)
+![Figure 6 - Housing Plan 1/100](../../../assets/images/projects/projet-de-rehabilitation/fb6b5903-d93f-4478-a33b-53f7d98f2607.png)
 
 Figure 6 - Housing Plan 1/100
 
-![Figure 7 - Summary of Housing Part](/images/projects/projet-de-rehabilitation/ftc6f-m1.jpg)
+![Figure 7 - Summary of Housing Part](../../../assets/images/projects/projet-de-rehabilitation/ftc6f-m1.jpg)
 
 Figure 7 - Summary of Housing Part
 
@@ -93,15 +93,15 @@ We integrated a **cultural hall with diverse functionality** to address several 
 -   **Place of exchange and socialization**: The cultural hall allows organizing events, exhibitions, and workshops promoting social cohesion. The space is modular to adapt to different proposed activities
 -   **Neighborhood revitalization**: By proposing an integrated refreshment area, this space becomes an attractive meeting point, conducive to exchanges and community life
 
-![Figure 8 - Exterior View of Cultural Hall](/images/projects/projet-de-rehabilitation/cfbf4b62-dbfe-4954-9cf9-89b998699df8.png)
+![Figure 8 - Exterior View of Cultural Hall](../../../assets/images/projects/projet-de-rehabilitation/cfbf4b62-dbfe-4954-9cf9-89b998699df8.png)
 
 Figure 8 - Exterior View of Cultural Hall
 
-![Figure 9 - Interior View of Cultural Hall](/images/projects/projet-de-rehabilitation/122bb7e5-0094-43a2-9db5-0a17ae1c1869.png)
+![Figure 9 - Interior View of Cultural Hall](../../../assets/images/projects/projet-de-rehabilitation/122bb7e5-0094-43a2-9db5-0a17ae1c1869.png)
 
 Figure 9 - Interior View of Cultural Hall
 
-![Figure 10 - Cultural Hall Plan 1/100](/images/projects/projet-de-rehabilitation/17130331-7a2e-4f9a-9c9f-893d4055f43e.png)
+![Figure 10 - Cultural Hall Plan 1/100](../../../assets/images/projects/projet-de-rehabilitation/17130331-7a2e-4f9a-9c9f-893d4055f43e.png)
 
 Figure 10 - Cultural Hall Plan 1/100
 
@@ -112,19 +112,19 @@ As for the convenience store, it also responds to a real existing demand:
 -   **Facilitated access to basic necessities**: The convenience store favors short circuits by prioritizing local producers, thus limiting carbon footprint and strengthening local economy
 -   **Lack of shops:** The surroundings are part of the scientific city, which integrates no non-state commerce, thus leading to strong demand
 
-![Figure 11 - Exterior View of Convenience Store](/images/projects/projet-de-rehabilitation/c7d28f0b-ab14-4742-8f38-232abe79bd2e.png)
+![Figure 11 - Exterior View of Convenience Store](../../../assets/images/projects/projet-de-rehabilitation/c7d28f0b-ab14-4742-8f38-232abe79bd2e.png)
 
 Figure 11 - Exterior View of Convenience Store
 
-![Figure 12 - Interior View of Convenience Store](/images/projects/projet-de-rehabilitation/452ed6d0-e585-478b-9785-edd0ad104706.png)
+![Figure 12 - Interior View of Convenience Store](../../../assets/images/projects/projet-de-rehabilitation/452ed6d0-e585-478b-9785-edd0ad104706.png)
 
 Figure 12 - Interior View of Convenience Store
 
-![Figure 13 - Convenience Store Plan 1/100](/images/projects/projet-de-rehabilitation/1b437efc-67cf-49f4-bd09-90c711f29fdf.png)
+![Figure 13 - Convenience Store Plan 1/100](../../../assets/images/projects/projet-de-rehabilitation/1b437efc-67cf-49f4-bd09-90c711f29fdf.png)
 
 Figure 13 - Convenience Store Plan 1/100
 
-![Figure 14 - Summary of Public Part](/images/projects/projet-de-rehabilitation/rzskmhn5.jpg)
+![Figure 14 - Summary of Public Part](../../../assets/images/projects/projet-de-rehabilitation/rzskmhn5.jpg)
 
 Figure 14 - Summary of Public Part
 
@@ -132,11 +132,11 @@ Figure 14 - Summary of Public Part
 
 To better visualize the entire project, we produced physical models:
 
-![Figure 15 - First Model](/images/projects/projet-de-rehabilitation/213ce5dc-94f8-4096-9718-26c579101369.png)
+![Figure 15 - First Model](../../../assets/images/projects/projet-de-rehabilitation/213ce5dc-94f8-4096-9718-26c579101369.png)
 
 Figure 15 - First Model
 
-![Figure 16 - Final Model](/images/projects/projet-de-rehabilitation/a00fd6ba-2333-44b5-a726-e7a663a72aee.png)
+![Figure 16 - Final Model](../../../assets/images/projects/projet-de-rehabilitation/a00fd6ba-2333-44b5-a726-e7a663a72aee.png)
 
 Figure 16 - Final Model
 

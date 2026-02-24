@@ -152,7 +152,7 @@ appendix:
 
    Bounded transformation into $M_{highschool} \in [0.85, 1.15]$ via z-score → CDF → exponential; if `infos=0` then $M_{highschool} = 1.0$.
 
-   ![Figure 1: Data Processing Pipeline](/images/projects/simulateur-parcoursup/database_relationships.png)
+   ![Figure 1: Data Processing Pipeline](../../../assets/images/projects/simulateur-parcoursup/database_relationships.png)
 
    Figure 1: Data Processing Pipeline
 
@@ -284,7 +284,7 @@ If `competition = 1`, a **post-dossier** weighting is applied from a user compet
   - `routers/share.py`: Sending results by email (HTML rendering, Brevo).
 - **Database & ORM**: `db/database.py` (SQLAlchemy / SQLite), `models/profile.py`.
 
-![Figure 2: API Endpoints Documentation](/images/projects/simulateur-parcoursup/screencapture-localhost-8000-docs-2025-12-29-15_24_35.png)
+![Figure 2: API Endpoints Documentation](../../../assets/images/projects/simulateur-parcoursup/screencapture-localhost-8000-docs-2025-12-29-15_24_35.png)
 
 Figure 2: API Endpoints Documentation
 
@@ -303,11 +303,11 @@ Figure 2: API Endpoints Documentation
   - **Sharing and Public Profiles**: Creation of public profile pages accessible via unique URL, allowing vendors to easily access students' simulations and wish lists.
   - **Training Comparator**: Interactive tool allowing side-by-side comparison of multiple training programs on key criteria (selectivity, career prospects, expectations).
 
-![Figure 3: Accessible Profile Sheet](/images/projects/simulateur-parcoursup/screencapture-simulateur-med-hermione-co-info-profil-1de629dabe09aeb6aef9a135c7706444-2025-12-29-15_30_17.png)
+![Figure 3: Accessible Profile Sheet](../../../assets/images/projects/simulateur-parcoursup/screencapture-simulateur-med-hermione-co-info-profil-1de629dabe09aeb6aef9a135c7706444-2025-12-29-15_30_17.png)
 
 Figure 3: Accessible Profile Sheet
 
-![Figure 4: Training Program Comparator](/images/projects/simulateur-parcoursup/screencapture-localhost-5173-comparateur-2025-12-29-15_31_50.png)
+![Figure 4: Training Program Comparator](../../../assets/images/projects/simulateur-parcoursup/screencapture-localhost-5173-comparateur-2025-12-29-15_31_50.png)
 
 Figure 4: Training Program Comparator
 
@@ -319,7 +319,7 @@ Figure 4: Training Program Comparator
   - `pages/`: home, training programs, simulator, profile, letter.
   - `utils/`: pagination, conversions, helpers.
 
-![Figure 5: Search Page Graphical Interface](/images/projects/simulateur-parcoursup/image.png)
+![Figure 5: Search Page Graphical Interface](../../../assets/images/projects/simulateur-parcoursup/image.png)
 
 Figure 5: Search Page Graphical Interface
 
@@ -329,7 +329,7 @@ Figure 5: Search Page Graphical Interface
 
 Complete backend and frontend hosting with a connected **PostgreSQL** database and **Typesense** instance (Docker).
 
-![Figure 6: Railway Infrastructure](/images/projects/simulateur-parcoursup/image-1.png)
+![Figure 6: Railway Infrastructure](../../../assets/images/projects/simulateur-parcoursup/image-1.png)
 
 Figure 6: Railway Infrastructure
 
@@ -339,6 +339,6 @@ Figure 6: Railway Infrastructure
 - **Process**: Daily synchronization of data (Profiles and Wishes) from the database to Google Sheets segmented by client.
 - **Purpose**: Automatic feeding of tracking data and triggering sub-workflows for dashboard updates.
 
-![Figure 7: n8n Automation Workflow](/images/projects/simulateur-parcoursup/image-2.png)
+![Figure 7: n8n Automation Workflow](../../../assets/images/projects/simulateur-parcoursup/image-2.png)
 
 Figure 7: n8n Automation Workflow

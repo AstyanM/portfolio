@@ -30,7 +30,7 @@
 - **Rich markdown** — LaTeX equations (KaTeX), syntax highlighting (Shiki), video embedding, figure captions
 - **Project detail pages** — Table of contents, reading progress bar, image lightbox, appendices with bibliography and downloadable documents
 - **Animations** — Scroll-triggered animations and typewriter effect via framer-motion, with `prefers-reduced-motion` support
-- **Optimized images** — Sharp-based image processing at build time
+- **Optimized images** — Sharp-based image processing at build time with automatic WebP conversion and fallback for oversized images
 - **RSS feed** — Auto-generated project feed
 
 ## Tech Stack
@@ -74,7 +74,7 @@ npm run preview    # Preview production build
 
 ```
 src/
-├── assets/projects/         # Project images (optimized at build)
+├── assets/images/projects/  # Project images (optimized at build)
 ├── components/
 │   ├── astro/               # Server-rendered components
 │   └── react/               # Interactive client components
@@ -94,6 +94,7 @@ src/
 │   ├── 404.astro            # Error page
 │   └── rss.xml.ts           # RSS feed
 ├── plugins/                 # Custom rehype plugins
+├── services/                # Custom Astro services (image-service.mjs)
 ├── styles/global.css        # Theme variables & prose styles
 └── consts.ts                # Available tags
 ```
@@ -136,7 +137,9 @@ appendix:
 ---
 ```
 
-3. Place images in `src/assets/projects/{slug}/`
+3. Place images in `src/assets/images/projects/{slug}/`
+4. Reference images in markdown with **relative paths**: `![alt](../../../assets/images/projects/{slug}/image.png)` — Astro will optimize them to WebP automatically
+5. For **SVGs or videos**, place them in `public/images/projects/{slug}/` and use absolute paths instead
 
 ## Deployment
 

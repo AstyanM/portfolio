@@ -48,7 +48,7 @@ We used the **Oxford Flowers-102** dataset, composed of 102 flower categories.
 
 We applied a strict separation between seen and unseen classes, ensuring good generalization and fair evaluation.
 
-![Figure 1 - Sample Images from the Dataset](/images/projects/adaptation-few-shot-de-modeles-vision-langage/image.png)
+![Figure 1 - Sample Images from the Dataset](../../../assets/images/projects/adaptation-few-shot-de-modeles-vision-langage/image.png)
 
 Figure 1 - Sample Images from the Dataset
 
@@ -69,7 +69,7 @@ This evaluation establishes a baseline to measure the impact of adaptation metho
 
 ## 3. CoOp Method: Context Optimization
 
-![Figure 2 - CoOp Overview](/images/projects/adaptation-few-shot-de-modeles-vision-langage/image-1.png)
+![Figure 2 - CoOp Overview](../../../assets/images/projects/adaptation-few-shot-de-modeles-vision-langage/image-1.png)
 
 Figure 2 - CoOp Overview
 
@@ -87,7 +87,7 @@ class PromptLearner(nn.Module):
 
 Results show a clear improvement on base classes but degradation on novel classes due to overfitting:
 
-![Figure 3 - CoOp Results](/images/projects/adaptation-few-shot-de-modeles-vision-langage/image-2.png)
+![Figure 3 - CoOp Results](../../../assets/images/projects/adaptation-few-shot-de-modeles-vision-langage/image-2.png)
 
 Figure 3 - CoOp Results
 
@@ -99,7 +99,7 @@ $$
 \tilde{c} = c + \epsilon, \quad \epsilon \sim \mathcal{N}(0, \sigma^2), \quad \sigma = \text{noise\_scale} \times \max(|c|)
 $$
 
-![Figure 4 - CoOp Results with Gaussian Noise](/images/projects/adaptation-few-shot-de-modeles-vision-langage/image-3.png)
+![Figure 4 - CoOp Results with Gaussian Noise](../../../assets/images/projects/adaptation-few-shot-de-modeles-vision-langage/image-3.png)
 
 Figure 4 - CoOp Results with Gaussian Noise
 
@@ -116,7 +116,7 @@ if self.training and self.noise_scale:
 
 ## 5. CoCoOp Method: Conditional Context
 
-![Figure 5 - CoCoOp Overview](/images/projects/adaptation-few-shot-de-modeles-vision-langage/image-4.png)
+![Figure 5 - CoCoOp Overview](../../../assets/images/projects/adaptation-few-shot-de-modeles-vision-langage/image-4.png)
 
 Figure 5 - CoCoOp Overview
 
@@ -135,7 +135,7 @@ ctx_shifted = ctx + self.meta_net(image_features)
 
 This method achieves better generalization to novel classes while maintaining high performance on base classes:
 
-![Figure 6 - CoCoOp Results](/images/projects/adaptation-few-shot-de-modeles-vision-langage/image-5.png)
+![Figure 6 - CoCoOp Results](../../../assets/images/projects/adaptation-few-shot-de-modeles-vision-langage/image-5.png)
 
 Figure 6 - CoCoOp Results
 
@@ -159,7 +159,7 @@ self.meta_net = nn.Sequential(
 
 These adjustments improved robustness without significantly increasing training cost:
 
-![image.png](/images/projects/adaptation-few-shot-de-modeles-vision-langage/image-6.png)
+![image.png](../../../assets/images/projects/adaptation-few-shot-de-modeles-vision-langage/image-6.png)
 
 ## 7. Meta-Net Improvement
 
@@ -176,11 +176,11 @@ To do this, we applied **adaptive contrast amplification**, motivated by biologi
 
 We also used the UMAP method to visualize token distribution.
 
-![Figure 8 - Token Distribution without Enhancement](/images/projects/adaptation-few-shot-de-modeles-vision-langage/tokens_train_umap_no_enhancement.png)
+![Figure 8 - Token Distribution without Enhancement](../../../assets/images/projects/adaptation-few-shot-de-modeles-vision-langage/tokens_train_umap_no_enhancement.png)
 
 Figure 8 - Token Distribution without Enhancement
 
-![Figure 9 - Token Distribution with Enhancement](/images/projects/adaptation-few-shot-de-modeles-vision-langage/tokens_train_umap_enhancement.png)
+![Figure 9 - Token Distribution with Enhancement](../../../assets/images/projects/adaptation-few-shot-de-modeles-vision-langage/tokens_train_umap_enhancement.png)
 
 Figure 9 - Token Distribution with Enhancement
 

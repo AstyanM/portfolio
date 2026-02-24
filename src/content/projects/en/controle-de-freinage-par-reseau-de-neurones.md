@@ -54,7 +54,7 @@ $$
 \lambda = \frac{v - r\omega}{v}
 $$
 
-![Figure 1 - Simplified Quarter-Car Model](/images/projects/controle-de-freinage-par-reseau-de-neurones/quarter_car_model.png)
+![Figure 1 - Simplified Quarter-Car Model](../../../assets/images/projects/controle-de-freinage-par-reseau-de-neurones/quarter_car_model.png)
 
 Figure 1 - Simplified Quarter-Car Model
 
@@ -120,13 +120,13 @@ To train the networks, a set of 50 simulated braking scenarios was generated usi
 | Initial slip           | 0.1–0.4   |
 | Initial braking torque | 0–20 Nm   |
 
-![Figure 2 - Generated Data Analysis](/images/projects/controle-de-freinage-par-reseau-de-neurones/data_quality_analysis.png)
+![Figure 2 - Generated Data Analysis](../../../assets/images/projects/controle-de-freinage-par-reseau-de-neurones/data_quality_analysis.png)
 
 Figure 2 - Generated Data Analysis
 
 The networks were trained on approximately 20,000 data points with a standard method (Adam, 5 to 10 epochs). The objective was to accurately predict the system response and extract a stable control law.
 
-![Figure 3 - Learning Loss for Both Neural Networks](/images/projects/controle-de-freinage-par-reseau-de-neurones/training_curves.png)
+![Figure 3 - Learning Loss for Both Neural Networks](../../../assets/images/projects/controle-de-freinage-par-reseau-de-neurones/training_curves.png)
 
 Figure 3 - Learning Loss for Both Neural Networks
 
@@ -138,7 +138,7 @@ The NARMA-L2 controller was compared to the classical PID controller:
 - **Braking effort:** NARMA-L2 applies lower, sometimes unstable braking pressures, but sufficient for comparable deceleration.
 - **Mechanical stress reduction:** Gentler braking efforts can extend component lifespan.
 
-![Figure 4 - Performance Comparison: Slip and Braking Torque](/images/projects/controle-de-freinage-par-reseau-de-neurones/comparison_results.png)
+![Figure 4 - Performance Comparison: Slip and Braking Torque](../../../assets/images/projects/controle-de-freinage-par-reseau-de-neurones/comparison_results.png)
 
 Figure 4 - Performance Comparison: Slip and Braking Torque
 

@@ -72,7 +72,7 @@ Le cycle de vie d'un appel est le suivant : le LLM décide d'appeler un outil, e
 
 `FastMCP` est la bibliothèque Python officielle de haut niveau pour MCP. Elle offre un décorateur `@mcp.tool()` qui introspect la signature Python pour générer automatiquement le schéma JSON Schema de l'outil, et supporte les retours `Image` (PNG binaire) en plus du texte.
 
-![Figure 1 - Settings de l'outil load_csv dans MCP Inspector](/images/projects/mcp-data-science/mcp-inspector.png)
+![Figure 1 - Settings de l'outil load_csv dans MCP Inspector](../../../assets/images/projects/mcp-data-science/mcp-inspector.png)
 
 Figure 1 - Vue d'un outil et de ses paramètres dans MCP Inspector
 
@@ -158,11 +158,11 @@ Une variante `fig_to_image_and_store()` stocke également les bytes PNG dans `Da
 
 `save_report_html` produit un fichier HTML unique avec les plots embarqués en base64, aucune dépendance externe, prêt à partager. Le rendu suit une structure en 8 sections (Executive Summary, Data Overview, Exploratory Analysis, Statistical Tests, Cleaning Log, Feature Engineering, Modeling Results, Conclusions) avec un design system complet (CSS custom properties, typographie, responsive 900px).
 
-![Figure 2 - Vue d'ensemble des données dans le rapport HTML généré](/images/projects/mcp-data-science/rapport-vue-ensemble_fr.png)
+![Figure 2 - Vue d'ensemble des données dans le rapport HTML généré](../../../assets/images/projects/mcp-data-science/rapport-vue-ensemble_fr.png)
 
 Figure 2 - Vue d'ensemble des données dans le rapport HTML généré
 
-![Figure 3 - Graphique et analyse associée dans le rapport HTML](/images/projects/mcp-data-science/rapport-graphique_fr.png)
+![Figure 3 - Graphique et analyse associée dans le rapport HTML](../../../assets/images/projects/mcp-data-science/rapport-graphique_fr.png)
 
 Figure 3 - Graphique généré et analyse associée dans le rapport HTML
 
@@ -170,6 +170,6 @@ Figure 3 - Graphique généré et analyse associée dans le rapport HTML
 
 L'utilisateur demande en langage naturel : *"Charge ventes_2024.csv, fais un rapport qualité, nettoie les données, entraîne un Random Forest pour prédire le chiffre d'affaires et génère un rapport HTML."* Claude orchestre alors une vingtaine d'appels d'outils dans le bon ordre, en s'appuyant sur le guide de 13 phases embarqué dans le serveur.
 
-![Figure 4 - Claude Code utilisant le serveur MCP dans un workflow d'analyse](/images/projects/mcp-data-science/workflow-claude-code_fr.png)
+![Figure 4 - Claude Code utilisant le serveur MCP dans un workflow d'analyse](../../../assets/images/projects/mcp-data-science/workflow-claude-code_fr.png)
 
 Figure 4 - Utilisation au sein de Claude Code

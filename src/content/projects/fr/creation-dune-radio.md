@@ -14,7 +14,7 @@ conclusion: |
   Ce projet nous a permis d'explorer les différentes étapes de la conception d'un récepteur FM, depuis la théorie des circuits jusqu'aux tests pratiques et simulations. Chaque module a été optimisé pour garantir une réception stable et une qualité sonore optimale. Cette expérience constitue une base solide pour approfondir les techniques de traitement du signal et de communication radiofréquence.
 ---
 
-![Figure 1 - Principe général d'un récepteur FM](/images/projects/creation-dune-radio/1.png)
+![Figure 1 - Principe général d'un récepteur FM](../../../assets/images/projects/creation-dune-radio/1.png)
 
 Figure 1 - Principe général d'un récepteur FM
 
@@ -24,13 +24,13 @@ Afin d'obtenir un signal audio de bonne qualité, nous avons conçu des filtres 
 
 On retrouve alors après normalisation : $F_0 = 1, F_1 = 2$
 
-![Figure 2 - Cahier des charges des filtres](/images/projects/creation-dune-radio/1-1.png)
+![Figure 2 - Cahier des charges des filtres](../../../assets/images/projects/creation-dune-radio/1-1.png)
 
 Figure 2 - Cahier des charges des filtres
 
 Le filtre passe-bas repose sur une conception de type Chebyshev d'ordre 4, permettant d'atténuer les fréquences indésirables tout en conservant un bon temps de réponse.
 
-![Figure 3 - Filtres de Chebyshev 3 dB](/images/projects/creation-dune-radio/1-2.png)
+![Figure 3 - Filtres de Chebyshev 3 dB](../../../assets/images/projects/creation-dune-radio/1-2.png)
 
 Figure 3 - Filtres de Chebyshev 3 dB
 
@@ -59,17 +59,17 @@ Après avoir trouvé les valeurs exactes reportées ici pour les deux cellules, 
 | R3 | 65kΩ | 70kΩ |
 | R4 | 296kΩ | 300kΩ |
 
-![Figure 4 - Représentation théorique](/images/projects/creation-dune-radio/1-3.png)
+![Figure 4 - Représentation théorique](../../../assets/images/projects/creation-dune-radio/1-3.png)
 
 Figure 4 - Représentation théorique
 
-![Figure 5 - Représentation expérimentale](/images/projects/creation-dune-radio/1-4.png)
+![Figure 5 - Représentation expérimentale](../../../assets/images/projects/creation-dune-radio/1-4.png)
 
 Figure 5 - Représentation expérimentale
 
 Quant au filtre passe-haut, il est basé sur une architecture de Rauch répétée 4 fois, garantissant une suppression efficace des basses fréquences parasites. Nous avons soigneusement calculé et normalisé les valeurs des composants pour assurer une réponse en fréquence optimale.
 
-![Figure 6 - Filtre de Rauch](/images/projects/creation-dune-radio/733a9ee1-ac01-4acd-8827-7fe3a4aecd34.png)
+![Figure 6 - Filtre de Rauch](../../../assets/images/projects/creation-dune-radio/733a9ee1-ac01-4acd-8827-7fe3a4aecd34.png)
 
 Figure 6 - Filtre de Rauch
 
@@ -79,7 +79,7 @@ Q = \frac{1}{3}\sqrt{\frac{R_2}{R_1}}\\
 \omega_c = \frac{1}{C\sqrt{R_1 R_2}}
 $$
 
-![Figure 7 - Réalisation des filtres en cascade](/images/projects/creation-dune-radio/1-5.png)
+![Figure 7 - Réalisation des filtres en cascade](../../../assets/images/projects/creation-dune-radio/1-5.png)
 
 Figure 7 - Réalisation des filtres en cascade
 
@@ -95,7 +95,7 @@ De même, on peut alors calculer les valeurs exactes pour chaque composant :
 
 Une fois filtré, le signal audio doit être amplifié pour une restitution sonore de qualité. Nous avons réglé l'amplificateur audio pour obtenir un gain maximal de 20 dB. Un Noise Gate a été intégré avec un seuil fixé à 10 mVrms afin d'atténuer les bruits de fond indésirables. Le fonctionnement de l'amplificateur a été paramétré via des registres afin d'optimiser les performances du système :
 
-![Figure 8 - Paramètres recommandés en fonction de la source audio](/images/projects/creation-dune-radio/1-6.png)
+![Figure 8 - Paramètres recommandés en fonction de la source audio](../../../assets/images/projects/creation-dune-radio/1-6.png)
 
 Figure 8 - Paramètres recommandés en fonction de la source audio
 
@@ -198,7 +198,7 @@ L33 = 0x0D;
 
 Nous avons ensuite utilisé une boucle à verrouillage de phase (PLL) pour démoduler le signal FM. Cette approche permet d'extraire l'information audio contenue dans la modulation de fréquence. Un filtre passe-bas a été conçu pour lisser le signal de sortie et assurer une reproduction audio fidèle. Après plusieurs tests et l'utilisation de l'abaque du modèle, nous avons ajusté les valeurs des composants pour améliorer les performances globales du démodulateur.
 
-![Figure 9 - Abaque](/images/projects/creation-dune-radio/1-7.png)
+![Figure 9 - Abaque](../../../assets/images/projects/creation-dune-radio/1-7.png)
 
 Figure 9 - Abaque
 
@@ -214,7 +214,7 @@ Toujours d'après le cahier des charges, on a $F_0 = 10,7MHz, f_{max} - f_{min} 
 
 Avant la mise en place physique du circuit, nous avons effectué une validation par simulation sous LTSpice. Cette simulation nous a permis de vérifier la stabilité et la réponse fréquentielle de chaque étage du récepteur. Les résultats ont confirmé un bon centrage du signal autour de 400 kHz, validant ainsi les choix de conception effectués.
 
-![Figure 10 - Simulation par LTSpice](/images/projects/creation-dune-radio/1-8.png)
+![Figure 10 - Simulation par LTSpice](../../../assets/images/projects/creation-dune-radio/1-8.png)
 
 Figure 10 - Simulation par LTSpice
 

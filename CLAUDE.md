@@ -45,12 +45,19 @@ Astro 5 portfolio website with bilingual support (English/French), hosted on Git
 - `src/pages/en/projects/{index,[...slug]}.astro` - English project listing & detail
 - `src/pages/fr/projets/{index,[...slug]}.astro` - French project listing & detail
 
+### Images in Markdown Content
+- **Storage**: All project images live in `src/assets/images/projects/{slug}/`
+- **Referencing**: Use **relative paths** in markdown: `![alt](../../../assets/images/projects/{slug}/image.png)`. Astro optimizes these images (resizing, WebP conversion) at build time.
+- **Custom image service**: [src/services/image-service.mjs](src/services/image-service.mjs) wraps Astro's Sharp service. When an image is too large for WebP (Sharp/WebP limit of 16383x16383 pixels), it falls back to the original format instead of crashing the build, and logs a warning: `[image-service] Image too large for WebP, falling back to original format: ...`
+- **Exceptions in `public/`**: SVGs and videos cannot go through Astro's image pipeline — they must be placed in `public/images/projects/{slug}/` and referenced with absolute paths (`/images/projects/...`). The `rehypeBaseUrl` plugin prepends `/portfolio/` to these absolute paths at build time.
+- **Do NOT use absolute paths** (`/images/projects/...`) for regular images — they would resolve to `public/` and bypass optimization.
+
 ### Markdown Processing
 - **Math**: remark-math + rehype-katex for LaTeX equations
 - **Code highlighting**: Shiki with `github-dark` theme, word wrap enabled
 - **Figure captions**: Custom [rehype-figure-caption.mjs](src/plugins/rehype-figure-caption.mjs) - Paragraphs starting with "Figure", "Vidéo", or "Video" get `.figure-caption` class
 - **Video embedding**: Custom [rehype-video.mjs](src/plugins/rehype-video.mjs) - Converts links to video files into `<video>` elements
-- **Base URL rewriting**: Custom [rehype-base-url.mjs](src/plugins/rehype-base-url.mjs) - Prepends `/portfolio/` base path to image/video sources
+- **Base URL rewriting**: Custom [rehype-base-url.mjs](src/plugins/rehype-base-url.mjs) - Prepends `/portfolio/` base path to absolute image/video sources (paths starting with `/`)
 
 ### Styling
 - **CSS variables**: Theme colors defined as RGB triplets in [src/styles/global.css](src/styles/global.css) for Tailwind opacity support
@@ -73,13 +80,15 @@ Astro 5 portfolio website with bilingual support (English/French), hosted on Git
 - **Styling**: Tailwind CSS 3.4
 - **Animations**: framer-motion
 - **Icons**: lucide-react
-- **Image processing**: Sharp
+- **Image processing**: Sharp (via custom service [src/services/image-service.mjs](src/services/image-service.mjs) with WebP fallback)
 
 ## Adding a New Project
 
 1. Create markdown file in both `src/content/projects/fr/` and `src/content/projects/en/` with same filename
 2. Add frontmatter with required `title`, and optional fields (`description`, `cardDescription`, `date`, `lang`, `tags` from consts.ts, `cover`, `liveUrl`, `repoUrl`, `repoPrivate`, `teamSize`, `year`, `conclusion`, `impact`, `appendix`)
-3. Place project images in `src/assets/projects/{slug}/`
+3. Place project images in `src/assets/images/projects/{slug}/`
+4. Reference images in markdown with relative paths: `![alt](../../../assets/images/projects/{slug}/image.png)`
+5. For SVGs or videos, place them in `public/images/projects/{slug}/` and use absolute paths: `![alt](/images/projects/{slug}/image.svg)`
 
 ## GitHub Pages Deployment
 

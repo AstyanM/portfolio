@@ -123,11 +123,11 @@ dot g2.dot -T png -o g2.png
 
 On obtient les 2 figures suivantes, qui correspondent bien à ce que l'on cherche au vu de la commande :
 
-![Figure 1 - Premier morpion](/images/projects/creation-dun-bot-morpion/g1.png)
+![Figure 1 - Premier morpion](../../../assets/images/projects/creation-dun-bot-morpion/g1.png)
 
 Figure 1 - Premier morpion
 
-![Figure 2 - Deuxième morpion](/images/projects/creation-dun-bot-morpion/g2.png)
+![Figure 2 - Deuxième morpion](../../../assets/images/projects/creation-dun-bot-morpion/g2.png)
 
 Figure 2 - Deuxième morpion
 
@@ -139,21 +139,21 @@ De plus, nous avons implémenté la fonction **`minimax`** :
 
 Après exécution, on obtient alors ces figures :
 
-![Figure 3 - Arbre des possibilités minimax](/images/projects/creation-dun-bot-morpion/g1-1.png)
+![Figure 3 - Arbre des possibilités minimax](../../../assets/images/projects/creation-dun-bot-morpion/g1-1.png)
 
 Figure 3 - Arbre des possibilités minimax
 
-![Figure 4 - Arbre des possibilités minimax global](/images/projects/creation-dun-bot-morpion/g2-1.png)
+![Figure 4 - Arbre des possibilités minimax global](../../../assets/images/projects/creation-dun-bot-morpion/g2-1.png)
 
 Figure 4 - Arbre des possibilités minimax global
 
 Pour approfondir, on peut améliorer ce programme en intégrant un **`negamax`** avec élagage Alpha-Bêta, qui donnera par exemple ces résultats pour les mêmes entrées :
 
-![Figure 5 - Arbre des possibilités negamax](/images/projects/creation-dun-bot-morpion/unnamed1.png)
+![Figure 5 - Arbre des possibilités negamax](../../../assets/images/projects/creation-dun-bot-morpion/unnamed1.png)
 
 Figure 5 - Arbre des possibilités negamax
 
-![Figure 6 - Arbre des possibilités negamax global](/images/projects/creation-dun-bot-morpion/unnamed2.png)
+![Figure 6 - Arbre des possibilités negamax global](../../../assets/images/projects/creation-dun-bot-morpion/unnamed2.png)
 
 Figure 6 - Arbre des possibilités negamax global
 
@@ -361,11 +361,11 @@ En effet, on peut voir les 9 grilles du supermorpion, celle du morpion principal
 
 Ensuite, on peut aussi créer le fichier **`png`**, ce qui actualise la page **`refresh.html`** :
 
-![Figure 7 - Fichier png](/images/projects/creation-dun-bot-morpion/g.png)
+![Figure 7 - Fichier png](../../../assets/images/projects/creation-dun-bot-morpion/g.png)
 
 Figure 7 - Fichier png
 
-![Figure 8 - Page refresh.html](/images/projects/creation-dun-bot-morpion/untitled.png)
+![Figure 8 - Page refresh.html](../../../assets/images/projects/creation-dun-bot-morpion/untitled.png)
 
 Figure 8 - Page refresh.html
 

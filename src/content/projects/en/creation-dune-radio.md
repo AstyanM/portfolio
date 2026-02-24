@@ -14,7 +14,7 @@ conclusion: |
   This project allowed us to explore the different steps of designing an FM receiver, from circuit theory to practical tests and simulations. Each module was optimized to ensure stable reception and optimal sound quality. This experience constitutes a solid foundation for deepening signal processing and radio frequency communication techniques.
 ---
 
-![Figure 1 - General Principle of an FM Receiver](/images/projects/creation-dune-radio/1.png)
+![Figure 1 - General Principle of an FM Receiver](../../../assets/images/projects/creation-dune-radio/1.png)
 
 Figure 1 - General Principle of an FM Receiver
 
@@ -24,13 +24,13 @@ In order to obtain a good quality audio signal, we designed low-pass and high-pa
 
 We then find after normalization: $F_0 = 1, F_1 = 2$
 
-![Figure 2 - Filter Specifications](/images/projects/creation-dune-radio/1-1.png)
+![Figure 2 - Filter Specifications](../../../assets/images/projects/creation-dune-radio/1-1.png)
 
 Figure 2 - Filter Specifications
 
 The low-pass filter relies on a 4th order Chebyshev design, allowing attenuation of unwanted frequencies while maintaining a good response time.
 
-![Figure 3 - 3 dB Chebyshev Filters](/images/projects/creation-dune-radio/1-2.png)
+![Figure 3 - 3 dB Chebyshev Filters](../../../assets/images/projects/creation-dune-radio/1-2.png)
 
 Figure 3 - 3 dB Chebyshev Filters
 
@@ -59,17 +59,17 @@ After finding the exact values reported here for both cells, we can experimental
 | R3 | 65kΩ | 70kΩ |
 | R4 | 296kΩ | 300kΩ |
 
-![Figure 4 - Theoretical Representation](/images/projects/creation-dune-radio/1-3.png)
+![Figure 4 - Theoretical Representation](../../../assets/images/projects/creation-dune-radio/1-3.png)
 
 Figure 4 - Theoretical Representation
 
-![Figure 5 - Experimental Representation](/images/projects/creation-dune-radio/1-4.png)
+![Figure 5 - Experimental Representation](../../../assets/images/projects/creation-dune-radio/1-4.png)
 
 Figure 5 - Experimental Representation
 
 As for the high-pass filter, it is based on a Rauch architecture repeated 4 times, ensuring effective suppression of parasitic low frequencies. We carefully calculated and normalized component values to ensure optimal frequency response.
 
-![Figure 6 - Rauch Filter](/images/projects/creation-dune-radio/733a9ee1-ac01-4acd-8827-7fe3a4aecd34.png)
+![Figure 6 - Rauch Filter](../../../assets/images/projects/creation-dune-radio/733a9ee1-ac01-4acd-8827-7fe3a4aecd34.png)
 
 Figure 6 - Rauch Filter
 
@@ -79,7 +79,7 @@ Q = \frac{1}{3}\sqrt{\frac{R_2}{R_1}}\\
 \omega_c = \frac{1}{C\sqrt{R_1 R_2}}
 $$
 
-![Figure 7 - Cascaded Filter Realization](/images/projects/creation-dune-radio/1-5.png)
+![Figure 7 - Cascaded Filter Realization](../../../assets/images/projects/creation-dune-radio/1-5.png)
 
 Figure 7 - Cascaded Filter Realization
 
@@ -95,7 +95,7 @@ Similarly, we can then calculate exact values for each component:
 
 Once filtered, the audio signal must be amplified for quality sound reproduction. We adjusted the audio amplifier to obtain a maximum gain of 20 dB. A Noise Gate was integrated with a threshold set at 10 mVrms to attenuate unwanted background noise. The amplifier operation was configured via registers to optimize system performance:
 
-![Figure 8 - Recommended Parameters Depending on Audio Source](/images/projects/creation-dune-radio/1-6.png)
+![Figure 8 - Recommended Parameters Depending on Audio Source](../../../assets/images/projects/creation-dune-radio/1-6.png)
 
 Figure 8 - Recommended Parameters Depending on Audio Source
 
@@ -198,7 +198,7 @@ L33 = 0x0D;
 
 We then used a phase-locked loop (PLL) to demodulate the FM signal. This approach allows extracting audio information contained in frequency modulation. A low-pass filter was designed to smooth the output signal and ensure faithful audio reproduction. After several tests and using the model chart, we adjusted component values to improve overall demodulator performance.
 
-![Figure 9 - Chart](/images/projects/creation-dune-radio/1-7.png)
+![Figure 9 - Chart](../../../assets/images/projects/creation-dune-radio/1-7.png)
 
 Figure 9 - Chart
 
@@ -214,7 +214,7 @@ Still according to the specifications, we have $F_0 = 10.7MHz, f_{max} - f_{min}
 
 Before physical implementation of the circuit, we performed validation by simulation under LTSpice. This simulation allowed us to verify the stability and frequency response of each receiver stage. Results confirmed good centering of the signal around 400 kHz, thus validating design choices made.
 
-![Figure 10 - LTSpice Simulation](/images/projects/creation-dune-radio/1-8.png)
+![Figure 10 - LTSpice Simulation](../../../assets/images/projects/creation-dune-radio/1-8.png)
 
 Figure 10 - LTSpice Simulation
 

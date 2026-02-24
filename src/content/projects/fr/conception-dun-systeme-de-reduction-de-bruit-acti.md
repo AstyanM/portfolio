@@ -49,7 +49,7 @@ Le bruit est une vibration mécanique d’un fluide qui peut être mesurée en d
 
 La réduction active est particulièrement utile pour atténuer certaines fréquences précises et compléter les limites de la réduction passive. Cependant, elle nécessite un système électronique performant capable d’analyser et de traiter les signaux sonores en temps réel.
 
-![Figure 1 - Simulation d’opposition de phase](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/simulation_opposition_bis_page-0001.jpg)
+![Figure 1 - Simulation d’opposition de phase](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/simulation_opposition_bis_page-0001.jpg)
 
 Figure 1 - Simulation d’opposition de phase
 
@@ -62,19 +62,19 @@ La première expérimentation a consisté à générer une opposition de phase e
 - Deux haut-parleurs ont été disposés en face l’un de l’autre et alimentés par un **générateur de signal** avec un déphasage de 180°
 - La réduction du bruit a été mesurée à différentes distances, et l’efficacité a atteint **jusqu’à 93 %** pour une fréquence de **440 Hz**
 
-![Figure 2 - Schéma du premier montage](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/montage_hp_colles_page-0001.jpg)
+![Figure 2 - Schéma du premier montage](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/montage_hp_colles_page-0001.jpg)
 
 Figure 2 - Schéma du premier montage
 
-![Figure 3 -  Résultats associés : 93% d’efficacité](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/hp_colles_courbe.png)
+![Figure 3 -  Résultats associés : 93% d’efficacité](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/hp_colles_courbe.png)
 
 Figure 3 - Résultats associés : 93% d’efficacité
 
-![Figure 4 - Schéma du deuxième montage](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/montage_hp_2_page-0001.jpg)
+![Figure 4 - Schéma du deuxième montage](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/montage_hp_2_page-0001.jpg)
 
 Figure 4 - Schéma du deuxième montage
 
-![Figure 5 - Résultats associés : 86% d‘efficacité](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/hp_distants_l.png)
+![Figure 5 - Résultats associés : 86% d‘efficacité](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/hp_distants_l.png)
 
 Figure 5 - Résultats associés : 86% d‘efficacité
 
@@ -95,17 +95,17 @@ L’objectif était de concevoir un circuit capable de générer un signal déph
 - Une tension sinusoïdale de **1 kHz** est envoyée en entrée d’un circuit composé de résistances et de condensateurs pour produire un **décalage de phase** via la fonction $2arctan(R_1C\omega)$
 - Le signal obtenu a ensuite été additionné avec le bruit ambiant via un **amplificateur sommateur**, simulant ainsi une annulation du bruit par superposition d’ondes opposée
 
-![Figure 6 - Montage électrique du circuit déphaseur sommateur](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/montagedephaseursommateur_page-0001.jpg)
+![Figure 6 - Montage électrique du circuit déphaseur sommateur](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/montagedephaseursommateur_page-0001.jpg)
 
 Figure 6 - Montage électrique du circuit déphaseur sommateur
 
 Un premier circuit a été monté et testé :
 
-![Figure 7 - Système électrique](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/photo_circuit_simple.jpg)
+![Figure 7 - Système électrique](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/photo_circuit_simple.jpg)
 
 Figure 7 - Système électrique
 
-![Figure 8 - Résultats associés mesurés](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/photo_resultat_elec.jpg)
+![Figure 8 - Résultats associés mesurés](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/photo_resultat_elec.jpg)
 
 Figure 8 - Résultats associés mesurés
 
@@ -117,17 +117,17 @@ Ce circuit a pour but de simuler une utilisation plus classique du principe de r
 
 Le bruit est donc la musique diffusée que nous essayons d’enlever au signal envoyé par le GBF.
 
-![Figure 9 - Principe général du système](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/chain_page-0001.jpg)
+![Figure 9 - Principe général du système](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/chain_page-0001.jpg)
 
 Figure 9 - Principe général du système
 
 Nous avons alors monté et testé notre système :
 
-![Figure 10 - Système électrique](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/photo_intermediaire.jpg)
+![Figure 10 - Système électrique](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/photo_intermediaire.jpg)
 
 Figure 10 - Système électrique
 
-![Figure 11 - Résultats associés mesurés](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/photo_resultats_intermediaire-1.jpg)
+![Figure 11 - Résultats associés mesurés](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/photo_resultats_intermediaire-1.jpg)
 
 Figure 11 - Résultats associés mesurés
 
@@ -139,7 +139,7 @@ Avec en vert la courbe du signal sans réduction et en jaune celle du signal ave
 
 Pour explorer cette nouvelle possibilité, nous avons développé un programme de traitement du signal en python afin d’enregistrer un son, de le traiter avec notre programme grâce à la plaque Sysam puis le renvoyer dans un autre haut-parleur. Expérimentalement, nous avons commencé par un signal sinusoïdal que nous avons déphasé afin de pouvoir évaluer clairement l’efficacité de notre solution.
 
-![Figure 12 - Premier système électronique avec Plaque Sysam](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/photo_sysam.jpg)
+![Figure 12 - Premier système électronique avec Plaque Sysam](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/photo_sysam.jpg)
 
 Figure 12 - Premier système électronique avec Plaque Sysam
 
@@ -151,19 +151,19 @@ Pour automatiser l’analyse et la correction du signal sonore, un système num�
 
 Le protocole mis en place comprend alors plusieurs étapes :
 
-![Figure 13 - Protocole de traitement du signal](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/chaine.png)
+![Figure 13 - Protocole de traitement du signal](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/chaine.png)
 
 Figure 13 - Protocole de traitement du signal
 
 Pour le conditionnement du signal d’entrée, il a été décidé d’utiliser un amplificateur sommateur afin de décaler la plage de tension au-dessus de $0V$ avec une amplitude de $2V$.
 
-![Figure 14 - Amplificateur sommateur pour le conditionnement d’entrée](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/montage_ali_1_page-0001.jpg)
+![Figure 14 - Amplificateur sommateur pour le conditionnement d’entrée](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/montage_ali_1_page-0001.jpg)
 
 Figure 14 - Amplificateur sommateur pour le conditionnement d’entrée
 
 Pour le signal de sortie, nous avons pu observer que le faible taux d’échantillonnage du Raspberry Pi était à l’origine d’arêtes vives en sortie. Nous avons donc choisi d’utiliser un filtre passe-bas pour y remédier.
 
-![Figure 15 - Passe-bas pour le conditionnement de sortie](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/montage_ali_2_page-0001.jpg)
+![Figure 15 - Passe-bas pour le conditionnement de sortie](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/montage_ali_2_page-0001.jpg)
 
 Figure 15 - Passe-bas pour le conditionnement de sortie
 
@@ -175,11 +175,11 @@ Un système d’interface utilisateur a aussi été conçu afin de pouvoir ajust
 
 Finalement, nous avons pu modéliser le circuit final et le réaliser :
 
-![Figure 16 - Modélisation du projet final](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/circuit_complet.jpg)
+![Figure 16 - Modélisation du projet final](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/circuit_complet.jpg)
 
 Figure 16 - Modélisation du projet final
 
-![Figure 17 - Système en état de marche](/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/photo_astyan_avance.jpg)
+![Figure 17 - Système en état de marche](../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/photo_astyan_avance.jpg)
 
 Figure 17 - Système en état de marche
 

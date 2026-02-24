@@ -114,7 +114,7 @@ Five splitting strategies were compared. The recursive splitter (which splits by
 
 A grid search over size (500–2000) and overlap (0–400) confirms that **1000/200 is the optimal point**. Beyond 200 overlap, gains are negligible.
 
-![Figure 1 - Retrieval quality heatmap by chunking parameters](/images/projects/exploration-dun-pipeline-rag/retrieval_quality_heatmap.png)
+![Figure 1 - Retrieval quality heatmap by chunking parameters](../../../assets/images/projects/exploration-dun-pipeline-rag/retrieval_quality_heatmap.png)
 
 Figure 1 - Retrieval quality heatmap by chunking parameters
 
@@ -131,7 +131,7 @@ Four embedding models were evaluated. The decisive criterion is not raw MRR (not
 
 mxbai-embed-large dominates with 0.207 vs 0.100 for nomic-embed-text, a **+107%** improvement in discriminating relevant documents. It is the model selected for the rest of the pipeline.
 
-![Figure 2 - Semantic separation heatmap by embedding model](/images/projects/exploration-dun-pipeline-rag/embeddings_separation_heatmap.png)
+![Figure 2 - Semantic separation heatmap by embedding model](../../../assets/images/projects/exploration-dun-pipeline-rag/embeddings_separation_heatmap.png)
 
 Figure 2 - Semantic separation by embedding model and by question
 
@@ -141,7 +141,7 @@ Five strategies were benchmarked. BM25 alone is insufficient for semantic querie
 
 MMR with lambda=0.9 is marginally better than pure similarity (MRR 0.605 vs 0.597), but forced diversity at lower lambda values degrades results. Multi-Query adds 100x latency (5s) with no improvement.
 
-![Figure 3 - Retrieval precision by category and strategy](/images/projects/exploration-dun-pipeline-rag/retrieval_precision_by_category_and_strategy.png)
+![Figure 3 - Retrieval precision by category and strategy](../../../assets/images/projects/exploration-dun-pipeline-rag/retrieval_precision_by_category_and_strategy.png)
 
 Figure 3 - Retrieval precision by question category and strategy
 
@@ -155,7 +155,7 @@ In **query translation**, five reformulation techniques were compared. HyDE (gen
 
 In **routing**, directing queries to sub-indexes by category produces a 38% drop in MRR, even with 76% routing accuracy. The cause is a corpus imbalance: after filtering, tutorials contain 1,656 chunks versus only 1 chunk for the API reference.
 
-![Figure 4 - MRR by routing strategy and query category](/images/projects/exploration-dun-pipeline-rag/mrr_heatmap_routing_strategy_and_queray_category.png)
+![Figure 4 - MRR by routing strategy and query category](../../../assets/images/projects/exploration-dun-pipeline-rag/mrr_heatmap_routing_strategy_and_queray_category.png)
 
 Figure 4 - MRR by routing strategy and query category
 
@@ -181,7 +181,7 @@ RAGAS evaluates four complementary metrics: **faithfulness** (does the answer fo
 
 The hybrid + reranked pipeline dominates with a 0.871 average, for only +35% latency over the naive approach. HyDE is the worst trade-off: 2.7x slower with the lowest recall. The +0.09 gap between naive and hybrid+reranked comes entirely from retrieval quality providing better context to the LLM.
 
-![Figure 5 - RAGAS metrics by pipeline configuration](/images/projects/exploration-dun-pipeline-rag/ragas_metrics_per_pipeline_config.png)
+![Figure 5 - RAGAS metrics by pipeline configuration](../../../assets/images/projects/exploration-dun-pipeline-rag/ragas_metrics_per_pipeline_config.png)
 
 Figure 5 - RAGAS metrics by pipeline configuration
 
@@ -191,7 +191,7 @@ The production pipeline assembles the best choices: recursive chunking (1000/200
 
 The Chainlit interface offers four modes (Simple, Hybrid, Hybrid+Rerank, Direct LLM), an interactive settings panel (number of results, source display, conversation memory), and token-by-token streaming. Each answer displays its sources in clickable panels that reveal the full retrieved chunk, along with timing metrics (retrieval, generation, total).
 
-![Figure 6 - Conversation in the Chainlit interface with the 5 retrieved sources and timing metrics](/images/projects/exploration-dun-pipeline-rag/conversation_llm.png)
+![Figure 6 - Conversation in the Chainlit interface with the 5 retrieved sources and timing metrics](../../../assets/images/projects/exploration-dun-pipeline-rag/conversation_llm.png)
 
 Figure 6 - Pipeline response to a question about conversational memory, with the 5 sources and retrieval/generation times
 

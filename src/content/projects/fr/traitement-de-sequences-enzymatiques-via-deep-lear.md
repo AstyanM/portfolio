@@ -53,7 +53,7 @@ Après avoir importé les données sous forme de fichier CSV dans notre notebook
 
 Nous avons également filtré les données en supprimant certaines lignes marquées comme peu fiables, notamment celles comportant les symboles "-" dans les colonnes *Induction (Gel)* et *Expression (Gel)*.
 
-![Figure 1 - Table des données](/images/projects/traitement-de-sequences-enzymatiques-via-deep-lear/tableau.png)
+![Figure 1 - Table des données](../../../assets/images/projects/traitement-de-sequences-enzymatiques-via-deep-lear/tableau.png)
 
 Figure 1 - Table des données
 
@@ -89,7 +89,7 @@ for line in range(len(df.index)):
 
 Pour cela, nous avons utilisé ***Clustal2***, un exécutable qui effectue l’alignement des données en prenant en entrée un fichier ***Fasta***. Pour cela, on utilise un module appelé ***ClustalwCommandline***.
 
-![Figure 2 - Exécutable Clustal2](/images/projects/traitement-de-sequences-enzymatiques-via-deep-lear/clustal2.png)
+![Figure 2 - Exécutable Clustal2](../../../assets/images/projects/traitement-de-sequences-enzymatiques-via-deep-lear/clustal2.png)
 
 Figure 2 - Exécutable Clustal2
 
@@ -123,7 +123,7 @@ aligned_sequences = list(SeqIO.parse(output_file, "clustal"))
 
 Après un temps de traitement d’environ 5 minutes, on se retrouve avec des séquences alignées sous cette forme :
 
-![Figure 3 - Résultat de l’alignement des séquences](/images/projects/traitement-de-sequences-enzymatiques-via-deep-lear/seq.png)
+![Figure 3 - Résultat de l’alignement des séquences](../../../assets/images/projects/traitement-de-sequences-enzymatiques-via-deep-lear/seq.png)
 
 Figure 3 - Résultat de l’alignement des séquences
 
@@ -162,7 +162,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 
 Nous obtenons ici le loss de train (bleu) et le loss de test (en jaune).
 
-![Figure 4 - Train & Test loss](/images/projects/traitement-de-sequences-enzymatiques-via-deep-lear/untitled.png)
+![Figure 4 - Train & Test loss](../../../assets/images/projects/traitement-de-sequences-enzymatiques-via-deep-lear/untitled.png)
 
 Figure 4 - Train & Test loss
 
@@ -193,13 +193,13 @@ model.add(Dense(18))
 Nous avons introduit du Dropout, permettant de désactiver aléatoirement un certain pourcentage de neurones dans chaque couche lors de l’entraînement, dans l’objectif d’empêcher un apprentissage par coeur des données et favoriser la généralisation.
 De plus afin d’améliorer la stabilité de l'entraînement et accélérer la convergence nous avons ajouté des layers de BatchNormalization.
 
-![Figure 5 - Train & Test loss](/images/projects/traitement-de-sequences-enzymatiques-via-deep-lear/untitled-1.png)
+![Figure 5 - Train & Test loss](../../../assets/images/projects/traitement-de-sequences-enzymatiques-via-deep-lear/untitled-1.png)
 
 Figure 5 - Train & Test loss
 
 Comme on peut le voir sur le graphique les résultats sont nettement meilleurs en terme de capacité à généraliser (peu d’écart entre les deux courbes). On obtient un loss de test d’environ 0.028. Pourtant lorsqu’on regarde les prédictions on remarque que cela n’est pas très concluant. Voici les prédictions et les valeurs attendues pour l’enzyme C7RAM1, pour les différents substrats :
 
-![Figure 6 - Résultats pour le second modèle](/images/projects/traitement-de-sequences-enzymatiques-via-deep-lear/untitled-2.png)
+![Figure 6 - Résultats pour le second modèle](../../../assets/images/projects/traitement-de-sequences-enzymatiques-via-deep-lear/untitled-2.png)
 
 Figure 6 - Résultats pour le second modèle
 
@@ -209,7 +209,7 @@ Bien qu’une partie des prédictions possèdent le bon ordre de grandeur, on tr
 
 Nous avons donc essayé d’implémenter un réseau à convolution 1D. Ce type de réseau est très intéressant car il permet de mieux traiter les données spatialement parlant, grâce à des filtres 1D qui vont parcourir les séquences de nos enzymes.
 
-![Figure 7 - Visualisation d’un réseau de neurones à convolution 1D](/images/projects/traitement-de-sequences-enzymatiques-via-deep-lear/untitled-3.png)
+![Figure 7 - Visualisation d’un réseau de neurones à convolution 1D](../../../assets/images/projects/traitement-de-sequences-enzymatiques-via-deep-lear/untitled-3.png)
 
 Figure 7 - Visualisation d’un réseau de neurones à convolution 1D
 
@@ -266,17 +266,17 @@ model.add(Dense(18))
 
 Afin de vérifier et valider le bon fonctionnement du modèle, nous avons commencé par intentionnellement l’entraîner sur 20 séquences seulement (les mêmes en train et en test) :
 
-![Figure 8 - Train & Test loss données d’entraînement](/images/projects/traitement-de-sequences-enzymatiques-via-deep-lear/untitled-4.png)
+![Figure 8 - Train & Test loss données d’entraînement](../../../assets/images/projects/traitement-de-sequences-enzymatiques-via-deep-lear/untitled-4.png)
 
 Figure 8 - Train & Test loss données d’entraînement
 
-![Figure 9 - Résultats pour le troisième modèle](/images/projects/traitement-de-sequences-enzymatiques-via-deep-lear/untitled-5.png)
+![Figure 9 - Résultats pour le troisième modèle](../../../assets/images/projects/traitement-de-sequences-enzymatiques-via-deep-lear/untitled-5.png)
 
 Figure 9 - Résultats pour le troisième modèle
 
 Mais ce qui nous intéresse vraiment ici c’est la performance sur le dataset entier et notamment sur un jeu de données de test. Malheureusement les résultats à ce niveau là ne sont pas très convaincants :
 
-![Figure 10 - Train & Test loss dataset](/images/projects/traitement-de-sequences-enzymatiques-via-deep-lear/untitled-6.png)
+![Figure 10 - Train & Test loss dataset](../../../assets/images/projects/traitement-de-sequences-enzymatiques-via-deep-lear/untitled-6.png)
 
 Figure 10 - Train & Test loss dataset
 
@@ -313,7 +313,7 @@ model.add(Dense(18))
 
 On obtient des résultats relativement similaires au réseau précédent
 
-![Untitled](/images/projects/traitement-de-sequences-enzymatiques-via-deep-lear/untitled-7.png)
+![Untitled](../../../assets/images/projects/traitement-de-sequences-enzymatiques-via-deep-lear/untitled-7.png)
 
 Malheureusement nous n’avons pas eu trop le temps de creuser ce qui touche aux LSTM. Ainsi notre utilisation des LSTM dans cette architecture n’est probablement pas très optimale.
 

@@ -87,7 +87,7 @@ Corpus cleaning and preparation include several steps:
 3. **Dataset creation**: a CSV file is generated with two columns (`text`, `label`). The label is an integer from 0 to 3 corresponding to the section.
 4. **Split into sets**: data is divided into training (80%) and validation (20%) sets. A sample is kept to test the final model.
 
-![Figure 1: Distribution of Sentences per Class](/images/projects/redaction-de-projets-motives/image.png)
+![Figure 1: Distribution of Sentences per Class](../../../assets/images/projects/redaction-de-projets-motives/image.png)
 
 Figure 1: Distribution of Sentences per Class
 
@@ -100,7 +100,7 @@ The core of the system is a **CamemBERT** model (French-adapted BERT version) tr
 1. **Fine-tuning**: from the pre-trained `camembert-base` model, the architecture is adjusted with an output layer of size 4. The training set is used over several epochs with an AdamW optimizer.
 2. **Evaluation**: performance is measured on the validation set via accuracy, F1-score, and confusion matrix. The final model achieves an accuracy of about 93%, showing that the difference between sections is well captured.
 
-![Figure 2: Training Loss/Accuracy Curves](/images/projects/redaction-de-projets-motives/image-1.png)
+![Figure 2: Training Loss/Accuracy Curves](../../../assets/images/projects/redaction-de-projets-motives/image-1.png)
 
 Figure 2: Training Loss/Accuracy Curves
 
@@ -173,7 +173,7 @@ The FastAPI API is built around three routers:
 
 Services are imported from `backend/services/`; they use `transformers` to load CamemBERT, `language_tool_python` for corrections, and custom functions for metrics. Configuration (`core/config.py`) centralizes parameters (paths, CORS, etc.).
 
-![Figure 3: API Endpoints Documentation](/images/projects/redaction-de-projets-motives/image-2.png)
+![Figure 3: API Endpoints Documentation](../../../assets/images/projects/redaction-de-projets-motives/image-2.png)
 
 Figure 3: API Endpoints Documentation
 
@@ -196,7 +196,7 @@ It offers:
 
 The architecture follows React's component/context model: hooks manage letter and result state, while specialized components handle display. API calls are centralized in `frontend/api/` for easy modification.
 
-![Figure 4: Evaluation Page Graphical Interface](/images/projects/redaction-de-projets-motives/image-3.png)
+![Figure 4: Evaluation Page Graphical Interface](../../../assets/images/projects/redaction-de-projets-motives/image-3.png)
 
 Figure 4: Evaluation Page Graphical Interface
 
@@ -204,7 +204,7 @@ Figure 4: Evaluation Page Graphical Interface
 
 Complete backend and frontend hosting on **Railway.**
 
-![Figure 5: Railway Infrastructure](/images/projects/redaction-de-projets-motives/image-4.png)
+![Figure 5: Railway Infrastructure](../../../assets/images/projects/redaction-de-projets-motives/image-4.png)
 
 Figure 5: Railway Infrastructure
 
