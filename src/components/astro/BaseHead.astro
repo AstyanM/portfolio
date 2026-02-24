@@ -99,8 +99,10 @@ const currentUrl = getAlternateUrl(Astro.url, lang as Lang, Astro.site);
 
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
+      document.documentElement.style.colorScheme = 'dark';
     } else {
       document.documentElement.classList.remove('dark');
+      document.documentElement.style.colorScheme = 'light';
     }
 
     const themeColorMeta = document.querySelector('meta[name="theme-color"]');

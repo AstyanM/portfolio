@@ -1,0 +1,50 @@
+<svg viewBox="0 0 640 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .bg-l{fill:rgb(252,250,247)}.bg-d{fill:rgb(12,10,9);opacity:0}
+    .ss{stroke:#78716c}
+    @media(prefers-color-scheme:dark){
+      .bg-l{opacity:0}.bg-d{opacity:1}
+    }
+  </style>
+  <rect class="bg-l" width="640" height="360" rx="12"/>
+  <rect class="bg-d" width="640" height="360" rx="12"/>
+  <defs>
+    <linearGradient id="ag" x1="60" y1="180" x2="580" y2="180" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#d97706"/><stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+  </defs>
+  <!-- Baseline -->
+  <line x1="40" y1="180" x2="600" y2="180" class="ss" stroke-width="1" opacity="0.2"/>
+  <!-- Amber sine wave (original sound, going right) -->
+  <path d="M40 180
+    Q80 100 120 180 Q160 260 200 180
+    Q240 100 280 180 Q320 260 360 180
+    Q400 100 440 180 Q480 260 520 180
+    Q560 100 600 180"
+    stroke="url(#ag)" stroke-width="3" fill="none" opacity="0.8"/>
+  <!-- Stone inverted sine wave (anti-noise, going left) -->
+  <path d="M40 180
+    Q80 260 120 180 Q160 100 200 180
+    Q240 260 280 180 Q320 100 360 180
+    Q400 260 440 180 Q480 100 520 180
+    Q560 260 600 180"
+    class="ss" stroke-width="3" fill="none" opacity="0.5"/>
+  <!-- Cancellation zone: center fade -->
+  <!-- Masking gradient overlay to show cancellation -->
+  <defs>
+    <linearGradient id="fade-in" x1="200" y1="0" x2="320" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-opacity="0"/><stop offset="100%" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="fade-out" x1="320" y1="0" x2="440" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-opacity="1"/><stop offset="100%" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <!-- Flat line in center showing cancellation result -->
+  <line x1="240" y1="180" x2="400" y2="180" stroke="#d97706" stroke-width="2.5" opacity="0.6" stroke-linecap="round"/>
+  <!-- Small glow at center point -->
+  <circle cx="320" cy="180" r="6" fill="#fbbf24" opacity="0.5"/>
+  <circle cx="320" cy="180" r="3" fill="#fbbf24" opacity="0.8"/>
+  <!-- Amplitude labels -->
+  <line x1="60" y1="100" x2="60" y2="260" class="ss" stroke-width="1" stroke-dasharray="3 3" opacity="0.15"/>
+  <line x1="580" y1="100" x2="580" y2="260" class="ss" stroke-width="1" stroke-dasharray="3 3" opacity="0.15"/>
+</svg>

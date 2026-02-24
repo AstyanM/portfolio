@@ -21,8 +21,10 @@ export default function ThemeToggle() {
 
     if (newTheme === 'dark') {
       document.documentElement.classList.add('dark');
+      document.documentElement.style.colorScheme = 'dark';
     } else {
       document.documentElement.classList.remove('dark');
+      document.documentElement.style.colorScheme = 'light';
     }
 
     const themeColorMeta = document.querySelector('meta[name="theme-color"]');

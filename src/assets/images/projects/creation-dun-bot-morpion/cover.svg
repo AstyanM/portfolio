@@ -1,0 +1,35 @@
+<svg viewBox="0 0 640 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .bg-l{fill:rgb(252,250,247)}.bg-d{fill:rgb(12,10,9);opacity:0}
+    .ss{stroke:#78716c}
+    @media(prefers-color-scheme:dark){
+      .bg-l{opacity:0}.bg-d{opacity:1}
+    }
+  </style>
+  <rect class="bg-l" width="640" height="360" rx="12"/>
+  <rect class="bg-d" width="640" height="360" rx="12"/>
+  <defs>
+    <linearGradient id="ag" x1="220" y1="60" x2="420" y2="300" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#d97706"/><stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+  </defs>
+  <!-- 3x3 Grid lines -->
+  <!-- Vertical lines -->
+  <line x1="273" y1="60" x2="273" y2="300" class="ss" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
+  <line x1="367" y1="60" x2="367" y2="300" class="ss" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
+  <!-- Horizontal lines -->
+  <line x1="180" y1="140" x2="460" y2="140" class="ss" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
+  <line x1="180" y1="220" x2="460" y2="220" class="ss" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
+  <!-- O in top-left cell -->
+  <circle cx="226" cy="100" r="26" stroke="url(#ag)" stroke-width="4" fill="none" opacity="0.7"/>
+  <!-- X in center cell -->
+  <line x1="300" y1="152" x2="340" y2="208" stroke="url(#ag)" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+  <line x1="340" y1="152" x2="300" y2="208" stroke="url(#ag)" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+  <!-- O in bottom-right cell -->
+  <circle cx="414" cy="260" r="26" stroke="url(#ag)" stroke-width="4" fill="none" opacity="0.6"/>
+  <!-- X in top-right cell (fainter) -->
+  <line x1="394" y1="74" x2="434" y2="126" stroke="url(#ag)" stroke-width="3" stroke-linecap="round" opacity="0.4"/>
+  <line x1="434" y1="74" x2="394" y2="126" stroke="url(#ag)" stroke-width="3" stroke-linecap="round" opacity="0.4"/>
+  <!-- O in bottom-left cell (fainter) -->
+  <circle cx="226" cy="260" r="26" stroke="url(#ag)" stroke-width="3" fill="none" opacity="0.35"/>
+</svg>

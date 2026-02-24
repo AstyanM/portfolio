@@ -1,0 +1,62 @@
+<svg viewBox="0 0 640 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .bg-l{fill:rgb(252,250,247)}.bg-d{fill:rgb(12,10,9);opacity:0}
+    .ss{stroke:#78716c}.fs{fill:#78716c}
+    @media(prefers-color-scheme:dark){
+      .bg-l{opacity:0}.bg-d{opacity:1}
+    }
+  </style>
+  <rect class="bg-l" width="640" height="360" rx="12"/>
+  <rect class="bg-d" width="640" height="360" rx="12"/>
+  <defs>
+    <linearGradient id="ag" x1="100" y1="30" x2="540" y2="330" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#d97706"/><stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+  </defs>
+  <!-- Band 1: Chunking - rectangles -->
+  <rect x="100" y="30" width="440" height="48" rx="8" fill="#d97706" opacity="0.12"/>
+  <rect x="100" y="30" width="440" height="48" rx="8" stroke="#d97706" stroke-width="1" opacity="0.3" fill="none"/>
+  <rect x="120" y="44" width="32" height="20" rx="3" fill="#d97706" opacity="0.4"/>
+  <rect x="160" y="44" width="24" height="20" rx="3" fill="#d97706" opacity="0.35"/>
+  <rect x="192" y="44" width="36" height="20" rx="3" fill="#d97706" opacity="0.3"/>
+  <rect x="236" y="44" width="28" height="20" rx="3" fill="#d97706" opacity="0.4"/>
+  <rect x="272" y="44" width="20" height="20" rx="3" fill="#d97706" opacity="0.25"/>
+  <rect x="300" y="44" width="40" height="20" rx="3" fill="#d97706" opacity="0.35"/>
+  <!-- Band 2: Embeddings - circles -->
+  <rect x="100" y="90" width="440" height="48" rx="8" fill="#d97706" opacity="0.18"/>
+  <rect x="100" y="90" width="440" height="48" rx="8" stroke="#d97706" stroke-width="1" opacity="0.35" fill="none"/>
+  <circle cx="135" cy="114" r="8" fill="#d97706" opacity="0.5"/>
+  <circle cx="175" cy="114" r="8" fill="#d97706" opacity="0.4"/>
+  <circle cx="215" cy="114" r="8" fill="#d97706" opacity="0.55"/>
+  <circle cx="255" cy="114" r="8" fill="#d97706" opacity="0.35"/>
+  <circle cx="295" cy="114" r="8" fill="#d97706" opacity="0.45"/>
+  <circle cx="335" cy="114" r="8" fill="#d97706" opacity="0.5"/>
+  <!-- Band 3: Retrieval - arrows/lines -->
+  <rect x="100" y="150" width="440" height="48" rx="8" fill="#d97706" opacity="0.25"/>
+  <rect x="100" y="150" width="440" height="48" rx="8" stroke="#d97706" stroke-width="1" opacity="0.4" fill="none"/>
+  <path d="M130 174 L170 174" stroke="#d97706" stroke-width="2.5" opacity="0.6" stroke-linecap="round"/>
+  <path d="M165 169 L175 174 L165 179" stroke="#d97706" stroke-width="2" fill="none" opacity="0.6"/>
+  <path d="M200 174 L260 174" stroke="#d97706" stroke-width="2.5" opacity="0.5" stroke-linecap="round"/>
+  <path d="M255 169 L265 174 L255 179" stroke="#d97706" stroke-width="2" fill="none" opacity="0.5"/>
+  <path d="M290 174 L330 174" stroke="#d97706" stroke-width="2.5" opacity="0.6" stroke-linecap="round"/>
+  <!-- Band 4: Reranking - diamonds -->
+  <rect x="100" y="210" width="440" height="48" rx="8" fill="#d97706" opacity="0.35"/>
+  <rect x="100" y="210" width="440" height="48" rx="8" stroke="#d97706" stroke-width="1" opacity="0.5" fill="none"/>
+  <rect x="127" y="227" width="14" height="14" rx="2" fill="#d97706" opacity="0.7" transform="rotate(45 134 234)"/>
+  <rect x="167" y="227" width="14" height="14" rx="2" fill="#d97706" opacity="0.5" transform="rotate(45 174 234)"/>
+  <rect x="207" y="227" width="14" height="14" rx="2" fill="#d97706" opacity="0.6" transform="rotate(45 214 234)"/>
+  <rect x="247" y="227" width="14" height="14" rx="2" fill="#d97706" opacity="0.65" transform="rotate(45 254 234)"/>
+  <!-- Band 5: Generation - hexagons -->
+  <rect x="100" y="270" width="440" height="48" rx="8" fill="#d97706" opacity="0.45"/>
+  <rect x="100" y="270" width="440" height="48" rx="8" stroke="#d97706" stroke-width="1" opacity="0.6" fill="none"/>
+  <polygon points="134,283 145,288 145,298 134,303 123,298 123,288" fill="#d97706" opacity="0.7"/>
+  <polygon points="174,283 185,288 185,298 174,303 163,298 163,288" fill="#d97706" opacity="0.6"/>
+  <polygon points="214,283 225,288 225,298 214,303 203,298 203,288" fill="#d97706" opacity="0.75"/>
+  <!-- Vertical thread -->
+  <line x1="500" y1="30" x2="500" y2="318" stroke="url(#ag)" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  <circle cx="500" cy="54" r="4" fill="#fbbf24" opacity="0.8"/>
+  <circle cx="500" cy="114" r="4" fill="#fbbf24" opacity="0.8"/>
+  <circle cx="500" cy="174" r="4" fill="#fbbf24" opacity="0.8"/>
+  <circle cx="500" cy="234" r="4" fill="#fbbf24" opacity="0.8"/>
+  <circle cx="500" cy="294" r="4" fill="#fbbf24" opacity="0.8"/>
+</svg>

@@ -3,7 +3,7 @@ title: "Neural Network Braking Control"
 description: "Design of an intelligent anti-lock braking system (ABS) using neural networks to maintain an optimal slip ratio. The NARMA-L2 controller, based on a feedback linearization strategy, replaces classical PID-type methods."
 cardDescription: "Intelligent ABS system using a NARMA-L2 controller."
 tags: ["Deep Learning", "Simulation", "Recherche"]
-cover: "../../../assets/images/projects/controle-de-freinage-par-reseau-de-neurones/comparison_results.png"
+cover: "../../../assets/images/projects/controle-de-freinage-par-reseau-de-neurones/cover.svg"
 lang: en
 draft: false
 teamSize: 1

@@ -3,6 +3,7 @@ title: "Parcoursup Simulator"
 description: "Tool for estimating admission chances on Parcoursup, based on open data and explainable statistical modeling. The application combines a FastAPI backend and a React interface to provide an interactive and transparent experience."
 cardDescription: "Estimate Parcoursup admission chances using open data."
 tags: ["Web", "Data Science", "Simulation"]
+cover: "../../../assets/images/projects/simulateur-parcoursup/cover.svg"
 lang: en
 draft: false
 teamSize: 1

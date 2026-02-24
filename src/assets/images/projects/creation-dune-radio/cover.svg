@@ -1,0 +1,49 @@
+<svg viewBox="0 0 640 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .bg-l{fill:rgb(252,250,247)}.bg-d{fill:rgb(12,10,9);opacity:0}
+    .ss{stroke:#78716c}
+    @media(prefers-color-scheme:dark){
+      .bg-l{opacity:0}.bg-d{opacity:1}
+    }
+  </style>
+  <rect class="bg-l" width="640" height="360" rx="12"/>
+  <rect class="bg-d" width="640" height="360" rx="12"/>
+  <defs>
+    <linearGradient id="ag" x1="40" y1="180" x2="600" y2="180" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#d97706"/><stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+  </defs>
+  <!-- Noisy signal on the left -->
+  <path d="M40 180 Q50 140 58 185 Q62 210 70 170 Q76 145 82 195 Q88 220 94 165
+    Q100 135 106 190 Q112 225 118 175 Q124 130 130 200 Q136 230 142 168
+    Q148 128 154 198 Q160 235 166 172 Q172 122 178 205 Q184 240 190 165
+    Q196 118 202 195 Q208 242 214 170 Q220 115 226 200"
+    class="ss" stroke-width="2" fill="none" opacity="0.5"/>
+  <!-- Additional noise layers -->
+  <path d="M40 180 Q52 155 60 192 Q68 215 76 162 Q84 140 92 198 Q100 228 108 158
+    Q116 132 124 205 Q132 235 140 160 Q148 125 156 210 Q164 238 172 155
+    Q180 120 188 215 Q196 245 204 158 Q212 112 220 208 Q228 242 236 162"
+    class="ss" stroke-width="1.5" fill="none" opacity="0.3"/>
+  <!-- Filter band (vertical amber rectangle) -->
+  <rect x="250" y="70" width="60" height="220" rx="6" fill="#d97706" opacity="0.12"/>
+  <rect x="250" y="70" width="60" height="220" rx="6" stroke="#d97706" stroke-width="2" fill="none" opacity="0.5"/>
+  <!-- Filter internal lines -->
+  <line x1="265" y1="85" x2="265" y2="275" stroke="#d97706" stroke-width="1" opacity="0.25"/>
+  <line x1="280" y1="85" x2="280" y2="275" stroke="#d97706" stroke-width="1" opacity="0.3"/>
+  <line x1="295" y1="85" x2="295" y2="275" stroke="#d97706" stroke-width="1" opacity="0.25"/>
+  <!-- Clean sinusoid on the right -->
+  <path d="M330 180
+    Q355 100 380 180 Q405 260 430 180
+    Q455 100 480 180 Q505 260 530 180
+    Q555 100 580 180 Q592 140 600 180"
+    stroke="url(#ag)" stroke-width="3" fill="none" opacity="0.8" stroke-linecap="round"/>
+  <!-- Subtle amplitude envelope -->
+  <path d="M330 180
+    Q355 100 380 180 Q405 260 430 180
+    Q455 100 480 180 Q505 260 530 180
+    Q555 100 580 180 Q592 140 600 180"
+    stroke="url(#ag)" stroke-width="8" fill="none" opacity="0.08"/>
+  <!-- Arrow through filter -->
+  <line x1="230" y1="180" x2="326" y2="180" stroke="#d97706" stroke-width="2" opacity="0.4" stroke-dasharray="4 3"/>
+  <polygon points="322,174 334,180 322,186" fill="#d97706" opacity="0.5"/>
+</svg>

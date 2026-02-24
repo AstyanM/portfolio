@@ -1,0 +1,51 @@
+<svg viewBox="0 0 640 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .bg-l{fill:rgb(252,250,247)}.bg-d{fill:rgb(12,10,9);opacity:0}
+    .ss{stroke:#78716c}
+    @media(prefers-color-scheme:dark){
+      .bg-l{opacity:0}.bg-d{opacity:1}
+    }
+  </style>
+  <rect class="bg-l" width="640" height="360" rx="12"/>
+  <rect class="bg-d" width="640" height="360" rx="12"/>
+  <defs>
+    <linearGradient id="ag" x1="220" y1="60" x2="420" y2="300" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#d97706"/><stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+  </defs>
+  <!-- Connecting circle -->
+  <circle cx="320" cy="180" r="120" stroke="url(#ag)" stroke-width="2" fill="none" opacity="0.3"/>
+  <!-- Petal 1: top -->
+  <ellipse cx="320" cy="82" rx="28" ry="52" fill="#d97706" opacity="0.7" transform="rotate(0 320 82)"/>
+  <!-- Petal 2: upper-right -->
+  <ellipse cx="410" cy="130" rx="28" ry="52" fill="#b45309" opacity="0.6" transform="rotate(72 410 130)"/>
+  <!-- Petal 3: lower-right -->
+  <ellipse cx="388" cy="234" rx="28" ry="52" fill="#d97706" opacity="0.5" transform="rotate(144 388 234)"/>
+  <!-- Petal 4: lower-left -->
+  <ellipse cx="252" cy="234" rx="28" ry="52" fill="#fbbf24" opacity="0.55" transform="rotate(-144 252 234)"/>
+  <!-- Petal 5: upper-left -->
+  <ellipse cx="230" cy="130" rx="28" ry="52" fill="#d97706" opacity="0.65" transform="rotate(-72 230 130)"/>
+  <!-- Center -->
+  <circle cx="320" cy="180" r="16" fill="url(#ag)" opacity="0.8"/>
+  <!-- Few-shot dots near petals -->
+  <circle cx="340" cy="55" r="3.5" fill="#78716c" opacity="0.5"/>
+  <circle cx="305" cy="50" r="3" fill="#78716c" opacity="0.4"/>
+  <circle cx="335" cy="40" r="2.5" fill="#78716c" opacity="0.45"/>
+  <circle cx="438" cy="118" r="3.5" fill="#78716c" opacity="0.5"/>
+  <circle cx="432" cy="145" r="3" fill="#78716c" opacity="0.4"/>
+  <circle cx="448" cy="135" r="2.5" fill="#78716c" opacity="0.45"/>
+  <circle cx="412" cy="258" r="3.5" fill="#78716c" opacity="0.5"/>
+  <circle cx="398" cy="268" r="3" fill="#78716c" opacity="0.4"/>
+  <circle cx="225" cy="258" r="3.5" fill="#78716c" opacity="0.5"/>
+  <circle cx="238" cy="265" r="3" fill="#78716c" opacity="0.4"/>
+  <circle cx="205" cy="118" r="3.5" fill="#78716c" opacity="0.5"/>
+  <circle cx="210" cy="142" r="3" fill="#78716c" opacity="0.4"/>
+  <!-- Faint radial lines -->
+  <g class="ss" stroke-width="0.8" opacity="0.15">
+    <line x1="320" y1="180" x2="320" y2="20"/>
+    <line x1="320" y1="180" x2="460" y2="80"/>
+    <line x1="320" y1="180" x2="440" y2="300"/>
+    <line x1="320" y1="180" x2="200" y2="300"/>
+    <line x1="320" y1="180" x2="180" y2="80"/>
+  </g>
+</svg>

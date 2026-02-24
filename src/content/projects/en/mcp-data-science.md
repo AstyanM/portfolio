@@ -3,6 +3,7 @@ title: "MCP Data Science"
 description: "MCP (Model Context Protocol) server exposing 102 data science tools to any compatible LLM. From CSV loading to a self-contained HTML report, an agent driven by natural language conducts the full pipeline: cleaning, encoding, modeling, visualization, statistical tests and clustering."
 cardDescription: "102 data science tools driven by natural language via Anthropic's MCP protocol."
 tags: ["Data Science", "NLP"]
+cover: "../../../assets/images/projects/mcp-data-science/cover.svg"
 lang: en
 draft: false
 teamSize: 1

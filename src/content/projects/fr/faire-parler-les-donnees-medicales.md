@@ -4,7 +4,7 @@ description: "Application d'exploitation des données non structurées des Dossi
 cardDescription: "Exploiter les dossiers patients non structurés avec OCR et NLP pour le GIP SIB."
 
 tags: ["NLP", "Santé", "Data Science"]
-cover: "../../../assets/images/projects/faire-parler-les-donnees-medicales/4544eafe-6418-44fb-8eaa-1bc83c83c536.png"
+cover: "../../../assets/images/projects/faire-parler-les-donnees-medicales/cover.svg"
 lang: fr
 draft: false
 teamSize: 12

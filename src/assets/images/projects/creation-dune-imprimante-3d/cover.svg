@@ -1,0 +1,47 @@
+<svg viewBox="0 0 640 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .bg-l{fill:rgb(252,250,247)}.bg-d{fill:rgb(12,10,9);opacity:0}
+    .ss{stroke:#78716c}
+    @media(prefers-color-scheme:dark){
+      .bg-l{opacity:0}.bg-d{opacity:1}
+    }
+  </style>
+  <rect class="bg-l" width="640" height="360" rx="12"/>
+  <rect class="bg-d" width="640" height="360" rx="12"/>
+  <defs>
+    <linearGradient id="ag" x1="200" y1="30" x2="440" y2="330" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#d97706"/><stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+  </defs>
+  <!-- Three delta arms converging at top -->
+  <!-- Left arm -->
+  <line x1="180" y1="320" x2="320" y2="50" stroke="url(#ag)" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+  <!-- Right arm -->
+  <line x1="460" y1="320" x2="320" y2="50" stroke="url(#ag)" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+  <!-- Center arm -->
+  <line x1="320" y1="340" x2="320" y2="50" stroke="url(#ag)" stroke-width="3" stroke-linecap="round" opacity="0.4"/>
+  <!-- Top convergence point -->
+  <circle cx="320" cy="50" r="8" fill="#d97706" opacity="0.6"/>
+  <!-- Vertical guide rails (stone) -->
+  <line x1="185" y1="90" x2="185" y2="320" class="ss" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.3"/>
+  <line x1="455" y1="90" x2="455" y2="320" class="ss" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.3"/>
+  <!-- Horizontal base -->
+  <line x1="150" y1="320" x2="490" y2="320" class="ss" stroke-width="2" opacity="0.3"/>
+  <!-- Cross arms (the moving platform) -->
+  <line x1="240" y1="220" x2="400" y2="220" stroke="url(#ag)" stroke-width="2" opacity="0.5"/>
+  <!-- Nozzle -->
+  <polygon points="315,220 325,220 322,232 318,232" fill="#d97706" opacity="0.7"/>
+  <!-- Extruded layers below nozzle -->
+  <line x1="280" y1="240" x2="360" y2="240" stroke="#fbbf24" stroke-width="2" opacity="0.6" stroke-linecap="round"/>
+  <line x1="284" y1="247" x2="356" y2="247" stroke="#fbbf24" stroke-width="2" opacity="0.5" stroke-linecap="round"/>
+  <line x1="288" y1="254" x2="352" y2="254" stroke="#fbbf24" stroke-width="2" opacity="0.45" stroke-linecap="round"/>
+  <line x1="292" y1="261" x2="348" y2="261" stroke="#d97706" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+  <line x1="296" y1="268" x2="344" y2="268" stroke="#d97706" stroke-width="2" opacity="0.35" stroke-linecap="round"/>
+  <line x1="300" y1="275" x2="340" y2="275" stroke="#d97706" stroke-width="2" opacity="0.3" stroke-linecap="round"/>
+  <line x1="304" y1="282" x2="336" y2="282" stroke="#d97706" stroke-width="2" opacity="0.25" stroke-linecap="round"/>
+  <line x1="308" y1="289" x2="332" y2="289" stroke="#d97706" stroke-width="2" opacity="0.2" stroke-linecap="round"/>
+  <!-- Base feet -->
+  <circle cx="180" cy="320" r="5" fill="#78716c" opacity="0.4"/>
+  <circle cx="460" cy="320" r="5" fill="#78716c" opacity="0.4"/>
+  <circle cx="320" cy="340" r="5" fill="#78716c" opacity="0.3"/>
+</svg>

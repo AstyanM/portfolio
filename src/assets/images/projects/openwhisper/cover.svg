@@ -1,0 +1,38 @@
+<svg viewBox="0 0 640 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .bg-l{fill:rgb(252,250,247)}.bg-d{fill:rgb(12,10,9);opacity:0}
+    .ss{stroke:#78716c}
+    @media(prefers-color-scheme:dark){
+      .bg-l{opacity:0}.bg-d{opacity:1}
+    }
+  </style>
+  <rect class="bg-l" width="640" height="360" rx="12"/>
+  <rect class="bg-d" width="640" height="360" rx="12"/>
+  <defs>
+    <linearGradient id="ag" x1="60" y1="180" x2="580" y2="180" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#d97706"/><stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+  </defs>
+  <!-- Sound source point -->
+  <circle cx="100" cy="180" r="6" fill="#d97706" opacity="0.8"/>
+  <!-- Concentric sound wave arcs -->
+  <path d="M120 130 A60 60 0 0 1 120 230" stroke="url(#ag)" stroke-width="3" fill="none" opacity="0.7" stroke-linecap="round"/>
+  <path d="M145 105 A90 90 0 0 1 145 255" stroke="url(#ag)" stroke-width="2.5" fill="none" opacity="0.55" stroke-linecap="round"/>
+  <path d="M170 80 A120 120 0 0 1 170 280" stroke="url(#ag)" stroke-width="2" fill="none" opacity="0.4" stroke-linecap="round"/>
+  <path d="M195 58 A145 145 0 0 1 195 302" stroke="url(#ag)" stroke-width="1.5" fill="none" opacity="0.25" stroke-linecap="round"/>
+  <!-- Processing boundary (center dashed line) -->
+  <line x1="300" y1="50" x2="300" y2="310" class="ss" stroke-width="2" stroke-dasharray="8 6" opacity="0.3"/>
+  <!-- Transition zone: hybrid elements (arcs becoming lines) -->
+  <path d="M240 140 A50 50 0 0 1 240 220" stroke="#d97706" stroke-width="2" fill="none" opacity="0.3" stroke-linecap="round"/>
+  <line x1="260" y1="130" x2="290" y2="130" stroke="#d97706" stroke-width="2" opacity="0.2" stroke-linecap="round"/>
+  <line x1="255" y1="155" x2="290" y2="155" stroke="#d97706" stroke-width="2" opacity="0.25" stroke-linecap="round"/>
+  <line x1="260" y1="205" x2="290" y2="205" stroke="#d97706" stroke-width="2" opacity="0.25" stroke-linecap="round"/>
+  <line x1="260" y1="230" x2="290" y2="230" stroke="#d97706" stroke-width="2" opacity="0.2" stroke-linecap="round"/>
+  <!-- Text lines on the right -->
+  <line x1="360" y1="110" x2="540" y2="110" stroke="url(#ag)" stroke-width="3" opacity="0.7" stroke-linecap="round"/>
+  <line x1="360" y1="140" x2="510" y2="140" stroke="url(#ag)" stroke-width="3" opacity="0.6" stroke-linecap="round"/>
+  <line x1="360" y1="170" x2="560" y2="170" stroke="url(#ag)" stroke-width="3" opacity="0.65" stroke-linecap="round"/>
+  <line x1="360" y1="200" x2="490" y2="200" stroke="url(#ag)" stroke-width="3" opacity="0.55" stroke-linecap="round"/>
+  <line x1="360" y1="230" x2="530" y2="230" stroke="url(#ag)" stroke-width="3" opacity="0.5" stroke-linecap="round"/>
+  <line x1="360" y1="260" x2="470" y2="260" stroke="url(#ag)" stroke-width="3" opacity="0.4" stroke-linecap="round"/>
+</svg>

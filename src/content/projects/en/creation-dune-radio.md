@@ -3,7 +3,7 @@ title: "Creation of a Radio"
 description: "Design and construction of a functional FM receiver ensuring clear and stable radio signal reception. The project covers signal filtering, audio amplification, frequency synthesis, and FM demodulation."
 cardDescription: "Designing and building an FM receiver with filtering and demodulation."
 tags: ["Hardware", "Traitement du Signal", "Embarqué"]
-cover: "../../../assets/images/projects/creation-dune-radio/1-1.png"
+cover: "../../../assets/images/projects/creation-dune-radio/cover.svg"
 lang: en
 draft: false
 teamSize: 2

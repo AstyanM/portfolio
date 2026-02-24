@@ -1,0 +1,50 @@
+<svg viewBox="0 0 640 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .bg-l{fill:rgb(252,250,247)}.bg-d{fill:rgb(12,10,9);opacity:0}
+    .ss{stroke:#78716c}
+    @media(prefers-color-scheme:dark){
+      .bg-l{opacity:0}.bg-d{opacity:1}
+    }
+  </style>
+  <rect class="bg-l" width="640" height="360" rx="12"/>
+  <rect class="bg-d" width="640" height="360" rx="12"/>
+  <defs>
+    <linearGradient id="ag" x1="160" y1="80" x2="480" y2="280" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#d97706"/><stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+  </defs>
+  <!-- Circular feedback arrow -->
+  <path d="M320 80 A120 120 0 1 1 210 145" stroke="url(#ag)" stroke-width="4" fill="none" opacity="0.6" stroke-linecap="round"/>
+  <!-- Arrowhead on the loop -->
+  <polygon points="210,135 200,152 218,152" fill="#d97706" opacity="0.7"/>
+  <!-- Inner faint ring -->
+  <circle cx="320" cy="195" r="90" stroke="#78716c" stroke-width="0.8" fill="none" opacity="0.15"/>
+  <!-- Node 1: Wheel (top) -->
+  <circle cx="320" cy="80" r="28" fill="#d97706" opacity="0.15" stroke="#d97706" stroke-width="2" stroke-opacity="0.5"/>
+  <!-- Wheel spokes -->
+  <circle cx="320" cy="80" r="18" stroke="#d97706" stroke-width="1.5" fill="none" opacity="0.5"/>
+  <circle cx="320" cy="80" r="5" fill="#d97706" opacity="0.6"/>
+  <line x1="320" y1="62" x2="320" y2="98" stroke="#d97706" stroke-width="1.5" opacity="0.4"/>
+  <line x1="302" y1="80" x2="338" y2="80" stroke="#d97706" stroke-width="1.5" opacity="0.4"/>
+  <line x1="307" y1="67" x2="333" y2="93" stroke="#d97706" stroke-width="1.5" opacity="0.4"/>
+  <line x1="333" y1="67" x2="307" y2="93" stroke="#d97706" stroke-width="1.5" opacity="0.4"/>
+  <!-- Node 2: Neural zigzag (bottom-right) -->
+  <circle cx="430" cy="265" r="28" fill="#d97706" opacity="0.15" stroke="#d97706" stroke-width="2" stroke-opacity="0.5"/>
+  <path d="M414 275 L420 255 L426 270 L432 252 L438 268 L444 254" stroke="#fbbf24" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+  <!-- Node 3: Gauge arc (bottom-left) -->
+  <circle cx="210" cy="265" r="28" fill="#d97706" opacity="0.15" stroke="#d97706" stroke-width="2" stroke-opacity="0.5"/>
+  <path d="M192 278 A22 22 0 0 1 228 278" stroke="#fbbf24" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+  <!-- Gauge needle -->
+  <line x1="210" y1="275" x2="222" y2="258" stroke="#d97706" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+  <circle cx="210" cy="275" r="3" fill="#d97706" opacity="0.7"/>
+  <!-- Gauge ticks -->
+  <line x1="192" y1="272" x2="194" y2="268" stroke="#78716c" stroke-width="1" opacity="0.4"/>
+  <line x1="210" y1="256" x2="210" y2="260" stroke="#78716c" stroke-width="1" opacity="0.4"/>
+  <line x1="228" y1="272" x2="226" y2="268" stroke="#78716c" stroke-width="1" opacity="0.4"/>
+  <!-- Connecting segments between nodes on the loop -->
+  <g class="ss" stroke-width="1" opacity="0.2" stroke-dasharray="4 4">
+    <line x1="320" y1="108" x2="430" y2="237"/>
+    <line x1="430" y1="265" x2="210" y2="265"/>
+    <line x1="210" y1="237" x2="320" y2="108"/>
+  </g>
+</svg>

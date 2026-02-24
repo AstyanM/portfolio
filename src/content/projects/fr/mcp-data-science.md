@@ -3,6 +3,7 @@ title: "MCP Data Science"
 description: "Serveur MCP (Model Context Protocol) exposant 102 outils de data science à n'importe quel LLM compatible. Du chargement de CSV jusqu'au rapport HTML auto-contenu, un agent piloté en langage naturel conduit le pipeline complet : nettoyage, encodage, modélisation, visualisation, tests statistiques et clustering."
 cardDescription: "102 outils de data science pilotés en langage naturel via le protocole MCP d'Anthropic."
 tags: ["Data Science", "NLP"]
+cover: "../../../assets/images/projects/mcp-data-science/cover.svg"
 lang: fr
 draft: false
 teamSize: 1

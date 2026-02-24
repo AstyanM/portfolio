@@ -1,0 +1,55 @@
+<svg viewBox="0 0 640 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .bg-l{fill:rgb(252,250,247)}.bg-d{fill:rgb(12,10,9);opacity:0}
+    .ss{stroke:#78716c}
+    @media(prefers-color-scheme:dark){
+      .bg-l{opacity:0}.bg-d{opacity:1}
+    }
+  </style>
+  <rect class="bg-l" width="640" height="360" rx="12"/>
+  <rect class="bg-d" width="640" height="360" rx="12"/>
+  <defs>
+    <linearGradient id="ag" x1="60" y1="180" x2="580" y2="180" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#d97706"/><stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+  </defs>
+  <!-- Baseline -->
+  <line x1="60" y1="200" x2="580" y2="200" class="ss" stroke-width="1" opacity="0.2"/>
+  <!-- ECG waveform -->
+  <path d="M60 200 L100 200 L120 198 L140 202 L155 200
+    L170 200 L180 195 L188 210
+    L200 120 L212 260 L222 170 L230 200
+    L250 200 L270 196 L285 204 L300 200
+    L320 200 L330 195 L338 210
+    L350 110 L362 270 L372 165 L380 200
+    L400 200 L420 198 L435 202 L450 200"
+    stroke="url(#ag)" stroke-width="3" fill="none" opacity="0.8" stroke-linejoin="round" stroke-linecap="round"/>
+  <!-- Dashed prediction extension -->
+  <path d="M450 200 L470 200 L480 196 L488 208
+    L498 130 L508 255 L516 175 L522 200
+    L540 200 L555 198 L570 200"
+    stroke="url(#ag)" stroke-width="2.5" fill="none" opacity="0.4" stroke-dasharray="6 4" stroke-linejoin="round" stroke-linecap="round"/>
+  <!-- Event markers -->
+  <!-- Marker 1: Admission -->
+  <line x1="200" y1="80" x2="200" y2="200" class="ss" stroke-width="1.5" opacity="0.35"/>
+  <circle cx="200" cy="80" r="5" fill="#d97706" opacity="0.7"/>
+  <!-- Marker 2: Triage -->
+  <line x1="350" y1="72" x2="350" y2="200" class="ss" stroke-width="1.5" opacity="0.35"/>
+  <circle cx="350" cy="72" r="5" fill="#d97706" opacity="0.8"/>
+  <!-- Marker 3: Prediction point -->
+  <line x1="450" y1="85" x2="450" y2="200" stroke="#d97706" stroke-width="1.5" opacity="0.5"/>
+  <circle cx="450" cy="85" r="5" fill="#fbbf24" opacity="0.9"/>
+  <!-- Small ticks along baseline for time -->
+  <g class="ss" stroke-width="0.8" opacity="0.2">
+    <line x1="100" y1="197" x2="100" y2="203"/>
+    <line x1="150" y1="197" x2="150" y2="203"/>
+    <line x1="200" y1="197" x2="200" y2="203"/>
+    <line x1="250" y1="197" x2="250" y2="203"/>
+    <line x1="300" y1="197" x2="300" y2="203"/>
+    <line x1="350" y1="197" x2="350" y2="203"/>
+    <line x1="400" y1="197" x2="400" y2="203"/>
+    <line x1="450" y1="197" x2="450" y2="203"/>
+    <line x1="500" y1="197" x2="500" y2="203"/>
+    <line x1="550" y1="197" x2="550" y2="203"/>
+  </g>
+</svg>

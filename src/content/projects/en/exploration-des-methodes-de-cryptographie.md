@@ -3,7 +3,7 @@ title: "Exploration of Cryptography Methods"
 description: "Implementation and analysis of various cryptography methods, from the Caesar cipher to asymmetric systems like RSA. Each method is evaluated in terms of security and accompanied by decryption tools when possible."
 cardDescription: "Implementing and analyzing classical and modern ciphers in Python."
 tags: ["Sécurité"]
-cover: "../../../assets/images/projects/exploration-des-methodes-de-cryptographie/crypto.png"
+cover: "../../../assets/images/projects/exploration-des-methodes-de-cryptographie/cover.svg"
 lang: en
 draft: true
 teamSize: 1

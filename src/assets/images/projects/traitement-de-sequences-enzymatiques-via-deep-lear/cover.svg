@@ -1,0 +1,73 @@
+<svg viewBox="0 0 640 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .bg-l{fill:rgb(252,250,247)}.bg-d{fill:rgb(12,10,9);opacity:0}
+    .ss{stroke:#78716c}
+    @media(prefers-color-scheme:dark){
+      .bg-l{opacity:0}.bg-d{opacity:1}
+    }
+  </style>
+  <rect class="bg-l" width="640" height="360" rx="12"/>
+  <rect class="bg-d" width="640" height="360" rx="12"/>
+  <defs>
+    <linearGradient id="ag" x1="60" y1="80" x2="580" y2="280" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#d97706"/><stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+  </defs>
+  <!-- Ribbon run 1 (top, going right) -->
+  <path d="M60 90 Q160 85 260 95 Q360 105 460 90 Q520 82 580 88"
+    stroke="url(#ag)" stroke-width="12" fill="none" opacity="0.6" stroke-linecap="round"/>
+  <!-- Turn 1 -->
+  <path d="M580 88 Q600 88 600 108 Q600 128 580 132"
+    stroke="url(#ag)" stroke-width="10" fill="none" opacity="0.5" stroke-linecap="round"/>
+  <!-- Ribbon run 2 (going left) -->
+  <path d="M580 132 Q460 140 360 128 Q260 118 160 135 Q100 142 60 138"
+    stroke="url(#ag)" stroke-width="14" fill="none" opacity="0.5" stroke-linecap="round"/>
+  <!-- Turn 2 -->
+  <path d="M60 138 Q40 138 40 158 Q40 178 60 182"
+    stroke="url(#ag)" stroke-width="12" fill="none" opacity="0.45" stroke-linecap="round"/>
+  <!-- Ribbon run 3 (going right, widest = active region) -->
+  <path d="M60 182 Q160 178 260 188 Q360 198 460 185 Q520 178 580 182"
+    stroke="url(#ag)" stroke-width="16" fill="none" opacity="0.7" stroke-linecap="round"/>
+  <!-- Highlighted active region on run 3 -->
+  <path d="M220 186 Q280 192 340 190 Q400 188 420 186"
+    stroke="#fbbf24" stroke-width="18" fill="none" opacity="0.4" stroke-linecap="round"/>
+  <!-- Turn 3 -->
+  <path d="M580 182 Q600 182 600 202 Q600 222 580 226"
+    stroke="url(#ag)" stroke-width="10" fill="none" opacity="0.4" stroke-linecap="round"/>
+  <!-- Ribbon run 4 (going left, thinnest) -->
+  <path d="M580 226 Q460 234 360 222 Q260 212 160 228 Q100 235 60 232"
+    stroke="url(#ag)" stroke-width="10" fill="none" opacity="0.35" stroke-linecap="round"/>
+  <!-- Residue dots along ribbons -->
+  <g class="ss" opacity="0.35">
+    <circle cx="120" cy="88" r="2.5" fill="#78716c"/>
+    <circle cx="200" cy="92" r="2.5" fill="#78716c"/>
+    <circle cx="280" cy="96" r="2.5" fill="#78716c"/>
+    <circle cx="360" cy="100" r="2.5" fill="#78716c"/>
+    <circle cx="440" cy="93" r="2.5" fill="#78716c"/>
+    <circle cx="520" cy="86" r="2.5" fill="#78716c"/>
+    <circle cx="500" cy="137" r="2.5" fill="#78716c"/>
+    <circle cx="420" cy="132" r="2.5" fill="#78716c"/>
+    <circle cx="340" cy="126" r="2.5" fill="#78716c"/>
+    <circle cx="260" cy="122" r="2.5" fill="#78716c"/>
+    <circle cx="180" cy="134" r="2.5" fill="#78716c"/>
+    <circle cx="100" cy="140" r="2.5" fill="#78716c"/>
+    <circle cx="140" cy="180" r="2.5" fill="#78716c"/>
+    <circle cx="480" cy="183" r="2.5" fill="#78716c"/>
+    <circle cx="540" cy="180" r="2.5" fill="#78716c"/>
+    <circle cx="500" cy="230" r="2.5" fill="#78716c"/>
+    <circle cx="420" cy="226" r="2.5" fill="#78716c"/>
+    <circle cx="340" cy="220" r="2.5" fill="#78716c"/>
+    <circle cx="260" cy="216" r="2.5" fill="#78716c"/>
+    <circle cx="180" cy="228" r="2.5" fill="#78716c"/>
+  </g>
+  <!-- Connection lines between runs (hydrogen bonds) -->
+  <g class="ss" stroke-width="0.8" stroke-dasharray="2 3" opacity="0.15">
+    <line x1="200" y1="95" x2="200" y2="132"/>
+    <line x1="350" y1="102" x2="350" y2="126"/>
+    <line x1="500" y1="88" x2="500" y2="136"/>
+    <line x1="150" y1="136" x2="150" y2="180"/>
+    <line x1="400" y1="130" x2="400" y2="186"/>
+    <line x1="300" y1="188" x2="300" y2="220"/>
+    <line x1="460" y1="184" x2="460" y2="228"/>
+  </g>
+</svg>

@@ -3,7 +3,7 @@ title: "Création d'un Bot Morpion"
 description: "Développement d'un bot capable de jouer au super-morpion en s'appuyant sur des algorithmes de recherche dans les arbres de jeu. Le système utilise l'algorithme Négamax avec élagage alpha-bêta pour calculer le meilleur coup en temps réel."
 cardDescription: "Bot de super-morpion avec Minimax, Négamax et élagage alpha-bêta."
 tags: ["Simulation"]
-cover: "../../../assets/images/projects/creation-dun-bot-morpion/g.png"
+cover: "../../../assets/images/projects/creation-dun-bot-morpion/cover.svg"
 lang: fr
 draft: true
 teamSize: 4

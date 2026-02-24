@@ -35,11 +35,16 @@ const projectsData = await Promise.all(
   projects.map(async (p) => {
     let optimizedCoverUrl = undefined;
     if (p.data.cover) {
-      try {
-        const optimizedImage = await getImage({ src: p.data.cover, width: 800, format: 'webp' });
-        optimizedCoverUrl = optimizedImage.src;
-      } catch (e) {
+      const isSvg = p.data.cover.src.endsWith('.svg');
+      if (isSvg) {
         optimizedCoverUrl = p.data.cover.src;
+      } else {
+        try {
+          const optimizedImage = await getImage({ src: p.data.cover, width: 800, format: 'webp' });
+          optimizedCoverUrl = optimizedImage.src;
+        } catch (e) {
+          optimizedCoverUrl = p.data.cover.src;
+        }
       }
     }
     return {

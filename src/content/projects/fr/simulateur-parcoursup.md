@@ -3,6 +3,7 @@ title: "Simulateur Parcoursup"
 description: "Outil d'estimation des chances d'admission sur Parcoursup, basé sur les données ouvertes et une modélisation statistique explicable. L'application combine une API FastAPI et une interface React pour offrir une expérience interactive et transparente."
 cardDescription: "Estimer ses chances d'admission Parcoursup grâce aux données ouvertes."
 tags: ["Web", "Data Science", "Simulation"]
+cover: "../../../assets/images/projects/simulateur-parcoursup/cover.svg"
 lang: fr
 draft: false
 teamSize: 1

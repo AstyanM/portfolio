@@ -1,0 +1,96 @@
+<svg viewBox="0 0 640 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .bg-l{fill:rgb(252,250,247)}.bg-d{fill:rgb(12,10,9);opacity:0}
+    .sa{stroke:#d97706}.fa{fill:#d97706}.ss{stroke:#78716c}.fs{fill:#78716c}
+    .fa2{fill:#b45309}.fa3{fill:#92400e}
+    @media(prefers-color-scheme:dark){
+      .bg-l{opacity:0}.bg-d{opacity:1}
+      .sa{stroke:#f59e0b}.fa{fill:#f59e0b}.fa2{fill:#d97706}.fa3{fill:#b45309}
+    }
+  </style>
+  <rect class="bg-l" width="640" height="360" rx="12"/>
+  <rect class="bg-d" width="640" height="360" rx="12"/>
+  <defs>
+    <linearGradient id="ag" x1="240" y1="100" x2="400" y2="260" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#d97706"/><stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+  </defs>
+  <!-- Connecting lines from center to satellites -->
+  <g class="ss" stroke-width="1.5" opacity="0.5">
+    <line x1="320" y1="180" x2="320" y2="52"/><line x1="320" y1="180" x2="406" y2="68"/>
+    <line x1="320" y1="180" x2="468" y2="120"/><line x1="320" y1="180" x2="488" y2="195"/>
+    <line x1="320" y1="180" x2="468" y2="258"/><line x1="320" y1="180" x2="406" y2="305"/>
+    <line x1="320" y1="180" x2="320" y2="316"/><line x1="320" y1="180" x2="234" y2="305"/>
+    <line x1="320" y1="180" x2="172" y2="258"/><line x1="320" y1="180" x2="152" y2="195"/>
+    <line x1="320" y1="180" x2="172" y2="120"/><line x1="320" y1="180" x2="234" y2="68"/>
+    <line x1="320" y1="180" x2="130" y2="80"/><line x1="320" y1="180" x2="510" y2="290"/>
+    <line x1="320" y1="180" x2="130" y2="290"/>
+  </g>
+  <!-- Central hub circle -->
+  <circle cx="320" cy="180" r="42" fill="url(#ag)" opacity="0.9"/>
+  <circle cx="320" cy="180" r="42" class="ss" stroke-width="3" fill="none" opacity="0.3"/>
+  <!-- Satellites with micro-icons -->
+  <!-- 1: bar chart -->
+  <circle cx="320" cy="52" r="18" class="fa" opacity="0.8"/>
+  <rect x="312" y="46" width="4" height="12" rx="1" fill="white" opacity="0.9"/>
+  <rect x="318" y="42" width="4" height="16" rx="1" fill="white" opacity="0.9"/>
+  <rect x="324" y="48" width="4" height="10" rx="1" fill="white" opacity="0.9"/>
+  <!-- 2: dot cluster -->
+  <circle cx="406" cy="68" r="16" class="fa" opacity="0.7"/>
+  <circle cx="400" cy="64" r="2.5" fill="white" opacity="0.9"/>
+  <circle cx="408" cy="62" r="2.5" fill="white" opacity="0.9"/>
+  <circle cx="404" cy="72" r="2.5" fill="white" opacity="0.9"/>
+  <circle cx="412" cy="70" r="2.5" fill="white" opacity="0.9"/>
+  <!-- 3: wave -->
+  <circle cx="468" cy="120" r="16" class="fa2" opacity="0.8"/>
+  <path d="M458 120 Q463 112 468 120 Q473 128 478 120" stroke="white" stroke-width="2" fill="none" opacity="0.9"/>
+  <!-- 4: grid -->
+  <circle cx="488" cy="195" r="16" class="fa" opacity="0.6"/>
+  <rect x="481" y="188" width="5" height="5" rx="1" fill="white" opacity="0.8"/>
+  <rect x="488" y="188" width="5" height="5" rx="1" fill="white" opacity="0.8"/>
+  <rect x="481" y="195" width="5" height="5" rx="1" fill="white" opacity="0.8"/>
+  <rect x="488" y="195" width="5" height="5" rx="1" fill="white" opacity="0.8"/>
+  <!-- 5: triangle -->
+  <circle cx="468" cy="258" r="16" class="fa2" opacity="0.7"/>
+  <polygon points="468,249 477,265 459,265" fill="white" opacity="0.8"/>
+  <!-- 6: circle -->
+  <circle cx="406" cy="305" r="16" class="fa" opacity="0.65"/>
+  <circle cx="406" cy="305" r="7" stroke="white" stroke-width="2" fill="none" opacity="0.8"/>
+  <!-- 7: line -->
+  <circle cx="320" cy="316" r="16" class="fa3" opacity="0.8"/>
+  <line x1="312" y1="320" x2="328" y2="312" stroke="white" stroke-width="2" opacity="0.9"/>
+  <!-- 8: plus -->
+  <circle cx="234" cy="305" r="16" class="fa" opacity="0.7"/>
+  <line x1="234" y1="298" x2="234" y2="312" stroke="white" stroke-width="2.5" opacity="0.8"/>
+  <line x1="227" y1="305" x2="241" y2="305" stroke="white" stroke-width="2.5" opacity="0.8"/>
+  <!-- 9: diamond -->
+  <circle cx="172" cy="258" r="16" class="fa2" opacity="0.75"/>
+  <rect x="166" y="252" width="12" height="12" rx="1" fill="white" opacity="0.8" transform="rotate(45 172 258)"/>
+  <!-- 10: hash -->
+  <circle cx="152" cy="195" r="16" class="fa" opacity="0.6"/>
+  <line x1="148" y1="189" x2="148" y2="201" stroke="white" stroke-width="2" opacity="0.8"/>
+  <line x1="156" y1="189" x2="156" y2="201" stroke="white" stroke-width="2" opacity="0.8"/>
+  <line x1="144" y1="193" x2="160" y2="193" stroke="white" stroke-width="2" opacity="0.8"/>
+  <line x1="144" y1="197" x2="160" y2="197" stroke="white" stroke-width="2" opacity="0.8"/>
+  <!-- 11: arrow -->
+  <circle cx="172" cy="120" r="16" class="fa3" opacity="0.7"/>
+  <path d="M164 124 L172 114 L180 124" stroke="white" stroke-width="2" fill="none" opacity="0.8"/>
+  <line x1="172" y1="114" x2="172" y2="128" stroke="white" stroke-width="2" opacity="0.8"/>
+  <!-- 12: square -->
+  <circle cx="234" cy="68" r="16" class="fa" opacity="0.75"/>
+  <rect x="227" y="61" width="14" height="14" rx="2" stroke="white" stroke-width="2" fill="none" opacity="0.8"/>
+  <!-- 13: cross -->
+  <circle cx="130" cy="80" r="14" class="fa2" opacity="0.6"/>
+  <line x1="124" y1="74" x2="136" y2="86" stroke="white" stroke-width="2" opacity="0.7"/>
+  <line x1="136" y1="74" x2="124" y2="86" stroke="white" stroke-width="2" opacity="0.7"/>
+  <!-- 14: dot -->
+  <circle cx="510" cy="290" r="14" class="fa" opacity="0.55"/>
+  <circle cx="510" cy="290" r="4" fill="white" opacity="0.8"/>
+  <!-- 15: dash -->
+  <circle cx="130" cy="290" r="14" class="fa3" opacity="0.6"/>
+  <line x1="122" y1="290" x2="138" y2="290" stroke="white" stroke-width="3" opacity="0.8"/>
+  <!-- Center icon: connection symbol -->
+  <circle cx="320" cy="180" r="12" fill="white" opacity="0.2"/>
+  <path d="M310 180 L316 174 L316 186 Z" fill="white" opacity="0.8"/>
+  <path d="M330 180 L324 174 L324 186 Z" fill="white" opacity="0.8"/>
+</svg>
