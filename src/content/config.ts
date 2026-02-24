@@ -39,14 +39,14 @@ const appendixSchema = z.object({
 
 const projectsCollection = defineCollection({
   type: 'content',
-  schema: z.object({
+  schema: ({ image }) => z.object({
     title: z.string(),
     description: z.string().optional(),
     cardDescription: z.string().optional(),
     date: z.string().optional(),
     tags: z.array(z.enum(availableTags)).default([]),
-    // Cover is a URL path to public/ (e.g., "/images/projects/slug/cover.png")
-    cover: z.string().optional(),
+    // Use Astro's built-in image() helper to process local images
+    cover: image().optional(),
     lang: z.enum(['fr', 'en']).default('fr'),
     draft: z.boolean().default(false),
     // Lien externe vers le projet (si applicable)

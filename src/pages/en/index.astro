@@ -10,6 +10,7 @@ import HeroBackground from '@/components/astro/HeroBackground.astro';
 import Typewriter from '@/components/react/Typewriter';
 import Contact from '@/components/astro/Contact.astro';
 import { ArrowRight } from 'lucide-react';
+import { getImage } from 'astro:assets';
 
 const allProjects = await getCollection('projects', ({ data }) => {
   return data.lang === 'en' && !data.draft;
@@ -30,16 +31,29 @@ const projects = filteredProjectsList.sort((a, b) => {
 });
 
 // Transform for ProjectGrid (showing 5 + CTA card)
-const projectsData = projects.slice(0, 5).map((p) => ({
-  slug: p.slug,
-  title: p.data.title,
-  description: p.data.cardDescription ?? p.data.description,
-  tags: p.data.tags,
-  href: getProjectPath(p.slug.split('/')[1], 'en'),
-  coverUrl: getAssetUrl(p.data.cover),
-  repoUrl: p.data.repoPrivate ? undefined : p.data.repoUrl,
-  liveUrl: p.data.liveUrl,
-}));
+const projectsData = await Promise.all(
+  projects.slice(0, 5).map(async (p) => {
+    let optimizedCoverUrl = undefined;
+    if (p.data.cover) {
+      try {
+        const optimizedImage = await getImage({ src: p.data.cover, width: 800, format: 'webp' });
+        optimizedCoverUrl = optimizedImage.src;
+      } catch (e) {
+        optimizedCoverUrl = p.data.cover.src;
+      }
+    }
+    return {
+      slug: p.slug,
+      title: p.data.title,
+      description: p.data.cardDescription ?? p.data.description,
+      tags: p.data.tags,
+      href: getProjectPath(p.slug.split('/')[1], 'en'),
+      coverUrl: optimizedCoverUrl,
+      repoUrl: p.data.repoPrivate ? undefined : p.data.repoUrl,
+      liveUrl: p.data.liveUrl,
+    };
+  })
+);
 
 const t = useTranslations('en');
 

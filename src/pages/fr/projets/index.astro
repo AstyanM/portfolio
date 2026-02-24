@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import ProjectsPageClient from '@/components/react/ProjectsPageClient';
 import { getCollection } from 'astro:content';
 import { getAssetUrl, getProjectPath } from '@/i18n/utils';
+import { getImage } from 'astro:assets';
 
 const allProjects = await getCollection('projects', ({ data }) => {
   return data.lang === 'fr' && !data.draft;
@@ -30,18 +31,31 @@ const years = Object.entries(yearCounts)
   .sort((a, b) => a.year - b.year);
 
 // Transform for ProjectGrid
-const projectsData = projects.map((p) => ({
-  slug: p.slug,
-  title: p.data.title,
-  description: p.data.cardDescription ?? p.data.description,
-  tags: p.data.tags,
-  href: getProjectPath(p.slug.split('/')[1], 'fr'),
-  coverUrl: getAssetUrl(p.data.cover?.src),
-  repoUrl: p.data.repoPrivate ? undefined : p.data.repoUrl,
-  liveUrl: p.data.liveUrl,
-  year: p.data.year,
-  month: p.data.month,
-}));
+const projectsData = await Promise.all(
+  projects.map(async (p) => {
+    let optimizedCoverUrl = undefined;
+    if (p.data.cover) {
+      try {
+        const optimizedImage = await getImage({ src: p.data.cover, width: 800, format: 'webp' });
+        optimizedCoverUrl = optimizedImage.src;
+      } catch (e) {
+        optimizedCoverUrl = p.data.cover.src;
+      }
+    }
+    return {
+      slug: p.slug,
+      title: p.data.title,
+      description: p.data.cardDescription ?? p.data.description,
+      tags: p.data.tags,
+      href: getProjectPath(p.slug.split('/')[1], 'fr'),
+      coverUrl: optimizedCoverUrl,
+      repoUrl: p.data.repoPrivate ? undefined : p.data.repoUrl,
+      liveUrl: p.data.liveUrl,
+      year: p.data.year,
+      month: p.data.month,
+    };
+  })
+);
 ---
 
 <BaseLayout

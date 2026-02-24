@@ -4,7 +4,7 @@ description: "Application for exploiting unstructured data from Computerized Pat
 cardDescription: "Exploiting unstructured patient records with OCR and NLP for SIB."
 
 tags: ["NLP", "Santé", "Data Science"]
-cover: "/images/projects/faire-parler-les-donnees-medicales/4544eafe-6418-44fb-8eaa-1bc83c83c536.png"
+cover: "../../../assets/images/projects/faire-parler-les-donnees-medicales/4544eafe-6418-44fb-8eaa-1bc83c83c536.png"
 lang: en
 draft: false
 teamSize: 12

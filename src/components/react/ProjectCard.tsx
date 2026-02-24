@@ -45,7 +45,7 @@ export default function ProjectCard({
         </a>
 
         {/* Cover Image */}
-        {coverUrl ? (
+        {false && coverUrl ? (
           <div className="aspect-video w-full overflow-hidden bg-background relative">
             <img
               src={coverUrl}

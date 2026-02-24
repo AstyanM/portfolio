@@ -3,7 +3,7 @@ title: "Création d'une imprimante 3D"
 description: "Conception et fabrication d'une imprimante 3D Delta fonctionnelle, couvrant l'ensemble du processus de prototypage rapide. Le projet comprend la modélisation CAO, l'impression des pièces, l'assemblage mécanique et la calibration du système."
 cardDescription: "Conception et fabrication d'une imprimante 3D Delta de A à Z."
 tags: ["Hardware"]
-cover: "/images/projects/creation-dune-imprimante-3d/05264723-4451-49d6-9aae-f9f1348ce313.png"
+cover: "../../../assets/images/projects/creation-dune-imprimante-3d/05264723-4451-49d6-9aae-f9f1348ce313.png"
 lang: fr
 draft: true
 teamSize: 8

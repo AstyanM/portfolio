@@ -3,7 +3,7 @@ title: "Création d'une radio"
 description: "Conception et réalisation d'un récepteur FM fonctionnel assurant une réception claire et stable des signaux radio. Le projet couvre la filtration du signal, l'amplification audio, la synthèse de fréquence et la démodulation FM."
 cardDescription: "Conception et réalisation d'un récepteur FM avec filtrage et démodulation."
 tags: ["Hardware", "Traitement du Signal", "Embarqué"]
-cover: "/images/projects/creation-dune-radio/1-1.png"
+cover: "../../../assets/images/projects/creation-dune-radio/1-1.png"
 lang: fr
 draft: false
 teamSize: 2

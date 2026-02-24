@@ -3,7 +3,7 @@ title: "Traitement de séquences enzymatiques via Deep Learning"
 description: "Prédiction de l'activité enzymatique sur différents substrats à l'aide d'un réseau de neurones entraîné sur des données expérimentales. Le projet explore le traitement de séquences biologiques et différentes architectures de deep learning pour optimiser les prédictions."
 cardDescription: "Prédire l'activité enzymatique sur différents substrats par réseaux de neurones."
 tags: ["Deep Learning", "Santé", "Recherche"]
-cover: "/images/projects/traitement-de-sequences-enzymatiques-via-deep-lear/clustal2.png"
+cover: "../../../assets/images/projects/traitement-de-sequences-enzymatiques-via-deep-lear/clustal2.png"
 lang: fr
 draft: false
 teamSize: 2

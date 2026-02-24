@@ -3,7 +3,7 @@ title: "OpenWhisper"
 description: "Real-time local voice transcription desktop application powered by faster-whisper (OpenAI Whisper via CTranslate2). Two-layer architecture with Tauri v2 + React communicating with a Python FastAPI backend, offering dictation, live transcription, file upload, semantic search and LLM post-processing."
 cardDescription: "Transcribe speech to text in real time, fully local, using faster-whisper and Tauri."
 tags: ["Deep Learning", "NLP", "Web"]
-cover: "/images/projects/openwhisper/transcription-live.png"
+cover: "../../../assets/images/projects/openwhisper/transcription-live.png"
 lang: en
 draft: false
 teamSize: 1

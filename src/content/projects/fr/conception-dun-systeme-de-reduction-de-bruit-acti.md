@@ -3,7 +3,7 @@ title: "Conception d'un système de Réduction de Bruit Active"
 description: "Conception d'un système de réduction de bruit active par opposition de phase, combinant approches théoriques, expérimentales et électroniques. Le système est développé en trois étapes : expérimentation sur haut-parleurs, modélisation électrique et implémentation numérique sur Raspberry Pi."
 cardDescription: "Atténuer un bruit par opposition de phase, de l'expérimentation au Raspberry Pi."
 tags: ["Traitement du Signal", "Hardware", "Embarqué"]
-cover: "/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/chaine.png"
+cover: "../../../assets/images/projects/conception-dun-systeme-de-reduction-de-bruit-acti/chaine.png"
 lang: fr
 draft: false
 teamSize: 2

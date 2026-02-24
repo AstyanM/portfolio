@@ -3,7 +3,7 @@ title: "Few-Shot Adaptation of Vision-Language Models"
 description: "Few-shot adaptation of the CLIP model to improve image classification on known categories while preserving zero-shot generalization. Comparison of recent approaches (CoOp, CoCoOp) on the Oxford Flowers-102 dataset, with implementation, evaluation, and proposed improvements."
 cardDescription: "Adapting CLIP with few examples to classify flowers using CoOp and CoCoOp."
 tags: ["Deep Learning", "Vision par Ordinateur", "Recherche"]
-cover: "/images/projects/adaptation-few-shot-de-modeles-vision-langage/image-1.png"
+cover: "../../../assets/images/projects/adaptation-few-shot-de-modeles-vision-langage/image-1.png"
 lang: en
 draft: false
 teamSize: 2
