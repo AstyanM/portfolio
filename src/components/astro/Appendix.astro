@@ -106,7 +106,7 @@ const hasContent = appendix.structure || (appendix.sources && appendix.sources.l
           <path d="M8 7h6"/>
           <path d="M8 11h8"/>
         </svg>
-        <h2 id="appendix" class="text-2xl font-bold text-foreground tracking-tight m-0">{t.title}</h2>
+        <h2 id="appendix" class="text-2xl font-bold font-display text-foreground tracking-tight m-0">{t.title}</h2>
       </div>
 
       <div class="flex flex-col gap-8">
@@ -159,7 +159,7 @@ const hasContent = appendix.structure || (appendix.sources && appendix.sources.l
             {appendix.structure.description && (
               <p class="text-foreground-secondary mb-4 text-sm">{appendix.structure.description}</p>
             )}
-            <div class="bg-[rgb(var(--color-background-secondary))] rounded-xl p-5 font-mono text-sm overflow-x-auto">
+            <div class="bg-background-secondary rounded-xl p-5 font-mono text-sm overflow-x-auto">
               {treeItems.map((item) => (
                 <div
                   class="flex items-center gap-2 py-1"

@@ -39,7 +39,7 @@ const projectUrl = getProjectPath(projectSlug, lang);
         <!-- Tags & CTA: hidden on mobile, shown on desktop -->
         <div class="hidden lg:flex flex-wrap gap-2 mb-8 stagger-item">
           {data.tags.slice(0, 4).map(tag => (
-            <span class="px-3 py-1 text-sm bg-background border border-border rounded-lg text-foreground-secondary">
+            <span class="tag">
               {translateTag(tag, lang as Lang)}
             </span>
           ))}
@@ -63,13 +63,13 @@ const projectUrl = getProjectPath(projectSlug, lang);
               alt={data.title}
               width={640}
               height={360}
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               loading="lazy"
               decoding="async"
             />
           ) : (
             <!-- Premium gradient for featured project without cover -->
-            <div class="w-full h-full bg-gradient-to-br from-accent/30 via-accent/25 to-accent/20 relative overflow-hidden transition-transform duration-700 group-hover:scale-105">
+            <div class="w-full h-full bg-gradient-to-br from-accent/30 via-accent/25 to-accent/20 relative overflow-hidden transition-transform duration-500 group-hover:scale-105">
               <!-- Animated overlay patterns -->
               <div class="absolute inset-0 opacity-20">
                 <div class="absolute top-10 left-10 w-32 h-32 bg-accent/30 rounded-full blur-2xl animate-pulse"></div>
@@ -109,7 +109,7 @@ const projectUrl = getProjectPath(projectSlug, lang);
       <div class="lg:hidden">
         <div class="flex flex-wrap gap-2 mb-8">
           {data.tags.slice(0, 4).map(tag => (
-            <span class="px-3 py-1 text-sm bg-background border border-border rounded-lg text-foreground-secondary">
+            <span class="tag">
               {translateTag(tag, lang as Lang)}
             </span>
           ))}
