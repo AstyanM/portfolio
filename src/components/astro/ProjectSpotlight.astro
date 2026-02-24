@@ -45,13 +45,15 @@ const projectUrl = getProjectPath(projectSlug, lang);
           ))}
         </div>
 
-        <a
-          href={projectUrl}
-          class="hidden lg:inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background rounded-lg hover:bg-foreground/90 hover:scale-105 transition-all duration-300 font-medium shadow-lg stagger-item"
-        >
-          {t('spotlight.btn')}
-          <ArrowRight class="w-4 h-4" />
-        </a>
+        <div class="hidden lg:flex stagger-item">
+          <a
+            href={projectUrl}
+            class="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background rounded-xl hover:bg-foreground/90 hover:scale-105 transition-all duration-300 font-medium shadow-lg"
+          >
+            {t('spotlight.btn')}
+            <ArrowRight class="w-4 h-4" />
+          </a>
+        </div>
       </div>
 
       <!-- Image Side -->
@@ -115,7 +117,7 @@ const projectUrl = getProjectPath(projectSlug, lang);
 
         <a
           href={projectUrl}
-          class="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background rounded-lg hover:bg-foreground/90 hover:scale-105 transition-all duration-300 font-medium shadow-lg"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background rounded-xl hover:bg-foreground/90 hover:scale-105 transition-all duration-300 font-medium shadow-lg"
         >
           {t('spotlight.btn')}
           <ArrowRight class="w-4 h-4" />

@@ -36,7 +36,7 @@ export default function ProjectCtaCard({ href, lang, index = 0 }: ProjectCtaCard
         </p>
 
         {/* CTA Button */}
-        <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-white rounded-lg group-hover:bg-accent-hover group-hover:scale-105 transition-all duration-300 font-medium shadow-lg shadow-accent/20">
+        <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-white rounded-xl group-hover:bg-accent-hover group-hover:scale-105 transition-all duration-300 font-medium shadow-lg shadow-accent/20">
           {t['cta.button']}
           <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
         </div>
