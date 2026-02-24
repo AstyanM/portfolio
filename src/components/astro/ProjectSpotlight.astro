@@ -45,22 +45,14 @@ const projectUrl = getProjectPath(projectSlug, lang);
           ))}
         </div>
 
-        <div class="hidden lg:flex stagger-item">
-          <a
-            href={projectUrl}
-            class="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background rounded-xl hover:bg-foreground/90 hover:scale-105 transition-all duration-300 font-medium shadow-lg"
-          >
-            {t('spotlight.btn')}
-            <ArrowRight class="w-4 h-4" />
-          </a>
-        </div>
+
       </div>
 
       <!-- Image Side -->
-      <div class="relative group animate-on-scroll lg:order-first">
+      <a href={projectUrl} aria-label={data.title} class="relative group animate-on-scroll lg:order-first block cursor-pointer">
         <!-- Gradient glow -->
         <div
-          class="absolute -inset-2 bg-gradient-to-r from-accent/20 to-amber-300/15 rounded-xl blur-lg transition-opacity duration-500 will-change-transform"
+          class="absolute -inset-2 bg-gradient-to-r from-accent/20 to-amber-300/15 rounded-xl blur-lg transition-opacity duration-700 will-change-transform opacity-0 group-hover:opacity-100"
           style="transform: translateZ(0);"
         ></div>
 
@@ -71,13 +63,13 @@ const projectUrl = getProjectPath(projectSlug, lang);
               alt={data.title}
               width={640}
               height={360}
-              class="w-full h-full object-cover"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               loading="lazy"
               decoding="async"
             />
           ) : (
             <!-- Premium gradient for featured project without cover -->
-            <div class="w-full h-full bg-gradient-to-br from-accent/30 via-accent/25 to-accent/20 relative overflow-hidden">
+            <div class="w-full h-full bg-gradient-to-br from-accent/30 via-accent/25 to-accent/20 relative overflow-hidden transition-transform duration-700 group-hover:scale-105">
               <!-- Animated overlay patterns -->
               <div class="absolute inset-0 opacity-20">
                 <div class="absolute top-10 left-10 w-32 h-32 bg-accent/30 rounded-full blur-2xl animate-pulse"></div>
@@ -102,8 +94,16 @@ const projectUrl = getProjectPath(projectSlug, lang);
               </div>
             </div>
           )}
+
+          <!-- Hover Overlay (Desktop) -->
+          <div class="absolute inset-0 bg-background/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 hidden md:flex items-center justify-center">
+            <span class="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background rounded-xl font-medium shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+              {t('spotlight.btn')}
+              <ArrowRight class="w-4 h-4" />
+            </span>
+          </div>
         </div>
-      </div>
+      </a>
 
       <!-- Tags & CTA: mobile only, after image -->
       <div class="lg:hidden">
@@ -114,14 +114,6 @@ const projectUrl = getProjectPath(projectSlug, lang);
             </span>
           ))}
         </div>
-
-        <a
-          href={projectUrl}
-          class="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background rounded-xl hover:bg-foreground/90 hover:scale-105 transition-all duration-300 font-medium shadow-lg"
-        >
-          {t('spotlight.btn')}
-          <ArrowRight class="w-4 h-4" />
-        </a>
       </div>
     </div>
 
