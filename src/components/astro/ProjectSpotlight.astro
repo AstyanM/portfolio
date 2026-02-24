@@ -1,7 +1,8 @@
 ---
 import { getEntry } from 'astro:content';
+import { getImage } from 'astro:assets';
 import { ArrowRight, Star } from 'lucide-react';
-import { getProjectPath, getAssetUrl, useTranslations, translateTag } from '@/i18n/utils';
+import { getProjectPath, useTranslations, translateTag } from '@/i18n/utils';
 import type { Lang } from '@/i18n/ui';
 
 const { lang = 'en' } = Astro.props;
@@ -15,6 +16,16 @@ if (!project) return null;
 
 const { data } = project;
 const projectUrl = getProjectPath(projectSlug, lang);
+
+let coverUrl: string | undefined;
+if (data.cover) {
+  try {
+    const optimizedImage = await getImage({ src: data.cover, width: 800, format: 'webp' });
+    coverUrl = optimizedImage.src;
+  } catch {
+    coverUrl = data.cover.src;
+  }
+}
 ---
 
 <section class="py-12 md:py-16 bg-background-secondary/20 rounded-xl">
@@ -57,9 +68,9 @@ const projectUrl = getProjectPath(projectSlug, lang);
         ></div>
 
         <div class="relative rounded-xl overflow-hidden shadow-2xl border border-border aspect-video">
-          {data.cover ? (
+          {coverUrl ? (
             <img
-              src={getAssetUrl(data.cover?.src || data.cover)}
+              src={coverUrl}
               alt={data.title}
               width={640}
               height={360}
