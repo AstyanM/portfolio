@@ -69,8 +69,9 @@ export default function ProjectCard({
                     rel="noopener noreferrer"
                     className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-md bg-accent text-white hover:bg-accent-hover active:scale-95 transition-all"
                     title={lang === 'fr' ? 'Voir la démo' : 'View live demo'}
+                    aria-label={lang === 'fr' ? `Voir la démo de ${title}` : `View live demo of ${title}`}
                   >
-                    <ExternalLink className="w-4 h-4" />
+                    <ExternalLink className="w-4 h-4" aria-hidden="true" />
                   </a>
                 )}
                 {repoUrl && (
@@ -80,8 +81,9 @@ export default function ProjectCard({
                     rel="noopener noreferrer"
                     className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-md bg-black/60 text-white hover:bg-accent active:scale-95 transition-all"
                     title={lang === 'fr' ? 'Voir le code source' : 'View source code'}
+                    aria-label={lang === 'fr' ? `Voir le code source de ${title}` : `View source code of ${title}`}
                   >
-                    <Github className="w-4 h-4" />
+                    <Github className="w-4 h-4" aria-hidden="true" />
                   </a>
                 )}
               </div>
@@ -106,8 +108,9 @@ export default function ProjectCard({
                     rel="noopener noreferrer"
                     className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-md bg-accent text-white hover:bg-accent-hover active:scale-95 transition-all"
                     title={lang === 'fr' ? 'Voir la démo' : 'View live demo'}
+                    aria-label={lang === 'fr' ? `Voir la démo de ${title}` : `View live demo of ${title}`}
                   >
-                    <ExternalLink className="w-4 h-4" />
+                    <ExternalLink className="w-4 h-4" aria-hidden="true" />
                   </a>
                 )}
                 {repoUrl && (
@@ -117,8 +120,9 @@ export default function ProjectCard({
                     rel="noopener noreferrer"
                     className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-md bg-black/60 text-white hover:bg-accent active:scale-95 transition-all"
                     title={lang === 'fr' ? 'Voir le code source' : 'View source code'}
+                    aria-label={lang === 'fr' ? `Voir le code source de ${title}` : `View source code of ${title}`}
                   >
-                    <Github className="w-4 h-4" />
+                    <Github className="w-4 h-4" aria-hidden="true" />
                   </a>
                 )}
               </div>

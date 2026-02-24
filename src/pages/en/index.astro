@@ -36,7 +36,7 @@ const projectsData = projects.slice(0, 5).map((p) => ({
   description: p.data.cardDescription ?? p.data.description,
   tags: p.data.tags,
   href: getProjectPath(p.slug.split('/')[1], 'en'),
-  coverUrl: getAssetUrl(p.data.cover?.src),
+  coverUrl: getAssetUrl(p.data.cover),
   repoUrl: p.data.repoPrivate ? undefined : p.data.repoUrl,
   liveUrl: p.data.liveUrl,
 }));
