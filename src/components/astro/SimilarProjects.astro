@@ -1,7 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
+import { getImage } from 'astro:assets';
 import ProjectCard from '@/components/react/ProjectCard';
-import { getLangFromUrl, useTranslations, getProjectPath, getAssetUrl } from '@/i18n/utils';
+import { getLangFromUrl, useTranslations, getProjectPath } from '@/i18n/utils';
 import type { CollectionEntry } from 'astro:content';
 import type { Tag } from '@/consts';
 
@@ -48,19 +49,38 @@ const similarProjects = projectsWithScore
   .map((p) => p.project);
 
 // Prepare data for ProjectCard
-const cardsData = similarProjects.map((p, index) => ({
-  title: p.data.title,
-  description: p.data.cardDescription ?? p.data.description,
-  tags: p.data.tags as Tag[],
-  slug: p.slug,
-  href: getProjectPath(p.slug.split('/')[1], lang),
-  coverUrl: getAssetUrl(p.data.cover?.src),
-  repoUrl: p.data.repoPrivate ? undefined : p.data.repoUrl,
-  liveUrl: p.data.liveUrl,
-  year: p.data.year,
-  index,
-  lang,
-}));
+const cardsData = await Promise.all(
+  similarProjects.map(async (p, index) => {
+    let optimizedCoverUrl = undefined;
+    if (p.data.cover) {
+      const isSvg = p.data.cover.src.endsWith('.svg');
+      if (isSvg) {
+        optimizedCoverUrl = p.data.cover.src;
+      } else {
+        try {
+          const optimizedImage = await getImage({ src: p.data.cover, width: 800, format: 'webp' });
+          optimizedCoverUrl = optimizedImage.src;
+        } catch (e) {
+          optimizedCoverUrl = p.data.cover.src;
+        }
+      }
+    }
+    
+    return {
+      title: p.data.title,
+      description: p.data.cardDescription ?? p.data.description,
+      tags: p.data.tags as Tag[],
+      slug: p.slug,
+      href: getProjectPath(p.slug.split('/')[1], lang),
+      coverUrl: optimizedCoverUrl,
+      repoUrl: p.data.repoPrivate ? undefined : p.data.repoUrl,
+      liveUrl: p.data.liveUrl,
+      year: p.data.year,
+      index,
+      lang,
+    };
+  })
+);
 ---
 
 {similarProjects.length > 0 && (
