@@ -85,7 +85,7 @@ export const ui = {
 
     // Tech Stack
     'techstack.title': 'Stack Technique',
-    'techstack.subtitle': "Une boîte à outils complète pour transformer des idées complexes en solutions fonctionnelles, du bas niveau à l'intelligence artificielle avancée.",
+    'techstack.subtitle': "Un ensemble de technologies maîtrisées pour concevoir, optimiser et déployer des solutions techniques innovantes.",
 
     // Timeline
     'timeline.title': 'Mon Parcours',
@@ -211,7 +211,7 @@ export const ui = {
 
     // Tech Stack
     'techstack.title': 'Tech Stack',
-    'techstack.subtitle': 'A complete toolkit to transform complex ideas into functional solutions, from low-level to advanced AI.',
+    'techstack.subtitle': 'A mastered set of technologies to design, optimize, and deploy innovative technical solutions.',
 
     // Timeline
     'timeline.title': 'My Journey',
