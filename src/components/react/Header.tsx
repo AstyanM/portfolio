@@ -179,19 +179,19 @@ export default function Header({ lang, currentPath }: HeaderProps) {
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
+              initial={{ opacity: 0, y: -10, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -10, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden overflow-hidden backdrop-blur-2xl bg-background/95 -mx-4 px-4 rounded-b-2xl border-b border-border shadow-2xl"
+              className="md:hidden absolute top-full left-4 right-4 mt-2 overflow-hidden bg-background dark:bg-background/95 backdrop-blur-2xl rounded-2xl border border-border shadow-2xl origin-top"
             >
-              <ul className="py-4 space-y-2">
+              <ul className="p-2 space-y-1">
                 {navItems.map((item) => (
                   <li key={item.href}>
                     <a
                       href={item.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className={`block px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                      className={`block px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
                         isActive(item.href)
                           ? 'bg-accent/10 text-accent'
                           : 'text-foreground-secondary hover:text-foreground hover:bg-background-secondary'
